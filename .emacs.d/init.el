@@ -2,7 +2,7 @@
 ;; Load Path
 ;; ============================================================= 
 (add-to-list 'load-path "/home/jcp/jc-personal/site-lisp/")
-(defconst ini-directory "~/jc-personal/.emacs.d/configs")
+(defconst ini-directory "~/.emacs.d/configs")
 
 ;; ============================================================= 
 ;; Load All ini-directory files
@@ -125,7 +125,7 @@
  '(speedbar-use-images t)
  '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60)))
  '(tab-width 4)
- '(user-mail-address "jcpetkovich@gmail.com")
+ '(user-mail-address "me@jcpetkovich.com")
  '(viper-ex-style-motion nil)
  '(viper-fast-keyseq-timeout 0)
  '(x-select-enable-clipboard t)
