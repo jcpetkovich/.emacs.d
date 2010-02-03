@@ -49,7 +49,13 @@
 
 ;; (setq swank-clojure-extra-classpaths (list "/home/jcp/src/clojure"))
 
-(setf swank-clojure-classpath '("/home/jcp/src/clojure" "/home/jcp/src/clojure/src/" "/home/jcp/src/clojure/classes" "/usr/share/clojure/lib/clojure.jar" "/home/jcp/.swank-clojure/clojure-contrib-1.1.0-master-20091212.205045-1.jar" "/home/jcp/.swank-clojure/swank-clojure-1.1.0.jar"))
+;; (setf swank-clojure-classpath '("/home/jcp/src/clojure" "/home/jcp/src/clojure/src" "/home/jcp/src/clojure/classes" "/usr/share/clojure/lib/clojure.jar" "/home/jcp/.swank-clojure/clojure-contrib-1.1.0-master-20091212.205045-1.jar" "/home/jcp/.swank-clojure/swank-clojure-1.1.0.jar"))
+
+;; (setf swank-clojure-classpath '("/home/jcp" "/home/jcp/.swank-clojure/clojure-1.1.0-master-20091202.150145-1.jar" "/home/jcp/.swank-clojure/clojure-contrib-1.1.0-master-20091212.205045-1.jar" "/home/jcp/src/clojure/classes" "/home/jcp/src/clojure/src" "/home/jcp/src/clojure" "/home/jcp/.swank-clojure/swank-clojure-1.1.0.jar"))
+
+(setf swank-clojure-classpath '("/home/jcp/src/clojure/src/examples" "/home/jcp/src/clojure" "/home/jcp/src/clojure/src/" "/home/jcp/src/clojure/classes" "/home/jcp/.swank-clojure/clojure-1.1.0-master-20091202.150145-1.jar" "/home/jcp/.swank-clojure/clojure-contrib-1.1.0-master-20091212.205045-1.jar" "/home/jcp/.swank-clojure/swank-clojure-1.1.0.jar"))
+
+
 ;; (add-to-list 'slime-lisp-implementations '(sbcl ("sbcl")))
 
 ;; ADD THESE TO HOOKS LATER
