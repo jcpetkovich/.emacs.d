@@ -40,8 +40,8 @@
 (require 'color-theme)
 (load-library "~/jc-personal/site-lisp/my-theme.el")
 (eval-after-load "color-theme"
-  '(progn
-     (my-color-theme)))
+ '(progn
+    (my-color-theme)))
 
 ;; ============================================================= 
 ;; YAsnippet
