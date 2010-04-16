@@ -25,5 +25,21 @@
 (define-key viper-vi-global-user-map (kbd "C-l") 'copy-to-register)
 (define-key viper-insert-global-user-map (kbd "C-+") 'increment-register)
 (define-key viper-vi-global-user-map (kbd "C-+") 'increment-register)
+(define-key viper-insert-global-user-map (kbd "<f6>") 'browse-kill-ring)
+(define-key viper-vi-global-user-map (kbd "<f6>") 'browse-kill-ring)
+(define-key viper-insert-global-user-map (kbd "C-h") 'mark-paragraph)
+(define-key viper-vi-global-user-map (kbd "C-h") 'mark-paragraph)
+
 (define-key minibuffer-local-map (kbd "M-s") 'other-window) ; was nest-matching-history-element
+
+
+;;; fix viper mode delete key for paredit
+(add-hook 'slime-mode-hook
+          (lambda ()
+            (viper-add-local-keys 'insert-state '(([(backspace)] . paredit-backward-delete)))))
+
+;; (add-hook 'slime-repl-mode-hook
+;;           (lambda ()
+;;             (viper-add-local-keys 'insert-state '(([(backspace)] . paredit-backward-delete)))))
+
 

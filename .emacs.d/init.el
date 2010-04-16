@@ -42,10 +42,10 @@
 ;;; interfacing with ELPA, the package archive.
 ;;; Move this code earlier if you want to reference
 ;;; packages in your .emacs.
-(when
-    (load
-     (expand-file-name "~/.emacs.d/elpa/package.el"))
-  (package-initialize))
+;; (when
+;;     (load
+;;      (expand-file-name "~/.emacs.d/elpa/package.el"))
+;;   (package-initialize)) 
 
 ;; (setq swank-clojure-extra-classpaths (list "/home/jcp/src/clojure"))
 
@@ -127,6 +127,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
+ '(browse-kill-ring-quit-action (quote save-and-restore))
  '(c-basic-offset 4)
  '(c-insert-tab-function (quote tab-to-tab-stop))
  '(c-offsets-alist (quote ((substatement . 0) (substatement-open . 0) (substatement-label . 0))))
@@ -141,7 +142,7 @@
  '(haskell-program-name "ghci -XTemplateHaskell")
  '(ido-create-new-buffer (quote always))
  '(org-agenda-files (quote ("/home/jcp/jc-personal/org")))
- '(org-hide-leading-stars t)
+ '(org-hide-leading-stars t t)
  '(safe-local-variable-values (quote ((folded-file . t))))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
@@ -152,6 +153,7 @@
  '(user-mail-address "me@jcpetkovich.com")
  '(viper-ex-style-motion nil)
  '(viper-fast-keyseq-timeout 0)
+ '(w3m-default-display-inline-images t)
  '(x-select-enable-clipboard t)
  '(yas/indent-line (quote auto)))
  
@@ -163,3 +165,5 @@
   ;; If there is more than one, they won't work right.
  )
 
+
+(put 'narrow-to-region 'disabled nil)
