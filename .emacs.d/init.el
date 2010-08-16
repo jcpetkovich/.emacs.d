@@ -142,7 +142,7 @@
  '(haskell-program-name "ghci -XTemplateHaskell")
  '(ido-create-new-buffer (quote always))
  '(org-agenda-files (quote ("/home/jcp/jc-personal/org")))
- '(org-hide-leading-stars t t)
+ '(org-hide-leading-stars t)
  '(safe-local-variable-values (quote ((folded-file . t))))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
@@ -163,7 +163,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- )
+ '(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)) (:background "Black")))))
 
 
 (put 'narrow-to-region 'disabled nil)
