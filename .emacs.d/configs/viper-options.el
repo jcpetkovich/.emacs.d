@@ -32,15 +32,23 @@
 (define-key viper-insert-global-user-map (kbd "C-u") 'universal-argument)
 (define-key viper-vi-global-user-map (kbd "C-u") 'viper-scroll-down)
 
+(define-key viper-insert-global-user-map (kbd "C-M-<backspace>") 'paredit-backward-delete)
+(define-key viper-vi-global-user-map (kbd "C-M-<backspace>") 'paredit-backward-delete)
+
 (define-key minibuffer-local-map (kbd "M-s") 'other-window) ; was nest-matching-history-element
 
 ;;; fix viper mode delete key for paredit
-(add-hook 'slime-mode-hook
-          (lambda ()
-            (viper-add-local-keys 'insert-state '(([(backspace)] . paredit-backward-delete)))))
+;; (add-hook 'slime-mode-hook
+;;           (lambda ()
+;;             (viper-add-local-keys 'insert-state '(([(backspace)] . paredit-backward-delete)))))
 
 ;; (add-hook 'slime-repl-mode-hook
 ;;           (lambda ()
 ;;             (viper-add-local-keys 'insert-state '(([(backspace)] . paredit-backward-delete)))))
 
+
+;; (eval-after-load 'paredit
+;;   '(progn
+;;      (require 'paredit-viper-compat)
+;;      (paredit-viper-compat)))
 
