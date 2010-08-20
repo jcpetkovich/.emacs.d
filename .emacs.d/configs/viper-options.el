@@ -29,9 +29,10 @@
 (define-key viper-vi-global-user-map (kbd "<f6>") 'browse-kill-ring)
 (define-key viper-insert-global-user-map (kbd "C-h") 'mark-paragraph)
 (define-key viper-vi-global-user-map (kbd "C-h") 'mark-paragraph)
+(define-key viper-insert-global-user-map (kbd "C-u") 'universal-argument)
+(define-key viper-vi-global-user-map (kbd "C-u") 'viper-scroll-down)
 
 (define-key minibuffer-local-map (kbd "M-s") 'other-window) ; was nest-matching-history-element
-
 
 ;;; fix viper mode delete key for paredit
 (add-hook 'slime-mode-hook
