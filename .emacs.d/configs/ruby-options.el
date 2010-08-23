@@ -9,4 +9,13 @@
 
 (add-hook 'nxhtml-mode-hook
           (lambda ()
-            (viper-add-local-keys 'insert-state '(("\C-c\C-r" . open-ruby-section)))))
+            (define-key nxhtml-mode-map  (kbd "\C-c\C-r") 'open-ruby-section)))
+
+(require 'rcodetools)
+(describe-function 'xmp)
+(describe-function 'comment-dwim)
+(describe-function 'rct-complete-symbol)
+
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (define-key ruby-mode-map (kbd "\C-c\C-c\C-c") 'xmp)))
