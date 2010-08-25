@@ -31,6 +31,7 @@
 (define-key viper-vi-global-user-map (kbd "C-h") 'mark-paragraph)
 (define-key viper-insert-global-user-map (kbd "C-u") 'universal-argument)
 (define-key viper-vi-global-user-map (kbd "C-u") 'viper-scroll-down)
+(define-key viper-vi-global-user-map (kbd "C-d") 'viper-scroll-up)
 
 (define-key viper-insert-global-user-map (kbd "C-M-<backspace>") 'paredit-backward-delete)
 (define-key viper-vi-global-user-map (kbd "C-M-<backspace>") 'paredit-backward-delete)
