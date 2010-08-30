@@ -12,6 +12,7 @@
             (define-key nxhtml-mode-map  (kbd "\C-c\C-r") 'open-ruby-section)))
 
 (require 'rcodetools)
+(require 'icicles-rcodetools)
 (describe-function 'xmp)
 (describe-function 'comment-dwim)
 (describe-function 'rct-complete-symbol)
@@ -19,3 +20,32 @@
 (add-hook 'ruby-mode-hook
           (lambda ()
             (define-key ruby-mode-map (kbd "\C-c\C-c\C-c") 'xmp)))
+
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (define-key ruby-mode-map (kbd "M-<tab>") 'rct-complete-symbol)))
+
+(icicle-define-command rct-complete-symbol--icicles
+                         "Perform ruby method and class completion on the text around point with icicles.
+C-M-RET shows RI documentation on each candidate.
+See also `rct-interactive'."
+
+                       (lambda (result)
+                         (save-excursion
+                           (search-backward pattern)
+                           (setq beg (point)))
+                         (delete-region beg end)
+                         (insert (car (split-string result)))) ;/function
+                       "rct-complete: "       ;prompt
+                       rct-method-completion-table
+                       nil nil pattern nil nil nil
+                       ((end (point)) beg
+                        (icicle-list-join-string "\t")
+                        (icicle-list-nth-parts-join-string "\t")
+                        (icicle-list-use-nth-parts '(1))
+                        (icicle-point-position-in-candidate 'input-end)
+                        pattern klass alist
+                        (icicle-candidate-help-fn
+                         (lambda (result)
+                           (ri (cdr (assoc result alist)))))) ;bindings
+                       (save-excursion (rct-exec-and-eval rct-complete-command-name "--completion-emacs-icicles")))

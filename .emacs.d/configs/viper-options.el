@@ -39,6 +39,16 @@
 
 (define-key minibuffer-local-map (kbd "M-s") 'other-window) ; was nest-matching-history-element
 
+;; (add-hook 'org-mode-hook
+;;           (lambda ()
+;;             (viper-add-local-keys 'vi-state '(([(tab)] . org-cycle)))))
+
+(add-hook 'slime-mode-hook
+          (lambda ()
+            (viper-add-local-keys 'insert-state '(([(backspace)] . paredit-backward-delete)))))
+
+
+
 ;;; fix viper mode delete key for paredit
 ;; (add-hook 'slime-mode-hook
 ;;           (lambda ()
