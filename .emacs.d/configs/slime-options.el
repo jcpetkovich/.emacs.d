@@ -55,8 +55,8 @@
 ;;                                 "."))
  
 ;; ;; Fix slime hooks for viper-mode
-;; (add-hook 'slime-repl-mode-hook 'viper-change-state-to-vi)
-;; (add-hook 'slime-mode-hook 'viper-change-state-to-vi)
+(add-hook 'slime-repl-mode-hook 'viper-change-state-to-vi)
+(add-hook 'slime-mode-hook 'viper-change-state-to-vi)
 
 ;; ;;; add paredit to slime repl -- not working as intended...
 ;; ;; (add-hook 'slime-repl-mode-hook 'paredit-mode)
