@@ -144,6 +144,7 @@
  '(speedbar-use-images t)
  '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60)))
  '(tab-width 4)
+ '(tags-revert-without-query t)
  '(user-mail-address "me@jcpetkovich.com")
  '(vimpulse-want-C-i-like-Vim nil)
  '(viper-ex-style-motion nil)
