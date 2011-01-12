@@ -21,10 +21,6 @@
           (lambda ()
             (define-key ruby-mode-map (kbd "\C-c\C-c\C-c") 'xmp)))
 
-;; (add-hook 'ruby-mode-hook
-;;           (lambda ()
-;;             (define-key ruby-mode-map (kbd "M-<tab>") 'rct-complete-symbol)))
-
 ;; (icicle-define-command rct-complete-symbol--icicles
 ;;                          "Perform ruby method and class completion on the text around point with icicles.
 ;; C-M-RET shows RI documentation on each candidate.
@@ -54,6 +50,13 @@
 (add-to-list 'load-path (concat rsense-home "/etc"))
 (require 'rsense)
 
+(add-hook 'ruby-mode-hook 'auto-complete-mode)
 (add-hook 'ruby-mode-hook
           (lambda ()
-            (local-set-key (kbd "C-c .") 'rsense-complete)))
+            (local-set-key (kbd "M-<tab>") 'ac-complete-rsense)))
+
+
+;; (add-hook 'ruby-mode-hook
+;;           (lambda ()
+;;             (define-key ruby-mode-map (kbd "M-<tab>") 'rsense-complete)))uu
+
