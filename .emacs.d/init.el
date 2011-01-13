@@ -119,6 +119,7 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(LaTeX-beamer-item-overlay-flag nil)
+ '(ac-ignore-case nil)
  '(browse-kill-ring-quit-action (quote save-and-restore))
  '(c-basic-offset 4)
  '(c-insert-tab-function (quote tab-to-tab-stop))

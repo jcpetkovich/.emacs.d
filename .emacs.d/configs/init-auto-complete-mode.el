@@ -9,11 +9,13 @@
                 lisp-mode markdown-mode tuareg-mode))
   (add-to-list 'ac-modes mode))
 
+(add-hook 'flyspell-mode-hook
+          (lambda () 
+            (ac-flyspell-workaround)))
+
 (eval-after-load "viper"
   '(progn
      (define-key ac-completing-map (kbd "C-n") 'ac-next)
      (define-key ac-completing-map (kbd "C-p") 'ac-previous)
      (define-key ac-completing-map (kbd "C-g") 'ac-stop)
      (define-key ac-completing-map viper-ESC-key 'viper-intercept-ESC-key)))
-
-
