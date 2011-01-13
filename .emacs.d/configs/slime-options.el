@@ -9,6 +9,7 @@
 (defun lisp-enable-paredit-hook () (paredit-mode 1))
 (add-hook 'clojure-mode-hook 'lisp-enable-paredit-hook)
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
+(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 
 
 ;; ;;; all code in this function lifted from the clojure-mode function
