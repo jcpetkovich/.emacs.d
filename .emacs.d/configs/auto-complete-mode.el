@@ -3,7 +3,7 @@
 (ac-config-default)
 (setq global-auto-complete-mode t)
 
-(dolist (mode '(org-mode text-mode slime-repl-mode
+(dolist (mode '(org-mode text-mode slime-repl-mode LaTeX-mode
                 csv-mode haskell-mode literate-haskell-mode
                 html-mode nxml-mode sh-mode clojure-mode
                 lisp-mode markdown-mode tuareg-mode))
