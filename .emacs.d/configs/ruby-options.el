@@ -60,3 +60,9 @@
 ;;           (lambda ()
 ;;             (define-key ruby-mode-map (kbd "M-<tab>") 'rsense-complete)))uu
 
+
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (local-set-key [f1] 'yari)))
+
+(setq rsense-rurema-home "~/.ruby-reference-manual")
