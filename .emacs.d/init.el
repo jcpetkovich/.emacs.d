@@ -135,6 +135,7 @@
  '(haskell-mode-hook (quote (turn-on-haskell-indent turn-on-font-lock turn-on-eldoc-mode turn-on-haskell-doc-mode imenu-add-menubar-index)))
  '(haskell-program-name "ghci -XTemplateHaskell")
  '(ido-create-new-buffer (quote always))
+ '(jde-global-classpath (quote (".")))
  '(make-backup-files nil)
  '(org-agenda-files (quote ("/home/jcp/jc-personal/org")))
  '(org-hide-leading-stars t)
