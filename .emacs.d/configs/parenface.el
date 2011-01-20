@@ -32,6 +32,7 @@
 (add-hook 'lisp-mode-hook             (paren-face-add-support lisp-font-lock-keywords-2))
 (add-hook 'emacs-lisp-mode-hook       (paren-face-add-support lisp-font-lock-keywords-2))
 (add-hook 'lisp-interaction-mode-hook (paren-face-add-support lisp-font-lock-keywords-2))
+(add-hook 'clojure-mode-hook (paren-face-add-support lisp-font-lock-keywords-2))
 
 (provide 'parenface)
 
