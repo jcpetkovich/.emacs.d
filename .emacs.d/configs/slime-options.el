@@ -11,7 +11,6 @@
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
 (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 
-
 ;; ;;; all code in this function lifted from the clojure-mode function
 ;; ;;; from clojure-mode.el
 ;; (defun clojure-font-lock-setup ()
@@ -47,3 +46,11 @@
 ;;             (font-lock-mode nil)
 ;;             (clojure-font-lock-setup)
 ;;             (font-lock-mode t)))
+;; (add-to-list 'load-path "~/src/clojure/slime/")  ; your SLIME directory
+;; (setq inferior-lisp-program "/usr/bin/sbcl") ; your Lisp system
+;; (require 'slime)
+;; (slime-setup '(slime-fancy slime-asdf slime-banner))
+;; (setq common-lisp-hyperspec-root
+;;       (if (file-exists-p "/usr/share/doc/hyperspec/HyperSpec")
+;; 	  "file:///usr/share/doc/hyperspec/HyperSpec/"
+;; 	"http://www.lispworks.com/reference/HyperSpec/"))
