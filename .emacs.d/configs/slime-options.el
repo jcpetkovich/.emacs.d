@@ -46,6 +46,7 @@
 ;;             (font-lock-mode nil)
 ;;             (clojure-font-lock-setup)
 ;;             (font-lock-mode t)))
+
 ;; (add-to-list 'load-path "~/src/clojure/slime/")  ; your SLIME directory
 ;; (setq inferior-lisp-program "/usr/bin/sbcl") ; your Lisp system
 ;; (require 'slime)
