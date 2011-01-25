@@ -69,3 +69,6 @@
       (add-hook 'python-mode-hook 'ac-eropemacs-setup)
     (add-hook 'python-mode-hook 'ac-nropemacs-setup)))
 
+;;; IPython
+(setq ipython-command "/usr/bin/ipython")
+(require 'ipython)
