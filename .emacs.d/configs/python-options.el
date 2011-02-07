@@ -19,8 +19,8 @@
 
 (defun ac-ropemacs-candidates ()
   (mapcar (lambda (completion)
-      (concat ac-prefix completion))
-    (rope-completions)))
+            (concat ac-prefix completion))
+          (rope-completions)))
 
 (ac-define-source nropemacs
   '((candidates . ac-ropemacs-candidates)
@@ -40,10 +40,10 @@
 
 (defun ac-eropemacs-candidates ()
   (mapcar (lambda (proposal)
-          (destructuring-bind (name doc type) proposal
-            (list (concat ac-prefix name) doc
-                  (if type (substring type 0 1) nil))))
-        (rope-extended-completions)))
+            (destructuring-bind (name doc type) proposal
+              (list (concat ac-prefix name) doc
+                    (if type (substring type 0 1) nil))))
+          (rope-extended-completions)))
 
 (defun ac-eropemacs-document (item) (car item))
 (defun ac-eropemacs-symbol (item) (cadr item))
@@ -72,3 +72,4 @@
 ;;; IPython
 (setq ipython-command "/usr/bin/ipython")
 (require 'ipython)
+
