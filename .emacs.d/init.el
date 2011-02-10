@@ -119,6 +119,7 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(LaTeX-beamer-item-overlay-flag nil)
+ '(TeX-master nil)
  '(ac-ignore-case nil)
  '(browse-kill-ring-quit-action (quote save-and-restore))
  '(c-basic-offset 4)
@@ -139,6 +140,7 @@
  '(make-backup-files nil)
  '(org-agenda-files (quote ("/home/jcp/jc-personal/org")))
  '(org-hide-leading-stars t)
+ '(org-src-fontify-natively t)
  '(safe-local-variable-values (quote ((folded-file . t))))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
