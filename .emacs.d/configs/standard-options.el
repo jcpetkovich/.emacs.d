@@ -36,14 +36,27 @@
 (require 'cl)
 
 ;; ============================================================= 
+;; Setup Viper
+;; ============================================================= 
+(setq viper-mode t)                ; enable Viper at load time
+(setq viper-ex-style-editing nil)  ; can backspace past start of insert / line
+(require 'viper)                   ; load Viper
+(setq vimpulse-experimental t)     ; load bleeding edge code (see 6. installation instruction)
+(require 'vimpulse)                ; load Vimpulse
+(setq woman-use-own-frame nil)     ; don't create new frame for manpages
+(setq woman-use-topic-at-point t)  ; don't prompt upon K key (manpage display)
+
+;; ============================================================= 
 ;; Color Theme
 ;; ============================================================= 
 (require 'color-theme)
 (load-library "~/jc-personal/site-lisp/my-theme.el")
+
 ;; (load-library "~/jc-personal/site-lisp/color-theme-tango-2.el")
 (eval-after-load "color-theme"
  '(progn
-    (my-color-theme)))
+    (my-color-theme)
+    (load "~/jc-personal/site-lisp/naquadah-theme")))
 
 ;; ============================================================= 
 ;; YAsnippet
