@@ -13,6 +13,12 @@
           (lambda () 
             (ac-flyspell-workaround)))
 
+(setq-default ac-sources 
+              '(ac-source-abbrev
+                ac-source-dictionary
+                ac-source-words-in-same-mode-buffers
+                ac-source-yasnippet))
+
 (eval-after-load "viper"
   '(progn
      (define-key ac-completing-map (kbd "C-n") 'ac-next)
