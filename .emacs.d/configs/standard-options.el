@@ -3,6 +3,7 @@
 ;; ============================================================= 
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/color-theme")
 (add-to-list 'load-path "/home/jcp/jc-personal/site-lisp")
+(add-to-list 'load-path "/usr/lib64/chicken/5")
 
 ;; ============================================================= 
 ;; Custom Set Variables

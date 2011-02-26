@@ -125,6 +125,7 @@
  '(c-basic-offset 4)
  '(c-insert-tab-function (quote tab-to-tab-stop))
  '(c-offsets-alist (quote ((substatement . 0) (substatement-open . 0) (substatement-label . 0))))
+ '(cluck-fontify-style nil)
  '(ecb-layout-name "left7")
  '(ecb-options-version "2.40")
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--C-mouse-1))

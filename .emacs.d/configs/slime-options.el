@@ -49,11 +49,11 @@
 
 
 ;;; Clojure slime stuff
-;; (add-to-list 'load-path "~/src/clojure/slime/")  ; your SLIME directory
-;; (setq inferior-lisp-program "/usr/bin/sbcl") ; your Lisp system
-;; (require 'slime)
-;; (slime-setup '(slime-fancy slime-asdf slime-banner))
-;; (setq common-lisp-hyperspec-root
-;;       (if (file-exists-p "/usr/share/doc/hyperspec/HyperSpec")
-;;           "file:///usr/share/doc/hyperspec/HyperSpec/"
-;;         "http://www.lispworks.com/reference/HyperSpec/"))
+(add-to-list 'load-path "~/src/clojure/slime/")  ; your SLIME directory
+(setq inferior-lisp-program "/usr/bin/sbcl") ; your Lisp system
+(require 'slime)
+(slime-setup '(slime-fancy slime-asdf slime-banner))
+(setq common-lisp-hyperspec-root
+      (if (file-exists-p "/usr/share/doc/hyperspec/HyperSpec")
+          "file:///usr/share/doc/hyperspec/HyperSpec/"
+        "http://www.lispworks.com/reference/HyperSpec/"))
