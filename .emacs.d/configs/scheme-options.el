@@ -15,10 +15,10 @@
 ;;             (slime-mode t)))
 
 
-(add-to-list 'load-path "~/src/scheme/cluck")
+;; (add-to-list 'load-path "~/src/scheme/cluck")
 
-(require 'cluck)
+;; (require 'cluck)
 
-(add-hook 'scheme-mode-hook
-          (lambda ()
-            (local-set-key (kbd "<tab>") 'scheme-complete-or-indent)))
+;; (add-hook 'scheme-mode-hook
+;;           (lambda ()
+;;             (local-set-key (kbd "<tab>") 'scheme-complete-or-indent)))
