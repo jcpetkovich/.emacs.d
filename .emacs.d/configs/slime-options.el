@@ -1,7 +1,7 @@
 ;; =============================================================
 ;; Slime options
 ;; =============================================================
-(setq inferior-lisp-program "/usr/bin/sbcl") ; change the default inferior common-lisp interpreter
+(setq inferior-lisp-program "/usr/bin/sbcl --noinform --no-linedit") ; change the default inferior common-lisp interpreter
  
 ;; ;; Fix slime hooks for viper-mode
 (add-hook 'slime-repl-mode-hook 'viper-change-state-to-vi)
@@ -10,6 +10,9 @@
 (add-hook 'clojure-mode-hook 'lisp-enable-paredit-hook)
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
 (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+
+(font-lock-add-keywords 'lisp-mode
+  '(("(\\(iter\\)\\>" 1 font-lock-keyword-face)))
 
 ;; ;;; all code in this function lifted from the clojure-mode function
 ;; ;;; from clojure-mode.el
