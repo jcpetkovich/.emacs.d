@@ -33,6 +33,14 @@
 
 (add-hook 'ruby-mode-hook
           (lambda ()
+            (vimpulse-local-set-key 'vi-state (kbd "{") 'ruby-beginning-of-block)))
+
+(add-hook 'ruby-mode-hook 
+          (lambda ()
+            (vimpulse-local-set-key 'vi-state (kbd "}") 'ruby-end-of-block)))
+
+(add-hook 'ruby-mode-hook
+          (lambda ()
             (local-set-key (kbd "M-<tab>") 'ac-complete-rsense)))
 
 (add-hook 'ruby-mode-hook
