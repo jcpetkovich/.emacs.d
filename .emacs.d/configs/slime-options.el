@@ -14,6 +14,12 @@
 (font-lock-add-keywords 'lisp-mode
   '(("(\\(iter\\)\\>" 1 font-lock-keyword-face)))
 
+(font-lock-add-keywords 'lisp-mode
+  '(("(\\(->>\\)\\>" 1 font-lock-keyword-face)))
+
+(font-lock-add-keywords 'lisp-mode
+  '(("(\\(->\\)\\>" 1 font-lock-keyword-face)))
+
 ;; ;;; all code in this function lifted from the clojure-mode function
 ;; ;;; from clojure-mode.el
 ;; (defun clojure-font-lock-setup ()
