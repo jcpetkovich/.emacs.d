@@ -134,6 +134,7 @@
  '(ecb-source-path (quote ("/home/jcp/jc-personal/org/" "/home/jcp/src/" "/home/jcp/Documents/" "/")))
  '(ecb-windows-width 0.2)
  '(erc-header-line-face-method t)
+ '(eshell-cmpl-ignore-case t)
  '(global-semantic-tag-folding-mode t nil (semantic-util-modes))
  '(haskell-mode-hook (quote (turn-on-haskell-indent turn-on-font-lock turn-on-eldoc-mode turn-on-haskell-doc-mode imenu-add-menubar-index)) t)
  '(haskell-program-name "ghci -XTemplateHaskell")
