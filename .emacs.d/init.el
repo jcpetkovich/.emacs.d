@@ -136,7 +136,7 @@
  '(erc-header-line-face-method t)
  '(eshell-cmpl-ignore-case t)
  '(global-semantic-tag-folding-mode t nil (semantic-util-modes))
- '(haskell-mode-hook (quote (turn-on-haskell-indent turn-on-font-lock turn-on-eldoc-mode turn-on-haskell-doc-mode imenu-add-menubar-index)) t)
+ '(haskell-mode-hook (quote (turn-on-haskell-indent turn-on-font-lock turn-on-eldoc-mode turn-on-haskell-doc-mode imenu-add-menubar-index)))
  '(haskell-program-name "ghci -XTemplateHaskell")
  '(ido-create-new-buffer (quote always))
  '(ido-mode (quote both) nil (ido))
