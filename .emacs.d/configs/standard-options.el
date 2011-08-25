@@ -37,6 +37,7 @@
 (require 'cl)
 (require 'ido) ; ido-mode for better buffer switching and file finding, C-f to return to normal style
 (require 'uniquify)
+(require 'cedet)
 
 ;; ============================================================= 
 ;; Uniquify
