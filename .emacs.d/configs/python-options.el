@@ -10,6 +10,7 @@
                  'py-beginning-of-def-or-class)
             (setq outline-regexp "def\\|class ")))
 
+(require 'pymacs)
 (pymacs-load "ropemacs" "rope-")
 (setq ropemacs-enable-autoimport t)
 

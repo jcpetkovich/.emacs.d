@@ -37,6 +37,7 @@
 (require 'cl)
 (require 'ido) ; ido-mode for better buffer switching and file finding, C-f to return to normal style
 (require 'uniquify)
+(require 'cedet)
 
 ;; ============================================================= 
 ;; Uniquify
@@ -68,6 +69,7 @@
 ;; ============================================================= 
 ;; YAsnippet
 ;; ============================================================= 
+(require 'yasnippet)
 (yas/initialize)
 (defun my-yas-load-dir (fn) 
   (if (file-readable-p fn)
@@ -75,4 +77,5 @@
 
 (my-yas-load-dir "/usr/share/emacs/etc/yasnippet/snippets")
 (my-yas-load-dir "/usr/share/emacs/site-lisp/yasnippet/snippets")
+(my-yas-load-dir "/usr/share/emacs/site-lisp/yas/snippets")
 
