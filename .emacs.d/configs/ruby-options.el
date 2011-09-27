@@ -49,4 +49,3 @@
 
 (setq rsense-rurema-home "~/.ruby-reference-manual")
 
-
