@@ -1,7 +1,7 @@
 (load "~/.emacs.d/site-lisp/nxhtml/autostart.el")
 (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo-mode))
 
-(setq rsense-home "~/src/ruby/rsense-0.3")
+(setq rsense-home (expand-file-name "~/src/ruby/rsense-0.3"))
 (add-to-list 'load-path (concat rsense-home "/etc"))
 
 (defun open-ruby-section ()
