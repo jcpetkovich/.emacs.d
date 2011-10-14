@@ -1,5 +1,5 @@
-(load "~/.emacs.d/site-lisp/nxhtml/autostart.el")
-(add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo-mode))
+;; (load "~/.emacs.d/site-lisp/nxhtml/autostart.el")
+;; (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo-mode))
 
 (setq rsense-home (expand-file-name "~/src/ruby/rsense-0.3"))
 (add-to-list 'load-path (concat rsense-home "/etc"))
@@ -14,8 +14,6 @@
 (require 'icicles-rcodetools)
 (require 'inf-ruby-bond)
 (require 'rsense)
-(describe-function 'xmp)
-(describe-function 'comment-dwim)
 
 (add-hook 'ruby-mode-hook 'auto-complete-mode)
 
