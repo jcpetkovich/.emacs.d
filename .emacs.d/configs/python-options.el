@@ -19,8 +19,8 @@
           (lambda ()
             (local-set-key (kbd "M-<tab>") 'rope-code-assist)))
 
-(defun ac-ropemacs-get-doc (symbol-name)
-  (rope-get-doc))
+;; (defun ac-ropemacs-get-doc (symbol-name)
+;;   (rope-get-doc))
 
 (defun ac-ropemacs-candidates ()
   (mapcar (lambda (completion)
@@ -29,12 +29,12 @@
 
 (ac-define-source nropemacs
   '((candidates . ac-ropemacs-candidates)
-    (document . ac-ropemacs-get-doc)
+    ;; (document . ac-ropemacs-get-doc)
     (symbol . "p")))
 
 (ac-define-source nropemacs-dot
   '((candidates . ac-ropemacs-candidates)
-    (document . ac-ropemacs-get-doc)
+    ;; (document . ac-ropemacs-get-doc)
     (symbol . "p")
     (prefix . c-dot)
     (requires . 0)))
@@ -81,4 +81,4 @@
 (setq ipython-command "/usr/bin/ipython")
 (require 'ipython)
 
-(add-hook 'python-mode-hook (lambda () (ac-nropemacs-setup)))
+;; (add-hook 'python-mode-hook (lambda () (ac-nropemacs-setup)))
