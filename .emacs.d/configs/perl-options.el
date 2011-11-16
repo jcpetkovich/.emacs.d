@@ -4,8 +4,8 @@
 (add-hook 'cperl-mode-hook (lambda ()
                                 (message "im disabling abbrev mode for pde")
                                 (abbrev-mode -1)))
-(load "pde-load")
 
+(load "pde-load")
 
 (add-hook 'cperl-mode-hook
           (lambda ()

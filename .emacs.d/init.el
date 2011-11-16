@@ -127,6 +127,7 @@
  '(c-offsets-alist (quote ((substatement . 0) (substatement-open . 0) (substatement-label . 0))))
  '(cluck-fontify-style nil)
  '(cperl-auto-newline nil)
+ '(cperl-auto-newline-after-colon nil)
  '(cperl-autoindent-on-semi t)
  '(cperl-continued-statement-offset 0)
  '(ecb-layout-name "left7")
