@@ -28,6 +28,7 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 (global-set-key "\C-ce" 'fc-eval-and-replace)
 (global-set-key (kbd "C-.") 'ecb-goto-window-directories)
+(global-set-key (kbd "C-/") 'viper-intercept-ESC-key)
 
 ;; ============================================================= 
 ;; Hooks for fixing keybindings in different modes
