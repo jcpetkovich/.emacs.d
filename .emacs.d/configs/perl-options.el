@@ -9,7 +9,8 @@
 
 (add-hook 'cperl-mode-hook
           (lambda ()
-            (vimpulse-local-set-key 'visual-state (kbd "<tab>") 'indent-for-tab-command)))
+            (vimpulse-local-set-key 'visual-state (kbd "<tab>") 'indent-for-tab-command)
+            (flymake-mode 1)))
 
 ;; (add-hook 'cperl-mode-hook
 ;;           (lambda ()
