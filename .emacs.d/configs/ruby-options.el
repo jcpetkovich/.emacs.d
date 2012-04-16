@@ -15,6 +15,12 @@
 (require 'inf-ruby-bond)
 (require 'rsense)
 
+(require 'ruby-block)
+(require 'flymake-ruby)
+
+
+(add-hook 'ruby-mode-hook 'flymake-ruby-load)
+(add-hook 'ruby-mode-hook (lambda () (ruby-block-mode t)))
 (add-hook 'ruby-mode-hook 'auto-complete-mode)
 
 (add-hook 'nxhtml-mode-hook

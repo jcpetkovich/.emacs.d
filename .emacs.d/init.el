@@ -154,6 +154,8 @@
  '(quack-fontify-style nil)
  '(quack-programs (quote ("racket" "bigloo" "csi" "csi -hygienic" "gosh" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "mred -z" "mzscheme" "mzscheme -il r6rs" "mzscheme -il typed-scheme" "mzscheme -M errortrace" "mzscheme3m" "mzschemecgc" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi")))
  '(quack-remap-find-file-bindings-p nil)
+ '(ruby-block-highlight-face (quote fringe))
+ '(ruby-block-highlight-toggle (quote overlay))
  '(safe-local-variable-values (quote ((folded-file . t))))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
