@@ -36,7 +36,7 @@
     (ini-load (substring (car files) 0 -3))
     (setq files (cdr files)) ))
 
-
+(find-file my-notes-file)
 
 ;; (setq swank-clojure-extra-classpaths (list "/home/jcp/src/clojure"))
 
@@ -148,6 +148,8 @@
  '(jde-global-classpath (quote (".")))
  '(make-backup-files nil)
  '(org-agenda-files (quote ("/home/jcp/jc-personal/org")))
+ '(org-archive-location "~/org/archive.org::* Finished Tasks")
+ '(org-default-notes-file "~/org/captured.org")
  '(org-hide-leading-stars t)
  '(org-src-fontify-natively t)
  '(pde-abbv-use-snippet nil)
