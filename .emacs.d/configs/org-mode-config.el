@@ -8,6 +8,7 @@
 
 (setf my-notes-file "~/org/whiteboard.org")
 
+
 (setq org-capture-templates
       '(("t" "Task" entry (file+headline "" "Tasks")
          "* TODO %?\n  %u\n  %a\n")
@@ -18,4 +19,16 @@
         ("g" "Goal" entry (file+headline my-notes-file "Goals")
          "* %?\n  %u\n  %a\n %i")
         ("n" "Note" entry (file+headline my-notes-file "Ideas/Tasks With No Deadlines")
+         "* %?\n  %u\n  %a\n %i")
+        ("r" "Project Note" entry (file+headline my-notes-file "Project Notes")
          "* %?\n  %u\n  %a\n %i")))
+
+
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (vimpulse-local-set-key 'vi-state (kbd "\C-c\/") 'org-sparse-tree)
+	    (add-to-list 'org-modules 'org-timer)))
+
+
+
