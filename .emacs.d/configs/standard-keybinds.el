@@ -30,6 +30,20 @@
 (global-set-key (kbd "C-.") 'ecb-goto-window-directories)
 (global-set-key (kbd "C-/") 'viper-intercept-ESC-key)
 
+(defun colemak ()
+  (interactive)
+  (define-key viper-vi-global-user-map (kbd "h") 'viper-previous-line)
+  (define-key viper-vi-global-user-map (kbd "k") 'viper-next-line)
+  (define-key viper-vi-global-user-map (kbd "j") 'viper-backward-char)
+  (define-key viper-vi-global-user-map (kbd "l") 'viper-forward-char))
+
+(defun us-keys ()
+  (interactive)
+  (define-key viper-vi-global-user-map (kbd "k") 'viper-previous-line)
+  (define-key viper-vi-global-user-map (kbd "j") 'viper-next-line)
+  (define-key viper-vi-global-user-map (kbd "h") 'viper-backward-char)
+  (define-key viper-vi-global-user-map (kbd "l") 'viper-forward-char))
+
 ;; ============================================================= 
 ;; Hooks for fixing keybindings in different modes
 ;; ============================================================= 
