@@ -1,7 +1,7 @@
 ;; (require 'auto-complete)
 (require 'haskell-mode)
-(setq auto-mode-alist (cons '("\.hs$" . haskell-mode) auto-mode-alist))
-(autoload 'haskell-mode "haskell-mode" "Haskell editing mode." t)
+;; (setq auto-mode-alist (cons '("\.hs$" . haskell-mode) auto-mode-alist))
+;; (autoload 'haskell-mode "haskell-mode" "Haskell editing mode." t)
 
 
 ;; ;;; Code:
