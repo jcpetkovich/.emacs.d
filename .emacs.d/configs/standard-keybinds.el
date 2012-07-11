@@ -28,16 +28,23 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 (global-set-key "\C-ce" 'fc-eval-and-replace)
+(global-set-key (kbd "C-c C-r") 'eval-region)
 (global-set-key (kbd "C-.") 'ecb-goto-window-directories)
 (global-set-key (kbd "C-/") 'viper-intercept-ESC-key)
 
 
 ;; Transpose stuff with M-t
 (global-unset-key (kbd "M-t")) ;; which used to be transpose-words
-(global-set-key (kbd "M-t l") 'transpose-lines)
-(global-set-key (kbd "M-t w") 'transpose-words)
-(global-set-key (kbd "M-t s") 'transpose-sexps)
-(global-set-key (kbd "M-t p") 'transpose-params)
+(global-set-key (kbd "M-t M-w") 'transpose-words)
+(global-set-key (kbd "M-t M-s") 'transpose-sexps)
+(global-set-key (kbd "M-t M-l") 'transpose-lines)
+
+;; Capitalization
+
+(global-unset-key (kbd "M-c"))
+(Global-set-key (kbd "M-c M-c") 'capitalize-word)
+(global-set-key (kbd "M-c M-d") 'downcase-word)
+(global-set-key (kbd "M-c M-u") 'upcase-word)
 
 (defun colemak ()
   (interactive)
