@@ -13,7 +13,6 @@
 (global-set-key (kbd "M-k") 'move-cursor-previous-pane)
 (global-set-key (kbd "M-l") 'shrink-window-horizontally)
 (global-set-key (kbd "M-h") 'shrink-window)
-(global-set-key (kbd "M-t") 'call-keyword-completion)
 (global-set-key (kbd "M-e") 'hippie-expand)
 (global-set-key (kbd "M-SPC") 'hippie-expand-lines)
 (global-set-key (kbd "C-<tab>") 'folding-toggle-show-hide)
