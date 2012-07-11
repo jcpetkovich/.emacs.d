@@ -14,7 +14,8 @@
 (global-set-key (kbd "M-l") 'shrink-window-horizontally)
 (global-set-key (kbd "M-h") 'shrink-window)
 (global-set-key (kbd "M-t") 'call-keyword-completion)
-(global-set-key (kbd "M-e") 'dabbrev-expand)
+(global-set-key (kbd "M-e") 'hippie-expand)
+(global-set-key (kbd "M-SPC") 'hippie-expand-lines)
 (global-set-key (kbd "C-<tab>") 'folding-toggle-show-hide)
 (global-set-key (kbd "M-s") 'move-cursor-next-pane)
 (global-set-key (kbd "M-S") 'move-cursor-previous-pane)
@@ -29,6 +30,14 @@
 (global-set-key "\C-ce" 'fc-eval-and-replace)
 (global-set-key (kbd "C-.") 'ecb-goto-window-directories)
 (global-set-key (kbd "C-/") 'viper-intercept-ESC-key)
+
+
+;; Transpose stuff with M-t
+(global-unset-key (kbd "M-t")) ;; which used to be transpose-words
+(global-set-key (kbd "M-t l") 'transpose-lines)
+(global-set-key (kbd "M-t w") 'transpose-words)
+(global-set-key (kbd "M-t s") 'transpose-sexps)
+(global-set-key (kbd "M-t p") 'transpose-params)
 
 (defun colemak ()
   (interactive)
