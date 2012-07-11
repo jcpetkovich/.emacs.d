@@ -42,7 +42,7 @@
 ;; Capitalization
 
 (global-unset-key (kbd "M-c"))
-(Global-set-key (kbd "M-c M-c") 'capitalize-word)
+(global-set-key (kbd "M-c M-c") 'capitalize-word)
 (global-set-key (kbd "M-c M-d") 'downcase-word)
 (global-set-key (kbd "M-c M-u") 'upcase-word)
 
