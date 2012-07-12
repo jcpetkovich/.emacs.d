@@ -30,7 +30,6 @@
 ;; ============================================================= 
 (display-time)
 
-
 ;; ============================================================= 
 ;; Require Statements - that dont fit elsewhere
 ;; ============================================================= 
@@ -49,12 +48,8 @@
 ;; Color Theme
 ;; ============================================================= 
 (require 'color-theme)
-;; (load-library "~/jc-personal/site-lisp/my-theme.el")
-
-;; (load-library "~/jc-personal/site-lisp/color-theme-tango-2.el")
 (eval-after-load "color-theme"
  '(progn
-    ;; (my-color-theme)
     (load "~/jc-personal/site-lisp/naquadah-theme")))
 
 ;; ============================================================= 

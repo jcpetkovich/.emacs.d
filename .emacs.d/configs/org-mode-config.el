@@ -43,5 +43,5 @@
                                  (kbd "C-M-H") 'org-shiftmetaleft
                                  (kbd "C-M-K") 'org-shiftmetaup
                                  (kbd "C-M-J") 'org-shiftmetadown))
-             '(normal insert)) nil))
+             '(normal insert))))
 
