@@ -140,6 +140,8 @@
  '(eshell-cmpl-ignore-case t)
  '(ess-default-style (quote OWN))
  '(ess-own-style-list (quote ((ess-indent-level . 4) (ess-continued-statement-offset . 4) (ess-brace-offset . 0) (ess-expression-offset . 4) (ess-else-offset . 0) (ess-brace-imaginary-offset . 0) (ess-continued-brace-offset . 0) (ess-arg-function-offset . 2) (ess-close-brace-offset . 0))))
+ '(evil-cross-lines t)
+ '(evil-esc-delay 0)
  '(global-semantic-tag-folding-mode t nil (semantic-util-modes))
  '(haskell-mode-hook (quote (turn-on-haskell-indent turn-on-font-lock turn-on-eldoc-mode turn-on-haskell-doc-mode imenu-add-menubar-index)))
  '(haskell-program-name "ghci -XTemplateHaskell")

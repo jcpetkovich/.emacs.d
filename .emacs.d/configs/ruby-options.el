@@ -42,45 +42,35 @@
 ;; ============================================================= 
 ;; Viper Keybindings
 ;; ============================================================= 
-(add-hook 'ruby-mode-hook
-          (lambda ()
-            (vimpulse-local-set-key 'visual-state (kbd "<tab>") 'indent-for-tab-command)))
+;; (add-hook 'ruby-mode-hook
+;;           (lambda ()
+;;             (vimpulse-local-set-key 'visual-state (kbd "<tab>") 'indent-for-tab-command)))
 
-(add-hook 'ruby-mode-hook
-          (lambda ()
-            (vimpulse-local-set-key 'vi-state (kbd "{") 'ruby-beginning-of-block)))
+;; (add-hook 'ruby-mode-hook
+;;           (lambda ()
+;;             (vimpulse-local-set-key 'vi-state (kbd "{") 'ruby-beginning-of-block)))
 
-(add-hook 'ruby-mode-hook 
-          (lambda ()
-            (vimpulse-local-set-key 'vi-state (kbd "}") 'ruby-end-of-block)))
+;; (add-hook 'ruby-mode-hook 
+;;           (lambda ()
+;;             (vimpulse-local-set-key 'vi-state (kbd "}") 'ruby-end-of-block)))
+
+(eval-after-load "evil"
+  '(progn
+     (evil-declare-key 'normal ruby-mode-map
+                       (kbd "{") 'ruby-beginning-of-block
+                       (kbd "}") 'ruby-end-of-block)
+     (evil-declare-key 'visual ruby-mode-map
+                       (kbd "<tab>") 'indent-for-tab-command)))
 
 
 (setq rsense-rurema-home "~/.ruby-reference-manual")
 
 
-(font-lock-add-keywords 'ruby-mode
-  '((".\\(each\\)\\_>" 1 font-lock-keyword-face)))
-
-(font-lock-add-keywords 'ruby-mode
-  '((".\\(collect\\)\\_>" 1 font-lock-keyword-face)))
-
-(font-lock-add-keywords 'ruby-mode
-  '((".\\(reject\\)\\_>" 1 font-lock-keyword-face)))
-
-(font-lock-add-keywords 'ruby-mode
-  '((".\\(select\\)\\_>" 1 font-lock-keyword-face)))
-
-(font-lock-add-keywords 'ruby-mode
-  '((".\\(inject\\)\\_>" 1 font-lock-keyword-face)))
-
-(font-lock-add-keywords 'ruby-mode
-  '((".\\(include\\)\\_>" 1 font-lock-keyword-face)))
-
-(font-lock-add-keywords 'ruby-mode
-  '((".\\(map\\)\\_>" 1 font-lock-keyword-face)))
-
-(font-lock-add-keywords 'ruby-mode
-  '((".\\(reduce\\)\\_>" 1 font-lock-keyword-face)))
+(mapcar (lambda (keyword)
+          (font-lock-add-keywords
+           'ruby-mode
+           `((,(concat ".\\(" keyword "\\)\\_>") 1 font-lock-keyword-face))))
+        (list "each" "collect" "reject" "select" "inject" "include" "map" "reduce"))
 
 
 ;; any?

@@ -20,7 +20,7 @@
                 ac-source-yasnippet))
 
 ;; ============================================================= 
-;; Viper Keybindings
+;; Evil Keybindings
 ;; ============================================================= 
 (eval-after-load "evil"
   '(progn

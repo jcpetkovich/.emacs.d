@@ -83,5 +83,6 @@
 (my-yas-load-dir "/usr/share/emacs/site-lisp/yas/snippets")
 
 (setq evil-want-C-i-jump nil)
+(setq evil-want-C-u-scroll t)
 (require 'evil)
 (evil-mode 1)

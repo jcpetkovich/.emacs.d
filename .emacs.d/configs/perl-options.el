@@ -7,10 +7,13 @@
 
 (load "pde-load")
 
-;; (add-hook 'cperl-mode-hook
-;;           (lambda ()
-;;             (vimpulse-local-set-key 'visual-state (kbd "<tab>") 'indent-for-tab-command)
-;;             (flymake-mode 1)))
+(add-hook 'cperl-mode-hook
+          (lambda () (flymake-mode 1)))
+
+(eval-after-load "evil"
+  '(progn
+     (evil-declare-key 'visual cperl-mode-map
+                       (kbd "<tab>") 'indent-for-tab-command)))
 
 ;; (add-hook 'cperl-mode-hook
 ;;           (lambda ()
