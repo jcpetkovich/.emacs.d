@@ -33,6 +33,17 @@
 
 (add-hook 'ruby-mode-hook
           (lambda ()
+            (local-set-key (kbd "M-<tab>") 'ac-complete-rsense)))
+
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (local-set-key [f1] 'yari)))
+
+;; ============================================================= 
+;; Viper Keybindings
+;; ============================================================= 
+(add-hook 'ruby-mode-hook
+          (lambda ()
             (vimpulse-local-set-key 'visual-state (kbd "<tab>") 'indent-for-tab-command)))
 
 (add-hook 'ruby-mode-hook
@@ -43,13 +54,6 @@
           (lambda ()
             (vimpulse-local-set-key 'vi-state (kbd "}") 'ruby-end-of-block)))
 
-(add-hook 'ruby-mode-hook
-          (lambda ()
-            (local-set-key (kbd "M-<tab>") 'ac-complete-rsense)))
-
-(add-hook 'ruby-mode-hook
-          (lambda ()
-            (local-set-key [f1] 'yari)))
 
 (setq rsense-rurema-home "~/.ruby-reference-manual")
 

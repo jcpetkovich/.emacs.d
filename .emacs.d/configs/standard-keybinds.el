@@ -29,7 +29,7 @@
 (global-set-key "\C-ce" 'fc-eval-and-replace)
 (global-set-key (kbd "C-c C-r") 'eval-region)
 (global-set-key (kbd "C-.") 'ecb-goto-window-directories)
-(global-set-key (kbd "C-/") 'viper-intercept-ESC-key)
+
 
 
 ;; Transpose stuff with M-t
@@ -45,19 +45,25 @@
 (global-set-key (kbd "M-c M-d") 'downcase-word)
 (global-set-key (kbd "M-c M-u") 'upcase-word)
 
-(defun colemak ()
-  (interactive)
-  (define-key viper-vi-global-user-map (kbd "h") 'viper-previous-line)
-  (define-key viper-vi-global-user-map (kbd "k") 'viper-next-line)
-  (define-key viper-vi-global-user-map (kbd "j") 'viper-backward-char)
-  (define-key viper-vi-global-user-map (kbd "l") 'viper-forward-char))
 
-(defun us-keys ()
-  (interactive)
-  (define-key viper-vi-global-user-map (kbd "k") 'viper-previous-line)
-  (define-key viper-vi-global-user-map (kbd "j") 'viper-next-line)
-  (define-key viper-vi-global-user-map (kbd "h") 'viper-backward-char)
-  (define-key viper-vi-global-user-map (kbd "l") 'viper-forward-char))
+;; ============================================================= 
+;; Viper Keybindings
+;; ============================================================= 
+
+;; (global-set-key (kbd "C-/") 'viper-intercept-ESC-key)
+;; (defun colemak ()
+;;   (interactive)
+;;   (define-key viper-vi-global-user-map (kbd "h") 'viper-previous-line)
+;;   (define-key viper-vi-global-user-map (kbd "k") 'viper-next-line)
+;;   (define-key viper-vi-global-user-map (kbd "j") 'viper-backward-char)
+;;   (define-key viper-vi-global-user-map (kbd "l") 'viper-forward-char))
+
+;; (defun us-keys ()
+;;   (interactive)
+;;   (define-key viper-vi-global-user-map (kbd "k") 'viper-previous-line)
+;;   (define-key viper-vi-global-user-map (kbd "j") 'viper-next-line)
+;;   (define-key viper-vi-global-user-map (kbd "h") 'viper-backward-char)
+;;   (define-key viper-vi-global-user-map (kbd "l") 'viper-forward-char))
 
 ;; ============================================================= 
 ;; Hooks for fixing keybindings in different modes

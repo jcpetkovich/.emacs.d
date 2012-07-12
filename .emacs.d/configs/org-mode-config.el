@@ -25,10 +25,10 @@
 
 
 
-(add-hook 'org-mode-hook
-          (lambda ()
-            (vimpulse-local-set-key 'vi-state (kbd "\C-c\/") 'org-sparse-tree)
-	    (add-to-list 'org-modules 'org-timer)))
+;; (add-hook 'org-mode-hook
+;;           (lambda ()
+;;             (vimpulse-local-set-key 'vi-state (kbd "\C-c\/") 'org-sparse-tree)
+;; 	    (add-to-list 'org-modules 'org-timer)))
 
 
 

@@ -19,9 +19,16 @@
                 ac-source-words-in-same-mode-buffers
                 ac-source-yasnippet))
 
-(eval-after-load "viper"
+;; ============================================================= 
+;; Viper Keybindings
+;; ============================================================= 
+(eval-after-load "evil"
   '(progn
      (define-key ac-completing-map (kbd "C-n") 'ac-next)
      (define-key ac-completing-map (kbd "C-p") 'ac-previous)
      (define-key ac-completing-map (kbd "C-g") 'ac-stop)
-     (define-key ac-completing-map viper-ESC-key 'viper-intercept-ESC-key)))
+     (define-key ac-completing-map (kbd "ESC") 'evil-normal-state)
+     (evil-make-intercept-map ac-completing-map)))
+
+
+
