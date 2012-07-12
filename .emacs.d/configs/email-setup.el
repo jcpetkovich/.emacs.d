@@ -1,7 +1,6 @@
 ;; ============================================================= 
 ;; ALL MAIL RELATED OPTIONS IN HERE
 ;; ============================================================= 
-(require 'gnus)
 
 ;; ============================================================= 
 ;; Outgoing (this works if the authentication file exists)
@@ -20,15 +19,16 @@
 ;; ============================================================= 
 ;; Gnus
 ;; ============================================================= 
-(setq user-full-name "Jean-Christophe Petkovich"
-      gnus-parameters
-      '(("*nnimap+gmail*"
-         (gnus-article-sort-functions '(gnus-article-sort-by-date))))
-      gnus-invalid-group-regexp "[:`'\"]\\|^$")
+(setq user-full-name "Jean-Christophe Petkovich")
 
-(add-to-list 'gnus-secondary-select-methods 
-             '(nnimap "gmail"
-                      (nnimap-address "imap.gmail.com")
-                      (nnimap-server-port 993)
-                      (nnimap-stream ssl)))
+(eval-after-load "gnus"
+  '(progn
+     (setq gnus-parameters '(("*nnimap+gmail*"
+                              (gnus-article-sort-functions '(gnus-article-sort-by-date))))
+           gnus-invalid-group-regexp "[:`'\"]\\|^$")
 
+     (add-to-list 'gnus-secondary-select-methods 
+                  '(nnimap "gmail"
+                           (nnimap-address "imap.gmail.com")
+                           (nnimap-server-port 993)
+                           (nnimap-stream ssl)))))

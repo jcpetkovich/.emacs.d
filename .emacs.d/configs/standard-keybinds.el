@@ -3,7 +3,7 @@
 ;; ============================================================= 
 
 ;; ============================================================= 
-;; Set nice keybindings (combined with viper/vimpulse)
+;; Set nice keybindings (combined with evil)
 ;; ============================================================= 
 (windmove-default-keybindings 'meta)
 (global-set-key "\C-x\C-b" 'switch-to-buffer)
@@ -44,26 +44,6 @@
 (global-set-key (kbd "M-c M-c") 'capitalize-word)
 (global-set-key (kbd "M-c M-d") 'downcase-word)
 (global-set-key (kbd "M-c M-u") 'upcase-word)
-
-
-;; ============================================================= 
-;; Viper Keybindings
-;; ============================================================= 
-
-;; (global-set-key (kbd "C-/") 'viper-intercept-ESC-key)
-;; (defun colemak ()
-;;   (interactive)
-;;   (define-key viper-vi-global-user-map (kbd "h") 'viper-previous-line)
-;;   (define-key viper-vi-global-user-map (kbd "k") 'viper-next-line)
-;;   (define-key viper-vi-global-user-map (kbd "j") 'viper-backward-char)
-;;   (define-key viper-vi-global-user-map (kbd "l") 'viper-forward-char))
-
-;; (defun us-keys ()
-;;   (interactive)
-;;   (define-key viper-vi-global-user-map (kbd "k") 'viper-previous-line)
-;;   (define-key viper-vi-global-user-map (kbd "j") 'viper-next-line)
-;;   (define-key viper-vi-global-user-map (kbd "h") 'viper-backward-char)
-;;   (define-key viper-vi-global-user-map (kbd "l") 'viper-forward-char))
 
 ;; ============================================================= 
 ;; Hooks for fixing keybindings in different modes

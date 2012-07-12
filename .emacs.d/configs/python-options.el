@@ -2,9 +2,6 @@
 ;; Alternative Python mode (i like this one better)
 ;; ============================================================= 
 (setq py-python-command "/usr/bin/python")
-(autoload 'python-mode "python-mode" "Python Mode." t)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(add-to-list 'interpreter-mode-alist '("python" . python-mode))
 (add-hook 'python-mode-hook
           (lambda ()
             (set (make-variable-buffer-local 'beginning-of-defun-function)
@@ -18,9 +15,6 @@
 (add-hook 'python-mode-hook 
           (lambda ()
             (local-set-key (kbd "M-<tab>") 'rope-code-assist)))
-
-;; (defun ac-ropemacs-get-doc (symbol-name)
-;;   (rope-get-doc))
 
 (defun ac-ropemacs-candidates ()
   (mapcar (lambda (completion)

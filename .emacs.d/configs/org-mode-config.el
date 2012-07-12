@@ -24,11 +24,6 @@
          "* %?\n  %u\n  %a\n %i")))
 
 
-;; (add-hook 'org-mode-hook
-;;           (lambda ()
-;;             (vimpulse-local-set-key 'vi-state (kbd "\C-c\/") 'org-sparse-tree)
-;; 	    (add-to-list 'org-modules 'org-timer)))
-
 (add-hook 'org-mode-hook
           (lambda ()
             (add-to-list 'org-modules 'org-timer)))
@@ -38,24 +33,15 @@
      (evil-declare-key 'normal org-mode-map
                        (kbd "\C-c\/") 'org-sparse-tree)
 
-     (evil-declare-key 'normal org-mode-map
-                       (kbd "C-M-l") 'org-metaright
-                       (kbd "C-M-h") 'org-metaleft
-                       (kbd "C-M-k") 'org-metaup
-                       (kbd "C-M-j") 'org-metadown
-                       (kbd "C-M-L") 'org-shiftmetaright
-                       (kbd "C-M-H") 'org-shiftmetaleft
-                       (kbd "C-M-K") 'org-shiftmetaup
-                       (kbd "C-M-J") 'org-shiftmetadown)
-
-     (evil-declare-key 'insert org-mode-map
-                       (kbd "C-M-l") 'org-metaright
-                       (kbd "C-M-h") 'org-metaleft
-                       (kbd "C-M-k") 'org-metaup
-                       (kbd "C-M-j") 'org-metadown
-                       (kbd "C-M-L") 'org-shiftmetaright
-                       (kbd "C-M-H") 'org-shiftmetaleft
-                       (kbd "C-M-K") 'org-shiftmetaup
-                       (kbd "C-M-J") 'org-shiftmetadown)))
-
+     (mapcar (lambda (evil-state) 
+               (evil-declare-key evil-state org-mode-map
+                                 (kbd "C-M-l") 'org-metaright
+                                 (kbd "C-M-h") 'org-metaleft
+                                 (kbd "C-M-k") 'org-metaup
+                                 (kbd "C-M-j") 'org-metadown
+                                 (kbd "C-M-L") 'org-shiftmetaright
+                                 (kbd "C-M-H") 'org-shiftmetaleft
+                                 (kbd "C-M-K") 'org-shiftmetaup
+                                 (kbd "C-M-J") 'org-shiftmetadown))
+             '(normal insert)) nil))
 
