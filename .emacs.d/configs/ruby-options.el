@@ -17,7 +17,6 @@
 (require 'inf-ruby-bond)
 (require 'rsense)
 
-(require 'ruby-block)
 (require 'flymake-ruby)
 
 (add-hook 'nxhtml-mode-hook
@@ -29,7 +28,6 @@
 
 (add-hook 'ruby-mode-hook
           (lambda ()
-            (ruby-block-mode t)
             (define-key ruby-mode-map (kbd "\C-c\C-c") 'xmp)
             (define-key ruby-mode-map (kbd "M-<tab>") 'ac-complete-rsense)
             (define-key ruby-mode-map [f1] 'yari)))
