@@ -39,9 +39,9 @@
                                  (kbd "C-M-h") 'org-metaleft
                                  (kbd "C-M-k") 'org-metaup
                                  (kbd "C-M-j") 'org-metadown
-                                 (kbd "C-M-L") 'org-shiftmetaright
-                                 (kbd "C-M-H") 'org-shiftmetaleft
-                                 (kbd "C-M-K") 'org-shiftmetaup
-                                 (kbd "C-M-J") 'org-shiftmetadown))
+                                 (kbd "C-M-S-l") 'org-shiftmetaright
+                                 (kbd "C-M-S-h") 'org-shiftmetaleft
+                                 (kbd "C-M-S-k") 'org-shiftmetaup
+                                 (kbd "C-M-S-j") 'org-shiftmetadown))
              '(normal insert))))
 
