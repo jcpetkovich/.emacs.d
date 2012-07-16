@@ -15,7 +15,8 @@
                                  (kbd "C-l") 'copy-to-register
                                  (kbd "C-+") 'increment-register
                                  (kbd "<f6>") 'browse-kill-ring
-                                 (kbd "C-M-<backspace>") 'paredit-backward-delete))
+                                 (kbd "C-M-<backspace>") 'paredit-backward-delete
+                                 (kbd "<f7>") 'compile)) 
              '(normal insert))))
 
 
