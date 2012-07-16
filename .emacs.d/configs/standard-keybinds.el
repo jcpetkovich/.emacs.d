@@ -22,7 +22,6 @@
 (global-set-key (kbd "M-!") 'delete-window)
 (global-set-key (kbd "M-2") 'split-window-vertically)
 (global-set-key (kbd "M-@") 'split-window-horizontally)
-(global-set-key (kbd "<f5>") 'toggle-fullscreen)
 (global-set-key (kbd "<f11>") 'align-regexp)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
