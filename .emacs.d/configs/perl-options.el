@@ -1,11 +1,15 @@
-(when (file-exists-p (expand-file-name "~/src/perl/Emacs-PDE"))
-  (add-to-list 'load-path "~/src/perl/Emacs-PDE/lisp"))
+;; (when (file-exists-p (expand-file-name "~/src/perl/Emacs-PDE"))
+;;   (add-to-list 'load-path "~/src/perl/Emacs-PDE/lisp"))
 
-(add-hook 'cperl-mode-hook (lambda ()
-                                (message "im disabling abbrev mode for pde")
-                                (abbrev-mode -1)))
+;; (add-hook 'cperl-mode-hook (lambda ()
+;;                                 (message "im disabling abbrev mode for pde")
+;;                                 (abbrev-mode -1)))
 
-(load "pde-load")
+;; (load "pde-load")
+
+;; (setq pde-perl-version "5.12.4")
+
+(defalias 'perl-mode 'cperl-mode)
 
 (add-hook 'cperl-mode-hook
           (lambda () (flymake-mode 1)))

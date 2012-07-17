@@ -59,6 +59,7 @@
  '(cperl-auto-newline-after-colon nil)
  '(cperl-autoindent-on-semi t)
  '(cperl-continued-statement-offset 0)
+ '(cperl-highlight-variables-indiscriminately t)
  '(ecb-layout-name "left7")
  '(ecb-options-version "2.40")
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--C-mouse-1))
