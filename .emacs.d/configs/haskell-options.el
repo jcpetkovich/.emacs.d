@@ -1,5 +1,14 @@
 ;; ;;; Code:
 
+(mapcar (lambda (my-hook)
+          (add-hook 'haskell-mode-hook my-hook))
+        '(turn-on-haskell-indent
+          turn-on-font-lock
+          turn-on-eldoc-mode
+          turn-on-haskell-doc-mode
+          imenu-add-menubar-index
+          (lambda () (setq evil-auto-indent nil))))
+
 ;; ;; Haskell
 ;; (defun ac-haskell-hoogle (prefix)
 ;;   (let (expansion all-expansions end-of-period)
