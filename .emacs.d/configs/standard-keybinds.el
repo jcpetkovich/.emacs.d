@@ -148,8 +148,10 @@
 
 (defun shrink-whitespaces ()
   "Remove white spaces around cursor to just one or none.
-If current line contains non-white space chars, then shrink any whitespace char surrounding cursor to just one space.
-If current line does not contain non-white space chars, then remove blank lines to just one."
+If current line contains non-white space chars, then shrink any
+whitespace char surrounding cursor to just one space.  If current
+line does not contain non-white space chars, then remove blank
+lines to just one."
   (interactive)
   (let (cursor-point
         line-has-meat-p  ; current line contains non-white space chars
@@ -158,7 +160,9 @@ If current line does not contain non-white space chars, then remove blank lines 
         space-or-tab-begin space-or-tab-end
         line-begin-pos line-end-pos)
     (save-excursion
-      ;; todo: might consider whitespace as defined by syntax table, and also consider whitespace chars in unicode if syntax table doesn't already considered it.
+      ;; todo: might consider whitespace as defined by syntax table,
+      ;; and also consider whitespace chars in unicode if syntax table
+      ;; doesn't already considered it.
       (setq cursor-point (point))
       (setq spaceTabNeighbor-p 
             (if (or (looking-at " \\|\t") (looking-back " \\|\t"))
@@ -168,8 +172,6 @@ If current line does not contain non-white space chars, then remove blank lines 
       (setq line-begin-pos (point))
       (move-end-of-line 1) 
       (setq line-end-pos (point))
-      ;;       (re-search-backward "\n$") (setq line-begin-pos (point) )
-      ;;       (re-search-forward "\n$") (setq line-end-pos (point) )
       (setq line-has-meat-p 
             (if (< 0 (count-matches "[[:graph:]]" line-begin-pos line-end-pos))
                 t
@@ -191,27 +193,4 @@ If current line does not contain non-white space chars, then remove blank lines 
             (insert " ")))
 
       (progn
-        ;;         (delete-region whitespace-begin whitespace-end)
-        ;;         (insert "\n")
         (delete-blank-lines)))))
-
-;; ============================================================= 
-;; Cruft
-;; ============================================================= 
-
-;; (defun code-section-heading ()
-;;   (interactive)
-;;   (save-excursion
-;;     (move-beginning-of-line 1)
-;;     (setq line-begin-pos (point))
-;;     (move-end-of-line 1)
-;;     (setq line-end-pos (point))
-;;     (setq num-chars-in-line (count-matches "[[:graph:] ]" line-begin-pos line-end-pos))
-;;     (move-beginning-of-line 1)
-;;     (insert-char 61 20)
-;;     (insert-char 32 1)
-;;     (move-end-of-line 1)
-;;     (insert-char 32 1)
-;;     (insert-char 61 (- 20 num-chars-in-line))
-;;     (print num-chars-in-line)))
-
