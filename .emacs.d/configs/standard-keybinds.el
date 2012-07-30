@@ -28,7 +28,7 @@
 (global-set-key "\C-ce" 'fc-eval-and-replace)
 (global-set-key (kbd "C-c C-r") 'eval-region)
 (global-set-key (kbd "C-.") 'ecb-goto-window-directories)
-
+(global-set-key (kbd "C-x g") 'insert-register)
 
 
 ;; Transpose stuff with M-t
