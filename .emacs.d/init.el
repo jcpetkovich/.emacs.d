@@ -78,6 +78,7 @@
  '(ido-mode (quote both) nil (ido))
  '(jde-global-classpath (quote (".")))
  '(make-backup-files nil)
+ '(mouse-wheel-mode nil)
  '(org-agenda-files (quote ("/home/jcp/jc-personal/org")))
  '(org-archive-location "~/org/archive.org::* Finished Tasks")
  '(org-completion-use-ido t)
