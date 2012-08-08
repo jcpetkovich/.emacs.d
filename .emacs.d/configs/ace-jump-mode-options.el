@@ -5,7 +5,7 @@
 
 (eval-after-load "evil"
   '(progn
-     (evil-declare-key normal global-map
-                       (kbd "SPC") 'ace-jump-word)))
+     (evil-declare-key 'normal global-map
+                       (kbd "SPC") 'ace-jump-mode)))
 
 
