@@ -17,10 +17,5 @@
                                  (kbd "C-+") 'increment-register
                                  (kbd "<f6>") 'browse-kill-ring
                                  (kbd "C-M-<backspace>") 'paredit-backward-delete
-                                 (kbd "<f7>") 'compile 
-                                 (kbd "M-n") 'move-cursor-next-pane
-                                 (kbd "M-p") 'move-cursor-previous-pane))
+                                 (kbd "<f7>") 'compile))
              '(normal insert))))
-
-
-
