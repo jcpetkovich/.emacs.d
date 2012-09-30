@@ -43,10 +43,10 @@
 ;; ============================================================= 
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(LaTeX-beamer-item-overlay-flag nil)
  '(TeX-master nil)
  '(ac-ignore-case nil)
@@ -79,12 +79,13 @@
  '(jde-global-classpath (quote (".")))
  '(make-backup-files nil)
  '(mouse-wheel-mode nil)
- '(org-agenda-files (quote ("/home/jcp/jc-personal/org")))
+ '(org-agenda-files (quote ("/home/jcp/mobileorg")))
  '(org-archive-location "~/org/archive.org::* Finished Tasks")
  '(org-completion-use-ido t)
  '(org-default-notes-file "~/org/captured.org")
  '(org-file-apps (quote ((auto-mode . emacs) ("\\.mm\\'" . default) ("\\.x?html?\\'" . default) ("\\.pdf\\'" . "evince %s"))))
  '(org-hide-leading-stars t)
+ '(org-mobile-directory "~/mobileorg/webdav")
  '(org-modules (quote (org-bbdb org-bibtex org-docview org-gnus org-info org-jsinfo org-habit org-irc org-mew org-mhe org-rmail org-vm org-wl org-w3m)))
  '(org-src-fontify-natively t)
  '(pde-abbv-use-snippet nil)
@@ -113,10 +114,10 @@
  
 
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)) (:background "Black")))))
 
 (put 'narrow-to-region 'disabled nil)
