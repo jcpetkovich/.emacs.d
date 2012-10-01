@@ -6,8 +6,7 @@
 (define-key global-map "\C-cc" 'org-capture)
 (define-key global-map "\C-cl" 'org-store-link)
 
-(setf my-notes-file "~/org/whiteboard.org")
-
+(setf my-notes-file "~/mobileorg/whiteboard.org")
 
 (setq org-capture-templates
       '(("t" "Task" entry (file+headline "" "Tasks")
