@@ -43,10 +43,10 @@
 ;; ============================================================= 
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(LaTeX-beamer-item-overlay-flag nil)
  '(TeX-master nil)
  '(ac-ignore-case nil)
@@ -109,14 +109,15 @@
  '(viper-fast-keyseq-timeout 0)
  '(w3m-default-display-inline-images t)
  '(x-select-enable-clipboard t)
+ '(x-select-enable-primary t)
  '(yas/indent-line (quote auto)))
  
 
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)) (:background "Black")))))
 
 (put 'narrow-to-region 'disabled nil)
