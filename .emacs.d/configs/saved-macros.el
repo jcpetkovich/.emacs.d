@@ -7,9 +7,11 @@
      this name at the end of your .emacs"
      (interactive "SName of the macro :")  ; ask for the name of the macro    
      (kmacro-name-last-macro name)         ; use this name for the macro    
-     (find-file "~/jc-personal/.emacs.d/saved-macros.el")                ; open the .emacs file 
+     (find-file "~/.emacs.d/configs/saved-macros.el")                ; open the .emacs file 
      (goto-char (point-max))               ; go to the end of the .emacs
      (newline)                             ; insert a newline
      (insert-kbd-macro name)               ; copy the macro 
      (newline)                             ; insert a newline
      (switch-to-buffer nil))               ; return to the initial buffer
+
+
