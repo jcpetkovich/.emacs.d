@@ -7,6 +7,7 @@
 ;; ============================================================= 
 (windmove-default-keybindings 'meta)
 (global-set-key "\C-x\C-b" 'switch-to-buffer)
+(global-set-key (kbd "M-;") 'comment-dwim)
 (global-set-key (kbd "M-p") 'windmove-up)
 (global-set-key (kbd "M-n") 'windmove-down)
 (global-set-key (kbd "M-j") 'move-cursor-next-pane)
