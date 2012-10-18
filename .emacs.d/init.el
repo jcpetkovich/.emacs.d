@@ -1,13 +1,14 @@
-;; ============================================================= 
+;; =============================================================
 ;; Load Path
-;; ============================================================= 
+;; =============================================================
 (add-to-list 'load-path "~/jc-personal/site-lisp/")
 (defconst ini-directory "~/.emacs.d/configs")
 
-;; ============================================================= 
+;; =============================================================
 ;; Load All ini-directory files
 ;; Author: Jim Weirich
-;; ============================================================= 
+;; =============================================================
+
 
 (defvar ini-loaded ()
   "List of files loaded during initialization.")
@@ -38,9 +39,9 @@
 
 (find-file my-notes-file)
 
-;; ============================================================= 
+;; =============================================================
 ;; Variables Set by emacs
-;; ============================================================= 
+;; =============================================================
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -104,7 +105,7 @@
  '(tags-revert-without-query t)
  '(tags-table-list nil)
  '(uniquify-buffer-name-style (quote post-forward) nil (uniquify))
- '(user-mail-address "me@jcpetkovich.com")
+ '(user-mail-address "jcpetkovich@gmail.com")
  '(vimpulse-want-C-i-like-Vim nil)
  '(viper-ex-style-motion nil)
  '(viper-fast-keyseq-timeout 0)
@@ -112,7 +113,7 @@
  '(x-select-enable-clipboard t)
  '(x-select-enable-primary t)
  '(yas/indent-line (quote auto)))
- 
+
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

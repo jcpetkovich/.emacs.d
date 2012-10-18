@@ -1,3 +1,2 @@
 
-;; (defadvice sgml-delete-tag (after clean-after-delete activate)
-;;   (cleanup-buffer))
+(add-to-list 'auto-mode-alist '("\.mako$" . html-mode))
