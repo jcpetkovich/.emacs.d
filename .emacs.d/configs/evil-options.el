@@ -1,6 +1,6 @@
-;; ============================================================= 
+;; =============================================================
 ;; Evil keybindings
-;; ============================================================= 
+;; =============================================================
 
 (global-set-key (kbd "C-w") 'backward-kill-word)
 
@@ -19,3 +19,12 @@
                                  (kbd "C-M-<backspace>") 'paredit-backward-delete
                                  (kbd "<f7>") 'compile))
              '(normal insert))))
+
+
+;;; Fixes for that insert bug
+
+(defadvice eshell-send-input (before switch-to-normal-mode activate)
+  (evil-execute-in-emacs-state 1))
+
+(defadvice slime-repl-return (before switch-to-normal-mode activate)
+  (evil-execute-in-emacs-state 1))
