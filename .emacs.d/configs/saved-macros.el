@@ -15,3 +15,7 @@
      (switch-to-buffer nil))               ; return to the initial buffer
 
 
+
+(fset 'mark-html-block
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([48 67108896 3 6] 0 "%d")) arg)))
+
