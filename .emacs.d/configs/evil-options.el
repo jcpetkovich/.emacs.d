@@ -23,8 +23,8 @@
 
 ;;; Fixes for that insert bug
 
-(defadvice eshell-send-input (before switch-to-normal-mode activate)
+(defadvice eshell-send-input (before switch-to-emacs-mode activate)
   (evil-execute-in-emacs-state 1))
 
-(defadvice slime-repl-return (before switch-to-normal-mode activate)
+(defadvice slime-repl-return (before switch-to-emacs-mode activate)
   (evil-execute-in-emacs-state 1))
