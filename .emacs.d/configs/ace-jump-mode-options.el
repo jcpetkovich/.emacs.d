@@ -1,7 +1,7 @@
 
 (add-to-list 'load-path "~/jc-personal/site-lisp/ace-jump-mode/")
 
-(require 'ace-jump-mode)
+(autoload 'ace-jump-mode "ace-jump-mode")
 
 (eval-after-load "evil"
   '(progn
