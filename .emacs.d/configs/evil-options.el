@@ -21,10 +21,10 @@
              '(normal insert))))
 
 
-;;; Fixes for that insert bug
+;; ;;; Fixes for that insert bug
 
-(defadvice eshell-send-input (before switch-to-emacs-mode activate)
-  (evil-execute-in-emacs-state 1))
+;; (defadvice eshell-send-input (before switch-to-emacs-mode activate)
+;;   (evil-execute-in-emacs-state 1))
 
-(defadvice slime-repl-return (before switch-to-emacs-mode activate)
-  (evil-execute-in-emacs-state 1))
+;; (defadvice slime-repl-return (before switch-to-emacs-mode activate)
+;;   (evil-execute-in-emacs-state 1))
