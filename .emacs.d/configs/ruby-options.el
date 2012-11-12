@@ -13,6 +13,12 @@
   (insert "<%  %>")
   (backward-char 3))
 
+(defun ruby-insert-end ()
+  (interactive)
+  (insert "end")
+  (ruby-indent-line t)
+  (end-of-line))
+
 (require 'rcodetools)
 (require 'icicles-rcodetools)
 (require 'inf-ruby-bond)
@@ -31,11 +37,12 @@
           (lambda ()
             (define-key ruby-mode-map (kbd "\C-c\C-c") 'xmp)
             (define-key ruby-mode-map (kbd "M-<tab>") 'ac-complete-rsense)
+            (define-key ruby-mode-map (kbd "C-c C-e") 'ruby-insert-end)
             (define-key ruby-mode-map [f1] 'yari)))
 
-;; ============================================================= 
+;; =============================================================
 ;; Evil Keybindings
-;; ============================================================= 
+;; =============================================================
 (eval-after-load "evil"
   '(progn
      (evil-declare-key 'normal ruby-mode-map
@@ -51,4 +58,3 @@
            'ruby-mode
            `((,(concat ".\\(" keyword "\\)\\_>") 1 font-lock-keyword-face))))
         (list "each" "collect" "reject" "select" "inject" "include" "map" "reduce"))
-
