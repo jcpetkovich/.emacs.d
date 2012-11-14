@@ -75,6 +75,7 @@
  '(evil-esc-delay 0)
  '(global-semantic-tag-folding-mode t nil (semantic-util-modes))
  '(haskell-program-name "ghci -XTemplateHaskell")
+ '(hippie-expand-dabbrev-skip-space t)
  '(ido-create-new-buffer (quote always))
  '(ido-mode (quote both) nil (ido))
  '(jde-global-classpath (quote (".")))
@@ -112,7 +113,7 @@
  '(w3m-default-display-inline-images t)
  '(x-select-enable-clipboard t)
  '(x-select-enable-primary t)
- '(yas/indent-line (quote auto)))
+ '(yas-indent-line (quote auto)))
 
 
 (custom-set-faces
