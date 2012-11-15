@@ -1,7 +1,7 @@
 ;; (load "~/.emacs.d/site-lisp/nxhtml/autostart.el")
 ;; (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo-mode))
 
-(load "~/jc-public/site-lisp/ruby-mode/ruby-mode.el")
+;; (load "~/jc-public/site-lisp/ruby-mode/ruby-mode.el")
 (setq rsense-home (expand-file-name "~/src/ruby/rsense-0.3"))
 (setq rsense-rurema-home "~/.ruby-reference-manual")
 
