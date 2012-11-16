@@ -38,10 +38,19 @@
 ;; =============================================================
 
 (eval-after-load "evil"
-  '(progn (add-to-list 'evil-motion-state-modes 'mu4e-headers-mode)
+  '(progn (dolist (mode (list 'mu4e-view-mode 'mu4e-headers-mode))
+            (add-to-list 'evil-motion-state-modes mode))
           (add-to-list 'evil-emacs-state-modes 'mu4e-main-mode)
           (evil-declare-key 'motion mu4e-headers-mode-map
-                            (kbd "RET") 'mu4e-headers-view-message)))
+                            (kbd "RET") 'mu4e-headers-view-message
+                            (kbd "/") 'mu4e-headers-search-narrow)
+          (evil-declare-key 'motion mu4e-view-mode-map
+                            (kbd "o") 'mu4e-view-open-attachment
+                            (kbd "u") 'mu4e-view-go-to-url
+                            (kbd "w") 'longlines-mode
+                            (kbd "|") 'mu4e-view-pipe)))
+
+
 
 (require 'mu4e)
 
