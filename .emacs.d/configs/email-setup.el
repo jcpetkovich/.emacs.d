@@ -1,10 +1,10 @@
-;; ============================================================= 
+;; =============================================================
 ;; ALL MAIL RELATED OPTIONS IN HERE
-;; ============================================================= 
+;; =============================================================
 
-;; ============================================================= 
+;; =============================================================
 ;; Outgoing (this works if the authentication file exists)
-;; ============================================================= 
+;; =============================================================
 (setq send-mail-function 'smtpmail-send-it
       message-send-mail-function 'smtpmail-send-it
       smtpmail-starttls-credentials
@@ -16,9 +16,9 @@
       smtpmail-smtp-service 587
       smtpmail-debug-info t)
 
-;; ============================================================= 
+;; =============================================================
 ;; Gnus
-;; ============================================================= 
+;; =============================================================
 (setq user-full-name "Jean-Christophe Petkovich")
 
 (eval-after-load "gnus"
@@ -27,8 +27,71 @@
                               (gnus-article-sort-functions '(gnus-article-sort-by-date))))
            gnus-invalid-group-regexp "[:`'\"]\\|^$")
 
-     (add-to-list 'gnus-secondary-select-methods 
+     (add-to-list 'gnus-secondary-select-methods
                   '(nnimap "gmail"
                            (nnimap-address "imap.gmail.com")
                            (nnimap-server-port 993)
                            (nnimap-stream ssl)))))
+
+;; =============================================================
+;; mu4e
+;; =============================================================
+
+(eval-after-load "evil"
+  '(progn (add-to-list 'evil-motion-state-modes 'mu4e-headers-mode)
+          (add-to-list 'evil-emacs-state-modes 'mu4e-main-mode)
+          (evil-declare-key 'motion mu4e-headers-mode-map
+                            (kbd "RET") 'mu4e-headers-view-message)))
+
+(require 'mu4e)
+
+(setq mu4e-maildir "~/Maildir")
+
+;;; Special folders
+(setq mu4e-sent-folder   "/bak.sent"
+      mu4e-drafts-folder "/bak.drafts"
+      mu4e-trash-folder  "/bak.trash")
+
+;; the maildirs you use frequently; access them with 'j' ('jump')
+;; (setq   mu4e-maildir-shortcuts
+;;         '(("/archive"     . ?a)
+;;           ("/inbox"       . ?i)
+;;           ("/work"        . ?w)
+;;           ("/sent"        . ?s)))
+
+;; a regular expression that matches all email addresses used by
+;; the user; this allows us to correctly determine if user
+;; is the sender / direct recipient of some message
+(setq mu4e-user-mail-address-regexp
+      "jcpetkovich@gmail\.com\\|me@jcpetkovich\.com\\|j2petkov@uwaterloo\.ca")
+
+;; when you want to use some external command for text->html
+;; conversion, e.g. the 'html2text' program
+;; (setq mu4e-html2text-command "html2text")
+
+;; the headers to show in the headers list -- a pair of a field
+;; and its width, with `nil' meaning 'unlimited'
+;; (better only use that for the last field.
+;; These are the defaults:
+(setq mu4e-headers-fields
+      '( (:date          .  25)
+         (:flags         .   6)
+         (:from          .  22)
+         (:subject       .  nil)))
+
+;; program to get mail; alternatives are 'fetchmail', 'getmail'
+;; isync or your own shellscript. called when 'U' is pressed in
+;; main view.
+
+;; If you get your mail without an explicit command,
+;; use "true" for the command (this is the default)
+(setq mu4e-get-mail-command "offlineimap")
+
+;; general emacs mail settings; used when composing e-mail
+;; the non-mu4e-* stuff is inherited from emacs/message-mode
+(setq mu4e-reply-to-address "jcpetkovich@gmail.com"
+      user-mail-address "jcpetkovich@gmail.com"
+      user-full-name  "Jean-Christophe Petkovich")
+;; include in message with C-c C-w
+(setq message-signature
+      "Jean-Christophe Petkovich")
