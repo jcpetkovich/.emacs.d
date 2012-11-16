@@ -1,7 +1,8 @@
-;; (load "~/.emacs.d/site-lisp/nxhtml/autostart.el")
-;; (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo-mode))
 
-;; (load "~/jc-public/site-lisp/ruby-mode/ruby-mode.el")
+;;; Use my patched ruby-mode
+(add-to-list 'load-path "~/jc-public/site-lisp/ruby-mode")
+(require 'ruby-mode)
+
 (setq rsense-home (expand-file-name "~/src/ruby/rsense-0.3"))
 (setq rsense-rurema-home "~/.ruby-reference-manual")
 
