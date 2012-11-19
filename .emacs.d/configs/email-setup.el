@@ -43,7 +43,8 @@
           (add-to-list 'evil-emacs-state-modes 'mu4e-main-mode)
           (evil-declare-key 'motion mu4e-headers-mode-map
                             (kbd "RET") 'mu4e-headers-view-message
-                            (kbd "/") 'mu4e-headers-search-narrow)
+                            (kbd "/") 'mu4e-headers-search-narrow
+                            (kbd "b") 'mu4e-headers-search-bookmark)
           (evil-declare-key 'motion mu4e-view-mode-map
                             (kbd "o") 'mu4e-view-open-attachment
                             (kbd "u") 'mu4e-view-go-to-url
