@@ -47,11 +47,14 @@
                             (kbd "b") 'mu4e-headers-search-bookmark)
           (evil-declare-key 'motion mu4e-view-mode-map
                             (kbd "o") 'mu4e-view-open-attachment
-                            (kbd "u") 'mu4e-view-go-to-url
-                            (kbd "w") 'longlines-mode
-                            (kbd "|") 'mu4e-view-pipe)))
-
-
+                            (kbd "i") 'mu4e-view-go-to-url
+                            (kbd "c") 'longlines-mode
+                            (kbd "|") 'mu4e-view-pipe)
+          (dolist (mode (list 'normal 'insert 'visual 'operator))
+            (evil-declare-key mode mu4e-compose-mode-map
+                              (kbd "C-c C-s") 'message-dont-send))
+          (add-hook 'mu4e-view-mode-hook
+                    (lambda () (evil-motion-state)))))
 
 (require 'mu4e)
 
