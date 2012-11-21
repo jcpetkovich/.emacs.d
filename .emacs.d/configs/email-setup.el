@@ -58,6 +58,8 @@
 
 (require 'mu4e)
 
+(define-key global-map (kbd "<f5>") 'mu4e-update-mail-show-window)
+
 (setq mu4e-maildir "~/Maildir")
 
 ;;; Special folders
