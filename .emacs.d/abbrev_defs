@@ -34,10 +34,12 @@ GetOptions();" pde-abbv-no-blank 0)
 
 (define-abbrev-table 'global-abbrev-table
   '(
-    ("ex0" "experiment" nil 9)
+    ("dm0" "DataMill" nil 5)
+    ("ex0" "experiment" nil 15)
     ("f" "file" nil 0)
+    ("fw0" "framework" nil 1)
     ("g0" "http://www.google.com" nil 3)
-    ("t" "the" nil 0)
+    ("t" "the" nil 2)
     ("w" "with" nil 0)
    ))
 
@@ -76,6 +78,8 @@ GetOptions();" pde-abbv-no-blank 0)
 (define-abbrev-table 'prog-mode-abbrev-table '())
 
 (define-abbrev-table 'ruby-mode-abbrev-table '())
+
+(define-abbrev-table 'select-tags-table-mode-abbrev-table '())
 
 (define-abbrev-table 'shell-mode-abbrev-table '())
 
