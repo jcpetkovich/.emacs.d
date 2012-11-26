@@ -62,6 +62,9 @@
 
 (setq mu4e-maildir "~/Maildir")
 
+(setq smtpmail-queue-mail  nil  ;; start in non-queuing mode
+      smtpmail-queue-dir   "~/Maildir/queue/cur")
+
 ;;; Special folders
 (setq mu4e-sent-folder   "/bak.sent"
       mu4e-drafts-folder "/bak.drafts"
