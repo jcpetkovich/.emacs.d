@@ -37,6 +37,9 @@
 ;; mu4e
 ;; =============================================================
 
+(add-hook 'mu4e-compose-mode-hook (lambda ()
+                                    (flyspell-mode 1)))
+
 (eval-after-load "evil"
   '(progn (dolist (mode (list 'mu4e-view-mode 'mu4e-headers-mode))
             (add-to-list 'evil-motion-state-modes mode))
