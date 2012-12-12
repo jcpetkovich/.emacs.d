@@ -1,7 +1,12 @@
+
+(require 'org)
+(setq org-agenda-files (quote ("/home/jcp/mobileorg")))
+(setq org-archive-location "~/org/archive.org::* Finished Tasks")
+(setq org-mobile-directory "~/mobileorg/webdav")
+
 (setq remember-annotation-functions '(org-remember-annotation))
 (setq remember-handler-functions '(org-remember-handler))
 (add-hook 'remember-mode-hook 'org-remember-apply-template)
-(add-hook 'org-mode-hook 'auto-complete-mode)
 
 (define-key global-map "\C-cc" 'org-capture)
 (define-key global-map "\C-cl" 'org-store-link)
@@ -27,12 +32,15 @@
           (lambda ()
             (add-to-list 'org-modules 'org-timer)))
 
+(eval-after-load "auto-complete"
+  '(add-hook 'org-mode-hook 'auto-complete-mode))
+
 (eval-after-load "evil"
-  '(progn 
+  '(progn
      (evil-declare-key 'normal org-mode-map
                        (kbd "\C-c\/") 'org-sparse-tree)
 
-     (mapcar (lambda (evil-state) 
+     (mapcar (lambda (evil-state)
                (evil-declare-key evil-state org-mode-map
                                  (kbd "C-M-l") 'org-metaright
                                  (kbd "C-M-h") 'org-metaleft
@@ -43,4 +51,3 @@
                                  (kbd "C-M-S-k") 'org-shiftmetaup
                                  (kbd "C-M-S-j") 'org-shiftmetadown))
              '(normal insert))))
-
