@@ -63,6 +63,7 @@
 
 (define-key global-map (kbd "<f5>") 'mu4e-update-mail-show-window)
 
+(setq mu4e-html2text-command "html2text -nobs -width 1000")
 (setq mu4e-maildir "~/Maildir")
 
 (setq smtpmail-queue-mail  nil  ;; start in non-queuing mode
