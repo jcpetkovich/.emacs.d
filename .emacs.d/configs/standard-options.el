@@ -8,22 +8,27 @@
 ;; ============================================================= 
 ;; Custom Set Variables
 ;; ============================================================= 
+(setq-default indent-tabs-mode nil)     ;Tabs as spaces
 (setq org-hide-leading-stars     t
       org-odd-levels-only        t
       inhibit-splash-screen      t          
       lpr-command                "xpp" ; Add support for gui printing in linux
       display-time-day-and-date  t
-      display-time-24hr-format   t)
+      display-time-24hr-format   t
+      backup-directory-alist
+      `(("." . ,(expand-file-name
+                 (concat user-emacs-directory "backups"))))
+      vc-make-backup-files t)
 
-(setq-default indent-tabs-mode nil)     ;Tabs as spaces
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
 
 ;; ============================================================= 
 ;; Custom Set Functions
 ;; ============================================================= 
 (fset 'yes-or-no-p 'y-or-n-p)        ; Make acknowledging stuff faster
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
 ;; ============================================================= 
 ;; Mode Toggling
