@@ -73,6 +73,7 @@
  '(ess-default-style (quote OWN))
  '(ess-own-style-list (quote ((ess-indent-level . 4) (ess-continued-statement-offset . 4) (ess-brace-offset . 0) (ess-expression-offset . 4) (ess-else-offset . 0) (ess-brace-imaginary-offset . 0) (ess-continued-brace-offset . 0) (ess-arg-function-offset . 2) (ess-close-brace-offset . 0))))
  '(evil-cross-lines t)
+ '(evil-default-cursor nil)
  '(evil-esc-delay 0)
  '(global-semantic-tag-folding-mode t nil (semantic-util-modes))
  '(haskell-program-name "ghci -XTemplateHaskell")

@@ -48,29 +48,20 @@
 ;; =============================================================
 (winner-mode 1)
 
+
 ;; =============================================================
 ;; Color Theme
 ;; =============================================================
 
-;; (load-theme 'solarized-dark t)
 (load "solarized-dark-theme")
-;; (require 'solarized)
-;; (eval-after-load "init"
-;;   '(progn
-;;      (deftheme solarized-light "The light variant of the Solarized colour theme")
-;;      (deftheme solarized-dark "The dark variant of the Solarized colour theme")
-;;      (defun light ()
-;;        (interactive)
-;;        (create-solarized-theme 'light 'solarized-light))
-;;      (defun dark ()
-;;        (interactive)
-;;        (create-solarized-theme 'dark 'solarized-dark))
-;;      (dark)))
 
 ;; =============================================================
 ;; Evil Mode
 ;; =============================================================
-(setq evil-want-C-i-jump nil)
-(setq evil-want-C-u-scroll t)
-(require 'evil)
-(evil-mode 1)
+
+(eval-after-load "init"
+  '(progn
+     (setq evil-want-C-i-jump nil)
+     (setq evil-want-C-u-scroll t)
+     (require 'evil)
+     (evil-mode 1)))
