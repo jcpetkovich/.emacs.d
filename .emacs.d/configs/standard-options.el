@@ -55,6 +55,10 @@
 
 (load "solarized-dark-theme")
 
+(defun light ()
+  (interactive)
+  (load "solarized-light-theme"))
+
 ;; =============================================================
 ;; Evil Mode
 ;; =============================================================
