@@ -66,7 +66,7 @@
  '(ecb-options-version "2.40")
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--C-mouse-1))
  '(ecb-show-sources-in-directories-buffer (quote always))
- '(ecb-source-path (quote ("/home/jcp/jc-personal/org/" "/home/jcp/src/" "/home/jcp/Documents/" "/")))
+ '(ecb-source-path (quote ("/home/jcp/src/" "/home/jcp/Documents/" "/")))
  '(ecb-windows-width 0.2)
  '(erc-header-line-face-method t)
  '(eshell-cmpl-ignore-case t)

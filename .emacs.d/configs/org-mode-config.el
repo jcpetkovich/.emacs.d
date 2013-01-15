@@ -3,6 +3,7 @@
 (setq org-agenda-files (quote ("/home/jcp/mobileorg")))
 (setq org-archive-location "~/org/archive.org::* Finished Tasks")
 (setq org-mobile-directory "~/mobileorg/webdav")
+(setq org-directory "~/mobileorg")
 
 (setq remember-annotation-functions '(org-remember-annotation))
 (setq remember-handler-functions '(org-remember-handler))

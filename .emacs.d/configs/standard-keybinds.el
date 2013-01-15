@@ -1,10 +1,10 @@
-;; ============================================================= 
+;; =============================================================
 ;; All options for standard keybindings go in here
-;; ============================================================= 
+;; =============================================================
 
-;; ============================================================= 
+;; =============================================================
 ;; Set nice keybindings (combined with evil)
-;; ============================================================= 
+;; =============================================================
 (windmove-default-keybindings 'meta)
 (global-set-key "\C-x\C-b" 'switch-to-buffer)
 (global-set-key (kbd "M-;") 'comment-dwim)
@@ -45,9 +45,9 @@
 (global-set-key (kbd "M-c M-l") 'downcase-word)
 (global-set-key (kbd "M-c M-u") 'upcase-word)
 
-;; ============================================================= 
+;; =============================================================
 ;; Hooks for fixing keybindings in different modes
-;; ============================================================= 
+;; =============================================================
 
 ;; Hook for correcting behaviour in info mode
 (add-hook 'Info-mode-hook
@@ -59,7 +59,7 @@
           (lambda ()
             (define-key text-mode-map (kbd "M-s") 'other-window) ; was center-line
             (define-key text-mode-map (kbd "M-S") 'nil))) ; was center-paragraph
-          
+
 ;; Hook for correcting behaviour in org mode
 (add-hook 'org-mode-hook
           (lambda ()
@@ -70,27 +70,30 @@
           (lambda ()
             (define-key html-mode-map (kbd "M-s") 'other-window)))
 
-;; ============================================================= 
+;; =============================================================
 ;; Custom Functions
-;; ============================================================= 
+;; =============================================================
 
-;;; Final version: while
+(defun mark-question ()
+  (interactive)
+  (set (make-local-variable 'compile-command)
+       (concat "question-validator "
+               "\""
+               (file-relative-name buffer-file-name)
+               "\""))
+  (compile compile-command))
+
 (defun count-words-region (beginning end)
   "Print number of words in the region."
   (interactive "r")
   (message "Counting words in region ... ")
-
-;;; 1. Set up appropriate conditions.
   (save-excursion
     (let ((count 0))
       (goto-char beginning)
 
-;;; 2. Run the while loop.
       (while (and (< (point) end)
                   (re-search-forward "\\w+\\W*" end t))
         (setq count (1+ count)))
-
-;;; 3. Send a message to the user.
       (cond ((zerop count)
              (message
               "The region does NOT have any words."))
@@ -189,15 +192,15 @@ lines to just one."
       ;; and also consider whitespace chars in unicode if syntax table
       ;; doesn't already considered it.
       (setq cursor-point (point))
-      (setq spaceTabNeighbor-p 
+      (setq spaceTabNeighbor-p
             (if (or (looking-at " \\|\t") (looking-back " \\|\t"))
-                t 
+                t
               nil))
-      (move-beginning-of-line 1) 
+      (move-beginning-of-line 1)
       (setq line-begin-pos (point))
-      (move-end-of-line 1) 
+      (move-end-of-line 1)
       (setq line-end-pos (point))
-      (setq line-has-meat-p 
+      (setq line-has-meat-p
             (if (< 0 (count-matches "[[:graph:]]" line-begin-pos line-end-pos))
                 t
               nil))
@@ -206,13 +209,13 @@ lines to just one."
       (setq space-or-tab-begin (point))
       (skip-chars-backward "\t \n")
       (setq whitespace-begin (point))
-      (goto-char cursor-point) 
+      (goto-char cursor-point)
       (skip-chars-forward "\t ")
       (setq space-or-tab-end (point))
       (skip-chars-forward "\t \n")
       (setq whitespace-end (point)))
     (if line-has-meat-p
-        (progn 
+        (progn
           (when spaceTabNeighbor-p
             (delete-region space-or-tab-begin space-or-tab-end)
             (insert " ")))
