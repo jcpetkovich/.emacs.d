@@ -9,6 +9,9 @@
           imenu-add-menubar-index
           (lambda () (setq evil-auto-indent nil))))
 
+(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+
+
 ;; ;; Haskell
 ;; (defun ac-haskell-hoogle (prefix)
 ;;   (let (expansion all-expansions end-of-period)
