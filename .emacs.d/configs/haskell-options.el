@@ -11,6 +11,26 @@
 
 (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
 
+;; (add-hook 'haskell-mode-hook (lambda ()
+;;                                (defvar ghc-completion-key  "\e\t")
+;;                                (defvar ghc-document-key    "\e\C-d")
+;;                                (defvar ghc-import-key      "\e\C-m")
+;;                                (defvar ghc-previous-key    "\ep")
+;;                                (defvar ghc-next-key        "\en")
+;;                                (defvar ghc-help-key        "\e?")
+;;                                (defvar ghc-insert-key      "\et")
+;;                                (defvar ghc-sort-key        "\es")
+;;                                (defvar ghc-type-key        "\C-c\C-t")
+;;                                (defvar ghc-info-key        "\C-c\C-i")
+;;                                (defvar ghc-check-key       "\C-x\C-s")
+;;                                (defvar ghc-toggle-key      "\C-c\C-c")
+;;                                (defvar ghc-module-key      "\C-c\C-m")
+;;                                (defvar ghc-expand-key      "\C-c\C-e")
+;;                                (defvar ghc-jump-key        "\C-c\C-j")
+;;                                (defvar ghc-hoogle-key      (format "\C-c%c" (ghc-find-C-h)))
+;;                                (defvar ghc-shallower-key   "\C-c<")
+;;                                (defvar ghc-deeper-key      "\C-c>")))
+
 
 ;; ;; Haskell
 ;; (defun ac-haskell-hoogle (prefix)
