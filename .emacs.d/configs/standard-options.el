@@ -55,9 +55,17 @@
 
 (load "solarized-dark-theme")
 
+(custom-theme-set-faces
+ 'solarized-dark
+ `(comint-highlight-prompt ((t (:foreground "#268bd2")))))
+
 (defun light ()
   (interactive)
-  (load "solarized-light-theme"))
+  (load "solarized-light-theme")
+(custom-theme-set-faces
+ 'solarized-light
+ `(comint-highlight-prompt ((t (:foreground "#268bd2")))))
+)
 
 ;; =============================================================
 ;; Evil Mode
