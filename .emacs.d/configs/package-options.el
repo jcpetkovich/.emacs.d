@@ -4,3 +4,5 @@
     '("marmalade" .
       "http://marmalade-repo.org/packages/"))
 (package-initialize)
+
+(provide 'package-options)

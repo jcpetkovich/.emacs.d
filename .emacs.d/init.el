@@ -1,8 +1,10 @@
 ;; =============================================================
 ;; Load Path
 ;; =============================================================
-(add-to-list 'load-path "~/jc-personal/site-lisp/")
 (defconst ini-directory "~/.emacs.d/configs")
+(add-to-list 'load-path "~/jc-personal/site-lisp/")
+(add-to-list 'load-path ini-directory)
+
 
 ;; =============================================================
 ;; Load All ini-directory files
