@@ -4,6 +4,5 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 (eval-after-load "js2-mode"
-  '(progn
-     (evil-declare-key 'normal 'js2-mode-map
-       (kbd "M-j") 'move-cursor-next-pane)))
+  '(progn (define-key js2-mode-map
+            (kbd "M-j") 'move-cursor-next-pane)))
