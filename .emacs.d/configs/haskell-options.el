@@ -9,7 +9,7 @@
           imenu-add-menubar-index
           (lambda () (setq evil-auto-indent nil))))
 
-;; (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
 
 ;; (add-hook 'haskell-mode-hook (lambda ()
 ;;                                (defvar ghc-completion-key  "\e\t")
