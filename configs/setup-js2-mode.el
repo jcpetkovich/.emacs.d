@@ -1,4 +1,7 @@
 
+(require 'setup-s)
+(require 'setup-multiple-cursors)
+
 (add-to-list 'load-path "~/.emacs.d/site-lisp/js2-mode/")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/js2-refactor/")
 (autoload 'js2-mode "js2-mode" nil t)
