@@ -70,6 +70,3 @@
 [submodule "site-lisp/yari"]
 	path = site-lisp/yari
 	url = https://github.com/hron/yari.el.git
-[submodule "site-lisp/ghc-mod"]
-	path = site-lisp/ghc-mod
-	url = https://github.com/kazu-yamamoto/ghc-mod.git
