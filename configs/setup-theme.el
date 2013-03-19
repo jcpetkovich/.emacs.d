@@ -2,6 +2,7 @@
 ;; Load Path
 ;; =============================================================
 (add-to-list 'load-path "~/.emacs.d/site-lisp/emacs-powerline")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/solarized-emacs")
 
 ;; =============================================================
 ;; Custom Set Variables
