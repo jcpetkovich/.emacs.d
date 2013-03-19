@@ -3,6 +3,10 @@
 ;; =============================================================
 
 (add-to-list 'load-path "~/.emacs.d/site-lisp/evil")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/undo-tree")
+
+(require 'undo-tree)
+
 (global-set-key (kbd "C-w") 'backward-kill-word)
 
 (eval-after-load "evil"

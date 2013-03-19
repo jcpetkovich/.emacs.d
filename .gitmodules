@@ -70,3 +70,6 @@
 [submodule "site-lisp/yari"]
 	path = site-lisp/yari
 	url = https://github.com/hron/yari.el.git
+[submodule "site-lisp/undo-tree"]
+	path = site-lisp/undo-tree
+	url = git://github.com/emacsmirror/undo-tree.git
