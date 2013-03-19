@@ -1,5 +1,8 @@
 *~
-/mysnippets
-/.emacs.d/auto-save-list
-/.emacs.d/session.*
-/.emacs.d/ac-comphist.dat
+*.elc
+
+auto-save-list
+session.*
+ac-comphist.dat
+
+elpa

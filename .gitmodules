@@ -34,3 +34,9 @@
 [submodule "site-lisp/flymake-ruby"]
 	path = site-lisp/flymake-ruby
 	url = https://github.com/purcell/flymake-ruby.git
+[submodule "site-lisp/emacs-powerline"]
+	path = site-lisp/emacs-powerline
+	url = https://github.com/jonathanchu/emacs-powerline.git
+[submodule "site-lisp/yasnippet"]
+	path = site-lisp/yasnippet
+	url = https://github.com/capitaomorte/yasnippet.git

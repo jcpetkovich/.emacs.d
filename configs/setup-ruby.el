@@ -24,8 +24,6 @@
   (ruby-indent-line t)
   (end-of-line))
 
-(require 'rcodetools)
-(require 'icicles-rcodetools)
 (require 'inf-ruby-bond)
 (require 'rsense)
 
