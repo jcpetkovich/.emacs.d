@@ -1,5 +1,9 @@
 ;; ;;; Code:
 
+(add-to-list 'load-path "~/.emacs.d/site-lisp/haskell-mode")
+
+(load "haskell-site-file")
+
 (mapcar (lambda (my-hook)
           (add-hook 'haskell-mode-hook my-hook))
         '(turn-on-haskell-indent
