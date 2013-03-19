@@ -1,8 +1,0 @@
-# contributor: Jean-Christophe Petkovich <jcpetkovich@gmail.com>
-# name: \begin{frame} ... \end{frame}
-# key: slide
-# --
-% ----------------------------------------
-\begin{frame}{${1:slide-title}}
-$0
-\end{frame}
