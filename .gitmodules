@@ -28,3 +28,9 @@
 [submodule "site-lisp/flymake-cursor"]
 	path = site-lisp/flymake-cursor
 	url = https://github.com/illusori/emacs-flymake-cursor.git
+[submodule "site-lisp/inf-ruby-bond"]
+	path = site-lisp/inf-ruby-bond
+	url = https://github.com/pd/inf-ruby-bond.git
+[submodule "site-lisp/flymake-ruby"]
+	path = site-lisp/flymake-ruby
+	url = https://github.com/purcell/flymake-ruby.git

@@ -1,6 +1,5 @@
 
-(add-to-list 'load-path "~/.emacs.d/site-lisp/flymake-cursor")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/flymake-easy")
+(require 'setup-flymake)
 (add-to-list 'load-path "~/.emacs.d/site-lisp/flymake-python-pyflakes")
 
 (require 'flymake-python-pyflakes)

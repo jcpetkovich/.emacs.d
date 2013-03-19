@@ -1,6 +1,10 @@
 
 ;;; Use my patched ruby-mode
+(add-to-list 'load-path "~/.emacs.d/site-lisp/inf-ruby-bond")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/ruby-mode")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/flymake-ruby")
+
+(require 'setup-flymake)
 (require 'ruby-mode)
 
 (setq rsense-home (expand-file-name "~/src/ruby/rsense-0.3"))
