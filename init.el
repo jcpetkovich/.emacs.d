@@ -76,7 +76,6 @@
  '(evil-cross-lines t)
  '(evil-default-cursor t)
  '(evil-esc-delay 0)
- '(global-semantic-tag-folding-mode t nil (semantic-util-modes))
  '(haskell-program-name "ghci -XTemplateHaskell")
  '(hippie-expand-dabbrev-skip-space t)
  '(ido-create-new-buffer (quote always))

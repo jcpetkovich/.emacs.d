@@ -43,3 +43,9 @@
 [submodule "site-lisp/buster-snippets"]
 	path = site-lisp/buster-snippets
 	url = https://github.com/magnars/buster-snippets.el.git
+[submodule "site-lisp/evil"]
+	path = site-lisp/evil
+	url = git://gitorious.org/evil/evil.git
+[submodule "site-lisp/evil-surround"]
+	path = site-lisp/evil-surround
+	url = https://github.com/timcharper/evil-surround.git

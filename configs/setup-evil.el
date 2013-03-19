@@ -2,6 +2,7 @@
 ;; Evil keybindings
 ;; =============================================================
 
+(add-to-list 'load-path "~/.emacs.d/site-lisp/evil")
 (global-set-key (kbd "C-w") 'backward-kill-word)
 
 (eval-after-load "evil"
