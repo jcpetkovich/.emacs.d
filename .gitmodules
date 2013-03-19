@@ -61,3 +61,15 @@
 [submodule "site-lisp/magit"]
 	path = site-lisp/magit
 	url = https://github.com/magit/magit.git
+[submodule "site-lisp/ace-jump-mode"]
+	path = site-lisp/ace-jump-mode
+	url = https://github.com/winterTTr/ace-jump-mode.git
+[submodule "site-lisp/expand-region"]
+	path = site-lisp/expand-region
+	url = https://github.com/magnars/expand-region.el.git
+[submodule "site-lisp/yari"]
+	path = site-lisp/yari
+	url = https://github.com/hron/yari.el.git
+[submodule "site-lisp/ghc-mod"]
+	path = site-lisp/ghc-mod
+	url = https://github.com/kazu-yamamoto/ghc-mod.git

@@ -1,6 +1,9 @@
 ;; ;;; Code:
 
 (add-to-list 'load-path "~/.emacs.d/site-lisp/haskell-mode")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/ghc-mod")
+
+(autoload 'ghc-init "ghc" nil t)
 
 (load "haskell-site-file")
 

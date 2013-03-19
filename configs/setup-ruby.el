@@ -3,14 +3,21 @@
 (add-to-list 'load-path "~/.emacs.d/site-lisp/inf-ruby-bond")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/ruby-mode")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/flymake-ruby")
-
-(require 'setup-flymake)
-(require 'ruby-mode)
+(add-to-list 'load-path "~/.emacs.d/site-lisp/yari")
 
 (setq rsense-home (expand-file-name "~/src/ruby/rsense-0.3"))
 (setq rsense-rurema-home "~/.ruby-reference-manual")
 
 (add-to-list 'load-path (concat rsense-home "/etc"))
+
+(require 'setup-flymake)
+(require 'ruby-mode)
+(require 'inf-ruby-bond)
+(require 'rsense)
+(require 'flymake-ruby)
+
+(autoload 'yari "yari" "Emacs interface to ri documentation" t)
+
 
 (defun open-ruby-section ()
   "Insert <p></p> at cursor point."
@@ -24,10 +31,6 @@
   (ruby-indent-line t)
   (end-of-line))
 
-(require 'inf-ruby-bond)
-(require 'rsense)
-
-(require 'flymake-ruby)
 
 (add-hook 'nxhtml-mode-hook
           (lambda ()
