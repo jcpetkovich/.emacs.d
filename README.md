@@ -15,6 +15,7 @@ Packages which are not linked in by site-lisp as submodules:
 - slime-repl
 - mu4e
 - ghc-mod
+- auctex
 
 These packages are best installed from either the elpa or the local
 package manager.
