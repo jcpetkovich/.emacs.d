@@ -1,5 +1,5 @@
 
-(add-to-list 'load-path "~/.emacs.d/site-lisp/multiple-cursors.el/")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/multiple-cursors/")
 
 (require 'multiple-cursors)
 
