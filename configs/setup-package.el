@@ -36,7 +36,6 @@
  (cons 'inf-ruby melpa)
  (cons 'org melpa)
  (cons 'paredit melpa)
- (cons 'pymacs marmalade)
  (cons 'python-mode marmalade)
  (cons 'slime-js marmalade)
  (cons 'slime-repl marmalade))

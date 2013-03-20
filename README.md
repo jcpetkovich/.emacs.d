@@ -19,4 +19,9 @@ Packages which are not linked in by site-lisp as submodules:
 
 These packages are best installed from either the elpa or the local
 package manager. Unmodified, the configuration will automatically
-install everything but ghc-mod and mu4e.
+install everything but ghc-mod, pymacs, and mu4e. All three of these
+packages include things that need to go in your $PATH, which means
+generally it makes more sense to use your system's package manager to
+install them. For gentoo this just requires:
+
+    emerge --autounmask-write ghc-mod mu pymacs
