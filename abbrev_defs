@@ -1,11 +1,25 @@
 ;;-*-coding: utf-8;-*-
 (define-abbrev-table 'Buffer-menu-mode-abbrev-table '())
 
-(define-abbrev-table 'Custom-mode-abbrev-table '())
+(define-abbrev-table 'awk-mode-abbrev-table
+  '(
+   ))
 
-(define-abbrev-table 'bibtex-mode-abbrev-table '())
+(define-abbrev-table 'browse-kill-ring-edit-mode-abbrev-table '())
+
+(define-abbrev-table 'browse-kill-ring-mode-abbrev-table '())
+
+(define-abbrev-table 'c++-mode-abbrev-table
+  '(
+   ))
+
+(define-abbrev-table 'c-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'calendar-mode-abbrev-table '())
+
+(define-abbrev-table 'change-log-mode-abbrev-table '())
 
 (define-abbrev-table 'comint-mode-abbrev-table '())
 
@@ -24,42 +38,61 @@ $window->signal_connect('delete_event' => sub { Gtk2->main_quit; });" pde-abbv-n
 GetOptions();" pde-abbv-no-blank 0)
    ))
 
-(define-abbrev-table 'display-time-world-mode-abbrev-table '())
+(define-abbrev-table 'diff-mode-abbrev-table '())
 
-(define-abbrev-table 'docTeX-mode-abbrev-table '())
+(define-abbrev-table 'emacs-lisp-byte-code-mode-abbrev-table '())
 
 (define-abbrev-table 'emacs-lisp-mode-abbrev-table '())
 
+(define-abbrev-table 'eshell-mode-abbrev-table '())
+
 (define-abbrev-table 'fundamental-mode-abbrev-table '())
 
-(define-abbrev-table 'global-abbrev-table
-  '(
-    ("dm0" "DataMill" nil 5)
-    ("ex0" "experiment" nil 15)
-    ("f" "file" nil 0)
-    ("fw0" "framework" nil 1)
-    ("g0" "http://www.google.com" nil 3)
-    ("t" "the" nil 2)
-    ("w" "with" nil 0)
-   ))
+(define-abbrev-table 'global-abbrev-table '())
 
 (define-abbrev-table 'grep-mode-abbrev-table '())
-
-(define-abbrev-table 'haskell-cabal-mode-abbrev-table '())
-
-(define-abbrev-table 'haskell-mode-abbrev-table '())
 
 (define-abbrev-table 'help-mode-abbrev-table '())
 
 (define-abbrev-table 'hs-lint-mode-abbrev-table '())
 
-(define-abbrev-table 'imenu-tree-mode-abbrev-table '())
+(define-abbrev-table 'idl-mode-abbrev-table '())
+
+(define-abbrev-table 'jade-mode-abbrev-table '())
+
+(define-abbrev-table 'java-mode-abbrev-table
+  '(
+   ))
+
+(define-abbrev-table 'js2-mode-abbrev-table '())
 
 (define-abbrev-table 'lisp-mode-abbrev-table '())
 
-(define-abbrev-table 'literate-haskell-mode-abbrev-table '())
+(define-abbrev-table 'log-edit-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-branch-manager-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-commit-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-diff-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-log-edit-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-log-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-reflog-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-stash-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-status-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-wazzup-mode-abbrev-table '())
 
 (define-abbrev-table 'message-mode-abbrev-table '())
+
+(define-abbrev-table 'objc-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -71,7 +104,9 @@ GetOptions();" pde-abbv-no-blank 0)
 
 (define-abbrev-table 'package-menu-mode-abbrev-table '())
 
-(define-abbrev-table 'perldoc-mode-abbrev-table '())
+(define-abbrev-table 'pike-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'process-menu-mode-abbrev-table '())
 
@@ -79,31 +114,21 @@ GetOptions();" pde-abbv-no-blank 0)
 
 (define-abbrev-table 'ruby-mode-abbrev-table '())
 
-(define-abbrev-table 'select-tags-table-mode-abbrev-table '())
-
 (define-abbrev-table 'shell-mode-abbrev-table '())
-
-(define-abbrev-table 'sldb-mode-abbrev-table '())
-
-(define-abbrev-table 'slime-connection-list-mode-abbrev-table '())
-
-(define-abbrev-table 'slime-fuzzy-completions-mode-abbrev-table '())
-
-(define-abbrev-table 'slime-inspector-mode-abbrev-table '())
-
-(define-abbrev-table 'slime-thread-control-mode-abbrev-table '())
-
-(define-abbrev-table 'slime-xref-mode-abbrev-table '())
-
-(define-abbrev-table 'snippet-mode-abbrev-table '())
 
 (define-abbrev-table 'special-mode-abbrev-table '())
 
+(define-abbrev-table 'speedbar-mode-abbrev-table '())
+
+(define-abbrev-table 'sws-mode-abbrev-table '())
+
 (define-abbrev-table 'tabulated-list-mode-abbrev-table '())
+
+(define-abbrev-table 'term-mode-abbrev-table '())
 
 (define-abbrev-table 'text-mode-abbrev-table '())
 
-(define-abbrev-table 'tree-mode-abbrev-table '())
+(define-abbrev-table 'vc-git-log-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'vc-git-log-view-mode-abbrev-table '())
 
