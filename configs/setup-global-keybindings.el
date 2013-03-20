@@ -30,6 +30,7 @@
 (global-set-key (kbd "C-c C-r") 'eval-region)
 (global-set-key (kbd "C-.") 'ecb-goto-window-directories)
 (global-set-key (kbd "C-x g") 'insert-register)
+(global-set-key (kbd "C-x C-i") 'ido-imenu)
 
 
 ;; Transpose stuff with M-t
