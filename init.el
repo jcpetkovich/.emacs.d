@@ -33,12 +33,13 @@
         (t (setq ini-not-loaded (cons inifn ini-not-loaded))
            (message (concat inifn " not found")))))
 
- (let ((files (directory-files ini-directory nil "^setup.*\\.el$")))
-   (while (not (null files))
-     (ini-load (substring (car files) 0 -3))
-     (setq files (cdr files)) ))
+(let ((files (directory-files ini-directory nil "^setup.*\\.el$")))
+  (while (not (null files))
+    (ini-load (substring (car files) 0 -3))
+    (setq files (cdr files)) ))
 
-(find-file my-notes-file)
+(when (file-exists-p my-notes-file)
+  (find-file my-notes-file))
 
 ;; =============================================================
 ;; Variables Set by emacs
