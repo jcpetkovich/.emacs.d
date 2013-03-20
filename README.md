@@ -18,4 +18,5 @@ Packages which are not linked in by site-lisp as submodules:
 - auctex
 
 These packages are best installed from either the elpa or the local
-package manager.
+package manager. Unmodified, the configuration will automatically
+install everything but ghc-mod and mu4e.
