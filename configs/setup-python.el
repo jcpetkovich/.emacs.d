@@ -5,6 +5,6 @@
 (require 'flymake-python-pyflakes)
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
 
-(require 'pymacs)
+(require 'pymacs nil :noerror)
 
 (provide 'setup-python)

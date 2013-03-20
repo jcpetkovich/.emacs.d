@@ -25,3 +25,6 @@ generally it makes more sense to use your system's package manager to
 install them. For gentoo this just requires:
 
     emerge --autounmask-write ghc-mod mu pymacs
+
+If you don't want these particluar packages, you may ignore them, as
+the configuration will run without them.
