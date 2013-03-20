@@ -4,12 +4,14 @@
 (add-to-list 'auto-mode-alist '("\\.t$" . cperl-mode))
 
 (add-hook 'cperl-mode-hook (lambda ()
-                                (message "im disabling abbrev mode for pde")
-                                (abbrev-mode -1)))
+                             (message "im disabling abbrev mode for pde")
+                             (abbrev-mode -1)))
 
-(load "pde-load")
 
-(setq pde-perl-version "5.12.4")
+(when (locate-library "pde-load")
+  (load "pde-load")
+  (setq pde-perl-version "5.12.4"))
+
 
 ;; (defalias 'perl-mode 'cperl-mode)
 
@@ -19,8 +21,8 @@
 (eval-after-load "evil"
   '(progn
      (evil-declare-key 'visual cperl-mode-map
-                       (kbd "<tab>") 'indent-for-tab-command)
+       (kbd "<tab>") 'indent-for-tab-command)
      (evil-declare-key 'normal cperl-mode-map
-                       (kbd "C-c d") 'cperl-perldoc)))
+       (kbd "C-c d") 'cperl-perldoc)))
 
 (provide 'setup-perl)
