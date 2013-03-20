@@ -5,15 +5,22 @@
 (add-to-list 'load-path "~/.emacs.d/site-lisp/flymake-ruby")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/yari")
 
+
+
+
+;;; Rsense
 (setq rsense-home (expand-file-name "~/src/ruby/rsense-0.3"))
 (setq rsense-rurema-home "~/.ruby-reference-manual")
-
 (add-to-list 'load-path (concat rsense-home "/etc"))
+
+(when (require 'rsense nil :noerror)
+  (add-hook 'ruby-mode-hook
+            (lambda ()
+              (define-key ruby-mode-map (kbd "M-<tab>") 'ac-complete-rsense))))
 
 (require 'setup-flymake)
 (require 'ruby-mode)
 (require 'inf-ruby-bond)
-(require 'rsense)
 (require 'flymake-ruby)
 
 (autoload 'yari "yari" "Emacs interface to ri documentation" t)
@@ -42,7 +49,6 @@
 (add-hook 'ruby-mode-hook
           (lambda ()
             (define-key ruby-mode-map (kbd "\C-c\C-c") 'xmp)
-            (define-key ruby-mode-map (kbd "M-<tab>") 'ac-complete-rsense)
             (define-key ruby-mode-map (kbd "C-c C-e") 'ruby-insert-end)
             (define-key ruby-mode-map [f1] 'yari)))
 
@@ -52,10 +58,10 @@
 (eval-after-load "evil"
   '(progn
      (evil-declare-key 'normal ruby-mode-map
-                       (kbd "{") 'ruby-beginning-of-block
-                       (kbd "}") 'ruby-end-of-block)
+       (kbd "{") 'ruby-beginning-of-block
+       (kbd "}") 'ruby-end-of-block)
      (evil-declare-key 'visual ruby-mode-map
-                       (kbd "<tab>") 'indent-for-tab-command)))
+       (kbd "<tab>") 'indent-for-tab-command)))
 
 ;;; Highlight basic array looping functions, since they are used more
 ;;; than most keywords
