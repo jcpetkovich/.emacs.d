@@ -14,7 +14,12 @@
   (when (and (bound-and-true-p evil-mode)
              (not (memq evil-state '(insert emacs))))
     (setq my-mc-evil-previous-state evil-state)
-    (evil-emacs-state 1)))
+    (let ((mark-before (mark))
+          (point-before (point)))
+
+      (evil-emacs-state 1)
+      (goto-char point-before)
+      (set-mark mark-before))))
 
 (defun my-mc-evil-back-to-previous-state ()
   (when my-mc-evil-previous-state
