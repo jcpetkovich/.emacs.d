@@ -38,8 +38,12 @@
 (defun my-rrm-evil-switch-state ()
   (if rectangular-region-mode
       (my-mc-evil-switch-to-emacs-state)
-    ;; (my-mc-evil-back-to-previous-state)  ; does not work...
     (setq my-mc-evil-previous-state nil)))
+
+;;; When running edit-lines, point will return (position + 1) as a
+;;; result of how evil deals with regions
+(defadvice mc/edit-lines (before change-point-by-1 activate)
+  (goto-char (1- (point))))
 
 (add-hook 'rectangular-region-mode-hook 'my-rrm-evil-switch-state)
 
