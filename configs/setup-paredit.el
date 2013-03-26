@@ -17,4 +17,11 @@
 (defadvice paredit-close-round (after paredit-close-and-indent activate)
   (cleanup-buffer))
 
+
+(require 'smartparens-config)
+
+(sp-use-paredit-bindings)
+(add-hook 'js2-mode-hook (lambda ()
+                           (smartparens-mode 1)))
+
 (provide 'setup-paredit)

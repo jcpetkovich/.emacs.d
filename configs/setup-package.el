@@ -38,6 +38,7 @@
  (cons 'paredit melpa)
  (cons 'python-mode marmalade)
  (cons 'slime-js marmalade)
- (cons 'slime-repl marmalade))
+ (cons 'slime-repl marmalade)
+ (cons 'smartparens melpa))
 
 (provide 'setup-package)
