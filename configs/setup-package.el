@@ -39,6 +39,7 @@
  (cons 'python-mode marmalade)
  (cons 'slime-js marmalade)
  (cons 'slime-repl marmalade)
- (cons 'smartparens melpa))
+ (cons 'smartparens melpa)
+ (cons 'markdown-mode marmalade))
 
 (provide 'setup-package)
