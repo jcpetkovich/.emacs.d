@@ -40,6 +40,7 @@
  (cons 'slime-js marmalade)
  (cons 'slime-repl marmalade)
  (cons 'smartparens melpa)
- (cons 'markdown-mode marmalade))
+ (cons 'markdown-mode marmalade)
+ (cons 'rust-mode melpa))
 
 (provide 'setup-package)
