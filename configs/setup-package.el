@@ -27,20 +27,23 @@
   (package-initialize)
   (delete-other-windows))
 
-(packages-install
- (cons 'clojure-mode melpa)
- (cons 'nrepl melpa)
- (cons 'ac-nrepl melpa)
- (cons 'auctex gnu)
- (cons 'ess melpa)
- (cons 'inf-ruby melpa)
- (cons 'org melpa)
- (cons 'paredit melpa)
- (cons 'python-mode marmalade)
- (cons 'slime-js marmalade)
- (cons 'slime-repl marmalade)
- (cons 'smartparens melpa)
- (cons 'markdown-mode marmalade)
- (cons 'rust-mode melpa))
+(condition-case err
+    (packages-install
+     (cons 'clojure-mode melpa)
+     (cons 'nrepl melpa)
+     (cons 'ac-nrepl melpa)
+     (cons 'auctex gnu)
+     (cons 'ess melpa)
+     (cons 'inf-ruby melpa)
+     (cons 'org melpa)
+     (cons 'paredit melpa)
+     (cons 'python-mode marmalade)
+     (cons 'slime-js marmalade)
+     (cons 'slime-repl marmalade)
+     (cons 'smartparens melpa)
+     (cons 'markdown-mode marmalade)
+     (cons 'rust-mode melpa))
+
+  (error (message "%s" (error-message-string err))))
 
 (provide 'setup-package)

@@ -18,10 +18,10 @@
   (cleanup-buffer))
 
 
-(require 'smartparens-config)
+;; (require 'smartparens-config)
 
-(sp-use-paredit-bindings)
-(add-hook 'js2-mode-hook (lambda ()
-                           (smartparens-mode 1)))
+;; (sp-use-paredit-bindings)
+;; (add-hook 'js2-mode-hook (lambda ()
+;;                            (smartparens-mode 1)))
 
 (provide 'setup-paredit)
