@@ -13,7 +13,7 @@
   (setq pde-perl-version "5.12.4"))
 
 
-;; (defalias 'perl-mode 'cperl-mode)
+(defalias 'perl-mode 'cperl-mode)
 
 (add-hook 'cperl-mode-hook
           (lambda () (flymake-mode 1)))
