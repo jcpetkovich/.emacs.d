@@ -15,18 +15,16 @@
 (setf my-notes-file "~/mobileorg/whiteboard.org")
 
 (setq org-capture-templates
-      '(("t" "Task" entry (file+headline "" "Tasks")
-         "* TODO %?\n  %u\n  %a\n")
-        ("p" "Personal Task" entry (file+headline my-notes-file "Todo Items")
+      '(("g" "General Inbox" entry (file+headline my-notes-file "Inbox")
          "* TODO %?\n  %u\n  %a\n %i")
-        ("w" "Work Task" entry (file+headline my-notes-file "Work")
-         "* TODO %?\n  %u\n  %a\n %i")
-        ("g" "Goal" entry (file+headline my-notes-file "Goals")
-         "* %?\n  %u\n  %a\n %i")
-        ("n" "Note" entry (file+headline my-notes-file "Ideas/Tasks With No Deadlines")
-         "* %?\n  %u\n  %a\n %i")
-        ("r" "Project Note" entry (file+headline my-notes-file "Project Notes")
-         "* %?\n  %u\n  %a\n %i")))
+        ("p" "Personal Task" entry (file+headline my-notes-file "Inbox")
+         "* TODO %? :PERSONAL:\n  %u\n  %a\n %i")
+        ("w" "Work Task" entry (file+headline my-notes-file "Inbox")
+         "* TODO %? :BENCHMARKING: \n  %u\n  %a\n %i")
+        ("n" "Note" entry (file+headline my-notes-file "Inbox")
+         "* %? :NOTES:\n  %u\n  %a\n %i")
+        ("r" "Project Note" entry (file+headline my-notes-file "Inbox")
+         "* %? :PROJECTNOTE:\n  %u\n  %a\n %i")))
 
 
 (add-hook 'org-mode-hook
