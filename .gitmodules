@@ -73,3 +73,6 @@
 [submodule "site-lisp/undo-tree"]
 	path = site-lisp/undo-tree
 	url = git://github.com/emacsmirror/undo-tree.git
+[submodule "site-lisp/tern"]
+	path = site-lisp/tern
+	url = https://github.com/marijnh/tern.git
