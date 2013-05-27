@@ -60,8 +60,8 @@
                     (lambda () (evil-motion-state)))))
 
 (when (require 'mu4e nil :noerror)
-  
-  (define-key global-map (kbd "<f5>") 'mu4e-update-mail-show-window)
+
+  (define-key global-map (kbd "<f5>") 'mu4e-update-mail-and-index)
 
   (setq mu4e-html2text-command "html2text -nobs -width 1000")
   (setq mu4e-maildir "~/Maildir")
