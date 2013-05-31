@@ -31,6 +31,7 @@
 (global-set-key (kbd "C-.") 'ecb-goto-window-directories)
 (global-set-key (kbd "C-x g") 'insert-register)
 (global-set-key (kbd "C-x C-i") 'ido-imenu)
+(global-set-key (kbd "C-ä") 'magit-status)
 
 
 ;; Transpose stuff with M-t
