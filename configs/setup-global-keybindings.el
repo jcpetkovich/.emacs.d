@@ -1,3 +1,5 @@
+(require 'editing-defuns)
+
 ;; =============================================================
 ;; All options for standard keybindings go in here
 ;; =============================================================
@@ -17,8 +19,6 @@
 (global-set-key (kbd "M-e") 'hippie-expand)
 (global-set-key (kbd "M-SPC") 'hippie-expand-lines)
 (global-set-key (kbd "C-<tab>") 'folding-toggle-show-hide)
-(global-set-key (kbd "M-s") 'move-cursor-next-pane)
-(global-set-key (kbd "M-S") 'move-cursor-previous-pane)
 (global-set-key (kbd "M-1") 'delete-other-windows)
 (global-set-key (kbd "M-!") 'delete-window)
 (global-set-key (kbd "M-2") 'split-window-vertically)
@@ -33,6 +33,9 @@
 (global-set-key (kbd "C-x C-i") 'ido-imenu)
 (global-set-key (kbd "C-ä") 'magit-status)
 
+;;; Neat stuff from Magnars
+(global-set-key (kbd "C-c C--") 'replace-next-underscore-with-camel)
+(global-set-key (kbd "M-s M--") 'snakeify-current-word)
 
 ;; Transpose stuff with M-t
 (global-unset-key (kbd "M-t")) ;; which used to be transpose-words
@@ -41,7 +44,6 @@
 (global-set-key (kbd "M-t M-l") 'transpose-lines)
 
 ;; Capitalization
-
 (global-unset-key (kbd "M-c"))
 (global-set-key (kbd "M-c M-c") 'capitalize-word)
 (global-set-key (kbd "M-c M-l") 'downcase-word)

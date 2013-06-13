@@ -1,42 +1,22 @@
 ;; =============================================================
 ;; Load Path
 ;; =============================================================
-(defconst ini-directory "~/.emacs.d/configs")
+(defconst ini-directory "~/.emacs.d/")
+(defconst ini-configs-directory (expand-file-name (concat ini-directory "configs")))
+(defconst ini-defuns-directory (expand-file-name (concat ini-directory "defuns")))
 (add-to-list 'load-path ini-directory)
+(add-to-list 'load-path ini-configs-directory)
+(add-to-list 'load-path ini-defuns-directory)
 
+(defvar ini-loaded '())
 
-;; =============================================================
-;; Load All ini-directory files
-;; Author: Jim Weirich
-;; =============================================================
+(defun load-with-message (filespec)
+  (message (concat "Loading " filespec))
+  (load filespec)
+  (push filespec ini-loaded))
 
-
-(defvar ini-loaded ()
-  "List of files loaded during initialization.")
-
-(defvar ini-not-loaded ()
-  "List of files that failed to load during initialization.")
-
-(defun ini-try-load (inifn ext)
-  "Attempt to load an ini-type elisp file."
-  (let ((fn (concat ini-directory "/" inifn ext)))
-    (if (file-readable-p fn)
-        (progn
-          (message (concat "Loading " inifn))
-          (load-file fn)
-          (setq ini-loaded (cons inifn ini-loaded)) ))))
-
-(defun ini-load (inifn)
-  "Load a ini-type elisp file"
-  (cond ((ini-try-load inifn ".elc"))
-        ((ini-try-load inifn ".el"))
-        (t (setq ini-not-loaded (cons inifn ini-not-loaded))
-           (message (concat inifn " not found")))))
-
-(let ((files (directory-files ini-directory nil "^setup.*\\.el$")))
-  (while (not (null files))
-    (ini-load (substring (car files) 0 -3))
-    (setq files (cdr files)) ))
+(mapc #'load-with-message 
+      (directory-files ini-configs-directory nil "^setup.*\\.el$"))
 
 (when (file-exists-p my-notes-file)
   (find-file my-notes-file))
