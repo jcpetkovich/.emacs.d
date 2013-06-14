@@ -76,3 +76,6 @@
 [submodule "site-lisp/tern"]
 	path = site-lisp/tern
 	url = https://github.com/marijnh/tern.git
+[submodule "site-lisp/smart-forward"]
+	path = site-lisp/smart-forward
+	url = https://github.com/magnars/smart-forward.el.git
