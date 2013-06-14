@@ -2,7 +2,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/site-lisp/haskell-mode")
 
-(load "haskell-site-file")
+(require 'haskell-mode-autoloads)
 
 (mapcar (lambda (my-hook)
           (add-hook 'haskell-mode-hook my-hook))
