@@ -10,4 +10,9 @@
 
 (require 'buster-snippets)
 
+;;; Sometimes with certain more complex snippets, evil can choke
+;;; trying to get back to normal-mode
+(add-hook 'yas-after-exit-snippet-hook
+          (lambda () (setq evil-current-insertion nil)))
+
 (provide 'setup-yasnippet)
