@@ -31,8 +31,14 @@
           (lambda ()
             (add-to-list 'org-modules 'org-timer)))
 
+;; Hook for correcting behaviour in org mode
+(add-hook 'org-mode-hook
+          (lambda ()
+            (define-key org-mode-map (kbd "M-e") 'dabbrev-expand))) ; was org-move-paragraph
+
 (eval-after-load "auto-complete"
   '(add-hook 'org-mode-hook 'auto-complete-mode))
+
 
 (eval-after-load "evil"
   '(progn
