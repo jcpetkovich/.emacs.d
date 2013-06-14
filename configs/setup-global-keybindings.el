@@ -86,6 +86,8 @@
 (global-set-key (kbd "M-c M-l") 'downcase-word)
 (global-set-key (kbd "M-c M-u") 'upcase-word)
 
+(global-set-key (kbd "<M-return>") 'new-line-dwim)
+
 ;; =============================================================
 ;; Hooks for fixing keybindings in different modes
 ;; =============================================================
