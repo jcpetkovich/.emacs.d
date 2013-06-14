@@ -90,7 +90,9 @@
 
 (custom-theme-set-faces
  'solarized-dark
- `(comint-highlight-prompt ((t (:foreground "#268bd2")))))
+ `(comint-highlight-prompt ((t (:foreground "#268bd2"))))
+
+ `(font-lock-keyword-face ((((class color) (min-colors 89)) (:foreground "#859900" :weight bold)))))
 
 (setq powerline-color1 "grey22")
 (setq powerline-color2 "grey40")
@@ -120,7 +122,8 @@
   (load-theme 'solarized-light)
   (custom-theme-set-faces
    'solarized-light
-   `(comint-highlight-prompt ((t (:foreground "#268bd2")))))
+   `(comint-highlight-prompt ((t (:foreground "#268bd2"))))
+   `(font-lock-keyword-face ((((class color) (min-colors 89)) (:foreground "#859900" :weight bold)))))
 
   (setq powerline-color1 "#657b83")
   (setq powerline-color2 "#839496")
