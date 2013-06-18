@@ -6,7 +6,7 @@
 (require 'slime)
 (require 'slime-autoloads)
 
-(slime-setup '(slime-js slime-repl))
+(slime-setup '(slime-repl))
 
 (autoload 'slime-highlight-edits-mode "slime-highlight-edits" nil t)
 

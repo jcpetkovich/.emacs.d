@@ -38,11 +38,10 @@
      (cons 'org melpa)
      (cons 'paredit melpa)
      (cons 'python-mode marmalade)
-     (cons 'slime-js marmalade)
-     (cons 'slime-repl marmalade)
      (cons 'smartparens melpa)
      (cons 'markdown-mode marmalade)
-     (cons 'rust-mode melpa))
+     (cons 'rust-mode melpa)
+     (cons 'skewer-mode melpa))
 
   (error (message "%s" (error-message-string err))))
 
