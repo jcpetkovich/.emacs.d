@@ -1,6 +1,7 @@
 
 
 (require 'paredit)
+(require 'setup-dash)
 
 
 (autoload 'paredit-mode "paredit"
@@ -18,10 +19,14 @@
   (cleanup-buffer))
 
 
-;; (require 'smartparens-config)
+(require 'smartparens-config)
 
-;; (sp-use-paredit-bindings)
-;; (add-hook 'js2-mode-hook (lambda ()
-;;                            (smartparens-mode 1)))
+(sp-use-paredit-bindings)
+(setq sp-autoescape-string-quote nil)
+(--each '(css-mode-hook
+          markdown-mode-hook
+          python-mode-hook
+          sh-mode)
+  (add-hook it 'turn-on-smartparens-mode))
 
 (provide 'setup-paredit)
