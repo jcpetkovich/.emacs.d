@@ -41,7 +41,9 @@
      (cons 'smartparens melpa)
      (cons 'markdown-mode marmalade)
      (cons 'rust-mode melpa)
-     (cons 'skewer-mode melpa))
+     (cons 'skewer-mode melpa)
+     (cons 'rcirc-notify marmalade)
+     (cons 'rcirc-color marmalade))
 
   (error (message "%s" (error-message-string err))))
 
