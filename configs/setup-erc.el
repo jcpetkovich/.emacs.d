@@ -1,7 +1,11 @@
+
+(add-to-list 'load-path "~/.emacs.d/site-lisp/rcirc-color")
+(require 'setup-package)
 (require 'setup-evil)
-;;; Get username from authinfo.gpg
+(require 'auth-source)
+;; Get username from authinfo.gpg
 (setq irc-user-name 
-             (plist-get (first (auth-source-search :port '("nickserv"))) :user))
+             (plist-get (car (auth-source-search :port '("nickserv"))) :user))
 
 (setq rcirc-fill-column 'frame-width)
 
@@ -44,7 +48,7 @@ This doesn't support the chanserv auth method"
 (eval-after-load "evil"
   '(add-to-list 'evil-insert-state-modes 'rcirc-mode))
 
-(require 'rcirc-color)
-(require 'rcirc-notify)
+(eval-after-load "rcirc"
+  '(require 'rcirc-color))
 
 (provide 'setup-erc)
