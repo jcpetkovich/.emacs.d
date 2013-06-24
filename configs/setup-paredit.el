@@ -26,7 +26,8 @@
 (--each '(css-mode-hook
           markdown-mode-hook
           python-mode-hook
-          sh-mode)
+          sh-mode-hook
+          ess-mode-hook)
   (add-hook it 'turn-on-smartparens-mode))
 
 (provide 'setup-paredit)
