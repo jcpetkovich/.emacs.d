@@ -12,6 +12,9 @@
 
 (setq rcirc-fill-column 'frame-width)
 
+;;; Trying this out, hopefully it's not too spammy
+(setq rcirc-notify-timeout 0)
+
 (setq rcirc-server-alist
       `(("irc.freenode.net"
          :channels ("#ruby"
