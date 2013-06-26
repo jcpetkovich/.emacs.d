@@ -42,8 +42,9 @@
      (cons 'markdown-mode marmalade)
      (cons 'rust-mode melpa)
      (cons 'skewer-mode melpa)
-     (cons 'rcirc-notify marmalade))
-     
+     (cons 'rcirc-notify marmalade)
+     (cons 'dired-details marmalade))
+
   (error (message "%s" (error-message-string err))))
 
 (provide 'setup-package)
