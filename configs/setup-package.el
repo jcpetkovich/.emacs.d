@@ -43,7 +43,9 @@
      (cons 'rust-mode melpa)
      (cons 'skewer-mode melpa)
      (cons 'rcirc-notify marmalade)
-     (cons 'dired-details marmalade))
+     (cons 'dired-details marmalade)
+     (cons 'nodejs-repl marmalade)
+     (cons 'elisp-slime-nav marmalade))
 
   (error (message "%s" (error-message-string err))))
 
