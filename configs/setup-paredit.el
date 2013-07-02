@@ -21,6 +21,9 @@
 
 (require 'smartparens-config)
 
+;;; Laying paredit bindings on top of the smartparents one, not very
+;;; pretty but this includes all the functions that I want to use.
+(sp-use-smartparens-bindings)
 (sp-use-paredit-bindings)
 (setq sp-autoescape-string-quote nil)
 (--each '(css-mode-hook
