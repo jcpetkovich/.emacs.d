@@ -5,6 +5,8 @@
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)
+
+;;; I want autocomplete everywhere
 (setq global-auto-complete-mode t)
 
 (dolist (mode '(org-mode text-mode slime-repl-mode LaTeX-mode
@@ -21,17 +23,22 @@
               '(ac-source-abbrev
                 ac-source-dictionary
                 ac-source-words-in-same-mode-buffers
-                ;; ac-source-yasnippet
-                ))
+                ac-source-yasnippet))
 
-   ;; =============================================================
-   ;; Evil Keybindings
-   ;; =============================================================
-   
+
+;;; Make sure autocomplete doesn't interfere with yasnippet.
+(setq yas-before-expand-snippet-hook (lambda () (auto-complete-mode -1)))
+(setq yas-after-exit-snippet-hook (lambda () (auto-complete-mode 1)))
+
+;; =============================================================
+;; Evil Keybindings
+;; =============================================================
 (eval-after-load "evil"
   '(progn
+     ;; Navigation in autocomplete menues gets hijacked by evil
      (define-key ac-completing-map (kbd "C-n") 'ac-next)
      (define-key ac-completing-map (kbd "C-p") 'ac-previous)
+     ;; Let me stop autocompleting the emacs/evil way
      (define-key ac-completing-map (kbd "C-g") 'ac-stop)
      (define-key ac-completing-map (kbd "ESC") 'evil-normal-state)
      (evil-make-intercept-map ac-completing-map)))
