@@ -11,6 +11,7 @@
       (plist-get (car (auth-source-search :port '("nickserv"))) :user))
 
 (setq rcirc-fill-column 'frame-width)
+(setq rcirc-color-is-deterministic t)
 
 ;;; Trying this out, hopefully it's not too spammy
 (setq rcirc-notify-timeout 0)
