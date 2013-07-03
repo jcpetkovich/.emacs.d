@@ -103,6 +103,14 @@ This doesn't support the chanserv auth method"
 ;;     (rcirc-notify-private sender text)))
 
 
+(defun strip-otr-prefix (text)
+  (s-replace "05" "" text))
+
+(defadvice rcirc-print (around rcirc-print-filter activate)
+  (let* ((text (ad-get-arg 4))
+         (new-text (strip-otr-prefix text)))
+    (ad-set-arg 4 new-text)
+    ad-do-it))
 
 
 (provide 'setup-erc)
