@@ -1,23 +1,20 @@
 
-(message "Hello there")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/rcirc-color")
 (require 'setup-package)
 (require 'setup-evil)
 (require 'auth-source)
 (require 'setup-dash)
 (require 'dash)
-(require 'rcirc)
 
 (eval-after-load "rcirc"
-'(progn (require 'rcirc-color)
-(require 'rcirc-notify))
-)
+  '(progn (require 'rcirc-color)
+          (require 'rcirc-notify)
+          (rcirc-notify-add-hooks)))
 
 ;; =============================================================
 ;; Config
 ;; =============================================================
 
-(message "Got here")
 ;;; Start in insert mode
 (eval-after-load "evil"
   '(add-to-list 'evil-insert-state-modes 'rcirc-mode))
@@ -28,29 +25,27 @@
 
 (setq rcirc-fill-column 'frame-width)
 
-;; (setq rcirc-server-alist
-;;       `(("irc.freenode.net"
-;;          :channels ("#ruby"
-;;                     "#python"
-;;                     "#perl"
-;;                     "#Node.js"
-;;                     "#haskell"
-;;                     "#clojure"
-;;                     "#scheme"
-;;                     "#lisp"
-;;                     "#emacs")
-;;          :nick ,irc-user-name
-;;          )
-;;         ("irc.mozilla.org"
-;;          :channels ("#rust")
-;;          :nick ,irc-user-name)
-;;         ("localhost")))
+(setq rcirc-server-alist
+      `(("irc.freenode.net"
+         :channels ("#ruby"
+                    "#python"
+                    "#perl"
+                    "#Node.js"
+                    "#haskell"
+                    "#clojure"
+                    "#scheme"
+                    "#lisp"
+                    "#emacs")
+         :nick ,irc-user-name)
+        ("irc.mozilla.org"
+         :channels ("#rust")
+         :nick ,irc-user-name)
+        ("localhost")))
 
 ;;; Configure plugins
 (setq rcirc-color-is-deterministic t)
 (setq rcirc-notify-timeout 0)
 (setq rcirc-notify-check-frame t)
-(rcirc-notify-add-hooks)
 
 ;; =============================================================
 ;; Functions and wrappers
@@ -72,31 +67,32 @@ This doesn't support the chanserv auth method"
                                (funcall secret)
                              secret)))))))
 
-(message "Got to rcirc-command")
-(defun-rcirc-command reconnect (arg)
-  "Reconnect the server process."
-  (interactive "i")
-  (if (buffer-live-p rcirc-server-buffer)
-      (with-current-buffer rcirc-server-buffer
-        (let ((reconnect-buffer (current-buffer))
-              (server (or rcirc-server rcirc-default-server))
-              (port (if (boundp 'rcirc-port) rcirc-port rcirc-default-port))
-              (nick (or rcirc-nick rcirc-default-nick))
-              channels)
-          (dolist (buf (buffer-list))
-            (with-current-buffer buf
-              (when (equal reconnect-buffer rcirc-server-buffer)
-                (remove-hook 'change-major-mode-hook
-                             'rcirc-change-major-mode-hook)
-                (let ((server-plist (cdr (assoc-string server rcirc-server-alist))))
-                  (when server-plist
-                    (setq channels (plist-get server-plist :channels))))
-                )))
-          (if process (delete-process process))
-          (rcirc-connect server port nick
-                         nil
-                         nil
-                         channels)))))
+(eval-after-load "rcirc"
+  '(progn
+     (defun-rcirc-command reconnect (arg)
+       "Reconnect the server process."
+       (interactive "i")
+       (if (buffer-live-p rcirc-server-buffer)
+           (with-current-buffer rcirc-server-buffer
+             (let ((reconnect-buffer (current-buffer))
+                   (server (or rcirc-server rcirc-default-server))
+                   (port (if (boundp 'rcirc-port) rcirc-port rcirc-default-port))
+                   (nick (or rcirc-nick rcirc-default-nick))
+                   channels)
+               (dolist (buf (buffer-list))
+                 (with-current-buffer buf
+                   (when (equal reconnect-buffer rcirc-server-buffer)
+                     (remove-hook 'change-major-mode-hook
+                                  'rcirc-change-major-mode-hook)
+                     (let ((server-plist (cdr (assoc-string server rcirc-server-alist))))
+                       (when server-plist
+                         (setq channels (plist-get server-plist :channels))))
+                     )))
+               (if process (delete-process process))
+               (rcirc-connect server port nick
+                              nil
+                              nil
+                              channels)))))))
 
 ;;; This might be potentially useful
 (defun rcirc-target-buffer-visible (proc sender response target text)
@@ -114,7 +110,6 @@ This doesn't support the chanserv auth method"
     (ad-set-arg 4 new-text)
     ad-do-it))
 
-(message "Got to twitter url stuff.")
 ;;; Show where t.co urls are pointing
 (defun t.co-resolve (url)
   "Resolve t.co URL by launching `curl --head' and parsing the result."
@@ -132,7 +127,9 @@ This doesn't support the chanserv auth method"
     (while (re-search-forward re nil t)
       (replace-match (save-match-data (t.co-resolve (match-string 0)))))))
 
-(add-to-list 'rcirc-markup-text-functions
-             't.co-url-replace)
+(eval-after-load "rcirc"
+  '(progn
+     (add-to-list 'rcirc-markup-text-functions
+                  't.co-url-replace)))
 
 (provide 'setup-erc)
