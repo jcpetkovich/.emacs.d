@@ -1,39 +1,60 @@
 
+(message "Hello there")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/rcirc-color")
 (require 'setup-package)
 (require 'setup-evil)
 (require 'auth-source)
 (require 'setup-dash)
 (require 'dash)
+(require 'rcirc)
+
+(eval-after-load "rcirc"
+'(progn (require 'rcirc-color)
+(require 'rcirc-notify))
+)
+
+;; =============================================================
+;; Config
+;; =============================================================
+
+(message "Got here")
+;;; Start in insert mode
+(eval-after-load "evil"
+  '(add-to-list 'evil-insert-state-modes 'rcirc-mode))
 
 ;; Get username from authinfo.gpg
 (setq irc-user-name
       (plist-get (car (auth-source-search :port '("nickserv"))) :user))
 
 (setq rcirc-fill-column 'frame-width)
+
+;; (setq rcirc-server-alist
+;;       `(("irc.freenode.net"
+;;          :channels ("#ruby"
+;;                     "#python"
+;;                     "#perl"
+;;                     "#Node.js"
+;;                     "#haskell"
+;;                     "#clojure"
+;;                     "#scheme"
+;;                     "#lisp"
+;;                     "#emacs")
+;;          :nick ,irc-user-name
+;;          )
+;;         ("irc.mozilla.org"
+;;          :channels ("#rust")
+;;          :nick ,irc-user-name)
+;;         ("localhost")))
+
+;;; Configure plugins
 (setq rcirc-color-is-deterministic t)
-
-;;; Trying this out, hopefully it's not too spammy
 (setq rcirc-notify-timeout 0)
+(setq rcirc-notify-check-frame t)
+(rcirc-notify-add-hooks)
 
-(setq rcirc-server-alist
-      `(("irc.freenode.net"
-         :channels ("#ruby"
-                    "#python"
-                    "#perl"
-                    "#Node.js"
-                    "#haskell"
-                    "#clojure"
-                    "#scheme"
-                    "#lisp"
-                    "#emacs")
-         :nick ,irc-user-name
-         )
-        ("irc.mozilla.org"
-         :channels ("#rust")
-         :nick ,irc-user-name)
-        ("localhost")))
-
+;; =============================================================
+;; Functions and wrappers
+;; =============================================================
 
 (defadvice rcirc (before rcirc-read-from-authinfo activate)
   "Allow rcirc to read authinfo from ~/.authinfo.gpg via the auth-source API.
@@ -51,58 +72,39 @@ This doesn't support the chanserv auth method"
                                (funcall secret)
                              secret)))))))
 
-;;; Start in insert mode
-(eval-after-load "evil"
-  '(add-to-list 'evil-insert-state-modes 'rcirc-mode))
+(message "Got to rcirc-command")
+(defun-rcirc-command reconnect (arg)
+  "Reconnect the server process."
+  (interactive "i")
+  (if (buffer-live-p rcirc-server-buffer)
+      (with-current-buffer rcirc-server-buffer
+        (let ((reconnect-buffer (current-buffer))
+              (server (or rcirc-server rcirc-default-server))
+              (port (if (boundp 'rcirc-port) rcirc-port rcirc-default-port))
+              (nick (or rcirc-nick rcirc-default-nick))
+              channels)
+          (dolist (buf (buffer-list))
+            (with-current-buffer buf
+              (when (equal reconnect-buffer rcirc-server-buffer)
+                (remove-hook 'change-major-mode-hook
+                             'rcirc-change-major-mode-hook)
+                (let ((server-plist (cdr (assoc-string server rcirc-server-alist))))
+                  (when server-plist
+                    (setq channels (plist-get server-plist :channels))))
+                )))
+          (if process (delete-process process))
+          (rcirc-connect server port nick
+                         nil
+                         nil
+                         channels)))))
 
-(eval-after-load "rcirc"
-  '(progn (require 'rcirc-color)
-          (setq rcirc-notify-check-frame t)
-          (rcirc-notify-add-hooks)
-          (defun-rcirc-command reconnect (arg)
-            "Reconnect the server process."
-            (interactive "i")
-            (if (buffer-live-p rcirc-server-buffer)
-                (with-current-buffer rcirc-server-buffer
-                  (let ((reconnect-buffer (current-buffer))
-                        (server (or rcirc-server rcirc-default-server))
-                        (port (if (boundp 'rcirc-port) rcirc-port rcirc-default-port))
-                        (nick (or rcirc-nick rcirc-default-nick))
-                        channels)
-                    (dolist (buf (buffer-list))
-                      (with-current-buffer buf
-                        (when (equal reconnect-buffer rcirc-server-buffer)
-                          (remove-hook 'change-major-mode-hook
-                                       'rcirc-change-major-mode-hook)
-                          (let ((server-plist (cdr (assoc-string server rcirc-server-alist))))
-                            (when server-plist
-                              (setq channels (plist-get server-plist :channels))))
-                          )))
-                    (if process (delete-process process))
-                    (rcirc-connect server port nick
-                                   nil
-                                   nil
-                                   channels)))))))
+;;; This might be potentially useful
+(defun rcirc-target-buffer-visible (proc sender response target text)
+  "Alternative for checking if a target buffer is visible"
+  (-any? (lambda (buffer) (equal buffer (rcirc-target-buffer proc sender response target text)))
+         (rcirc-visible-buffers)))
 
-
-;; ;;; These might be potentially useful
-;; (defun rcirc-target-buffer-visible (proc sender response target text)
-;;   "Alternative for checking if a target buffer is visible"
-;;   (-any? (lambda (buffer) (equal buffer (rcirc-target-buffer proc sender response target text)))
-;;          (rcirc-visible-buffers)))
-
-;; (defun rcirc-notify-privmsg (proc sender response target text)
-;;   "Notify the current user when someone sends a private message
-;; to them."
-;;   (interactive)
-;;   (when (and (string= response "PRIVMSG")
-;;              (not (string= sender (rcirc-nick proc)))
-;;              (not (rcirc-channel-p target))
-;;              (not (rcirc-target-buffer-visible proc sender response target text))
-;;              (rcirc-notify-allowed sender))
-;;     (rcirc-notify-private sender text)))
-
-
+;;; TODO: Use an rcirc markup function for otr cleanup instead
 (defun strip-otr-prefix (text)
   (s-replace "05" "" text))
 
@@ -112,5 +114,25 @@ This doesn't support the chanserv auth method"
     (ad-set-arg 4 new-text)
     ad-do-it))
 
+(message "Got to twitter url stuff.")
+;;; Show where t.co urls are pointing
+(defun t.co-resolve (url)
+  "Resolve t.co URL by launching `curl --head' and parsing the result."
+  (assert (string-match (concat "^" rcirc-url-regexp "$") url))
+  (let* ((curl (shell-command-to-string (format "curl --silent --head %s" url)))
+         (location (when (and (string-match "\\`HTTP/1\.1 301" curl)
+                              (string-match (concat "^Location: "
+                                                    rcirc-url-regexp) curl))
+                     (match-string 1 curl))))
+    (or location url)))
+
+(defun t.co-url-replace (sender response)
+  "Call `t.co-resolve' on every matching URL."
+  (let ((re "http://t\\.co/[a-z0-9]+"))
+    (while (re-search-forward re nil t)
+      (replace-match (save-match-data (t.co-resolve (match-string 0)))))))
+
+(add-to-list 'rcirc-markup-text-functions
+             't.co-url-replace)
 
 (provide 'setup-erc)
