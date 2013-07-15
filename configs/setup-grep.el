@@ -123,4 +123,14 @@
 (eval-after-load "wgrep"
   '(define-key wgrep-mode-map (kbd "C-c C-æ") 'mc/add-cursors-to-all-matches))
 
+;;; Quit command for evil
+(eval-after-load "evil"
+  '(progn
+     (mapcar (lambda (state)
+               (evil-define-key state grep-mode-map
+                 (kbd "Q") 'rgrep-quit-window
+                 (kbd "q") 'rgrep-quit-window
+                 ))
+             '(normal insert))))
+
 (provide 'setup-grep)

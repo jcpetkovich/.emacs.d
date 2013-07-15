@@ -15,24 +15,19 @@
 
      (mapcar (lambda (state)
                (evil-declare-key state global-map
-                                 (kbd "C-a") 'shrink-whitespaces
-                                 (kbd "C-n") 'evil-next-line
-                                 (kbd "C-p") 'evil-previous-line
-                                 (kbd "C-l") 'copy-to-register
-                                 (kbd "C-+") 'increment-register
-                                 (kbd "<f6>") 'browse-kill-ring
-                                 (kbd "C-M-<backspace>") 'paredit-backward-delete
-                                 (kbd "<f7>") 'compile
-                                 (kbd "<f8>") 'recompile))
+                 (kbd "C-a") 'shrink-whitespaces
+                 (kbd "C-n") 'evil-next-line
+                 (kbd "C-p") 'evil-previous-line
+                 (kbd "C-l") 'copy-to-register
+                 (kbd "C-+") 'increment-register
+                 (kbd "<f6>") 'browse-kill-ring
+                 (kbd "C-M-<backspace>") 'paredit-backward-delete
+                 (kbd "<f7>") 'compile
+                 (kbd "<f8>") 'recompile))
+             '(normal insert))
+     (mapcar (lambda (state)
+               (evil-declare-key state view-mode-map
+                 (kbd "q") 'View-quit))
              '(normal insert))))
-
-
-;; ;;; Fixes for that insert bug
-
-;; (defadvice eshell-send-input (before switch-to-emacs-mode activate)
-;;   (evil-execute-in-emacs-state 1))
-
-;; (defadvice slime-repl-return (before switch-to-emacs-mode activate)
-;;   (evil-execute-in-emacs-state 1))
 
 (provide 'setup-evil)
