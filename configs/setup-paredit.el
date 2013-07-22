@@ -30,7 +30,8 @@
           markdown-mode-hook
           python-mode-hook
           sh-mode-hook
-          ess-mode-hook)
+          ess-mode-hook
+          haskell-mode-hook)
   (add-hook it 'turn-on-smartparens-mode))
 
 (provide 'setup-paredit)

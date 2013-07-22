@@ -17,15 +17,15 @@
 (add-hook 'haskell-mode-hook
           (lambda ()
             (condition-case err
-                (ghc-init)
+                (progn
+                  (ghc-init)
+                  (defun ghc-save-buffer ()
+                    (interactive)
+                    (if (buffer-modified-p)
+                        (call-interactively 'save-buffer))
+                    (flymake-start-syntax-check)))
+
               (error
                (message "ghc-mod not installed, install it with your system's package manager!")))))
-
-;;; Less silly ghc-save-buffer
-(defun ghc-save-buffer ()
-  (interactive)
-  (if (buffer-modified-p)
-      (call-interactively 'save-buffer))
-  (flymake-start-syntax-check))
 
 (provide 'setup-haskell)
