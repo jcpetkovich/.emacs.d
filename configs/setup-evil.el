@@ -25,9 +25,8 @@
                  (kbd "<f7>") 'compile
                  (kbd "<f8>") 'recompile))
              '(normal insert))
-     (mapcar (lambda (state)
-               (evil-declare-key state view-mode-map
-                 (kbd "q") 'View-quit))
-             '(normal insert))))
+
+     (evil-declare-key (quote normal) view-mode-map
+       (kbd "q") 'View-quit)))
 
 (provide 'setup-evil)

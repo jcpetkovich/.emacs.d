@@ -126,11 +126,8 @@
 ;;; Quit command for evil
 (eval-after-load "evil"
   '(progn
-     (mapcar (lambda (state)
-               (evil-define-key state grep-mode-map
-                 (kbd "Q") 'rgrep-quit-window
-                 (kbd "q") 'rgrep-quit-window
-                 ))
-             '(normal insert))))
+     (evil-define-key (quote normal) grep-mode-map
+       (kbd "Q") 'rgrep-quit-window
+       (kbd "q") 'rgrep-quit-window)))
 
 (provide 'setup-grep)
