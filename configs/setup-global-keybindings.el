@@ -49,7 +49,7 @@
 ;;; Neat stuff from Magnars
 ;; =============================================================
 (global-set-key (kbd "C-c C--") 'replace-next-underscore-with-camel)
-(global-set-key (kbd "M-s M--") 'snakeify-current-word)
+(global-set-key (kbd "M-c M--") 'snakeify-current-word)
 (global-set-key (kbd "C-c n") 'cleanup-buffer)
 
 ;; Copy file path to kill ring
