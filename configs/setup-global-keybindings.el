@@ -48,6 +48,7 @@
 ;; =============================================================
 ;;; Neat stuff from Magnars
 ;; =============================================================
+(global-unset-key (kbd "M-c"))
 (global-set-key (kbd "C-c C--") 'replace-next-underscore-with-camel)
 (global-set-key (kbd "M-c M--") 'snakeify-current-word)
 (global-set-key (kbd "C-c n") 'cleanup-buffer)
@@ -83,7 +84,6 @@
 (global-set-key (kbd "M-t M-l") 'transpose-lines)
 
 ;; Capitalization
-(global-unset-key (kbd "M-c"))
 (global-set-key (kbd "M-c M-c") 'capitalize-word)
 (global-set-key (kbd "M-c M-l") 'downcase-word)
 (global-set-key (kbd "M-c M-u") 'upcase-word)
