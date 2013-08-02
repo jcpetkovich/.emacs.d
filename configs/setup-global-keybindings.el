@@ -44,6 +44,7 @@
 (global-set-key (kbd "C-x C-i") 'ido-imenu)
 (global-set-key (kbd "C-ä") 'magit-status)
 (global-set-key (kbd "C-c o") 'occur)
+(global-set-key (kbd "<f4>") 'mu4e)
 
 ;; =============================================================
 ;;; Neat stuff from Magnars
