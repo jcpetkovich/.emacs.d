@@ -28,3 +28,19 @@ install them. For gentoo this just requires:
 
 If you don't want these particluar packages, you may ignore them, as
 the configuration will run without them.
+
+Setting up this config for your own use could be done by running the
+following:
+
+    cd
+    git clone https://github.com/jcpetkovich/.emacs.d.git && cd .emacs.d
+    git submodule --init --recursive
+    cd ~/.emacs.d/site-lisp/haskell-mode && make
+    cd ~/.emacs.d/site-lisp/magit && make
+    emacs # will install various packages the first time
+
+Unfortunately it is necessary to run make in the haskell-mode
+directory in order to use it as a package.
+
+You may also desire to compile all site-lisp packages. This can be
+done with a `M-0 M-x byte-recompile-directory ~/.emacs.d/site-lisp`.
