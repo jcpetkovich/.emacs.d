@@ -46,7 +46,8 @@
      (cons 'dired-details marmalade)
      (cons 'nodejs-repl marmalade)
      (cons 'elisp-slime-nav marmalade)
-     (cons 'ac-slime marmalade))
+     (cons 'ac-slime marmalade)
+     (cons 'jedi 'marmalade))
 
   (error (message "%s" (error-message-string err))))
 
