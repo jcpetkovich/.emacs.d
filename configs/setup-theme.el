@@ -7,7 +7,7 @@
 ;; =============================================================
 ;; Custom Set Variables
 ;; =============================================================
-(setq-default indent-tabs-mode nil)     ;Tabs as spaces
+(setq-default indent-tabs-mode nil)     ;Tabs as spaces by default
 (setq org-hide-leading-stars     t
       org-odd-levels-only        t
       inhibit-splash-screen      t
