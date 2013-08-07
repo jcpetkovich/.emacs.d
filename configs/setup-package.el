@@ -48,7 +48,7 @@
      (cons 'elisp-slime-nav marmalade)
      (cons 'ac-slime marmalade)
      (cons 'jedi marmalade)
-     (cons 'smart-tabs-mode 'melpa))
+     (cons 'smart-tabs-mode melpa))
 
   (error (message "%s" (error-message-string err))))
 
