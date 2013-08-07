@@ -35,14 +35,16 @@
           (lambda ()
             ;; tab width 8 in C please
             (setq tab-width 8)
+            (setq indent-tabs-mode t)
             (let ((filename (buffer-file-name)))
 
               ;; Enable kernel mode for the appropriate files
               (when (and filename
                          (-any-p (lambda (path) (string-match (expand-file-name path) filename))
                                  linux-source-locations))
-                (setq indent-tabs-mode t)
+                (smart-tabs-mode -1)
                 (c-set-style "linux-tabs-only")))))
 
+(smart-tabs-insinuate 'c)
 
 (provide 'setup-c)
