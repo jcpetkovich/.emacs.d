@@ -11,4 +11,4 @@
                        ("tc" "require 'test/unit'\nrequire '$1'\n\nclass ${1:$(upper-camel-case yas/text)}TestCase < Test::Unit::TestCase\n\n  tt$0\n\nend" "testcase" nil nil nil nil nil nil)))
 
 
-;;; Do not edit! File generated at Sun Aug  4 13:54:47 2013
+;;; Do not edit! File generated at Thu Aug  8 17:49:29 2013
