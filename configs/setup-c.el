@@ -45,6 +45,11 @@
                 (smart-tabs-mode -1)
                 (c-set-style "linux-tabs-only")))))
 
-(smart-tabs-insinuate 'c)
+
+(add-hook 'c++-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode t)))
+
+(smart-tabs-insinuate 'c 'c++)
 
 (provide 'setup-c)
