@@ -44,6 +44,8 @@
 (setq-default js2-strict-missing-semi-warning nil)
 (setq-default js2-strict-trailing-comma-warning t) ;; jshint does not warn about this now for some reason
 
+(add-hook 'js2-mode-hook (lambda () (flycheck-mode 1)))
+
 (require 'js2-refactor)
 (js2r-add-keybindings-with-prefix "C-c C-m")
 
@@ -110,10 +112,18 @@
         (looking-at "try ")
         (looking-at "} else "))))
 
+(defun js2r--comma-unless (delimiter)
+  (if (looking-at (concat "[\n\t\r ]*" (regexp-quote delimiter)))
+      ""
+    ","))
+
 (defun js2r--something-to-close-statement ()
   (cond
    ((not (eolp)) "")
-   ((js2-object-prop-node-p (js2-node-at-point)) ",")
+   ((js2-array-node-p (js2-node-at-point)) (js2r--comma-unless "]"))
+   ((js2-object-node-p (js2-node-at-point)) (concat ": " (js2r--comma-unless "}")))
+   ((js2-object-prop-node-p (js2-node-at-point)) (js2r--comma-unless "}"))
+   ((js2-call-node-p (js2-node-at-point)) (js2r--comma-unless ")"))
    ((js2r--does-not-need-semi) "")
    (:else ";")))
 
@@ -122,8 +132,6 @@
 (js2r--setup-wrapping-pair "[" "]" 'eolp)
 (js2r--setup-wrapping-pair "\"" "\"" 'eolp)
 (js2r--setup-wrapping-pair "'" "'" 'eolp)
-
-;; no semicolon inside object literals
 
 ;;
 

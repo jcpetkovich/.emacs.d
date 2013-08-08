@@ -29,5 +29,3 @@
     (if (or (file-exists-p file) arg)
         (find-file-other-window file)
       (error "%s not found." file))))
-
-(provide 'clj-defuns)

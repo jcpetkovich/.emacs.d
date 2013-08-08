@@ -51,28 +51,35 @@ If there's no region, the current line will be duplicated."
      (define-key map (kbd key) command)
      map) t))
 
+(defun replace-region-by (fn)
+  (let* ((beg (region-beginning))
+         (end (region-end))
+         (contents (buffer-substring beg end)))
+    (delete-region beg end)
+    (insert (funcall fn contents))))
+
 (defun duplicate-region (&optional num start end)
   "Duplicates the region bounded by START and END NUM times.
 If no START and END is provided, the current region-beginning and
 region-end is used."
   (interactive "p")
   (save-excursion
-    (let* ((start (or start (region-beginning)))
-           (end (or end (region-end)))
-           (region (buffer-substring start end)))
-      (goto-char end)
-      (dotimes (i num)
-        (insert region)))))
+   (let* ((start (or start (region-beginning)))
+          (end (or end (region-end)))
+          (region (buffer-substring start end)))
+     (goto-char end)
+     (dotimes (i num)
+       (insert region)))))
 
 (defun duplicate-current-line (&optional num)
   "Duplicate the current line NUM times."
   (interactive "p")
   (save-excursion
-    (when (eq (point-at-eol) (point-max))
-      (goto-char (point-max))
-      (newline)
-      (forward-char -1))
-    (duplicate-region num (point-at-bol) (1+ (point-at-eol)))))
+   (when (eq (point-at-eol) (point-max))
+     (goto-char (point-max))
+     (newline)
+     (forward-char -1))
+   (duplicate-region num (point-at-bol) (1+ (point-at-eol)))))
 
 ;; automatically indenting yanked text if in programming-modes
 
@@ -241,7 +248,7 @@ region-end is used."
       (setq arg (1+ arg))) ; 1-based index to get eternal loop with 0
   (let ((case-fold-search nil))
     (while (not (= arg 1))
-      (search-forward-regexp "\\b_[a-zA-Z]")
+      (search-forward-regexp "\\b_[a-z]")
       (forward-char -2)
       (delete-char 1)
       (capitalize-word 1)
@@ -311,5 +318,3 @@ region-end is used."
   (while (not (looking-at "}"))
     (join-line -1))
   (back-to-indentation))
-
-(provide 'editing-defuns)
