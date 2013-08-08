@@ -140,6 +140,9 @@
 ;; =============================================================
 
 (eval-after-load "init"
+  ;; Evil (the version I'm using) is finicky about the existance of
+  ;; the following variables before it's loaded, and evil as a whole
+  ;; must be loaded only after everything else has been loaded.
   '(progn
      (setq evil-want-C-i-jump nil)
      (setq evil-want-C-u-scroll t)

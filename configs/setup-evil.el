@@ -27,20 +27,19 @@
              '(normal insert))
 
      (evil-declare-key (quote normal) view-mode-map
-       (kbd "q") 'View-quit)))
+       (kbd "q") 'View-quit)
 
-(evil-define-command evil-ido-find-file (file)
-  "Same as `evil-edit' but fall back to ido-find-file with no
+     (evil-define-command evil-ido-find-file (file)
+       "Same as `evil-edit' but fall back to ido-find-file with no
 file instead of revert."
-  :repeat nil
-  :move-point nil
-  (interactive "<f>")
-  (if file
-      (find-file file)
-    (ido-find-file)))
+       :repeat nil
+       :move-point nil
+       (interactive "<f>")
+       (if file
+           (find-file file)
+         (ido-find-file)))
 
 ;;; Edit should be mapped to something smarter than evil's default
-(evil-ex-define-cmd "e[dit]" 'evil-ido-find-file)
-
+     (evil-ex-define-cmd "e[dit]" 'evil-ido-find-file)))
 
 (provide 'setup-evil)
