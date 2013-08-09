@@ -249,3 +249,5 @@
 
 ;;(mark-js2-in-right-window
 ;;  (js2-node-at-point)) ;; js2-name-node
+
+(provide 'js2r-defuns)
