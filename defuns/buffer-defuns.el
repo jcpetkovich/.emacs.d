@@ -169,3 +169,5 @@ Including indent-buffer, which should not be called automatically on save."
          (files (mapcar 'car recent-files))
          (file (completing-read "Choose recent file: " files)))
     (find-file (cdr (assoc file recent-files)))))
+
+(provide 'buffer-defuns)
