@@ -37,7 +37,6 @@
      (cons 'inf-ruby melpa)
      (cons 'org melpa)
      (cons 'paredit melpa)
-     (cons 'python-mode marmalade)
      (cons 'smartparens melpa)
      (cons 'markdown-mode marmalade)
      (cons 'rust-mode melpa)

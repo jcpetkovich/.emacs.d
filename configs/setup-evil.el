@@ -27,7 +27,8 @@
              '(normal insert))
 
      (evil-declare-key (quote normal) view-mode-map
-       (kbd "q") 'View-quit)
+       (kbd "q") 'View-quit
+       (kbd "zu") 'universal-argument)
 
      (evil-define-command evil-ido-find-file (file)
        "Same as `evil-edit' but fall back to ido-find-file with no
