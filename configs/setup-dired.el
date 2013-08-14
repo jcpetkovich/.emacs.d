@@ -54,4 +54,9 @@
      (define-key wdired-mode-map (vector 'remap 'beginning-of-buffer) 'dired-back-to-top)
      (define-key wdired-mode-map (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)))
 
+(eval-after-load "evil"
+  '(progn
+     (evil-declare-key 'normal dired-mode-map
+       (kbd "n") 'evil-search-next)))
+
 (provide 'setup-dired)
