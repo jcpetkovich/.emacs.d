@@ -40,6 +40,10 @@
         ("irc.mozilla.org"
          :channels ("#rust")
          :nick ,irc-user-name)
+        ("eyolfson.ca"
+         :nick "jcp"
+         :port 6697
+         :encryption tls)
         ("localhost")))
 
 ;;; Configure plugins
