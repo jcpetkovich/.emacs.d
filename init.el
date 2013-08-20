@@ -6,10 +6,10 @@
 ;; =============================================================
 ;; Load Path
 ;; =============================================================
-(defconst ini-directory "~/.emacs.d/")
-(defconst ini-configs-directory (expand-file-name (concat ini-directory "configs")))
-(defconst ini-defuns-directory (expand-file-name (concat ini-directory "defuns")))
-(add-to-list 'load-path ini-directory)
+(defconst user-emacs-directory "~/.emacs.d/")
+(defconst ini-configs-directory (expand-file-name (concat user-emacs-directory "configs")))
+(defconst ini-defuns-directory (expand-file-name (concat user-emacs-directory "defuns")))
+(add-to-list 'load-path user-emacs-directory)
 (add-to-list 'load-path ini-configs-directory)
 (add-to-list 'load-path ini-defuns-directory)
 

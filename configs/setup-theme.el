@@ -7,7 +7,9 @@
 ;; =============================================================
 ;; Custom Set Variables
 ;; =============================================================
-(setq-default indent-tabs-mode nil)     ;Tabs as spaces by default
+(setq-default indent-tabs-mode nil      ;Tabs as spaces by default
+              save-place t)
+
 (setq org-hide-leading-stars     t
       org-odd-levels-only        t
       inhibit-splash-screen      t
@@ -17,7 +19,9 @@
       backup-directory-alist
       `(("." . ,(expand-file-name
                  (concat user-emacs-directory "backups"))))
-      vc-make-backup-files t)
+      vc-make-backup-files t
+      save-interprogram-paste-before-kill t
+      save-place-file (concat user-emacs-directory "places"))
 
 ;;; Make the frame title easy to search for among open windows
 (setq frame-title-format '("emacs: " buffer-file-name "%f" ("%b")))
@@ -43,6 +47,7 @@
 (require 'cl)
 (require 'ido) ; ido-mode for better buffer switching and file finding, C-f to return to normal style
 (require 'uniquify)
+(require 'saveplace)
 
 ;; =============================================================
 ;; Winner Mode
