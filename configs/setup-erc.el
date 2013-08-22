@@ -26,17 +26,17 @@
 (setq rcirc-fill-column 'frame-width)
 
 (setq rcirc-server-alist
-      `(("irc.freenode.net"
-         :channels ("#ruby"
-                    "#python"
-                    "#perl"
-                    "#Node.js"
-                    "#haskell"
-                    "#clojure"
-                    "#scheme"
-                    "#lisp"
-                    "#emacs")
-         :nick ,irc-user-name)
+      `(;; ("irc.freenode.net"
+        ;;  :channels ("#ruby"
+        ;;             "#python"
+        ;;             "#perl"
+        ;;             "#Node.js"
+        ;;             "#haskell"
+        ;;             "#clojure"
+        ;;             "#scheme"
+        ;;             "#lisp"
+        ;;             "#emacs")
+        ;;  :nick ,irc-user-name)
         ("irc.mozilla.org"
          :channels ("#rust")
          :nick ,irc-user-name)
