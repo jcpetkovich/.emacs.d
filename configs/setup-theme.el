@@ -1,9 +1,7 @@
 ;; =============================================================
 ;; Load Path
 ;; =============================================================
-(add-to-list 'load-path "~/.emacs.d/site-lisp/emacs-powerline")
-;; (add-to-list 'load-path "~/.emacs.d/site-lisp/solarized-emacs")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/site-lisp/emacs-color-theme-solarized/")
+(add-to-list 'custom-theme-load-path (concat user-emacs-directory "site-lisp/emacs-color-theme-solarized"))
 
 ;; =============================================================
 ;; Custom Set Variables
@@ -60,91 +58,20 @@
 ;; Color Theme
 ;; =============================================================
 
-(load-theme 'solarized-dark t)
+(defun dark ()
+  (interactive)
+  (load-theme 'solarized-dark t))
 
-;; (add-to-list 'custom-theme-load-path "~/test/emacs-color-theme-solarized/")
-;; (load-theme 'solarized-dark t)
+(defun light ()
+  (interactive)
+  (load-theme 'solarized-light t))
 
-;; (require 'powerline)
-
-;; ;; Setup modeline items
-;; (defun gcs-propertized-evil-mode-tag ()
-;;   (propertize evil-mode-line-tag 'font-lock-face
-;;               ;; Don't propertize if we're not in the selected buffer
-;;               (cond ((not (eq (current-buffer) (car (buffer-list)))) '())
-;;                     ((evil-emacs-state-p) '(:background "red"))
-;;                     (t '()))))
-
-;; (setq-default
-;;  mode-line-format
-;;  (list "%e"
-;;        '(:eval (concat
-;;                 (gcs-propertized-evil-mode-tag)
-;;                 (powerline-rmw            'left   nil  )
-;;                 (powerline-buffer-id      'left   nil  powerline-color1  )
-;;                 (powerline-major-mode     'left        powerline-color1  )
-;;                 (powerline-minor-modes    'left        powerline-color1  )
-
-;;                 (when (boundp 'erc-modified-channels-object)
-;;                   (powerline-make-left erc-modified-channels-object
-;;                                        powerline-color1))
-;;                 (powerline-narrow         'left        powerline-color1  powerline-color2  )
-;;                 (powerline-vc             'center                        powerline-color2  )
-;;                 (powerline-make-fill                                     powerline-color2  )
-;;                 (powerline-row            'right       powerline-color1  powerline-color2  )
-;;                 (powerline-make-text      ":"          powerline-color1  )
-;;                 (powerline-column         'right       powerline-color1  )
-;;                 (powerline-percent        'right  nil  powerline-color1  )
-;;                 (powerline-make-text      "  "    nil  )))))
-
-;; (load "solarized-dark-theme")
+(dark)
 
 ;; (custom-theme-set-faces
-;;  'solarized-dark
+;;  'solarized-light
 ;;  `(comint-highlight-prompt ((t (:foreground "#268bd2"))))
-
 ;;  `(font-lock-keyword-face ((((class color) (min-colors 89)) (:foreground "#859900" :weight bold)))))
-
-;; (setq powerline-color1 "grey22")
-;; (setq powerline-color2 "grey40")
-
-;; (set-face-attribute 'mode-line nil
-;;                     :foreground "#fdf6e3"
-;;                     :background "#859900"
-;;                     :box nil)
-;; (set-face-attribute 'mode-line-inactive nil
-;;                     :box nil)
-
-;; (defun dark ()
-;;   (interactive)
-;;   (load-theme 'solarized-dark)
-;;   (setq powerline-color1 "grey22")
-;;   (setq powerline-color2 "grey40")
-
-;;   (set-face-attribute 'mode-line nil
-;;                       :foreground "#fdf6e3"
-;;                       :background "#859900"
-;;                       :box nil)
-;;   (set-face-attribute 'mode-line-inactive nil
-;;                       :box nil))
-
-;; (defun light ()
-;;   (interactive)
-;;   (load-theme 'solarized-light)
-;;   (custom-theme-set-faces
-;;    'solarized-light
-;;    `(comint-highlight-prompt ((t (:foreground "#268bd2"))))
-;;    `(font-lock-keyword-face ((((class color) (min-colors 89)) (:foreground "#859900" :weight bold)))))
-
-;;   (setq powerline-color1 "#657b83")
-;;   (setq powerline-color2 "#839496")
-
-;;   (set-face-attribute 'mode-line nil
-;;                       :foreground "#fdf6e3"
-;;                       :background "#859900"
-;;                       :box nil)
-;;   (set-face-attribute 'mode-line-inactive nil
-;;                       :box nil))
 
 ;; =============================================================
 ;; Evil Mode
