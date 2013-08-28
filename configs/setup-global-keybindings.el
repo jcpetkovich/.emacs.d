@@ -90,6 +90,7 @@
 (global-set-key (kbd "M-c M-u") 'upcase-word)
 
 (global-set-key (kbd "<M-return>") 'new-line-dwim)
+(global-set-key (kbd "M-RET") 'new-line-dwim)
 
 ;; =============================================================
 ;; Hooks for fixing keybindings in different modes

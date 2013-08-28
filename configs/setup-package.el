@@ -48,7 +48,8 @@
      (cons 'ac-slime marmalade)
      (cons 'jedi marmalade)
      (cons 'smart-tabs-mode melpa)
-     (cons 'ein melpa))
+     (cons 'ein melpa)
+     (cons 'flycheck melpa))
 
   (error (message "%s" (error-message-string err))))
 
