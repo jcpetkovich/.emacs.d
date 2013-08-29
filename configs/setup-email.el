@@ -55,9 +55,7 @@
             (kbd "|") 'mu4e-view-pipe)
           (dolist (mode (list 'normal 'insert 'visual 'operator))
             (evil-declare-key mode mu4e-compose-mode-map
-              (kbd "C-c C-s") 'message-dont-send))
-          (add-hook 'mu4e-view-mode-hook
-                    (lambda () (evil-motion-state)))))
+              (kbd "C-c C-s") 'message-dont-send))))
 
 (when (require 'mu4e nil :noerror)
 
