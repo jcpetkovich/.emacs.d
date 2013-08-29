@@ -81,11 +81,8 @@
   ;;           ("/work"        . ?w)
   ;;           ("/sent"        . ?s)))
 
-  ;; a regular expression that matches all email addresses used by
-  ;; the user; this allows us to correctly determine if user
-  ;; is the sender / direct recipient of some message
-  (setq mu4e-user-mail-address-regexp
-        "jcpetkovich@gmail\.com\\|me@jcpetkovich\.com\\|j2petkov@uwaterloo\.ca")
+  (setq mu4e-user-mail-address-list
+        '("jcpetkovich@gmail.com" "me@jcpetkovich.com" "j2petkov@uwaterloo.ca"))
 
   ;; when you want to use some external command for text->html
   ;; conversion, e.g. the 'html2text' program
