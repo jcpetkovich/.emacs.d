@@ -1,17 +1,4 @@
-(when (file-exists-p (expand-file-name "~/src/perl/Emacs-PDE"))
-  (add-to-list 'load-path "~/src/perl/Emacs-PDE/lisp"))
-
 (add-to-list 'auto-mode-alist '("\\.t$" . cperl-mode))
-
-(add-hook 'cperl-mode-hook (lambda ()
-                             (message "im disabling abbrev mode for pde")
-                             (abbrev-mode -1)))
-
-
-(when (locate-library "pde-load")
-  (load "pde-load")
-  (setq pde-perl-version "5.12.4"))
-
 
 (defalias 'perl-mode 'cperl-mode)
 
