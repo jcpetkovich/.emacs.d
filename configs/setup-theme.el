@@ -20,7 +20,8 @@
                  (concat user-emacs-directory "backups"))))
       vc-make-backup-files t
       save-interprogram-paste-before-kill t
-      save-place-file (concat user-emacs-directory "places"))
+      save-place-file (concat user-emacs-directory "places")
+      mouse-wheel-scroll-amount '(1))
 
 ;;; Make the frame title easy to search for among open windows
 (setq frame-title-format '("emacs: " buffer-file-name "%f" ("%b")))

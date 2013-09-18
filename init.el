@@ -65,7 +65,6 @@
  '(ido-mode (quote both) nil (ido))
  '(jde-global-classpath (quote (".")))
  '(make-backup-files nil)
- '(mouse-wheel-mode nil)
  '(org-completion-use-ido t)
  '(org-default-notes-file "~/org/captured.org")
  '(org-file-apps (quote ((auto-mode . emacs) ("\\.mm\\'" . default) ("\\.x?html?\\'" . default) ("\\.pdf\\'" . "evince %s"))))
