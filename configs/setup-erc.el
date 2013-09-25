@@ -19,31 +19,25 @@
 (eval-after-load "evil"
   '(add-to-list 'evil-insert-state-modes 'rcirc-mode))
 
-;; Get username from authinfo.gpg
+;; Get username and simple pass from authinfo.gpg
 (setq irc-user-name
       (plist-get (car (auth-source-search :port '("nickserv"))) :user))
+(setq irc-simple-pass
+      (funcall (plist-get (car (auth-source-search :port '("pass"))) :secret)))
+
+(setq irc-user)
 
 (setq rcirc-fill-column 'frame-width)
 
 (setq rcirc-server-alist
-      `(;; ("irc.freenode.net"
-        ;;  :channels ("#ruby"
-        ;;             "#python"
-        ;;             "#perl"
-        ;;             "#Node.js"
-        ;;             "#haskell"
-        ;;             "#clojure"
-        ;;             "#scheme"
-        ;;             "#lisp"
-        ;;             "#emacs")
-        ;;  :nick ,irc-user-name)
-        ("irc.mozilla.org"
+      `(("irc.mozilla.org"
          :channels ("#rust")
          :nick ,irc-user-name)
         ("eyolfson.ca"
          :nick "jcp"
          :port 6697
-         :encryption tls)
+         :encryption tls
+         :password ,irc-simple-pass)
         ("localhost")))
 
 ;;; Configure plugins
