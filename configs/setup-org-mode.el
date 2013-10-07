@@ -4,7 +4,6 @@
 (setq org-archive-location "~/org/archive.org::* Finished Tasks")
 (setq org-mobile-directory "~/mobileorg/webdav")
 (setq org-directory "~/mobileorg")
-(setq org-mobile-inbox-for-pull "~/mobileorg/from-mobile.org")
 
 (setq remember-annotation-functions '(org-remember-annotation))
 (setq remember-handler-functions '(org-remember-handler))
