@@ -45,6 +45,7 @@
         python-indent-dedent-line-backspace
         python-indent-electric-colon
         reindent-then-newline-and-indent
+        sgml-slash
         sh-assignment
         snakeify-current-word
         sp--self-insert-command
