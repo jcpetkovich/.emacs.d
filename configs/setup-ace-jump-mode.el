@@ -1,14 +1,17 @@
 
 (add-to-list 'load-path "~/.emacs.d/site-lisp/ace-jump-mode")
 
+(require 'ace-jump-mode)
 
 (autoload 'ace-jump-mode "ace-jump-mode" "Emacs quick move minor mode" t)
 (autoload 'ace-jump-mode-pop-mark "ace-jump-mode" "Emacs quick move minor mode" t)
 
 (eval-after-load "evil"
   '(progn
-     (evil-declare-key 'normal global-map
-                       (kbd "SPC") 'ace-jump-mode)))
+     (dolist (mode '(normal visual movement))
+       (evil-declare-key mode global-map
+         (kbd "SPC") 'evil-ace-jump-word-mode
+         (kbd "C-SPC") 'evil-ace-jump-line-mode))))
 
 
 (eval-after-load "ace-jump-mode"

@@ -26,9 +26,12 @@
                  (kbd "<f8>") 'recompile))
              '(normal insert))
 
+     (dolist (mode '(normal visual motion))
+       (evil-declare-key mode global-map
+         (kbd "zu") 'universal-argument))
+
      (evil-declare-key (quote normal) view-mode-map
-       (kbd "q") 'View-quit
-       (kbd "zu") 'universal-argument)
+       (kbd "q") 'View-quit)
 
      (evil-define-command evil-ido-find-file (file)
        "Same as `evil-edit' but fall back to ido-find-file with no
