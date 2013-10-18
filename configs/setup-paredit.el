@@ -33,7 +33,9 @@
           ess-mode-hook
           haskell-mode-hook
           c-mode-hook
-          LaTeX-mode-hook)
+          LaTeX-mode-hook
+          org-mode-hook
+          sgml-mode-hook)
   (add-hook it 'turn-on-smartparens-mode))
 
 (provide 'setup-paredit)
