@@ -49,7 +49,8 @@
      (cons 'jedi marmalade)
      (cons 'smart-tabs-mode melpa)
      (cons 'ein melpa)
-     (cons 'flycheck melpa))
+     (cons 'flycheck melpa)
+     (cons 'less-css-mode melpa))
 
   (error (message "%s" (error-message-string err))))
 
