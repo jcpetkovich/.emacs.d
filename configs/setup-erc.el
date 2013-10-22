@@ -26,29 +26,28 @@
       (setq irc-user-name
             (plist-get (car (auth-source-search :port '("nickserv"))) :user))
       (setq irc-simple-pass
-            (funcall (plist-get (car (auth-source-search :port '("pass"))) :secret))))
-  (message "Warning: no ~/.authinfo type file found"))
+            (funcall (plist-get (car (auth-source-search :port '("pass"))) :secret)))
+      (setq irc-user)
 
+      (setq rcirc-fill-column 'frame-width)
 
-(setq irc-user)
-
-(setq rcirc-fill-column 'frame-width)
-
-(setq rcirc-server-alist
-      `(("irc.mozilla.org"
-         :channels ("#rust")
-         :nick ,irc-user-name)
-        ("eyolfson.ca"
-         :nick "jcp"
-         :port 6697
-         :encryption tls
-         :password ,irc-simple-pass)
-        ("localhost")))
+      (setq rcirc-server-alist
+            `(("irc.mozilla.org"
+               :channels ("#rust")
+               :nick ,irc-user-name)
+              ("eyolfson.ca"
+               :nick "jcp"
+               :port 6697
+               :encryption tls
+               :password ,irc-simple-pass)
+              ("localhost")))
 
 ;;; Configure plugins
-(setq rcirc-color-is-deterministic t)
-(setq rcirc-notify-timeout 0)
-(setq rcirc-notify-check-frame t)
+      (setq rcirc-color-is-deterministic t)
+      (setq rcirc-notify-timeout 0)
+      (setq rcirc-notify-check-frame t))
+  (message "Warning: no ~/.authinfo type file found"))
+
 
 ;; =============================================================
 ;; Functions and wrappers
