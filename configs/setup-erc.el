@@ -20,10 +20,15 @@
   '(add-to-list 'evil-insert-state-modes 'rcirc-mode))
 
 ;; Get username and simple pass from authinfo.gpg
-(setq irc-user-name
-      (plist-get (car (auth-source-search :port '("nickserv"))) :user))
-(setq irc-simple-pass
-      (funcall (plist-get (car (auth-source-search :port '("pass"))) :secret)))
+(if (or (file-exists-p "~/.authinfo.gpg")
+        (file-exists-p "~/.authinfo"))
+    (progn
+      (setq irc-user-name
+            (plist-get (car (auth-source-search :port '("nickserv"))) :user))
+      (setq irc-simple-pass
+            (funcall (plist-get (car (auth-source-search :port '("pass"))) :secret))))
+  (message "Warning: no ~/.authinfo type file found"))
+
 
 (setq irc-user)
 
