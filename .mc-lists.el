@@ -57,6 +57,7 @@
 (setq mc/cmds-to-run-once
       '(
         dired-do-flagged-delete
+        handle-switch-frame
         move-cursor-previous-pane
         revert-buffer
         ))
