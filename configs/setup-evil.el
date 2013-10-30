@@ -15,7 +15,8 @@
 
      (mapcar (lambda (state)
                (evil-declare-key state global-map
-                 (kbd "C-a") 'shrink-whitespaces
+                 (kbd "C-a") 'shrink-whitespace
+                 (kbd "M-a") 'grow-whitespace
                  (kbd "C-n") 'evil-next-line
                  (kbd "C-p") 'evil-previous-line
                  (kbd "C-l") 'copy-to-register

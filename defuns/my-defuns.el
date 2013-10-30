@@ -56,7 +56,7 @@
     (error (message "Invalid expression")
            (insert (current-kill 0)))))
 
-(defun shrink-whitespaces ()
+(defun shrink-whitespace ()
   "Remove white spaces around cursor to just one or none.
 If current line contains non-white space chars, then shrink any
 whitespace char surrounding cursor to just one space.  If current
@@ -104,6 +104,46 @@ lines to just one."
 
       (progn
         (delete-blank-lines)))))
+
+(defun line-has-meat-p ()
+  "Returns `t' if line has any characters, `nil' otherwise."
+  (interactive)
+  (move-beginning-of-line 1)
+  (setq line-begin-pos (point))
+  (move-end-of-line 1)
+  (setq line-end-pos (point))
+  (if (< 0 (count-matches "[[:graph:]]" line-begin-pos line-end-pos))
+      t
+    nil))
+
+(defun grow-whitespace ()
+  "Counterpart to shrink-whitespace, grow whitespace in a
+  smartish way."
+  (interactive)
+  (setq content-above nil)
+  (setq content-below nil)
+
+  (save-excursion
+    ;; move up a line and to the beginning
+    (beginning-of-line 0)
+
+    (when (line-has-meat-p)
+      (setq content-above t)))
+
+  (save-excursion
+    ;; move down a line and to the beginning
+    (beginning-of-line 2)
+    (when (line-has-meat-p)
+      (setq content-below t)))
+
+  (save-excursion
+    (if content-above
+        (open-line-above)
+      (if content-below
+          (open-line-below))))
+  (if (and (equal (line-beginning-position) (point))
+           content-above)
+    (forward-line)))
 
 
 (provide 'my-defuns)
