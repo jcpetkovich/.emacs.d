@@ -30,7 +30,7 @@
 (condition-case err
     (packages-install
      (cons 'clojure-mode melpa)
-     (cons 'nrepl melpa)
+     (cons 'cider melpa)
      (cons 'ac-nrepl melpa)
      (cons 'auctex gnu)
      (cons 'ess melpa)
