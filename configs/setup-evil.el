@@ -11,6 +11,21 @@
 
 (eval-after-load "evil"
   '(progn
+
+     (evil-define-motion next-line-with-meat (count)
+       :type line
+
+       (while (not (line-has-meat-p))
+         (next-line))
+       (evil-insert-line (or count 1)))
+
+     (evil-define-motion previous-line-with-meat (count)
+       :type line
+
+       (while (not (line-has-meat-p))
+         (previous-line))
+       (evil-append-line (or count 1)))
+
      (define-key evil-insert-state-map (kbd "C-w") 'backward-kill-word)
 
      (mapcar (lambda (state)
@@ -29,7 +44,9 @@
 
      (dolist (mode '(normal visual motion))
        (evil-declare-key mode global-map
-         (kbd "zu") 'universal-argument))
+         (kbd "zu") 'universal-argument
+         (kbd "+") 'next-line-with-meat
+         (kbd "_") 'previous-line-with-meat))
 
      (evil-declare-key (quote normal) view-mode-map
        (kbd "q") 'View-quit)
