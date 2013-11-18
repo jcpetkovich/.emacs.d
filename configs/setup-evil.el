@@ -32,9 +32,16 @@
 
      (dolist (mode '(normal visual motion))
        (evil-declare-key mode global-map
-         (kbd "zu") 'universal-argument
+         (kbd "zu") 'universal-argument))
+
+     (dolist (mode '(normal visual))
+       (evil-declare-key mode global-map
          (kbd "+") 'next-line-with-meat
          (kbd "_") 'previous-line-with-meat))
+
+     (dolist (mode '(normal visual))
+       (evil-declare-key mode dired-mode-map
+         (kbd "+") 'dired-create-directory))
 
      (evil-declare-key (quote normal) view-mode-map
        (kbd "q") 'View-quit)
