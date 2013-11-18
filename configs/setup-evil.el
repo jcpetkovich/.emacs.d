@@ -11,27 +11,15 @@
 
 (eval-after-load "evil"
   '(progn
-
-     (evil-define-motion next-line-with-meat (count)
-       :type line
-
-       (while (not (line-has-meat-p))
-         (next-line))
-       (evil-insert-line (or count 1)))
-
-     (evil-define-motion previous-line-with-meat (count)
-       :type line
-
-       (while (not (line-has-meat-p))
-         (previous-line))
-       (evil-append-line (or count 1)))
+     (require 'my-defuns)
 
      (define-key evil-insert-state-map (kbd "C-w") 'backward-kill-word)
 
      (mapcar (lambda (state)
                (evil-declare-key state global-map
                  (kbd "C-a") 'shrink-whitespace
-                 (kbd "M-a") 'grow-whitespace
+                 (kbd "M-a") 'grow-whitespace-around
+                 (kbd "C-M-a") 'shrink-whitespace-around
                  (kbd "C-n") 'evil-next-line
                  (kbd "C-p") 'evil-previous-line
                  (kbd "C-l") 'copy-to-register
