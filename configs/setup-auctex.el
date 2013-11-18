@@ -47,4 +47,9 @@ an item line."
     (beginning-of-line)
     (kill-line)))
 
+(eval-after-load "evil"
+  '(progn
+     (evil-declare-key 'insert LaTeX-mode-map
+       (kbd "<M-return>" ) 'LaTeX-insert-item)))
+
 (provide 'setup-auctex)
