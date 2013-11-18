@@ -109,41 +109,84 @@ lines to just one."
   "Returns `t' if line has any characters, `nil' otherwise."
   (interactive)
   (move-beginning-of-line 1)
-  (setq line-begin-pos (point))
-  (move-end-of-line 1)
-  (setq line-end-pos (point))
-  (if (< 0 (count-matches "[[:graph:]]" line-begin-pos line-end-pos))
-      t
-    nil))
+  (let ((line-begin-pos (point)))
+    (move-end-of-line 1)
+    (setq line-end-pos (point))
+    (if (< 0 (count-matches "[[:graph:]]" line-begin-pos line-end-pos))
+        t
+      nil)))
 
-(defun grow-whitespace ()
+(defun grow-whitespace-around ()
   "Counterpart to shrink-whitespace, grow whitespace in a
   smartish way."
   (interactive)
-  (setq content-above nil)
-  (setq content-below nil)
+  (let ((content-above nil)
+        (content-below nil))
 
-  (save-excursion
-    ;; move up a line and to the beginning
-    (beginning-of-line 0)
+    (save-excursion
+      ;; move up a line and to the beginning
+      (beginning-of-line 0)
 
-    (when (line-has-meat-p)
-      (setq content-above t)))
+      (when (line-has-meat-p)
+        (setq content-above t)))
 
-  (save-excursion
-    ;; move down a line and to the beginning
-    (beginning-of-line 2)
-    (when (line-has-meat-p)
-      (setq content-below t)))
+    (save-excursion
+      ;; move down a line and to the beginning
+      (beginning-of-line 2)
+      (when (line-has-meat-p)
+        (setq content-below t)))
 
-  (save-excursion
-    (if content-above
-        (open-line-above)
-      (if content-below
-          (open-line-below))))
-  (if (and (equal (line-beginning-position) (point))
-           content-above)
-    (forward-line)))
+    (save-excursion
+      (if content-above
+          (open-line-above)
+        (if content-below
+            (open-line-below))))
+    (if (and (equal (line-beginning-position) (point))
+             content-above)
+        (forward-line))))
+
+(defun shrink-whitespace-around ()
+  (interactive)
+  (let ((content-above nil)
+        (content-below nil))
+
+    (save-excursion
+      (beginning-of-line 0)
+      (when (line-has-meat-p)
+        (setq content-above 1)))
+
+    (save-excursion
+      (beginning-of-line 2)
+      (when (line-has-meat-p)
+        (setq content-below t)))
+
+    (save-excursion
+      (if (not content-above)
+          (progn
+            (beginning-of-line 0)
+            (shrink-whitespace))
+        (if (not content-below)
+            (progn
+              (beginning-of-line 2)
+              (shrink-whitespace)))))))
+
+(eval-after-load "evil"
+  '(progn
+     (evil-define-motion next-line-with-meat (count)
+       :type line
+
+       (next-line)
+       (while (not (line-has-meat-p))
+         (next-line))
+       (evil-insert-line (or count 1)))
+
+     (evil-define-motion previous-line-with-meat (count)
+       :type line
+
+       (previous-line)
+       (while (not (line-has-meat-p))
+         (previous-line))
+       (evil-append-line (or count 1)))))
 
 
 (provide 'my-defuns)
