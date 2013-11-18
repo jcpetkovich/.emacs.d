@@ -16,7 +16,7 @@
       display-time-day-and-date  t
       display-time-24hr-format   t
       backup-directory-alist
-      `(("." . ,(expand-file-name
+      `((".*" . ,(expand-file-name
                  (concat user-emacs-directory "backups"))))
       vc-make-backup-files t
       save-interprogram-paste-before-kill t
