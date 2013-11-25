@@ -3,6 +3,7 @@
 (add-to-list 'load-path "~/.emacs.d/site-lisp/haskell-mode")
 
 (require 'haskell-mode-autoloads)
+(autoload 'ghc-init "ghc" nil t)
 
 (mapcar (lambda (my-hook)
           (add-hook 'haskell-mode-hook my-hook))
