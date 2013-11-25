@@ -49,9 +49,12 @@
         sh-assignment
         snakeify-current-word
         sp--self-insert-command
+        sp-backward-delete-char
         sp-forward-barf-sexp
         sp-forward-sexp
         sp-forward-slurp-sexp
+        sp-kill-hybrid-sexp
+        sp-kill-word
         yas-expand
         ))
 

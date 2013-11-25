@@ -45,7 +45,10 @@
 ;;; Configure plugins
       (setq rcirc-color-is-deterministic t)
       (setq rcirc-notify-timeout 0)
-      (setq rcirc-notify-check-frame t))
+      (setq rcirc-notify-check-frame t)
+
+;;; Configure
+      (setq rcirc-buffer-maximum-lines 2048))
   (message "Warning: no ~/.authinfo type file found"))
 
 
