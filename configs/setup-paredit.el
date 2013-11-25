@@ -26,6 +26,9 @@
 (sp-use-smartparens-bindings)
 (sp-use-paredit-bindings)
 (setq sp-autoescape-string-quote nil)
+(setq sp-autoskip-closing-pair 'always)
+(setq sp-cancel-autoskip-on-backward-movement nil)
+
 (--each '(css-mode-hook
           markdown-mode-hook
           python-mode-hook
@@ -36,6 +39,6 @@
           LaTeX-mode-hook
           org-mode-hook
           sgml-mode-hook)
-  (add-hook it 'turn-on-smartparens-mode))
+  (add-hook it 'turn-on-smartparens-strict-mode))
 
 (provide 'setup-paredit)
