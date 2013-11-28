@@ -2,6 +2,8 @@
 (add-hook 'LaTeX-mode-hook 'flyspell-mode)
 (add-hook 'LaTeX-mode-hook 'reftex-mode)
 
+(setq LaTeX-command-style '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)")))
+
 (defun check-item-entry ()
   "This function is meant to be used as advice for the
 `LaTeX-insert-item' function. The purpose behind this is to delete
