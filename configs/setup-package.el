@@ -50,7 +50,12 @@
      (cons 'smart-tabs-mode melpa)
      (cons 'ein melpa)
      (cons 'flycheck melpa)
-     (cons 'less-css-mode melpa))
+     (cons 'less-css-mode melpa)
+     (cons 'find-file-in-project marmalade)
+     (cons 'projectile marmalade)
+     (cons 'ack-and-a-half marmalade)
+     (cons 'ido-vertical-mode marmalade)
+     (cons 'flx-ido marmalade))
 
   (error (message "%s" (error-message-string err))))
 
