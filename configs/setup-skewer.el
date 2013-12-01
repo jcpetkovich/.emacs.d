@@ -3,7 +3,7 @@
 ;; javascript:(function(){var d=document ;var s=d.createElement('script');s.src='http://localhost:8023/skewer';d.body.appendChild(s);})()
 ;;
 
-(require 'setup-package)
+(require-package 'skewer-mode)
 (require 'skewer-mode)
 (require 'skewer-repl)
 (require 'skewer-html)

@@ -1,8 +1,6 @@
 
-
-(require 'paredit)
-(require 'setup-dash)
-
+(require-package 'paredit)
+(require-package 'smartparens)
 
 (autoload 'paredit-mode "paredit"
   "Minor mode for pseudo-structurally editing Lisp code." t)

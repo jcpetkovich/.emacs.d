@@ -1,4 +1,5 @@
 
+(require-package 'ess)
 (require 'ess-site)
 
 (eval-after-load "evil"

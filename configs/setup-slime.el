@@ -5,6 +5,7 @@
 
 (when (require 'slime nil :noerror)
   (require 'slime-autoloads)
+  (require-package 'ac-slime)
 
   (slime-setup)
 

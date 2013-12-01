@@ -2,10 +2,13 @@
 (add-to-list 'load-path "~/.emacs.d/site-lisp/wgrep/")
 
 (require 'setup-multiple-cursors)
-(require 'setup-s)
-(require 's)
-(require 'setup-dash)
-(require 'dash)
+
+;;; Ack!
+(require-package 'ack-and-a-half)
+(defalias 'ack 'ack-and-a-half)
+(defalias 'ack-same 'ack-and-a-half-same)
+(defalias 'ack-find-file 'ack-and-a-half-find-file)
+(defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
 
 (require 'wgrep)
 

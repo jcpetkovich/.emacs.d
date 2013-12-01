@@ -1,15 +1,12 @@
 
 (add-to-list 'load-path "~/.emacs.d/site-lisp/rcirc-color")
-(require 'setup-package)
-(require 'setup-evil)
+
+(require-package 'rcirc-notify)
 (require 'auth-source)
-(require 'setup-dash)
-(require 'dash)
 
 (eval-after-load "rcirc"
   '(progn (require 'rcirc-color)
-          (require 'rcirc-notify)
-          (rcirc-notify-add-hooks)))
+          (require 'rcirc-notify)))
 
 ;; =============================================================
 ;; Config

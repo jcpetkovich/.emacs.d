@@ -9,15 +9,13 @@
 (setq-default indent-tabs-mode nil      ;Tabs as spaces by default
               save-place t)
 
-(setq org-hide-leading-stars     t
-      org-odd-levels-only        t
-      inhibit-splash-screen      t
+(setq inhibit-splash-screen      t
       lpr-command                "xpp" ; Add support for gui printing in linux
       display-time-day-and-date  t
       display-time-24hr-format   t
       backup-directory-alist
       `((".*" . ,(expand-file-name
-                 (concat user-emacs-directory "backups"))))
+                  (concat user-emacs-directory "backups"))))
       vc-make-backup-files t
       save-interprogram-paste-before-kill t
       save-place-file (concat user-emacs-directory "places")
@@ -54,7 +52,6 @@
 ;; =============================================================
 (winner-mode 1)
 
-
 ;; =============================================================
 ;; Color Theme
 ;; =============================================================
@@ -69,23 +66,19 @@
 
 (dark)
 
-;; (custom-theme-set-faces
-;;  'solarized-light
-;;  `(comint-highlight-prompt ((t (:foreground "#268bd2"))))
-;;  `(font-lock-keyword-face ((((class color) (min-colors 89)) (:foreground "#859900" :weight bold)))))
-
 ;; =============================================================
 ;; Evil Mode
 ;; =============================================================
 
-(eval-after-load "init"
-  ;; Evil (the version I'm using) is finicky about the existance of
-  ;; the following variables before it's loaded, and evil as a whole
-  ;; must be loaded only after everything else has been loaded.
-  '(progn
-     (setq evil-want-C-i-jump nil)
-     (setq evil-want-C-u-scroll t)
-     (require 'evil)
-     (evil-mode 1)))
+
+(add-hook 'after-init-hook
+          (lambda ()
+            ;; Evil (the version I'm using) is finicky about the existance of
+            ;; the following variables before it's loaded, and evil as a whole
+            ;; must be loaded only after everything else has been loaded.
+            (setq evil-want-C-i-jump nil)
+            (setq evil-want-C-u-scroll t)
+            (require 'evil)
+            (evil-mode 1)))
 
 (provide 'setup-theme)

@@ -1,8 +1,7 @@
 
-(require 'setup-package)
-
 (require 'ido)
-(require 'flx-ido)
+(require-package 'flx-ido)
+(require-package 'ido-vertical-mode)
 
 (add-hook 'ido-setup-hook
           (lambda ()

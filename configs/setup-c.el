@@ -1,7 +1,5 @@
 
-(require 'setup-package)
-(require 'setup-dash)
-(require 'dash)
+(require-package 'smart-tabs-mode)
 
 (add-hook 'c-mode-hook (lambda () (abbrev-mode -1)))
 

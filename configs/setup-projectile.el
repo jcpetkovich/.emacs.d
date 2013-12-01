@@ -1,9 +1,24 @@
 
-(require 'setup-package)
+(require-package 'projectile)
+
 (projectile-global-mode)
-(defalias 'ack 'ack-and-a-half)
-(defalias 'ack-same 'ack-and-a-half-same)
-(defalias 'ack-find-file 'ack-and-a-half-find-file)
-(defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
+
+(defmacro project-specifics (name &rest body)
+  (declare (indent 1))
+  `(progn
+     (add-hook 'find-file-hook
+               (lambda ()
+                 (when (string-match-p ,name (buffer-file-name))
+                   ,@body)))
+     (add-hook 'dired-after-readin-hook
+               (lambda ()
+                 (when (string-match-p ,name (dired-current-directory))
+                   ,@body)))))
+
+(project-specifics ".emacs.d"
+  (setq ffip-find-options
+        (ffip--create-exclude-find-options
+         '("site-lisp"
+           "elpa"))))
 
 (provide 'setup-projectile)

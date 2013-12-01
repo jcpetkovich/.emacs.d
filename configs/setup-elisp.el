@@ -1,6 +1,5 @@
 
-(require 'setup-dash)
-(require 'dash)
+(require-package 'elisp-slime-nav)
 
 (--each '(emacs-lisp-mode-hook ielm-mode-hook)
   (add-hook it 'turn-on-elisp-slime-nav-mode))

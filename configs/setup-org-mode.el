@@ -1,9 +1,13 @@
 
+(require-package 'org)
 (require 'org)
-(setq org-agenda-files (quote ("/home/jcp/mobileorg")))
-(setq org-archive-location "~/org/archive.org::* Finished Tasks")
-(setq org-mobile-directory "~/mobileorg/webdav")
-(setq org-directory "~/mobileorg")
+
+(setq org-hide-leading-stars  t)
+(setq org-odd-levels-only     t)
+(setq org-agenda-files        `(,(expand-file-name "~/mobileorg")))
+(setq org-archive-location    "~/org/archive.org::* Finished Tasks")
+(setq org-mobile-directory    "~/mobileorg/webdav")
+(setq org-directory           "~/mobileorg")
 
 (setq remember-annotation-functions '(org-remember-annotation))
 (setq remember-handler-functions '(org-remember-handler))
@@ -43,18 +47,18 @@
 (eval-after-load "evil"
   '(progn
      (evil-declare-key 'normal org-mode-map
-                       (kbd "\C-c\/") 'org-sparse-tree)
+       (kbd "\C-c\/") 'org-sparse-tree)
 
      (mapcar (lambda (evil-state)
                (evil-declare-key evil-state org-mode-map
-                                 (kbd "C-M-l") 'org-metaright
-                                 (kbd "C-M-h") 'org-metaleft
-                                 (kbd "C-M-k") 'org-metaup
-                                 (kbd "C-M-j") 'org-metadown
-                                 (kbd "C-M-S-l") 'org-shiftmetaright
-                                 (kbd "C-M-S-h") 'org-shiftmetaleft
-                                 (kbd "C-M-S-k") 'org-shiftmetaup
-                                 (kbd "C-M-S-j") 'org-shiftmetadown))
+                 (kbd "C-M-l") 'org-metaright
+                 (kbd "C-M-h") 'org-metaleft
+                 (kbd "C-M-k") 'org-metaup
+                 (kbd "C-M-j") 'org-metadown
+                 (kbd "C-M-S-l") 'org-shiftmetaright
+                 (kbd "C-M-S-h") 'org-shiftmetaleft
+                 (kbd "C-M-S-k") 'org-shiftmetaup
+                 (kbd "C-M-S-j") 'org-shiftmetadown))
              '(normal insert))))
 
 (provide 'setup-org-mode)

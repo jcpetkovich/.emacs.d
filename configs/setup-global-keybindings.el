@@ -1,9 +1,4 @@
 
-;;; Setup required packages
-(require 'setup-s)
-(require 'setup-dash)
-(require 'setup-smart-forward)
-
 ;;; Load additional defuns
 (require 'misc-defuns)
 (require 'buffer-defuns)

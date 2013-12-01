@@ -1,10 +1,9 @@
 (require 'dired)
-(require 'setup-package)
-(require 'setup-dash)
-(require 'dash)
 
 ;; Make dired less verbose
+(require-package 'dired-details)
 (require 'dired-details)
+
 (setq-default dired-details-hidden-string "--- ")
 (dired-details-install)
 

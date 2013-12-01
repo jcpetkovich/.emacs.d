@@ -1,5 +1,8 @@
 
-(require 'setup-flymake)
+(require-package 'jedi)
+(require-package 'ein)
+(require-package 'flycheck)
+
 (add-to-list 'load-path "~/.emacs.d/site-lisp/flymake-python-pyflakes")
 
 (require 'flymake-python-pyflakes)
@@ -17,6 +20,10 @@
               '(progn (dolist (mode '(normal insert))
                         (evil-declare-key mode jedi-mode-map
                           (kbd "M-.") 'jedi:goto-definition
-                          (kbd "M-,") 'jedi:goto-definition-pop-marker))))))
+                          (kbd "M-,") 'jedi:goto-definition-pop-marker))
+                      (setq ffip-find-options
+                            (ffip--create-exclude-find-options
+                             '("dev-python")))))))
+
 
 (provide 'setup-python)

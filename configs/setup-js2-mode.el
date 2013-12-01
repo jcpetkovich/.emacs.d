@@ -1,9 +1,8 @@
 ;;; setup-js2-mode.el --- tweak js2 settings -*- lexical-binding: t; -*-
 
-(require 'setup-s)
 (require 'setup-multiple-cursors)
 (require 'js2r-defuns)
-(require 'nodejs-repl)
+(require-package 'nodejs-repl)
 
 ;;; js2-mode
 (add-to-list 'load-path "~/.emacs.d/site-lisp/js2-mode/")
