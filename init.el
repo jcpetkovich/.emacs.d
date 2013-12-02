@@ -26,7 +26,8 @@
 (condition-case err
     (progn
       (require 'dash)
-      (require 's))
+      (require 's)
+      (dash-enable-font-lock))
   (error
    (message "Error: %s" (error-message-string err))
    (message "Error: Could not load core deps, did you run: git submodule update --init --recursive")))

@@ -6,8 +6,8 @@
 
 (eval-after-load "evil"
   '(progn
-     (--each (list 'normal 'insert)
-	     (evil-declare-key it emacs-lisp-mode-map
-			       (kbd "M-.") 'elisp-slime-nav-find-elisp-thing-at-point))))
+     (--each '(normal insert)
+       (evil-declare-key it emacs-lisp-mode-map
+         (kbd "M-.") 'elisp-slime-nav-find-elisp-thing-at-point))))
 
 (provide 'setup-elisp)

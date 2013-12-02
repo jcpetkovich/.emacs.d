@@ -15,32 +15,31 @@
 
      (define-key evil-insert-state-map (kbd "C-w") 'backward-kill-word)
 
-     (mapcar (lambda (state)
-               (evil-declare-key state global-map
-                 (kbd "C-a") 'shrink-whitespace
-                 (kbd "M-a") 'grow-whitespace-around
-                 (kbd "C-M-a") 'shrink-whitespace-around
-                 (kbd "C-n") 'evil-next-line
-                 (kbd "C-p") 'evil-previous-line
-                 (kbd "C-l") 'copy-to-register
-                 (kbd "C-+") 'increment-register
-                 (kbd "<f6>") 'browse-kill-ring
-                 (kbd "C-M-<backspace>") 'paredit-backward-delete
-                 (kbd "<f7>") 'compile
-                 (kbd "<f8>") 'recompile))
-             '(normal insert))
+     (--each '(normal insert)
+       (evil-declare-key it global-map
+         (kbd "C-a") 'shrink-whitespace
+         (kbd "M-a") 'grow-whitespace-around
+         (kbd "C-M-a") 'shrink-whitespace-around
+         (kbd "C-n") 'evil-next-line
+         (kbd "C-p") 'evil-previous-line
+         (kbd "C-l") 'copy-to-register
+         (kbd "C-+") 'increment-register
+         (kbd "<f6>") 'browse-kill-ring
+         (kbd "C-M-<backspace>") 'paredit-backward-delete
+         (kbd "<f7>") 'compile
+         (kbd "<f8>") 'recompile))
 
-     (dolist (mode '(normal visual motion))
-       (evil-declare-key mode global-map
+     (--each '(normal visual motion)
+       (evil-declare-key it global-map
          (kbd "zu") 'universal-argument))
 
-     (dolist (mode '(normal visual))
-       (evil-declare-key mode global-map
+     (--each '(normal visual)
+       (evil-declare-key it global-map
          (kbd "+") 'next-line-with-meat
          (kbd "_") 'previous-line-with-meat))
 
-     (dolist (mode '(normal visual))
-       (evil-declare-key mode dired-mode-map
+     (--each '(normal visual)
+       (evil-declare-key it dired-mode-map
          (kbd "+") 'dired-create-directory))
 
      (evil-declare-key (quote normal) view-mode-map

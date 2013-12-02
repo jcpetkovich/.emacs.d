@@ -41,8 +41,9 @@
                                     (flyspell-mode 1)))
 
 (eval-after-load "evil"
-  '(progn (dolist (mode (list 'mu4e-view-mode 'mu4e-headers-mode))
-            (add-to-list 'evil-motion-state-modes mode))
+  '(progn (-each '(mu4e-view-mode mu4e-headers-mode)
+                 (lambda (mode) 
+                   (add-to-list 'evil-motion-state-modes mode)))
           (add-to-list 'evil-emacs-state-modes 'mu4e-main-mode)
           (evil-declare-key 'motion mu4e-headers-mode-map
             (kbd "RET") 'mu4e-headers-view-message
@@ -53,8 +54,8 @@
             (kbd "i") 'mu4e-view-go-to-url
             (kbd "c") 'longlines-mode
             (kbd "|") 'mu4e-view-pipe)
-          (dolist (mode (list 'normal 'insert 'visual 'operator))
-            (evil-declare-key mode mu4e-compose-mode-map
+          (--each '(normal insert visual operator)
+            (evil-declare-key it mu4e-compose-mode-map
               (kbd "C-c C-s") 'message-dont-send))))
 
 (when (require 'mu4e nil :noerror)

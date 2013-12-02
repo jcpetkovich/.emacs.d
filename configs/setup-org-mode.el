@@ -49,16 +49,15 @@
      (evil-declare-key 'normal org-mode-map
        (kbd "\C-c\/") 'org-sparse-tree)
 
-     (mapcar (lambda (evil-state)
-               (evil-declare-key evil-state org-mode-map
-                 (kbd "C-M-l") 'org-metaright
-                 (kbd "C-M-h") 'org-metaleft
-                 (kbd "C-M-k") 'org-metaup
-                 (kbd "C-M-j") 'org-metadown
-                 (kbd "C-M-S-l") 'org-shiftmetaright
-                 (kbd "C-M-S-h") 'org-shiftmetaleft
-                 (kbd "C-M-S-k") 'org-shiftmetaup
-                 (kbd "C-M-S-j") 'org-shiftmetadown))
-             '(normal insert))))
+     (--each '(normal insert)
+       (evil-declare-key it org-mode-map
+         (kbd "C-M-l") 'org-metaright
+         (kbd "C-M-h") 'org-metaleft
+         (kbd "C-M-k") 'org-metaup
+         (kbd "C-M-j") 'org-metadown
+         (kbd "C-M-S-l") 'org-shiftmetaright
+         (kbd "C-M-S-h") 'org-shiftmetaleft
+         (kbd "C-M-S-k") 'org-shiftmetaup
+         (kbd "C-M-S-j") 'org-shiftmetadown))))
 
 (provide 'setup-org-mode)

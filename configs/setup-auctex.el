@@ -56,9 +56,10 @@ an item line."
   '(progn
      (evil-declare-key 'insert LaTeX-mode-map
        (kbd "<M-return>" ) 'LaTeX-insert-item)
-     (dolist (mode '(normal insert visual))
-       (evil-declare-key mode LaTeX-mode-map
-         (kbd "C-c C-f") 'LaTeX-find-matching-end
-         (kbd "C-c C-b") 'LaTeX-find-matching-begin))))
+     (-each '(normal insert visual)
+            (lambda (mode)
+              (evil-declare-key mode LaTeX-mode-map
+                (kbd "C-c C-f") 'LaTeX-find-matching-end
+                (kbd "C-c C-b") 'LaTeX-find-matching-begin)))))
 
 (provide 'setup-auctex)

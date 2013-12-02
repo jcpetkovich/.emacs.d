@@ -22,9 +22,8 @@
 
 (add-hook 'scheme-mode-hook (paren-face-add-support scheme-font-lock-keywords-2))
 
-(dolist (for-mode '(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook))
-  (add-hook for-mode
-            (paren-face-add-support lisp-font-lock-keywords-2)))
+(--each '(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook)
+  (add-hook it (paren-face-add-support lisp-font-lock-keywords-2)))
 
 (add-hook 'clojure-mode-hook (paren-face-add-support clojure-font-lock-keywords))
 

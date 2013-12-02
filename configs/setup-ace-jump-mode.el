@@ -8,8 +8,8 @@
 
 (eval-after-load "evil"
   '(progn
-     (dolist (mode '(normal visual movement))
-       (evil-declare-key mode global-map
+     (--each '(normal visual movement)
+       (evil-declare-key it global-map
          (kbd "SPC") 'evil-ace-jump-word-mode
          (kbd "C-SPC") 'evil-ace-jump-line-mode))))
 
