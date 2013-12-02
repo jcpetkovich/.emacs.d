@@ -55,7 +55,10 @@ file instead of revert."
            (find-file file)
          (ido-find-file)))
 
-;;; Edit should be mapped to something smarter than evil's default
-     (evil-ex-define-cmd "e[dit]" 'evil-ido-find-file)))
+     ;; Edit should be mapped to something smarter than evil's default
+     (evil-ex-define-cmd "e[dit]" 'evil-ido-find-file)
+     
+     ;; I prefer looking for symbols rather than words.
+     (defalias 'evil-find-word 'evil-find-symbol)))
 
 (provide 'setup-evil)
