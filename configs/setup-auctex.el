@@ -7,6 +7,14 @@
 
 (setq LaTeX-command-style '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)")))
 
+(eval-after-load "latex"
+  '(progn
+     (push '("zathura" "zathura -s -x \"emacsclient --no-wait +%%{line} %%{input}\" %s.pdf")
+           TeX-view-program-list)
+     (push '(output-pdf "zathura")
+           TeX-view-program-selection)))
+
+
 (defun check-item-entry ()
   "This function is meant to be used as advice for the
 `LaTeX-insert-item' function. The purpose behind this is to delete
