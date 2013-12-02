@@ -8,7 +8,7 @@
 (--each '("*.tex" "*.bib")
   (push it ffip-patterns))
 
-(global-set-key (kbd "C-x o") 'find-file-in-project)
+(global-set-key (kbd "C-x C-o") 'find-file-in-project)
 
 ;; Use full project path for ffip
 (defun ffip-project-files ()
