@@ -2,45 +2,32 @@
 
 This is my emacs configuration.
 
-Packages which are not linked in by site-lisp as submodules:
+Packages which are not installed by `package.el`, or installed as
+submodules:
 
-- ac-slime
-- ess
-- org
-- paredit
-- pymacs
-- python-mode
 - slime
-- slime-js
-- slime-repl
 - mu4e
 - ghc-mod
-- auctex
+- jedi
 
-These packages are best installed from either the elpa or the local
-package manager. Unmodified, the configuration will automatically
-install everything but ghc-mod, pymacs, and mu4e. All three of these
-packages include things that need to go in your $PATH, which means
-generally it makes more sense to use your system's package manager to
-install them. For gentoo this just requires:
+These packages are best installed by the local package manager. All of
+these packages include non-elisp portions, which are inconvenient to
+handle through `package.el`. For gentoo you can install these by doing
+the following:
 
-    emerge --autounmask-write ghc-mod mu pymacs
+    emerge --autounmask-write slime mu ghc-mod jedi
 
 If you don't want these particluar packages, you may ignore them, as
 the configuration will run without them.
 
-Setting up this config for your own use could be done by running the
-following:
+Setting up this config for your own use is fairly simple:
 
-    cd
-    git clone https://github.com/jcpetkovich/.emacs.d.git && cd .emacs.d
-    git submodule --init --recursive
-    cd ~/.emacs.d/site-lisp/haskell-mode && make
-    cd ~/.emacs.d/site-lisp/magit && make
-    emacs # will install various packages the first time
+    cd $HOME
+    git clone https://github.com/jcpetkovich/.emacs.d.git
+    cd .emacs.d
+    git submodule update --init --recursive
+    make
 
-Unfortunately it is necessary to run make in the haskell-mode
-directory in order to use it as a package.
-
-You may also desire to compile all site-lisp packages. This can be
-done with a `M-0 M-x byte-recompile-directory ~/.emacs.d/site-lisp`.
+This will install several packages using `package.el`, and compile the
+majority of the elisp files present to bytecode, with some exceptions
+where it makes sense.
