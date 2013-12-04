@@ -54,6 +54,12 @@
     "Use Emacs grep facility instead of calling external grep."
     (eshell-grep "rgrep" args t)))
 
+(defun eshell/clear ()
+  "04Dec2001 - sailor, to clear the eshell buffer."
+  (interactive)
+  (let ((inhibit-read-only t))
+    (erase-buffer)))
+
 ;;;###autoload
 (defun eshell/extract (file)
   (let ((command (some (lambda (x)
@@ -114,5 +120,7 @@ directory."
         (eshell-send-input))
       (end-of-buffer)
       (pop-to-buffer buffer))))
+
+(defalias 'esh 'esk-eshell-in-dir)
 
 (provide 'setup-eshell)
