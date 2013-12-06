@@ -6,4 +6,4 @@
                        ("table" "\\begin\\{table\\}\n  \\caption\\{\\label\\{tab:${1:label}\\}${2:caption}\\}\n  \\begin\\{center\\}\n\\begin\\{tabular\\}\\{${3:tablespec}\\}\n$0\n\\end\\{tabular\\}\n  \\end\\{center\\}\n\\end\\{table\\}" "tabular" nil nil nil nil nil nil)))
 
 
-;;; Do not edit! File generated at Wed Dec  4 17:14:29 2013
+;;; Do not edit! File generated at Fri Dec  6 16:13:43 2013

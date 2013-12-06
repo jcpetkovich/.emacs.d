@@ -4,7 +4,7 @@
 
 ;;; Default `ac-yasnippet-candidates' is real broke just do nothing
 ;;; instead
-(defun ac-yasnippet-candidates () '())
+;; (defun ac-yasnippet-candidates () '())
 
 (ac-config-default)
 
