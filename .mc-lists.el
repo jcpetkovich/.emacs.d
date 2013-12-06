@@ -47,11 +47,15 @@
         org-kill-line
         org-return-indent
         org-self-insert-command
+        orgtbl-self-insert-command
         paredit-doublequote
+        paredit-forward
         paredit-forward-barf-sexp
         paredit-forward-delete
         paredit-forward-kill-word
+        paredit-forward-slurp-sexp
         paredit-kill
+        paredit-open-round
         python-indent-dedent-line-backspace
         python-indent-electric-colon
         reindent-then-newline-and-indent

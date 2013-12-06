@@ -16,8 +16,11 @@
 (ido-vertical-mode 1)
 (ido-everywhere 1)
 (flx-ido-mode 1)
-;; disable ido faces to see flx highlights.
+;;; disable ido faces to see flx highlights.
 (setq ido-use-faces nil)
 
-(provide 'setup-ido-mode)
+;;; Raise file/buffer right where I ask for it please
+(setq ido-default-file-method 'selected-window)
+(setq ido-default-buffer-method 'selected-window)
 
+(provide 'setup-ido-mode)

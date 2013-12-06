@@ -17,15 +17,17 @@
 
 ;;; Emacs config specifics
 (project-specifics ".emacs.d"
-  (setq ffip-find-options
-        (ffip--create-exclude-find-options
-         '("site-lisp"
-           "elpa"))))
+  (ffip-local-excludes
+   "site-lisp"
+   "elpa"))
 
 ;;; Datamill specifics
 (project-specifics "projects/eval-lab"
-  (setq ffip-find-options
-        (ffip--create-exclude-find-options
-         '("dev-python"))))
+  (ffip-local-excludes
+   "dev-python"
+   "packages"
+   "master/datamill_website/migrations")
+  (ffip-local-patterns
+   "*.bib" "*.tex" "*.html" "*.org" "*.md" "*.py" "*.js" "*.sh"))
 
 (provide 'setup-projectile)

@@ -1,9 +1,11 @@
 
-(add-to-list 'load-path "~/.emacs.d/site-lisp/auto-complete")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/auto-complete/lib/popup")
-
-(require 'auto-complete)
+(require-package 'auto-complete)
 (require 'auto-complete-config)
+
+;;; Default `ac-yasnippet-candidates' is real broke just do nothing
+;;; instead
+(defun ac-yasnippet-candidates () '())
+
 (ac-config-default)
 
 ;;; I want autocomplete everywhere
@@ -18,13 +20,6 @@
 (add-hook 'flyspell-mode-hook
           (lambda ()
             (ac-flyspell-workaround)))
-
-(setq-default ac-sources
-              '(ac-source-abbrev
-                ac-source-dictionary
-                ac-source-words-in-same-mode-buffers
-                ac-source-yasnippet))
-
 
 ;;; Make sure autocomplete doesn't interfere with yasnippet.
 (setq yas-before-expand-snippet-hook (lambda () (auto-complete-mode -1)))

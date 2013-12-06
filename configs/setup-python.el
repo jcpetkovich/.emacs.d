@@ -12,10 +12,11 @@
 (setq jedi:setup-keys t)
 (setq jedi:complete-on-dot t)
 
-(eval-after-load "evil"
-  '(progn (--each '(normal insert)
-            (evil-declare-key it jedi-mode-map
-              (kbd "M-.") 'jedi:goto-definition
-              (kbd "M-,") 'jedi:goto-definition-pop-marker))))
+(add-hook 'python-mode-hook
+	  (lambda () 
+	    (--each '(normal insert)
+		    (evil-declare-key it jedi-mode-map
+				      (kbd "M-.") 'jedi:goto-definition
+				      (kbd "M-,") 'jedi:goto-definition-pop-marker))))
 
 (provide 'setup-python)

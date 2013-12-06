@@ -7,4 +7,4 @@
                        ("tc" "(ns `(snippet--clojure-namespace-from-buffer-file-name)`\n  (:use [`(snippet--clojure-namespace-under-test)`])\n  (:use [clojure.test]))\n\ntt$0" "testcase" nil nil nil nil nil nil)))
 
 
-;;; Do not edit! File generated at Sat Nov 30 19:14:07 2013
+;;; Do not edit! File generated at Wed Dec  4 17:14:29 2013

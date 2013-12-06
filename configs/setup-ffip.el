@@ -5,7 +5,7 @@
 (setq ffip-limit 4096)
 
 ;;; Extra files to look for.
-(--each '("*.tex" "*.bib")
+(--each '("*.tex" "*.bib" "*.markdown" "*.less" "*.css")
   (push it ffip-patterns))
 
 (global-set-key (kbd "C-x C-o") 'find-file-in-project)
