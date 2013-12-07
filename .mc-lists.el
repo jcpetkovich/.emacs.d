@@ -40,6 +40,7 @@
         jedi:dot-complete
         js2-insert-and-indent
         markdown-dedent-or-delete
+        markdown-exdent-or-delete
         message-beginning-of-line
         org-beginning-of-line
         org-end-of-line
@@ -47,6 +48,7 @@
         org-kill-line
         org-return-indent
         org-self-insert-command
+        orgtbl-hijacker-command-102
         orgtbl-self-insert-command
         paredit-doublequote
         paredit-forward
@@ -64,11 +66,14 @@
         snakeify-current-word
         sp--self-insert-command
         sp-backward-delete-char
+        sp-backward-kill-word
+        sp-backward-sexp
         sp-forward-barf-sexp
         sp-forward-sexp
         sp-forward-slurp-sexp
         sp-kill-hybrid-sexp
         sp-kill-word
+        transpose-sexps
         yas-expand
         ))
 

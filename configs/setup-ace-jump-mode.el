@@ -1,7 +1,5 @@
 
-(add-to-list 'load-path "~/.emacs.d/site-lisp/ace-jump-mode")
-
-(require 'ace-jump-mode)
+(require-package 'ace-jump-mode)
 
 (autoload 'ace-jump-mode "ace-jump-mode" "Emacs quick move minor mode" t)
 (autoload 'ace-jump-mode-pop-mark "ace-jump-mode" "Emacs quick move minor mode" t)

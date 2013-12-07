@@ -1,6 +1,4 @@
 
-(add-to-list 'load-path "~/.emacs.d/site-lisp/magit")
-
-(require 'magit)
+(require-package 'magit)
 
 (provide 'setup-magit)

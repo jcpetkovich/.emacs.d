@@ -5,4 +5,4 @@
                      '(("srcl" "source_local <- function(fname){\n    argv <- commandArgs(trailingOnly = FALSE)\n    base_dir <- dirname(substring(argv[grep(\"--file=\", argv)], 8))\n    if (length(base_dir)) { source(paste(base_dir, fname, sep=\"/\")) }\n    else {cat(\"ERROR: Could not source, running in a repl.\\n\")}\n}" "srcl" nil nil nil nil nil nil)))
 
 
-;;; Do not edit! File generated at Fri Dec  6 16:13:43 2013
+;;; Do not edit! File generated at Sat Dec  7 13:57:02 2013

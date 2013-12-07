@@ -6,7 +6,7 @@
 
 (eval-after-load "rcirc"
   '(progn (require 'rcirc-color)
-          (require 'rcirc-notify)))
+	  (require 'rcirc-notify)))
 
 ;; =============================================================
 ;; Config

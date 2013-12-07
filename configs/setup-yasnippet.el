@@ -4,7 +4,7 @@
 (require-package 'buster-snippets)
 
 (yas-global-mode 1)
-(global-set-key (kbd "C-`") 'yas/insert-snippet)
+(global-set-key (kbd "C-x y") 'yas/insert-snippet)
 
 ;;; Sometimes with certain more complex snippets, evil can choke
 ;;; trying to get back to normal-mode
