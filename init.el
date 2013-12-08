@@ -15,13 +15,19 @@
 (add-to-list 'load-path ini-configs-directory)
 (add-to-list 'load-path ini-defuns-directory)
 
+
+;; =============================================================
+;; Load package.el functions, now we can install things
+;; =============================================================
+(require 'package-defuns)
+
 ;; =============================================================
 ;; Essential dependencies
 ;; =============================================================
 
 ;;; `s' and `dash' are required by most other config files.
-(add-to-list 'load-path "~/.emacs.d/site-lisp/dash")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/s")
+(require-package 'dash)
+(require-package 's)
 
 (condition-case err
     (progn
@@ -33,17 +39,11 @@
    (message "Error: Could not load core deps, did you run: git submodule update --init --recursive")))
 
 ;; =============================================================
-;; Load package.el functions
-;; =============================================================
-(require 'package-defuns)
-
-;; =============================================================
 ;; Alright, let's get this started!
 ;; =============================================================
 (defvar ini-loaded '())
 
 (defun load-with-message (filespec)
-  (message (concat "Loading " filespec))
   (load filespec)
   (push filespec ini-loaded))
 
