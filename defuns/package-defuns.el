@@ -1,6 +1,5 @@
 
 (require 'package)
-(require 'dash)
 
 (defvar gnu '("gnu" . "http://elpa.gnu.org/packages/"))
 (defvar melpa '("melpa" . "http://melpa.milkbox.net/packages/"))
@@ -8,12 +7,6 @@
 (add-to-list 'package-archives melpa)
 
 (package-initialize)
-
-(defun packages-install (packages)
-  (--each packages
-    (when (not (package-installed-p name))
-      (package-install name)))
-  (delete-other-windows))
 
 (defun require-package (package &optional min-version no-refresh)
   "Install given PACKAGE, optionally requiring MIN-VERSION.
