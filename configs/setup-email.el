@@ -42,7 +42,7 @@
 
 (eval-after-load "evil"
   '(progn (-each '(mu4e-view-mode mu4e-headers-mode)
-                 (lambda (mode) 
+                 (lambda (mode)
                    (add-to-list 'evil-motion-state-modes mode)))
           (add-to-list 'evil-emacs-state-modes 'mu4e-main-mode)
           (evil-declare-key 'motion mu4e-headers-mode-map
@@ -63,6 +63,10 @@
   (define-key global-map (kbd "<f5>") 'mu4e-update-index)
 
   (setq mu4e-html2text-command "html2text -nobs -width 1000")
+  (setq mu4e-view-show-images t)
+  (when (fboundp 'imagemagick-register-types)
+    (imagemagick-register-types))
+
   (setq mu4e-maildir "~/Maildir")
 
   (setq smtpmail-queue-mail  nil  ;; start in non-queuing mode

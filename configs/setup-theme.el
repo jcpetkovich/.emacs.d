@@ -73,7 +73,8 @@
                                  " AC" " Ref" " OrgTbl" " Doc" " Ind"))
 
 (--each '(("^~/jc-public/projects/" ":Proj:")
-          ("^~/src/linux-trees/" ":Linux:"))
+          ("^~/src/linux-trees/" ":Linux:")
+          ("^~/jc-public/projects/eval-lab/" ":DataMill:"))
   (push it sml/replacer-regexp-list))
 
 ;; =============================================================
