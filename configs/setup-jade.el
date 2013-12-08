@@ -1,7 +1,7 @@
 
-(add-to-list 'load-path "~/.emacs.d/site-lisp/jade-mode")
-(require 'sws-mode)
-(require 'jade-mode)    
+(require-package 'jade-mode)
+(require-package 'sws-mode)
+
 (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
 (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 

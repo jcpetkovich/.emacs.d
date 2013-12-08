@@ -4,7 +4,6 @@
 ;;; Use my patched ruby-mode
 (add-to-list 'load-path "~/.emacs.d/site-lisp/inf-ruby-bond")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/ruby-mode")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/flymake-ruby")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/yari")
 
 ;;; Rsense
@@ -17,10 +16,8 @@
             (lambda ()
               (define-key ruby-mode-map (kbd "M-<tab>") 'ac-complete-rsense))))
 
-(require 'setup-flymake)
 (require 'ruby-mode)
 (require 'inf-ruby-bond)
-(require 'flymake-ruby)
 
 (autoload 'yari "yari" "Emacs interface to ri documentation" t)
 
@@ -42,7 +39,6 @@
           (lambda ()
             (define-key nxhtml-mode-map  (kbd "\C-c\C-r") 'open-ruby-section)))
 
-(add-hook 'ruby-mode-hook 'flymake-ruby-load)
 (add-hook 'ruby-mode-hook 'auto-complete-mode)
 
 (add-hook 'ruby-mode-hook

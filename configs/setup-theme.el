@@ -11,8 +11,8 @@
 
 (setq inhibit-splash-screen      t
       lpr-command                "xpp" ; Add support for gui printing in linux
-      display-time-day-and-date  t
-      display-time-24hr-format   t
+      display-time-day-and-date  nil
+      display-time-24hr-format   nil
       backup-directory-alist
       `((".*" . ,(expand-file-name
                   (concat user-emacs-directory "backups"))))
@@ -65,6 +65,16 @@
   (load-theme 'solarized-light t))
 
 (dark)
+
+(require-package 'smart-mode-line)
+(sml/setup)
+
+(setq-default sml/hidden-modes '(" SliNav" " yas" " ElDoc" " Undo-Tree"
+                                 " AC" " Ref" " OrgTbl" " Doc" " Ind"))
+
+(--each '(("^~/jc-public/projects/" ":Proj:")
+          ("^~/src/linux-trees/" ":Linux:"))
+  (push it sml/replacer-regexp-list))
 
 ;; =============================================================
 ;; Evil Mode

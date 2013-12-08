@@ -1,9 +1,14 @@
 
 (require-package 'paredit)
 (require-package 'smartparens)
+(require-package 'diminish)
 
-(autoload 'paredit-mode "paredit"
-  "Minor mode for pseudo-structurally editing Lisp code." t)
+(require 'paredit)
+(require 'smartparens-config)
+
+(diminish 'paredit-mode "p()")
+(diminish 'smartparens-mode "s()")
+
 (let ((turn-on-paredit-mode (lambda () (paredit-mode 1))))
   ;; some hooks: lisp-mode-hook and scheme-mode-hook are recommended
   ;; in the paredit source code
@@ -12,12 +17,8 @@
   (add-hook 'emacs-lisp-mode-hook turn-on-paredit-mode)
   (add-hook 'slime-mode-hook turn-on-paredit-mode))
 
-
 (defadvice paredit-close-round (after paredit-close-and-indent activate)
   (cleanup-buffer))
-
-
-(require 'smartparens-config)
 
 ;;; Laying paredit bindings on top of the smartparents one, not very
 ;;; pretty but this includes all the functions that I want to use.

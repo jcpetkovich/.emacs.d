@@ -19,13 +19,7 @@
           (lambda ()
             (condition-case err
                 (progn
-                  (ghc-init)
-                  (defun ghc-save-buffer ()
-                    (interactive)
-                    (if (buffer-modified-p)
-                        (call-interactively 'save-buffer))
-                    (flymake-start-syntax-check)))
-
+                  (ghc-init))
               (error
                (message "ghc-mod not installed, install it with your system's package manager!")))))
 

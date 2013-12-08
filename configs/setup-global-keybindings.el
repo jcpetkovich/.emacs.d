@@ -6,6 +6,11 @@
 (require 'file-defuns)
 (require 'my-defuns)
 
+;;; Load packages
+(require-package 'expand-region)
+(require-package 'smart-forward)
+(require 'smart-forward)
+
 ;; =============================================================
 ;; All options for standard keybindings go in here
 ;; =============================================================
@@ -40,6 +45,7 @@
 (global-set-key (kbd "C-ä") 'magit-status)
 (global-set-key (kbd "C-c o") 'occur)
 (global-set-key (kbd "<f4>") 'mu4e)
+(global-set-key (kbd "C-=") 'er/expand-region)
 
 ;; =============================================================
 ;;; Neat stuff from Magnars
