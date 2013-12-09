@@ -24,9 +24,9 @@
 ;;; pretty but this includes all the functions that I want to use.
 (sp-use-smartparens-bindings)
 (sp-use-paredit-bindings)
-(setq sp-autoescape-string-quote nil)
-(setq sp-autoskip-closing-pair 'always)
-(setq sp-cancel-autoskip-on-backward-movement nil)
+(setq-default sp-autoescape-string-quote nil)
+(setq-default sp-autoskip-closing-pair 'always)
+(setq-default sp-cancel-autoskip-on-backward-movement nil)
 
 (--each '(css-mode-hook
           markdown-mode-hook
