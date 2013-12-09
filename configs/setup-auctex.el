@@ -1,5 +1,9 @@
 
 (require-package 'auctex)
+(require-package 'diminish)
+
+(require 'flyspell)
+(diminish 'flyspell-mode " FS")
 
 (add-hook 'LaTeX-mode-hook 'TeX-PDF-mode)
 (add-hook 'LaTeX-mode-hook 'flyspell-mode)

@@ -82,5 +82,6 @@
         dired-do-flagged-delete
         handle-switch-frame
         move-cursor-previous-pane
+        orgtbl-hijacker-command-105
         revert-buffer
         ))
