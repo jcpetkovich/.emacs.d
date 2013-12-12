@@ -25,9 +25,9 @@ Setting up this config for your own use is fairly simple:
     cd $HOME
     git clone https://github.com/jcpetkovich/.emacs.d.git
     cd .emacs.d
-    git submodule update --init --recursive
     make
 
-This will install several packages using `package.el`, and compile the
-majority of the elisp files present to bytecode, with some exceptions
-where it makes sense.
+This will pull in any submodules that are included in `site-lisp`, and
+install several packages using `package.el`. This will also compile
+the majority of the elisp files present to bytecode, with some
+exceptions where it makes sense.
