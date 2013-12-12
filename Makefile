@@ -2,7 +2,7 @@
 CC = emacs
 CFLAGS = -Q -L . 
 
-all: rebuildall
+all: update_submodules rebuildall
 
 # Just build everything and delete what makes sense, it's a hell of a
 # lot faster than doing each file individually, and leaves the file
@@ -13,9 +13,12 @@ rebuildall:
 	rm custom.elc
 	find configs snippets -type f -name "*.elc" -delete
 
+update_submodules:
+	git submodule update --init --recursive
+
 clean:
 	rm -rf elpa
 	find . -name "*.elc" -delete
 
 
-.PHONY: all rebuildall clean
+.PHONY: all rebuildall clean update_submodules
