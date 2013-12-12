@@ -1,13 +1,10 @@
 
 (require-package 'paredit)
 (require-package 'smartparens)
-(require-package 'diminish)
 
 (require 'paredit)
 (require 'smartparens-config)
 
-(diminish 'paredit-mode "p()")
-(diminish 'smartparens-mode "s()")
 
 (let ((turn-on-paredit-mode (lambda () (paredit-mode 1))))
   ;; some hooks: lisp-mode-hook and scheme-mode-hook are recommended
