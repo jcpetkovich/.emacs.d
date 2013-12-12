@@ -56,21 +56,32 @@
 ;; Color Theme
 ;; =============================================================
 
+(require-package 'smart-mode-line)
+
 (defun dark ()
   (interactive)
-  (load-theme 'solarized-dark t))
+  (load-theme 'solarized-dark t)
+  (sml/setup)
+  (sml/apply-theme 'dark)
+  (eval-after-load "ace-jump-mode"
+    '(progn
+       (set-face-foreground 'ace-jump-face-background "gray40")
+       (set-face-foreground 'ace-jump-face-foreground "white"))))
 
 (defun light ()
   (interactive)
-  (load-theme 'solarized-light t))
+  (load-theme 'solarized-light t)
+  (sml/setup)
+  (sml/apply-theme 'light)
+  (eval-after-load "ace-jump-mode"
+    '(progn
+       (set-face-foreground 'ace-jump-face-background "gray80")
+       (set-face-foreground 'ace-jump-face-foreground "red"))))
 
 (dark)
 
-(require-package 'smart-mode-line)
-(sml/setup)
-
 (setq-default sml/hidden-modes '(" SliNav" " yas" " ElDoc" " Undo-Tree"
-                                 " AC" " Ref" " OrgTbl" " Doc" " Ind"))
+                                 " AC" " Ref" " OrgTbl" " Doc" " Ind" " WSC"))
 
 (--each '(("^~/jc-public/projects/" ":Proj:")
           ("^~/src/linux-trees/" ":Linux:")
