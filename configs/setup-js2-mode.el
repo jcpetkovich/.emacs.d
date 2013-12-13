@@ -43,6 +43,8 @@
 (setq-default js2-strict-missing-semi-warning nil)
 (setq-default js2-strict-trailing-comma-warning t) ;; jshint does not warn about this now for some reason
 
+(add-hook 'js2-mode-hook (lambda () (flycheck-mode 1)))
+
 (require 'js2-refactor)
 (js2r-add-keybindings-with-prefix "C-c C-m")
 
@@ -51,17 +53,17 @@
 
 ;; Set up wrapping of pairs, with the possiblity of semicolons thrown into the mix
 
-(defun js2r--setup-wrapping-pair (open close semicolonp)
-  (define-key js2-mode-map (kbd open) (λ (js2r--self-insert-wrapping open close semicolonp)))
+(defun js2r--setup-wrapping-pair (open close)
+  (define-key js2-mode-map (read-kbd-macro open) (λ (js2r--self-insert-wrapping open close)))
   (unless (s-equals? open close)
-    (define-key js2-mode-map (kbd close) (λ (js2r--self-insert-closing open close)))))
+    (define-key js2-mode-map (read-kbd-macro close) (λ (js2r--self-insert-closing open close)))))
 
 (define-key js2-mode-map (kbd ";")
   (λ (if (looking-at ";")
          (forward-char)
        (funcall 'self-insert-command 1))))
 
-(defun js2r--self-insert-wrapping (open close semicolonp)
+(defun js2r--self-insert-wrapping (open close)
   (cond
    ((use-region-p)
     (save-excursion
@@ -116,19 +118,20 @@
 
 (defun js2r--something-to-close-statement ()
   (cond
+   ((and (js2-block-node-p (js2-node-at-point)) (looking-at " *}")) ";")
    ((not (eolp)) "")
    ((js2-array-node-p (js2-node-at-point)) (js2r--comma-unless "]"))
-   ((js2-object-node-p (js2-node-at-point)) (concat ": " (js2r--comma-unless "}")))
+   ((js2-object-node-p (js2-node-at-point)) (js2r--comma-unless "}"))
    ((js2-object-prop-node-p (js2-node-at-point)) (js2r--comma-unless "}"))
    ((js2-call-node-p (js2-node-at-point)) (js2r--comma-unless ")"))
    ((js2r--does-not-need-semi) "")
    (:else ";")))
 
-(js2r--setup-wrapping-pair "(" ")" 'js2r--needs-semi)
-(js2r--setup-wrapping-pair "{" "}" 'js2r--needs-semi)
-(js2r--setup-wrapping-pair "[" "]" 'eolp)
-(js2r--setup-wrapping-pair "\"" "\"" 'eolp)
-(js2r--setup-wrapping-pair "'" "'" 'eolp)
+(js2r--setup-wrapping-pair "(" ")")
+(js2r--setup-wrapping-pair "{" "}")
+(js2r--setup-wrapping-pair "[" "]")
+(js2r--setup-wrapping-pair "\"" "\"")
+(js2r--setup-wrapping-pair "'" "'")
 
 ;;
 
@@ -159,8 +162,8 @@
 ;; js2-mode steals TAB, let's steal it back for yasnippet
 (defun js2-tab-properly ()
   (interactive)
-  (let ((yas/fallback-behavior 'return-nil))
-    (unless (yas/expand)
+  (let ((yas-fallback-behavior 'return-nil))
+    (unless (yas-expand)
       (indent-for-tab-command)
       (if (looking-back "^\s*")
           (back-to-indentation)))))
@@ -204,6 +207,17 @@
 
 (require 'json)
 
+;; Tern.JS
+(add-to-list 'load-path (expand-file-name "tern/emacs" site-lisp-dir))
+(autoload 'tern-mode "tern.el" nil t)
+;;(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+(eval-after-load 'auto-complete
+  '(eval-after-load 'tern
+     '(progn
+        (require 'tern-auto-complete)
+        (tern-ac-setup))))
+
+
 (defun my-aget (key map)
   (cdr (assoc key map)))
 
@@ -211,7 +225,7 @@
   (let* ((settings (with-temp-buffer
                      (insert-file-literally file)
                      (javascript-mode)
-                     (let (kill-ring) (kill-comment 1000))
+                     (let (kill-ring kill-ring-yank-pointer) (kill-comment 1000))
                      (->> (buffer-substring (point-min) (point-max))
                        (s-trim)
                        (s-chop-prefix "module.exports = ")
