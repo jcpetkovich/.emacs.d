@@ -39,6 +39,6 @@
    "master/datamill_website/migrations")
   (ffip-local-patterns
    "*.bib" "*.tex" "*.html" "*.org" "*.md" "*.py" "*.js" "*.sh")
-  (setq (make-local-variable 'whitespace-cleanup-mode-only-if-initially-clean) nil))
+  (set (make-local-variable 'whitespace-cleanup-mode-only-if-initially-clean) nil))
 
 (provide 'setup-projectile)
