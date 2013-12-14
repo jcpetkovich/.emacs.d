@@ -9,3 +9,5 @@
                (lambda ()
                  (when (string-match-p ,name (dired-current-directory))
                    ,@body)))))
+
+(provide 'project-defuns)

@@ -319,3 +319,5 @@ region-end is used."
   (while (not (looking-at "}"))
     (join-line -1))
   (back-to-indentation))
+
+(provide 'editing-defuns)

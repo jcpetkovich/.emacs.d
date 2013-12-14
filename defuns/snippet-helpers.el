@@ -50,3 +50,5 @@
              (string= prefix (substring s 0 pos)))
         (substring s pos)
       s)))
+
+(provide 'snippet-helpers)

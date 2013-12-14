@@ -57,6 +57,7 @@
         paredit-forward-kill-word
         paredit-forward-slurp-sexp
         paredit-kill
+        paredit-newline
         paredit-open-round
         python-indent-dedent-line-backspace
         python-indent-electric-colon
