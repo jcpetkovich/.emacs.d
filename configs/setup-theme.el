@@ -1,7 +1,7 @@
+
 ;; =============================================================
 ;; Load Path
 ;; =============================================================
-(add-to-list 'custom-theme-load-path (concat user-emacs-directory "site-lisp/emacs-color-theme-solarized"))
 
 ;; =============================================================
 ;; Custom Set Variables
@@ -57,10 +57,11 @@
 ;; =============================================================
 
 (require-package 'smart-mode-line)
+(require-package 'moe-theme)
 
 (defun dark ()
   (interactive)
-  (load-theme 'solarized-dark t)
+  (load-theme 'moe-dark t)
   (sml/setup)
   (sml/apply-theme 'dark)
   (eval-after-load "ace-jump-mode"
@@ -70,7 +71,7 @@
 
 (defun light ()
   (interactive)
-  (load-theme 'solarized-light t)
+  (load-theme 'moe-light t)
   (sml/setup)
   (sml/apply-theme 'light)
   (eval-after-load "ace-jump-mode"
