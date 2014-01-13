@@ -153,7 +153,7 @@ lines to just one."
     (save-excursion
       (beginning-of-line 0)
       (when (line-has-meat-p)
-        (setq content-above 1)))
+        (setq content-above t)))
 
     (save-excursion
       (beginning-of-line 2)
@@ -164,11 +164,11 @@ lines to just one."
       (if (not content-above)
           (progn
             (beginning-of-line 0)
-            (shrink-whitespace))
+            (kill-line))
         (if (not content-below)
             (progn
               (beginning-of-line 2)
-              (shrink-whitespace)))))))
+              (kill-line)))))))
 
 (eval-after-load "evil"
   '(progn
