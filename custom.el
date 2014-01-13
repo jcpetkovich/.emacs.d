@@ -35,7 +35,7 @@
  '(make-backup-files nil)
  '(org-completion-use-ido t)
  '(org-default-notes-file "~/org/captured.org")
- '(org-file-apps (quote ((auto-mode . emacs) ("\\.mm\\'" . default) ("\\.x?html?\\'" . default) ("\\.pdf\\'" . "evince %s"))))
+ '(org-file-apps (quote ((auto-mode . emacs) ("\\.mm\\'" . default) ("\\.x?html?\\'" . default) ("\\.pdf\\'" . "zathura %s"))))
  '(org-hide-leading-stars t)
  '(org-modules (quote (org-bbdb org-bibtex org-docview org-gnus org-info org-jsinfo org-habit org-irc org-mew org-mhe org-rmail org-vm org-wl org-w3m)))
  '(org-src-fontify-natively t)
@@ -69,7 +69,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ace-jump-face-foreground ((t (:foreground "white"))))
  '(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)) (:background "Black"))) t))
 
 (put 'narrow-to-region 'disabled nil)
