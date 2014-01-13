@@ -1,6 +1,10 @@
 ;;; setup-js2-mode.el --- tweak js2 settings -*- lexical-binding: t; -*-
 
 (require 'setup-multiple-cursors)
+;;; The following is required as a result of js2r requiring org, we
+;;; want to include setup-org before it can do this, so that it
+;;; properly uses the org version from elpa.
+(require 'setup-org-mode)
 (require 'js2r-defuns)
 (require-package 'nodejs-repl)
 
