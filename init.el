@@ -15,7 +15,6 @@
 (add-to-list 'load-path ini-configs-directory)
 (add-to-list 'load-path ini-defuns-directory)
 
-
 ;; =============================================================
 ;; Load package.el functions, now we can install things
 ;; =============================================================

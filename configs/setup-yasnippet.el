@@ -2,6 +2,7 @@
 
 (require-package 'yasnippet)
 (require-package 'buster-snippets)
+(require 'snippet-helpers)
 
 (yas-global-mode 1)
 (global-set-key (kbd "C-x y") 'yas/insert-snippet)
