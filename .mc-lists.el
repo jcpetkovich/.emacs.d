@@ -6,6 +6,7 @@
         LaTeX-babel-insert-hyphen
         TeX-insert-backslash
         TeX-newline
+        c-electric-semi&comma
         cperl-electric-backspace
         cperl-electric-brace
         cperl-electric-lbrace
@@ -43,6 +44,7 @@
         markdown-exdent-or-delete
         message-beginning-of-line
         org-beginning-of-line
+        org-ctrl-c-ctrl-c
         org-end-of-line
         org-force-self-insert
         org-kill-line
@@ -69,6 +71,7 @@
         sp-backward-delete-char
         sp-backward-kill-word
         sp-backward-sexp
+        sp-down-sexp
         sp-forward-barf-sexp
         sp-forward-sexp
         sp-forward-slurp-sexp
@@ -83,6 +86,7 @@
         dired-do-flagged-delete
         handle-switch-frame
         move-cursor-previous-pane
+        org-update-statistics-cookies
         orgtbl-hijacker-command-105
         revert-buffer
         ))
