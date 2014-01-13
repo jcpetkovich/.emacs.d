@@ -19,7 +19,8 @@
       vc-make-backup-files t
       save-interprogram-paste-before-kill t
       save-place-file (concat user-emacs-directory "places")
-      mouse-wheel-scroll-amount '(1))
+      mouse-wheel-scroll-amount '(1)
+      show-paren-style 'expression)
 
 ;;; Make the frame title easy to search for among open windows
 (setq frame-title-format '("emacs: " buffer-file-name "%f" ("%b")))
@@ -63,21 +64,13 @@
   (interactive)
   (load-theme 'moe-dark t)
   (sml/setup)
-  (sml/apply-theme 'dark)
-  (eval-after-load "ace-jump-mode"
-    '(progn
-       (set-face-foreground 'ace-jump-face-background "gray40")
-       (set-face-foreground 'ace-jump-face-foreground "white"))))
+  (sml/apply-theme 'dark))
 
 (defun light ()
   (interactive)
   (load-theme 'moe-light t)
   (sml/setup)
-  (sml/apply-theme 'light)
-  (eval-after-load "ace-jump-mode"
-    '(progn
-       (set-face-foreground 'ace-jump-face-background "gray80")
-       (set-face-foreground 'ace-jump-face-foreground "red"))))
+  (sml/apply-theme 'light))
 
 (dark)
 
