@@ -4,6 +4,9 @@
 (require-package 'buster-snippets)
 (require 'snippet-helpers)
 
+;;; Use only my own snippets
+(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+
 (yas-global-mode 1)
 (global-set-key (kbd "C-x y") 'yas/insert-snippet)
 
