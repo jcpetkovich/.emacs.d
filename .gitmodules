@@ -82,3 +82,6 @@
 [submodule "site-lisp/emacs-color-theme-solarized"]
 	path = site-lisp/emacs-color-theme-solarized
 	url = https://github.com/mwolson/emacs-color-theme-solarized.git
+[submodule "site-lisp/rcirc-notify"]
+	path = site-lisp/rcirc-notify
+	url = https://github.com/nicferrier/rcirc-notify.git

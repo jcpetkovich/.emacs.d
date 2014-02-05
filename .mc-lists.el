@@ -5,6 +5,7 @@
       '(
         LaTeX-babel-insert-hyphen
         TeX-insert-backslash
+        TeX-insert-sub-or-superscript
         TeX-newline
         c-electric-semi&comma
         cperl-electric-backspace
