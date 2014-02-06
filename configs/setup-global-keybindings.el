@@ -19,7 +19,7 @@
 ;; Set nice keybindings (combined with evil)
 ;; =============================================================
 (windmove-default-keybindings)
-(global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
+;; (global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
 (global-set-key (kbd "C-x C-S-b") 'ibuffer)
 (global-set-key (kbd "M-;") 'comment-dwim)
 (global-set-key (kbd "M-p") 'windmove-up)
@@ -41,7 +41,7 @@
 (global-set-key (kbd "C-c e") 'fc-eval-and-replace)
 (global-set-key (kbd "C-c C-r") 'eval-region)
 (global-set-key (kbd "C-.") 'ecb-goto-window-directories)
-(global-set-key (kbd "C-x C-i") 'ido-imenu)
+;; (global-set-key (kbd "C-x C-i") 'ido-imenu)
 (global-set-key (kbd "C-ä") 'magit-status)
 (global-set-key (kbd "C-c o") 'occur)
 (global-set-key (kbd "<f4>") 'mu4e)
