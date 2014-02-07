@@ -10,7 +10,7 @@
 
 ;;; I want autocomplete everywhere
 (setq global-auto-complete-mode t
-      ac-timer 0.01)
+      ac-timer nil)
 
 (dolist (mode '(org-mode text-mode slime-repl-mode LaTeX-mode
                          csv-mode haskell-mode literate-haskell-mode
