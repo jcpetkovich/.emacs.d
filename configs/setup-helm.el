@@ -51,7 +51,6 @@
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-c f") 'helm-recentf)
 (global-set-key (kbd "C-c <SPC>") 'helm-all-mark-rings)
-;; (global-set-key (kbd "C-x r b") 'helm-bookmark-ext)
 (global-set-key (kbd "C-h r") 'helm-info-emacs)
 (global-set-key (kbd "C-:") 'helm-eval-expression-with-eldoc)
 (global-set-key (kbd "C-h d") 'helm-info-at-point)
@@ -60,25 +59,43 @@
 (global-set-key (kbd "C-x C-d") 'helm-browse-project)
 (global-set-key (kbd "<f1>") 'helm-resume)
 (global-set-key (kbd "C-h C-f") 'helm-apropos)
+
+;;; occur
+(define-key global-map [remap occur] 'helm-occur)
+(global-set-key (kbd "C-c m o") 'helm-multi-occur)
+(define-key isearch-mode-map (kbd "C-c m o") 'helm-multi-occur-from-isearch)
+(define-key isearch-mode-map (kbd "C-c o") 'helm-occur-from-isearch)
+
 ;; (global-set-key (kbd "<f5> s") 'helm-find)
 (define-key global-map [remap jump-to-register] 'helm-register)
 (define-key global-map [remap list-buffers] 'helm-buffers-list)
-;; (define-key global-map [remap dabbrev-expand] 'helm-dabbrev)
 (define-key global-map [remap find-tag] 'helm-etags-select)
 ;; (define-key shell-mode-map (kbd "M-p") 'helm-comint-input-ring)
 
-;;; helm-ls-git bindings
+;; =============================================================
+;; helm-ls-git bindings
+;; =============================================================
 (global-set-key (kbd "C-x C-o") 'helm-ls-git-ls)
+
+;; =============================================================
+;; helm-swoop bindings
+;; =============================================================
+(global-set-key (kbd "M-i") 'helm-swoop)
+(global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
+(global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
+(global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
+
 
 ;;; Muscle memory
 (-each all-helm-maps
   (lambda (map)
     (define-key map [remap helm-yank-text-at-point] 'backward-kill-word)))
 
-(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
-(define-key helm-map (kbd "C-M-i") 'helm-select-action)
+(define-key helm-find-files-map (kbd "C-w") 'helm-find-files-down-one-level)
 
-;;; Additional helm actions
+;; =============================================================
+;; Additional helm actions
+;; =============================================================
 (helm-add-action-to-source
  "Magit status"
  #'(lambda (_candidate)
