@@ -35,8 +35,15 @@
                             helm-grep-map
                             helm-pdfgrep-map
                             helm-generic-files-map))
+;; =============================================================
+;; helm bindings
+;; =============================================================
 
-;;; helm bindings
+;;; I don't like C-z, it hurts my hands
+(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+(define-key helm-map (kbd "C-M-i") 'helm-select-action)
+
+;;; Use helm alternatives
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
