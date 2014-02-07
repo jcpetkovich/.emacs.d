@@ -1,11 +1,18 @@
 ;; setup-helm.el - configure helm and related packages
 
+;;; Pull in global keybindings first
+(require 'setup-global-keybindings)
+
 (require-package 'helm)
 (require-package 'helm-ls-git)
+(require-package 'helm-swoop)
 (require 'helm-config)
+(require 'helm-ls-git)
 (helm-mode 1)
 
-;;; helm settings
+;; =============================================================
+;; helm settings
+;; =============================================================
 (setq helm-adaptative-mode t
       helm-quick-update t
       helm-idle-delay 0.01
