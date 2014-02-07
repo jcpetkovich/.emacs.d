@@ -6,7 +6,7 @@
 (require-package 'helm)
 (require-package 'helm-ls-git)
 (require-package 'helm-swoop)
-(require-package 'helm-for-R)
+(require-package 'helm-R)
 (require 'helm-config)
 (require 'helm-ls-git)
 (helm-mode 1)

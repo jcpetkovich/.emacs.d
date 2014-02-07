@@ -9,7 +9,8 @@
 (ac-config-default)
 
 ;;; I want autocomplete everywhere
-(setq global-auto-complete-mode t)
+(setq global-auto-complete-mode t
+      ac-timer 0.01)
 
 (dolist (mode '(org-mode text-mode slime-repl-mode LaTeX-mode
                          csv-mode haskell-mode literate-haskell-mode
