@@ -20,7 +20,14 @@
       helm-m-occur-idle-delay 0.01
       helm-ls-git-status-command 'magit-status
       helm-candidate-number-limit 200
-      helm-ff-search-library-in-sexp t)
+      helm-ff-search-library-in-sexp t
+      helm-ff-auto-update-initial-value t)
+
+;; (setq helm-ff-skip-boring-files t)
+
+;; (-each (list "\\.pyc$")
+;;   (lambda (regexp)
+;;     (add-to-list 'helm-boring-file-regexp-list regexp)))
 
 (defvar all-helm-maps (list helm-map
                             helm-etags-map
