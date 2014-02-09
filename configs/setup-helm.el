@@ -7,9 +7,12 @@
 (require-package 'helm-ls-git)
 (require-package 'helm-swoop)
 (require-package 'helm-R)
+(require-package 'helm-descbinds)
+
 (require 'helm-config)
 (require 'helm-ls-git)
 (helm-mode 1)
+(helm-descbinds-mode 1)
 
 ;; =============================================================
 ;; helm settings
@@ -102,3 +105,5 @@
  #'(lambda (_candidate)
      (with-helm-buffer (magit-status helm-default-directory)))
  helm-source-ls-git 1)
+
+(provide 'setup-helm)
