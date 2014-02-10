@@ -46,6 +46,7 @@
 (global-set-key (kbd "C-c o") 'occur)
 (global-set-key (kbd "<f4>") 'mu4e)
 (global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C-M-=") 'er/contract-region)
 
 ;; =============================================================
 ;;; Neat stuff from Magnars
