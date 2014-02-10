@@ -1,5 +1,5 @@
 
-(require-package 'org '(20140113))
+(require-package 'org '(20140203))
 (require 'org)
 
 (setq org-hide-leading-stars  t)
