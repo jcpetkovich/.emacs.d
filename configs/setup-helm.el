@@ -14,6 +14,24 @@
 (helm-mode 1)
 (helm-descbinds-mode 1)
 
+;;; Enable recentf for helm-buffers-list
+(recentf-mode 1)
+
+;; =============================================================
+;; ido settings for helm
+;; =============================================================
+
+(setq ido-use-virtual-buffers t)
+
+;; =============================================================
+;; make helm a little smaller
+;; =============================================================
+
+(require-package 'popwin)
+(require 'popwin)
+(popwin-mode 1)
+(setq popwin:special-display-config '(("^\*helm.+\*$" :regexp t :height 25)))
+
 ;; =============================================================
 ;; helm settings
 ;; =============================================================
