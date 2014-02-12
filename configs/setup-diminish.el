@@ -23,3 +23,5 @@ lexical-binding to create a proper closure."
   '(diminish 'flyspell-mode " FS"))
 
 (diminish-major 'emacs-lisp-mode "Elisp")
+
+(provide 'setup-diminish)
