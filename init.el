@@ -40,14 +40,14 @@
 ;; =============================================================
 ;; Alright, let's get this started!
 ;; =============================================================
-(defvar ini-loaded '())
 
-(defun load-with-message (filespec)
-  (load filespec)
-  (push filespec ini-loaded))
+;;; `org-mode' needs to be setup first
+(require 'setup-org-mode)
 
-(--each (directory-files ini-configs-directory nil "^setup.*\\.el$")
-  (load-with-message it))
+;;; require the rest of the config files!
+(-map (lambda (filespec)
+        (require (intern (s-chop-suffix ".el" filespec))))
+      (directory-files ini-configs-directory nil "^setup.*\\.el$"))
 
 (when (file-exists-p my-notes-file)
   (find-file my-notes-file))
