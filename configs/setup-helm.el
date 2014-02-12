@@ -14,8 +14,11 @@
 (helm-mode 1)
 (helm-descbinds-mode 1)
 
-;;; Enable recentf for helm-buffers-list
+;; =============================================================
+;; Enable recentf for helm-buffers-list
+;; =============================================================
 (recentf-mode 1)
+(setq recentf-max-saved-items 200)
 
 ;; =============================================================
 ;; ido settings for helm
