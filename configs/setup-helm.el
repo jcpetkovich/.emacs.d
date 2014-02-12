@@ -43,7 +43,26 @@
       helm-ls-git-status-command 'magit-status
       helm-candidate-number-limit 200
       helm-ff-search-library-in-sexp t
-      helm-ff-auto-update-initial-value t)
+      ;; helm-ff-auto-update-initial-value t
+      helm-ff-file-name-history-use-recentf t)
+
+(defun helm-grep-hack-types ()
+  "Return a list of known ack-grep types."
+  (with-temp-buffer
+    (call-process helm-ack-grep-executable nil t nil
+                  "--help-types")
+    (goto-char (point-min))
+    (cl-loop while (re-search-forward
+                    "^ *--\\(\\[no\\]\\)\\([^. ]+\\) *\\(.*\\)" nil t)
+             collect (cons (concat (match-string 2)
+                                   " [" (match-string 3) "]")
+                           (match-string 2))
+             collect (cons (concat "no" (match-string 2)
+                                   " [" (match-string 3) "]")
+                           (concat "no" (match-string 2))))))
+(setq helm-ack-grep-executable "ack")
+(setq helm-grep-default-command "ack -Hn --smart-case --nogroup --nocolour %e %p %f")
+(setq helm-grep-default-recurse-command "ack -H --smart-case --nogroup --nocolour %e %p %f")
 
 ;; (setq helm-ff-skip-boring-files t)
 
