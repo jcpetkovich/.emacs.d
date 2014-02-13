@@ -84,11 +84,13 @@
 (global-set-key (kbd "C-h r") 'helm-info-emacs)
 (global-set-key (kbd "C-:") 'helm-eval-expression-with-eldoc)
 (global-set-key (kbd "C-h d") 'helm-info-at-point)
+(global-set-key (kbd "C-h f") 'describe-function)
 (global-set-key (kbd "C-c g") 'helm-google-suggest)
 (global-set-key (kbd "M-g s") 'helm-do-grep)
 (global-set-key (kbd "C-x C-d") 'helm-browse-project)
 (global-set-key (kbd "<f1>") 'helm-resume)
 (global-set-key (kbd "C-h C-f") 'helm-apropos)
+(global-set-key (kbd "C-h a") 'helm-apropos)
 
 ;;; occur
 (define-key global-map [remap occur] 'helm-occur)
