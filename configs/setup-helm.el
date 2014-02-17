@@ -33,7 +33,7 @@
 (require-package 'popwin)
 (require 'popwin)
 (popwin-mode 1)
-(setq popwin:special-display-config '(("^\*helm.+\*$" :regexp t :height 25)))
+(setq popwin:special-display-config '(("^\*helm.+\*$" :regexp t :height 25 :stick t)))
 
 ;; =============================================================
 ;; helm settings
