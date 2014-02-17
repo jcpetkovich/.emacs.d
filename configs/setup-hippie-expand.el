@@ -18,5 +18,9 @@
                                             try-expand-line-all-buffers)))
     (hippie-expand nil)))
 
+(defadvice he-substitute-string (after he-paredit-fix activate)
+  "remove extra paren when expanding line in paredit"
+  (if (and paredit-mode (equal (substring str -1) ")"))
+      (progn (backward-delete-char 1) (forward-char))))
 
 (provide 'setup-hippie-expand)
