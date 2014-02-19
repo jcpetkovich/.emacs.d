@@ -2,6 +2,7 @@
 
 ;;; Pull in global keybindings first
 (require 'setup-global-keybindings)
+(require 'setup-popwin)
 
 (require-package 'helm)
 (require-package 'helm-ls-git)
@@ -30,10 +31,7 @@
 ;; make helm a little smaller
 ;; =============================================================
 
-(require-package 'popwin)
-(require 'popwin)
-(popwin-mode 1)
-(setq popwin:special-display-config '(("^\*helm.+\*$" :regexp t :height 25 :stick t)))
+(push '("^\*[Hh]elm.+\*$" :regexp t :height 25 :stick t)  popwin:special-display-config)
 
 ;; =============================================================
 ;; helm settings
