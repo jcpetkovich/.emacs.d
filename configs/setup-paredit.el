@@ -1,10 +1,8 @@
-
 (require-package 'paredit)
 (require-package 'smartparens)
 
 (require 'paredit)
 (require 'smartparens-config)
-
 
 (let ((turn-on-paredit-mode (lambda () (paredit-mode 1))))
   ;; some hooks: lisp-mode-hook and scheme-mode-hook are recommended
@@ -22,6 +20,10 @@
 (setq-default sp-autoescape-string-quote nil)
 (setq-default sp-autoskip-closing-pair 'always)
 (setq-default sp-cancel-autoskip-on-backward-movement nil)
+
+(eval-after-load "evil"
+  '(evil-declare-key 'insert paredit-mode-map
+     (kbd "C-k") 'paredit-kill))
 
 (--each '(css-mode-hook
           markdown-mode-hook
