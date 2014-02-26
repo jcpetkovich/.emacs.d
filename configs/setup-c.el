@@ -1,5 +1,11 @@
+;;; setup-c.el - C/C++ related configs
 
+(require 'setup-popwin)
 (require-package 'smart-tabs-mode)
+
+;;; cscope windows smaller please
+
+(push '("*cscope*" :height 25) popwin:special-display-config)
 
 (add-hook 'c-mode-hook (lambda () (abbrev-mode -1)))
 
