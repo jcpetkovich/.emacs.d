@@ -9,9 +9,7 @@ at all like the regular `diminish' function. It uses
 lexical-binding to create a proper closure."
 
   (let ((mode-hook (intern (s-concat (symbol-name mode) "-hook"))))
-    (message "Here is the new string: %s" new-string)
     (add-hook mode-hook (lambda () (setq mode-name new-string)))))
-
 
 (eval-after-load "paredit"
   '(diminish 'paredit-mode "p()"))
