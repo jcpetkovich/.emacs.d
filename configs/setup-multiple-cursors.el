@@ -4,6 +4,19 @@
 
 (defvar mc--default-cmds-to-run-once nil)
 
+
+;;; Strategy;
+;; Use these keys (colemak layout):
+
+;; | q | w | f | p |
+;; |---+---+---+---|
+;; | a | r | s | t |
+;; |---+---+---+---|
+;; | z | x | c | v |
+
+;; Use right alt as A, build bindings off A-C-
+
+
 (global-set-key (kbd "A-C-v A-C-v") 'mc/edit-ends-of-lines)
 
 (global-set-key (kbd "A-C-#") 'mc/insert-numbers)
