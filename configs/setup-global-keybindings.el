@@ -40,11 +40,12 @@
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 (global-set-key (kbd "C-c e") 'fc-eval-and-replace)
 (global-set-key (kbd "C-c C-r") 'eval-region)
-(global-set-key (kbd "C-.") 'ecb-goto-window-directories)
+(global-set-key (kbd "C-.") 'ac-start)
 ;; (global-set-key (kbd "C-x C-i") 'ido-imenu)
 (global-set-key (kbd "C-ä") 'magit-status)
 (global-set-key (kbd "C-c o") 'occur)
 (global-set-key (kbd "<f4>") 'mu4e)
+(global-set-key (kbd "<f2>") 'calc)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-M-=") 'er/contract-region)
 
