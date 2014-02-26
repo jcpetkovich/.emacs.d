@@ -2,15 +2,12 @@
 (require-package 'auto-complete)
 (require 'auto-complete-config)
 
-;;; Default `ac-yasnippet-candidates' is real broke just do nothing
-;;; instead
-;; (defun ac-yasnippet-candidates () '())
-
 (ac-config-default)
 
 ;;; I want autocomplete everywhere
 (setq global-auto-complete-mode t
-      ac-timer nil)
+      ac-show-menu-timer 0.1
+      ac-auto-show-menu t)
 
 (dolist (mode '(org-mode text-mode slime-repl-mode LaTeX-mode
                          csv-mode haskell-mode literate-haskell-mode
