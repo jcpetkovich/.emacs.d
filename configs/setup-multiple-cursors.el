@@ -1,7 +1,8 @@
+;;; setup-multiple-cursors.el - install/configure multiple cursors.
 
-(add-to-list 'load-path "~/.emacs.d/site-lisp/multiple-cursors/")
+(require-package 'multiple-cursors)
 
-(require 'multiple-cursors)
+(defvar mc--default-cmds-to-run-once nil)
 
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
