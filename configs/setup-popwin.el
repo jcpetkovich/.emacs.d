@@ -5,9 +5,7 @@
 (popwin-mode 1)
 
 (setq popwin:special-display-config '((help-mode :height 40)
-                                      ("^Calc: .*$" :regexp t :height 30)))
-
-
-
+                                      (completion-list-mode :height 30 :noselect t)
+                                      (compilation-mode :height 30 :noselect t)))
 
 (provide 'setup-popwin)
