@@ -16,6 +16,7 @@
      (require 'my-defuns)
 
      (define-key evil-insert-state-map (kbd "C-w") 'backward-kill-word)
+     (define-key evil-insert-state-map (kbd "C-k") 'kill-line)
 
      (--each '(normal insert)
        (evil-declare-key it global-map
