@@ -5,4 +5,4 @@
                      '(("post" "---\nlayout: post\ntitle: \"$1\"\ndate: `(substring (buffer-file-name-body) 0 10)` `(substring (current-time-string) 11 16)`\ncomments: true\n---\n{% img imgs /photos/`(substring (buffer-file-name-body) 0 10)`-`(substring (buffer-file-name-body) 11)`-1.jpg %}\n$0\n" "octopress-post" nil nil nil nil nil nil)))
 
 
-;;; Do not edit! File generated at Wed Jan 22 14:22:05 2014
+;;; Do not edit! File generated at Thu Feb 27 10:15:56 2014

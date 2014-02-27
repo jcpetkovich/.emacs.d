@@ -2,7 +2,9 @@
 ;;; Snippet definitions:
 ;;;
 (yas-define-snippets 'python-mode
-                     '(("pstderr" "print >> sys.stderr, \"$1\"" "pstderr" nil nil nil nil nil nil)))
+                     '(("def" "def ${1:name}($2):\n    $0" "def" nil nil nil nil nil nil)
+                       ("pstderr" "print >> sys.stderr, \"$1\"" "pstderr" nil nil nil nil nil nil)
+                       ("sub" "subprocess.${1:check_output}($2, shell=True)$0" "subprocess" nil nil nil nil nil nil)))
 
 
-;;; Do not edit! File generated at Wed Jan 22 14:22:05 2014
+;;; Do not edit! File generated at Thu Feb 27 10:15:56 2014
