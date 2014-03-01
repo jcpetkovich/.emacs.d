@@ -21,30 +21,30 @@
 
 (global-set-key (kbd "A-C-#") 'mc/insert-numbers)
 ;;; Next key -> A-C-t (p)
-;;  - `mc/markst-next-like-this`: Adds a cursor and region at the next part of the buffer forwards that matches the current region.
-(global-set-key (kbd "A-C-t") 'mc/markst-next-like-this)
-;;  - `mc/markst-next-word-like-this`: Like `mc/markst-next-like-this` but only for whole words.
-(global-set-key (kbd "A-C-S-t") 'mc/markst-next-word-like-this)
-;;  - `mc/markst-next-symbol-like-this`: Like `mc/markst-next-like-this` but only for whole symbols.
-(global-set-key (kbd "A-C-S-p") 'mc/markst-next-symbol-like-this)
+;;  - `mc/mark-next-like-this`: Adds a cursor and region at the next part of the buffer forwards that matches the current region.
+(global-set-key (kbd "A-C-t") 'mc/mark-next-like-this)
+;;  - `mc/mark-next-word-like-this`: Like `mc/mark-next-like-this` but only for whole words.
+(global-set-key (kbd "A-C-S-t") 'mc/mark-next-word-like-this)
+;;  - `mc/mark-next-symbol-like-this`: Like `mc/mark-next-like-this` but only for whole symbols.
+(global-set-key (kbd "A-C-S-p") 'mc/mark-next-symbol-like-this)
 
 ;;; Previous key -> A-C-s (f)
-;;  - `mc/markst-previous-like-this`: Adds a cursor and region at the next part of the buffer backwards that matches the current region.
-(global-set-key (kbd "A-C-s") 'mc/markst-previous-like-this)
-;;  - `mc/markst-previous-word-like-this`: Like `mc/markst-previous-like-this` but only for whole words.
-(global-set-key (kbd "A-C-S-s") 'mc/markst-previous-word-like-this)
-;;  - `mc/markst-previous-symbol-like-this`: Like `mc/markst-previous-like-this` but only for whole symbols.
-(global-set-key (kbd "A-C-S-f") 'mc/markst-previous-symbol-like-this)
+;;  - `mc/mark-previous-like-this`: Adds a cursor and region at the next part of the buffer backwards that matches the current region.
+(global-set-key (kbd "A-C-s") 'mc/mark-previous-like-this)
+;;  - `mc/mark-previous-word-like-this`: Like `mc/mark-previous-like-this` but only for whole words.
+(global-set-key (kbd "A-C-S-s") 'mc/mark-previous-word-like-this)
+;;  - `mc/mark-previous-symbol-like-this`: Like `mc/mark-previous-like-this` but only for whole symbols.
+(global-set-key (kbd "A-C-S-f") 'mc/mark-previous-symbol-like-this)
 
 ;; ### Mark many occurrences
 
 ;;; Mark all key -> A-C-a (q)
-;;  - `mc/markst-all-like-this`: Marks all parts of the buffer that matches the current region.
-(global-set-key (kbd "A-C-a") 'mc/markst-all-like-this)
-;;  - `mc/markst-all-words-like-this`: Like `mc/markst-all-like-this` but only for whole words.
-(global-set-key (kbd "A-C-S-a") 'mc/markst-all-words-like-this)
-;;  - `mc/markst-all-symbols-like-this`: Like `mc/markst-all-like-this` but only for whole symbols.
-(global-set-key (kbd "A-C-S-q") 'mc/markst-all-symbols-like-this)
+;;  - `mc/mark-all-like-this`: Marks all parts of the buffer that matches the current region.
+(global-set-key (kbd "A-C-a") 'mc/mark-all-like-this)
+;;  - `mc/mark-all-words-like-this`: Like `mc/mark-all-like-this` but only for whole words.
+(global-set-key (kbd "A-C-S-a") 'mc/mark-all-words-like-this)
+;;  - `mc/mark-all-symbols-like-this`: Like `mc/mark-all-like-this` but only for whole symbols.
+(global-set-key (kbd "A-C-S-q") 'mc/mark-all-symbols-like-this)
 
 ;;; Mark all limited by key -> A-C-r (w) (x)
 ;;  - `mc/mark-all-in-region`: Prompts for a string to match in the region, adding cursors to all of them.
