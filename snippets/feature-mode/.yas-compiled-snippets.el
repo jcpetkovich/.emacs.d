@@ -6,4 +6,4 @@
                        ("sc" "Scenario: $1\n  Given $0\n  When\n  Then" "scenario" nil nil nil nil nil nil)))
 
 
-;;; Do not edit! File generated at Thu Feb 27 10:15:56 2014
+;;; Do not edit! File generated at Wed Mar  5 13:45:50 2014

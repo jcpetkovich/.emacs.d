@@ -2,4 +2,4 @@
 # name : printf
 # contributor : joaotavora
 # --
-printf ("${1:%s}"${1:$(if (string-match "%" yas-text) "," "\);")}$2${1:$(if (string-match "%" yas-text) "\);" "")}
+printf("${1:%s}"${1:$(if (string-match "%" yas-text) ", " "\);")}$0${1:$(if (string-match "%" yas-text) "\);" "")}
