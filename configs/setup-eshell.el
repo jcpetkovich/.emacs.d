@@ -1,3 +1,4 @@
+;;; setup-eshell.el - setup eshell nicely
 
 (setq eshell-cmpl-cycle-completions nil
       eshell-save-history-on-exit t
@@ -122,5 +123,11 @@ directory."
       (pop-to-buffer buffer))))
 
 (defalias 'esh 'esk-eshell-in-dir)
+
+;;; Extra keybindings
+
+(add-hook 'eshell-mode-hook
+          (lambda ()
+            (define-key eshell-mode-map (kbd "C-c r") 'helm-eshell-history)))
 
 (provide 'setup-eshell)

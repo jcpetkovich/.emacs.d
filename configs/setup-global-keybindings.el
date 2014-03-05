@@ -116,7 +116,7 @@
             (define-key html-mode-map (kbd "M-s") 'other-window)))
 
 ;; =============================================================
-;; Custom Functions
+;; Advice for builtins
 ;; =============================================================
 
 (provide 'setup-global-keybindings)
