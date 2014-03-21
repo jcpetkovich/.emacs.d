@@ -112,7 +112,15 @@
 ;; =============================================================
 ;; helm-swoop bindings
 ;; =============================================================
-(global-set-key (kbd "M-i") 'helm-swoop)
+
+(defun helm-swoop-custom (arg)
+  "I don't want to have a query by default."
+  (interactive "P")
+  (if arg
+      (helm-swoop :$multiline nil)
+    (helm-swoop :$query "" :$multiline nil)))
+
+(global-set-key (kbd "M-i") 'helm-swoop-custom)
 (global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
 (global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
 (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
