@@ -129,17 +129,36 @@
 ;;; Muscle memory
 (-each all-helm-maps
   (lambda (map)
-    (define-key map [remap helm-yank-text-at-point] 'backward-kill-word)))
+    (define-key map (kbd "C-w") 'backward-kill-word)
+    (define-key map (kbd "M-w") 'helm-yank-text-at-point)))
 
 (define-key helm-find-files-map (kbd "C-w") 'helm-find-files-down-one-level)
 
 ;; =============================================================
-;; Additional helm actions
+;; Hack to swap order of sources in helm-ls-git
 ;; =============================================================
-(helm-add-action-to-source
- "Magit status"
- #'(lambda (_candidate)
-     (with-helm-buffer (magit-status helm-default-directory)))
- helm-source-ls-git 1)
+
+;;;###autoload
+(defun helm-ls-git-ls ()
+  (interactive)
+  (helm :sources '(helm-source-ls-git
+                   helm-source-ls-git-status)
+        :default-directory default-directory
+        :buffer "*helm lsgit*"))
+
+;; (defvar helm-source-example
+;;   '((name . "this example's cool extension")
+;;     (init . (lambda ()
+;;               (let ((candidates '("one" "two" "three")))
+;;                 (helm-init-candidates-in-buffer 'global candidates))))
+;;     (candidates-in-buffer)
+;;     (match . identity)
+;;     (action . (("Print that thing"
+;;                 . (lambda (candidate) (message "This was the candidate %s" candidate)))))))
+
+
+;; (defun helm-example ()
+;;   (interactive)
+;;   (helm-other-buffer 'helm-source-example "*Helm Example*"))
 
 (provide 'setup-helm)
