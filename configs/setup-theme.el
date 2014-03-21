@@ -11,8 +11,8 @@
       display-time-day-and-date  nil
       display-time-24hr-format   nil
       backup-directory-alist
-      `((".*" . ,(expand-file-name
-                  (concat user-emacs-directory "backups"))))
+      `(("." . ,(expand-file-name
+                 (concat user-emacs-directory "backups"))))
       vc-make-backup-files t
       save-interprogram-paste-before-kill t
       save-place-file (concat user-emacs-directory "places")
@@ -71,7 +71,8 @@
 (dark)
 
 (setq-default sml/hidden-modes '(" SliNav" " yas" " ElDoc" " Undo-Tree"
-                                 " AC" " Ref" " OrgTbl" " Doc" " Ind" " WSC"))
+                                 " AC" " Ref" " OrgTbl" " Doc" " Ind" " WSC"
+                                 " Projectile"))
 
 (--each '(("^~/jc-public/projects/" ":Proj:")
           ("^~/src/linux-trees/" ":Linux:")
@@ -87,6 +88,7 @@
                                        (match-string-no-properties 0)))))))
 
 (defun hexcolour-add-to-font-lock ()
+  (interactive)
   (font-lock-add-keywords nil hexcolour-keywords))
 
 ;; =============================================================
