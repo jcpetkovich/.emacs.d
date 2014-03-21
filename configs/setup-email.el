@@ -2,6 +2,13 @@
 ;; ALL MAIL RELATED OPTIONS IN HERE
 ;; =============================================================
 
+
+;; =============================================================
+;; More encryption!
+;; =============================================================
+
+(setq gnutls-min-prime-bits 2048)
+
 ;; =============================================================
 ;; Outgoing (this works if the authentication file exists)
 ;; =============================================================
@@ -42,8 +49,8 @@
 
 (eval-after-load "evil"
   '(progn (-each '(mu4e-view-mode mu4e-headers-mode)
-                 (lambda (mode)
-                   (add-to-list 'evil-motion-state-modes mode)))
+            (lambda (mode)
+              (add-to-list 'evil-motion-state-modes mode)))
           (add-to-list 'evil-emacs-state-modes 'mu4e-main-mode)
           (evil-declare-key 'motion mu4e-headers-mode-map
             (kbd "RET") 'mu4e-headers-view-message
@@ -62,8 +69,10 @@
 
   (define-key global-map (kbd "<f5>") 'mu4e-update-index)
 
-  (setq mu4e-html2text-command "html2text -nobs -width 1000")
-  (setq mu4e-view-show-images t)
+  (setq mu4e-html2text-command "html2text -nobs -width 1000"
+        mu4e-view-show-images t
+        mu4e-confirm-quit nil)
+
   (when (fboundp 'imagemagick-register-types)
     (imagemagick-register-types))
 
