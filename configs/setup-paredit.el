@@ -37,4 +37,8 @@
           sgml-mode-hook)
   (add-hook it 'turn-on-smartparens-strict-mode))
 
+;;; Have to force some modes, as they are based on comint-mode
+(--each '(inferior-ess-mode-hook)
+  (add-hook it 'smartparens-mode))
+
 (provide 'setup-paredit)
