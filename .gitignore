@@ -6,3 +6,6 @@ session.*
 ac-comphist.dat
 
 elpa
+
+eshell/history
+eshell/lastdir
