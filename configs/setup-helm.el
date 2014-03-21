@@ -19,7 +19,7 @@
 ;; Enable recentf for helm-buffers-list
 ;; =============================================================
 (recentf-mode 1)
-(setq recentf-max-saved-items 200)
+(setq recentf-max-saved-items 1000)
 
 ;; =============================================================
 ;; ido settings for helm
