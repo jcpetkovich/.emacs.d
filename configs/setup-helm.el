@@ -45,7 +45,9 @@
       helm-candidate-number-limit 200
       helm-ff-search-library-in-sexp t
       ;; helm-ff-auto-update-initial-value t
-      helm-ff-file-name-history-use-recentf t)
+      helm-ff-file-name-history-use-recentf t
+      helm-home-url "https://www.google.ca"
+      helm-follow-mode-persistent t)
 
 (setq helm-ack-grep-executable "ack")
 (setq helm-grep-default-command "ack -Hn --smart-case --nogroup --nocolour %e %p %f")
