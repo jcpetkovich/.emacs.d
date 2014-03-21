@@ -25,6 +25,7 @@
         dired-next-line
         dired-previous-line
         dired-unmark
+        ess-smart-S-assign
         ess-smart-comma
         ess-smart-underscore
         ess-yank
@@ -42,8 +43,12 @@
         evil-forward-word-end
         evil-insert
         evil-normal-state
+        evil-paste-after
+        evil-previous-line
+        evil-substitute
         fc-eval-and-replace
         fill-paragraph
+        helm-M-x
         jedi:dot-complete
         js2-insert-and-indent
         markdown-dedent-or-delete
@@ -72,9 +77,11 @@
         reindent-then-newline-and-indent
         sgml-slash
         sh-assignment
+        shrink-whitespace
         snakeify-current-word
         sp--self-insert-command
         sp-backward-delete-char
+        sp-backward-down-sexp
         sp-backward-kill-word
         sp-backward-sexp
         sp-delete-char
@@ -92,6 +99,8 @@
       '(
         describe-key
         dired-do-flagged-delete
+        eval-expression
+        evil-emacs-state
         handle-switch-frame
         helm-confirm-and-exit-minibuffer
         keyboard-escape-quit
