@@ -26,7 +26,7 @@
 ;;  - `mc/mark-next-word-like-this`: Like `mc/mark-next-like-this` but only for whole words.
 (global-set-key (kbd "A-C-S-t") 'mc/mark-next-word-like-this)
 ;;  - `mc/mark-next-symbol-like-this`: Like `mc/mark-next-like-this` but only for whole symbols.
-(global-set-key (kbd "A-C-S-p") 'mc/mark-next-symbol-like-this)
+(global-set-key (kbd "A-C-p") 'mc/mark-next-symbol-like-this)
 
 ;;; Previous key -> A-C-s (f)
 ;;  - `mc/mark-previous-like-this`: Adds a cursor and region at the next part of the buffer backwards that matches the current region.
@@ -34,7 +34,7 @@
 ;;  - `mc/mark-previous-word-like-this`: Like `mc/mark-previous-like-this` but only for whole words.
 (global-set-key (kbd "A-C-S-s") 'mc/mark-previous-word-like-this)
 ;;  - `mc/mark-previous-symbol-like-this`: Like `mc/mark-previous-like-this` but only for whole symbols.
-(global-set-key (kbd "A-C-S-f") 'mc/mark-previous-symbol-like-this)
+(global-set-key (kbd "A-C-f") 'mc/mark-previous-symbol-like-this)
 
 ;; ### Mark many occurrences
 
@@ -44,7 +44,7 @@
 ;;  - `mc/mark-all-words-like-this`: Like `mc/mark-all-like-this` but only for whole words.
 (global-set-key (kbd "A-C-S-a") 'mc/mark-all-words-like-this)
 ;;  - `mc/mark-all-symbols-like-this`: Like `mc/mark-all-like-this` but only for whole symbols.
-(global-set-key (kbd "A-C-S-q") 'mc/mark-all-symbols-like-this)
+(global-set-key (kbd "A-C-q") 'mc/mark-all-symbols-like-this)
 
 ;;; Mark all limited by key -> A-C-r (w) (x)
 ;;  - `mc/mark-all-in-region`: Prompts for a string to match in the region, adding cursors to all of them.
@@ -61,18 +61,29 @@
 (global-set-key (kbd "A-C-c") 'mc/mark-all-like-this-dwim)
 
 (defvar my-mc-evil-previous-state nil)
+(defvar my-mark-was-active nil)
 
 (defun my-mc-evil-switch-to-emacs-state ()
   (when (and (bound-and-true-p evil-mode)
-             (region-active-p)
              (not (memq evil-state '(insert emacs))))
+
+    ;; Save what state evil was in
     (setq my-mc-evil-previous-state evil-state)
+
+    ;; Save whether or not the region was active
+    (when (region-active-p)
+      (setq my-mark-was-active t))
+
     (let ((mark-before (mark))
           (point-before (point)))
 
+      ;; Use emacs state for evil in multiple cursors
       (evil-emacs-state 1)
-      (goto-char point-before)
-      (set-mark mark-before))))
+
+      ;; Only adjust region when it's active
+      (when (or my-mark-was-active (region-active-p))
+        (goto-char point-before)
+        (set-mark mark-before)))))
 
 (defun my-mc-evil-back-to-previous-state ()
   (when my-mc-evil-previous-state
@@ -81,7 +92,8 @@
           ((normal visual) (evil-force-normal-state))
           (t (message "Don't know how to handle previous state: %S"
                       my-mc-evil-previous-state)))
-      (setq my-mc-evil-previous-state nil))))
+      (setq my-mc-evil-previous-state nil)
+      (setq my-mark-was-active nil))))
 
 (add-hook 'multiple-cursors-mode-enabled-hook
           'my-mc-evil-switch-to-emacs-state)
