@@ -3,13 +3,17 @@
 
 (projectile-global-mode)
 
+;; =============================================================
+;; Projectile Settings
+;; =============================================================
+
+(setq projectile-completion-system 'default)
+
 ;;; Nicer mode-line
 
-(setq projectile-mode-line-lighter " @")
 (defun projectile-update-mode-line ()
   "Report project in mode-line."
-  (let* ((project-name (projectile-project-name))
-         (message (format "%s[%s]" projectile-mode-line-lighter project-name)))
+  (let* ((message " Projectile"))
     (setq projectile-mode-line message))
   (force-mode-line-update))
 
