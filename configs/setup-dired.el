@@ -3,9 +3,13 @@
 ;; Make dired less verbose
 (require-package 'dired-details)
 (require 'dired-details)
+(require 'setup-evil)
 
 (setq-default dired-details-hidden-string "--- ")
 (dired-details-install)
+
+(setq dired-guess-shell-alist-user
+      '(("\\.pdf\\'" "zathura ")))
 
 ;; Move files between split panes
 (setq dired-dwim-target t)
@@ -53,9 +57,7 @@
      (define-key wdired-mode-map (vector 'remap 'beginning-of-buffer) 'dired-back-to-top)
      (define-key wdired-mode-map (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)))
 
-(eval-after-load "evil"
-  '(progn
-     (evil-declare-key 'normal dired-mode-map
-       (kbd "n") 'evil-search-next)))
+(evil-declare-key 'normal dired-mode-map
+  (kbd "n") 'evil-search-next)
 
 (provide 'setup-dired)

@@ -1,5 +1,6 @@
 
 (require-package 'auctex)
+(require 'setup-evil)
 
 (add-hook 'LaTeX-mode-hook 'TeX-PDF-mode)
 (add-hook 'LaTeX-mode-hook 'flyspell-mode)
@@ -62,14 +63,12 @@ an item line."
     (beginning-of-line)
     (kill-line)))
 
-(eval-after-load "evil"
-  '(progn
-     (evil-declare-key 'insert LaTeX-mode-map
-       (kbd "<M-return>" ) 'LaTeX-insert-item)
-     (-each '(normal insert visual)
-            (lambda (mode)
-              (evil-declare-key mode LaTeX-mode-map
-                (kbd "C-c C-f") 'LaTeX-find-matching-end
-                (kbd "C-c C-b") 'LaTeX-find-matching-begin)))))
+(evil-declare-key 'insert LaTeX-mode-map
+  (kbd "<M-return>" ) 'LaTeX-insert-item)
+(-each '(normal insert visual)
+  (lambda (mode)
+    (evil-declare-key mode LaTeX-mode-map
+      (kbd "C-c C-f") 'LaTeX-find-matching-end
+      (kbd "C-c C-b") 'LaTeX-find-matching-begin)))
 
 (provide 'setup-auctex)

@@ -1,6 +1,7 @@
 
 (require-package 'org '(20140210))
 (require 'org)
+(require 'setup-evil)
 
 (setq org-hide-leading-stars  t)
 (setq org-odd-levels-only     t)
@@ -43,21 +44,19 @@
 (eval-after-load "auto-complete"
   '(add-hook 'org-mode-hook 'auto-complete-mode))
 
+;;; Some evil things
+(evil-declare-key 'normal org-mode-map
+  (kbd "\C-c\/") 'org-sparse-tree)
 
-(eval-after-load "evil"
-  '(progn
-     (evil-declare-key 'normal org-mode-map
-       (kbd "\C-c\/") 'org-sparse-tree)
-
-     (--each '(normal insert)
-       (evil-declare-key it org-mode-map
-         (kbd "C-M-l") 'org-metaright
-         (kbd "C-M-h") 'org-metaleft
-         (kbd "C-M-k") 'org-metaup
-         (kbd "C-M-j") 'org-metadown
-         (kbd "C-M-S-l") 'org-shiftmetaright
-         (kbd "C-M-S-h") 'org-shiftmetaleft
-         (kbd "C-M-S-k") 'org-shiftmetaup
-         (kbd "C-M-S-j") 'org-shiftmetadown))))
+(--each '(normal insert)
+  (evil-declare-key it org-mode-map
+    (kbd "C-M-l") 'org-metaright
+    (kbd "C-M-h") 'org-metaleft
+    (kbd "C-M-k") 'org-metaup
+    (kbd "C-M-j") 'org-metadown
+    (kbd "C-M-S-l") 'org-shiftmetaright
+    (kbd "C-M-S-h") 'org-shiftmetaleft
+    (kbd "C-M-S-k") 'org-shiftmetaup
+    (kbd "C-M-S-j") 'org-shiftmetadown))
 
 (provide 'setup-org-mode)

@@ -3,6 +3,7 @@
 (add-to-list 'load-path "~/.emacs.d/site-lisp/rcirc-notify")
 
 (require 'auth-source)
+(require 'setup-evil)
 
 (eval-after-load "rcirc"
   '(progn (require 'rcirc-color)
@@ -14,8 +15,7 @@
 ;; =============================================================
 
 ;;; Start in insert mode
-(eval-after-load "evil"
-  '(add-to-list 'evil-insert-state-modes 'rcirc-mode))
+(add-to-list 'evil-insert-state-modes 'rcirc-mode)
 
 ;; Get username and simple pass from authinfo.gpg
 (if (or (file-exists-p "~/.authinfo.gpg")

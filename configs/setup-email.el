@@ -2,6 +2,7 @@
 ;; ALL MAIL RELATED OPTIONS IN HERE
 ;; =============================================================
 
+(require 'setup-evil)
 
 ;; =============================================================
 ;; More encryption!
@@ -47,23 +48,22 @@
 (add-hook 'mu4e-compose-mode-hook (lambda ()
                                     (flyspell-mode 1)))
 
-(eval-after-load "evil"
-  '(progn (-each '(mu4e-view-mode mu4e-headers-mode)
-            (lambda (mode)
-              (add-to-list 'evil-motion-state-modes mode)))
-          (add-to-list 'evil-emacs-state-modes 'mu4e-main-mode)
-          (evil-declare-key 'motion mu4e-headers-mode-map
-            (kbd "RET") 'mu4e-headers-view-message
-            (kbd "/") 'mu4e-headers-search-narrow
-            (kbd "b") 'mu4e-headers-search-bookmark)
-          (evil-declare-key 'motion mu4e-view-mode-map
-            (kbd "o") 'mu4e-view-open-attachment
-            (kbd "i") 'mu4e-view-go-to-url
-            (kbd "c") 'longlines-mode
-            (kbd "|") 'mu4e-view-pipe)
-          (--each '(normal insert visual operator)
-            (evil-declare-key it mu4e-compose-mode-map
-              (kbd "C-c C-s") 'message-dont-send))))
+(-each '(mu4e-view-mode mu4e-headers-mode)
+  (lambda (mode)
+    (add-to-list 'evil-motion-state-modes mode)))
+(add-to-list 'evil-emacs-state-modes 'mu4e-main-mode)
+(evil-declare-key 'motion mu4e-headers-mode-map
+  (kbd "RET") 'mu4e-headers-view-message
+  (kbd "/") 'mu4e-headers-search-narrow
+  (kbd "b") 'mu4e-headers-search-bookmark)
+(evil-declare-key 'motion mu4e-view-mode-map
+  (kbd "o") 'mu4e-view-open-attachment
+  (kbd "i") 'mu4e-view-go-to-url
+  (kbd "c") 'longlines-mode
+  (kbd "|") 'mu4e-view-pipe)
+(--each '(normal insert visual operator)
+  (evil-declare-key it mu4e-compose-mode-map
+    (kbd "C-c C-s") 'message-dont-send))
 
 (when (require 'mu4e nil :noerror)
 

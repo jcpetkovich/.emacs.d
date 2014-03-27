@@ -1,6 +1,7 @@
 
 (require-package 'auto-complete)
 (require 'auto-complete-config)
+(require 'setup-evil)
 
 (ac-config-default)
 
@@ -26,14 +27,14 @@
 ;; =============================================================
 ;; Evil Keybindings
 ;; =============================================================
-(eval-after-load "evil"
-  '(progn
-     ;; Navigation in autocomplete menues gets hijacked by evil
-     (define-key ac-completing-map (kbd "C-n") 'ac-next)
-     (define-key ac-completing-map (kbd "C-p") 'ac-previous)
-     ;; Let me stop autocompleting the emacs/evil way
-     (define-key ac-completing-map (kbd "C-g") 'ac-stop)
-     (define-key ac-completing-map (kbd "ESC") 'evil-normal-state)
-     (evil-make-intercept-map ac-completing-map)))
+
+;; Navigation in autocomplete menues gets hijacked by evil
+(define-key ac-completing-map (kbd "C-n") 'ac-next)
+(define-key ac-completing-map (kbd "C-p") 'ac-previous)
+
+;; Let me stop autocompleting the emacs/evil way
+(define-key ac-completing-map (kbd "C-g") 'ac-stop)
+(define-key ac-completing-map (kbd "ESC") 'evil-normal-state)
+(evil-make-intercept-map ac-completing-map)
 
 (provide 'setup-auto-complete)

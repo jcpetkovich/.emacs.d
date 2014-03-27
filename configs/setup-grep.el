@@ -2,6 +2,7 @@
 (add-to-list 'load-path "~/.emacs.d/site-lisp/wgrep/")
 
 (require 'setup-multiple-cursors)
+(require 'setup-evil)
 
 ;;; Ack!
 (require-package 'ack-and-a-half)
@@ -127,10 +128,8 @@
   '(define-key wgrep-mode-map (kbd "C-c C-æ") 'mc/add-cursors-to-all-matches))
 
 ;;; Quit command for evil
-(eval-after-load "evil"
-  '(progn
-     (evil-define-key (quote normal) grep-mode-map
-       (kbd "Q") 'rgrep-quit-window
-       (kbd "q") 'rgrep-quit-window)))
+(evil-define-key (quote normal) grep-mode-map
+  (kbd "Q") 'rgrep-quit-window
+  (kbd "q") 'rgrep-quit-window)
 
 (provide 'setup-grep)

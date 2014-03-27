@@ -1,3 +1,4 @@
+(require 'setup-evil)
 (require-package 'paredit)
 (require-package 'smartparens)
 
@@ -21,9 +22,8 @@
 (setq-default sp-autoskip-closing-pair 'always)
 (setq-default sp-cancel-autoskip-on-backward-movement nil)
 
-(eval-after-load "evil"
-  '(evil-declare-key 'insert paredit-mode-map
-     (kbd "C-k") 'paredit-kill))
+(evil-declare-key 'insert paredit-mode-map
+   (kbd "C-k") 'paredit-kill)
 
 (--each '(css-mode-hook
           markdown-mode-hook

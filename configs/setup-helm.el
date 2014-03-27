@@ -9,6 +9,7 @@
 (require-package 'helm-swoop)
 (require-package 'helm-R)
 (require-package 'helm-descbinds)
+(require-package 'helm-proc)
 
 (require 'helm-config)
 (require 'helm-ls-git)

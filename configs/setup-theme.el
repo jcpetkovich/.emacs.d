@@ -55,6 +55,7 @@
 
 (require-package 'smart-mode-line)
 (require-package 'moe-theme)
+(require-package 'fancy-narrow)
 
 (defun dark ()
   (interactive)
@@ -90,20 +91,5 @@
 (defun hexcolour-add-to-font-lock ()
   (interactive)
   (font-lock-add-keywords nil hexcolour-keywords))
-
-;; =============================================================
-;; Evil Mode
-;; =============================================================
-
-
-(add-hook 'after-init-hook
-          (lambda ()
-            ;; Evil (the version I'm using) is finicky about the existance of
-            ;; the following variables before it's loaded, and evil as a whole
-            ;; must be loaded only after everything else has been loaded.
-            (setq evil-want-C-i-jump nil)
-            (setq evil-want-C-u-scroll t)
-            (require 'evil)
-            (evil-mode 1)))
 
 (provide 'setup-theme)

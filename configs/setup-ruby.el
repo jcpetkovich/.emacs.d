@@ -1,5 +1,6 @@
 
 (require-package 'inf-ruby)
+(require 'setup-evil)
 
 ;;; Use my patched ruby-mode
 (add-to-list 'load-path "~/.emacs.d/site-lisp/inf-ruby-bond")
@@ -50,13 +51,11 @@
 ;; =============================================================
 ;; Evil Keybindings
 ;; =============================================================
-(eval-after-load "evil"
-  '(progn
-     (evil-declare-key 'normal ruby-mode-map
-       (kbd "{") 'ruby-beginning-of-block
-       (kbd "}") 'ruby-end-of-block)
-     (evil-declare-key 'visual ruby-mode-map
-       (kbd "<tab>") 'indent-for-tab-command)))
+(evil-declare-key 'normal ruby-mode-map
+  (kbd "{") 'ruby-beginning-of-block
+  (kbd "}") 'ruby-end-of-block)
+(evil-declare-key 'visual ruby-mode-map
+  (kbd "<tab>") 'indent-for-tab-command)
 
 ;;; Highlight basic array looping functions, since they are used more
 ;;; than most keywords

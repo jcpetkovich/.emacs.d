@@ -124,6 +124,8 @@ directory."
 
 (defalias 'esh 'esk-eshell-in-dir)
 
+;; (dired-guess-default)
+
 ;;; Extra keybindings
 
 (add-hook 'eshell-mode-hook
