@@ -1,6 +1,6 @@
 
 CC = emacs
-CFLAGS = -Q -L . 
+CFLAGS = -q -L . 
 
 all: update_submodules rebuildall
 

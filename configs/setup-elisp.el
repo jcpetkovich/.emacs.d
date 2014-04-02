@@ -1,6 +1,7 @@
 
 (require 'setup-evil)
 (require-package 'elisp-slime-nav)
+(require-package 'info+)
 
 (--each '(emacs-lisp-mode-hook ielm-mode-hook)
   (add-hook it 'turn-on-elisp-slime-nav-mode)

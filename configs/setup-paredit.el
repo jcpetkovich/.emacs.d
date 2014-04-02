@@ -41,4 +41,8 @@
 (--each '(inferior-ess-mode-hook)
   (add-hook it 'smartparens-mode))
 
+;;; Fix smartparens-strict-mode-map for evil:
+(evil-define-key 'insert smartparens-strict-mode-map
+  (kbd "DEL") #'sp-backward-delete-char)
+
 (provide 'setup-paredit)

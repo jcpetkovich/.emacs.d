@@ -1,5 +1,4 @@
-
-(require-package 'org '(20140210))
+(require-package 'org '(20140331))
 (require 'org)
 (require 'setup-evil)
 
