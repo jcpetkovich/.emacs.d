@@ -4,6 +4,11 @@
 (require-package 'dired-details)
 (require 'dired-details)
 (require 'setup-evil)
+(require 'find-dired)
+
+;;; Use dired-x
+(add-hook 'dired-load-hook (lambda ()
+                             (load "dired-x")))
 
 (setq-default dired-details-hidden-string "--- ")
 (dired-details-install)
