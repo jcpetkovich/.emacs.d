@@ -123,6 +123,7 @@ directory."
       (pop-to-buffer buffer))))
 
 (defalias 'esh 'esk-eshell-in-dir)
+(defun eshell/gst () (magit-status default-directory))
 
 ;; (dired-guess-default)
 
