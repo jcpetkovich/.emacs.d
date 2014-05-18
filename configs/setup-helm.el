@@ -11,6 +11,18 @@
 (require-package 'helm-descbinds)
 (require-package 'helm-proc)
 
+;;; For keychords to lower usage of pinky
+(require-package 'key-chord)
+(require 'key-chord)
+
+(setq key-chord-two-keys-delay .015
+      key-chord-one-key-delay .020)
+
+(key-chord-mode 1)
+
+(key-chord-define-global "8l" 'helm-find-files)
+(key-chord-define-global "4p" 'helm-buffers-list)
+
 (require 'helm-config)
 (require 'helm-ls-git)
 (helm-mode 1)
