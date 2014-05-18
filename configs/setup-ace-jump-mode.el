@@ -1,9 +1,13 @@
 
 (require-package 'ace-jump-mode)
+(require-package 'ace-jump-buffer)
+(require-package 'ace-link)
+
 (require 'setup-evil)
 
 (autoload 'ace-jump-mode "ace-jump-mode" "Emacs quick move minor mode" t)
 (autoload 'ace-jump-mode-pop-mark "ace-jump-mode" "Emacs quick move minor mode" t)
+(ace-link-setup-default)
 
 (--each '(normal visual movement)
   (evil-declare-key it global-map
