@@ -4,5 +4,7 @@
 ;;; impolite
 (global-whitespace-cleanup-mode)
 
+(add-hook 'makefile-mode-hook (lambda () (whitespace-cleanup-mode -1)))
+
 ;;; Don't remove extraneous space at the BOF and EOF please.
 (provide 'setup-whitespace-mode)
