@@ -1,2 +1,2 @@
-alias l ls -al
 alias e find-file $1
+alias l ls -al

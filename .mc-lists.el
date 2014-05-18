@@ -4,6 +4,7 @@
 (setq mc/cmds-to-run-for-all
       '(
         LaTeX-babel-insert-hyphen
+        LaTeX-environment
         TeX-insert-backslash
         TeX-insert-sub-or-superscript
         TeX-newline
@@ -16,6 +17,7 @@
         cperl-electric-semi
         cperl-electric-terminator
         dabbrev-expand
+        delete-horizontal-space
         dired-back-to-start-of-files
         dired-copy-filename-as-kill
         dired-do-delete
@@ -107,5 +109,7 @@
         move-cursor-previous-pane
         org-update-statistics-cookies
         orgtbl-hijacker-command-105
+        overwrite-mode
         revert-buffer
+        toggle-input-method
         ))
