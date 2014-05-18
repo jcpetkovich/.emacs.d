@@ -39,7 +39,7 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 (global-set-key (kbd "C-c e") 'fc-eval-and-replace)
-(global-set-key (kbd "C-c C-r") 'eval-region)
+(global-set-key (kbd "C-c C-r") (lambda () (interactive) (message "Try visual mode and ',' instead")))
 (global-set-key (kbd "C-.") 'ac-start)
 ;; (global-set-key (kbd "C-x C-i") 'ido-imenu)
 (global-set-key (kbd "C-ä") 'magit-status)
