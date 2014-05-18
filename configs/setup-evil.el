@@ -51,19 +51,19 @@
   (kbd "q") 'View-quit)
 
 (evil-define-command evil-ido-find-file (file)
-  "Same as `evil-edit' but fall back to ido-find-file with no
+  "Same as `evil-edit' but fall back to helm-find-files with no
 file instead of revert."
   :repeat nil
   :move-point nil
   (interactive "<f>")
   (if file
       (find-file file)
-    (ido-find-file)))
+    (helm-find-files-1 default-directory)))
 
 ;; Edit should be mapped to something smarter than evil's default
 (evil-ex-define-cmd "e[dit]" 'evil-ido-find-file)
-     
+
 ;; I prefer looking for symbols rather than words.
-(defalias 'evil-find-word 'evil-find-symbol)
+(setq evil-symbol-word-search t)
 
 (provide 'setup-evil)
