@@ -64,6 +64,6 @@ file instead of revert."
 (evil-ex-define-cmd "e[dit]" 'evil-ido-find-file)
 
 ;; I prefer looking for symbols rather than words.
-(setq evil-symbol-word-search t)
+(setq-default evil-symbol-word-search t)
 
 (provide 'setup-evil)
