@@ -145,7 +145,7 @@
     (define-key map (kbd "C-w") 'backward-kill-word)
     (define-key map (kbd "M-w") 'helm-yank-text-at-point)))
 
-(define-key helm-find-files-map (kbd "C-w") 'helm-find-files-down-one-level)
+(define-key helm-find-files-map (kbd "C-w") 'helm-find-files-up-one-level)
 
 ;; =============================================================
 ;; Hack to swap order of sources in helm-ls-git
