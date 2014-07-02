@@ -132,6 +132,8 @@
         user-mail-address "jcpetkovich@gmail.com"
         user-full-name  "Jean-Christophe Petkovich")
   ;; include in message with C-c C-w
+  (setq mu4e-compose-signature
+        "Jean-Christophe Petkovich")
   (setq message-signature
         "Jean-Christophe Petkovich"))
 
