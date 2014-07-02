@@ -8,6 +8,8 @@
         TeX-insert-backslash
         TeX-insert-sub-or-superscript
         TeX-newline
+        backward-kill-sentence
+        c-electric-colon
         c-electric-semi&comma
         cperl-electric-backspace
         cperl-electric-brace
@@ -31,6 +33,7 @@
         ess-smart-comma
         ess-smart-underscore
         ess-yank
+        evil-ace-jump-word-mode
         evil-append
         evil-backward-WORD-begin
         evil-backward-char
@@ -86,6 +89,7 @@
         sp-backward-down-sexp
         sp-backward-kill-word
         sp-backward-sexp
+        sp-backward-up-sexp
         sp-delete-char
         sp-down-sexp
         sp-forward-barf-sexp
