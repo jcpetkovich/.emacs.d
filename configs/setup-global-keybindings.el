@@ -92,6 +92,9 @@
 (global-set-key (kbd "M-c M-l") 'downcase-word)
 (global-set-key (kbd "M-c M-u") 'upcase-word)
 
+;; Eshell
+(global-set-key (kbd "M-c M-e") 'esh)
+
 (global-set-key (kbd "<M-return>") 'new-line-dwim)
 (global-set-key (kbd "M-RET") 'new-line-dwim)
 
