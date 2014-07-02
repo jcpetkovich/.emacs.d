@@ -55,6 +55,7 @@
 
 (require-package 'smart-mode-line)
 (require-package 'moe-theme)
+(require 'moe-theme)
 (require-package 'fancy-narrow)
 
 (defun dark ()
