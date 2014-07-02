@@ -20,7 +20,9 @@
       show-paren-style 'expression)
 
 ;;; Make the frame title easy to search for among open windows
-(setq frame-title-format '("emacs: " buffer-file-name "%f" ("%b")))
+(setq frame-title-format
+      (list
+       '(:eval (if buffer-file-name (buffer-file-name) (buffer-name)))))
 
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
