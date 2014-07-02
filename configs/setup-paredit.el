@@ -34,7 +34,8 @@
           c-mode-hook
           LaTeX-mode-hook
           org-mode-hook
-          sgml-mode-hook)
+          sgml-mode-hook
+          awk-mode-hook)
   (add-hook it 'turn-on-smartparens-strict-mode))
 
 ;;; Have to force some modes, as they are based on comint-mode
