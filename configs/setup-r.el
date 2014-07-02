@@ -19,5 +19,10 @@
             (local-set-key (kbd "M-;") 'comment-dwim)
             (setq ess-pdf-viewer-pref "zathura")))
 
+(defun ess-noweb-post-command-function ()
+  "The hook being run after each command in noweb mode."
+  (condition-case err
+      (ess-noweb-select-mode)
+    (error)))
 
 (provide 'setup-r)
