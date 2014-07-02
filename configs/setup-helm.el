@@ -10,6 +10,8 @@
 (require-package 'helm-R)
 (require-package 'helm-descbinds)
 (require-package 'helm-proc)
+(require-package 'helm-cmd-t)
+(require-package 'helm-ag)
 
 ;;; For keychords to lower usage of pinky
 (require-package 'key-chord)
@@ -63,14 +65,15 @@
       helm-follow-mode-persistent t)
 
 (setq helm-ack-grep-executable "ack")
-(setq helm-grep-default-command "ack -Hn --smart-case --nogroup --nocolour %e %p %f")
-(setq helm-grep-default-recurse-command "ack -H --smart-case --nogroup --nocolour %e %p %f")
+;;; Try reversing the defaults on which command should be the recursive one.
+(setq helm-grep-default-command "ack -H --smart-case --nogroup --nocolour %e %p %f")
+(setq helm-grep-default-recurse-command "ack -Hn --smart-case --nogroup --nocolour %e %p %f")
 
-;; (setq helm-ff-skip-boring-files t)
-
-;; (-each (list "\\.pyc$")
-;;   (lambda (regexp)
-;;     (add-to-list 'helm-boring-file-regexp-list regexp)))
+(defun helm-do-grep-wrapper ()
+  (interactive)
+  (let ((helm-grep-default-command "grep -E -a -d recurse %e -n%cH -e %p %f")
+        (helm-grep-default-recurse-command "grep -a -d skip %e -n%cH -e %p %f"))
+    (helm-do-grep)))
 
 (defvar all-helm-maps (list helm-map
                             helm-etags-map
@@ -99,11 +102,12 @@
 (global-set-key (kbd "C-h d") 'helm-info-at-point)
 (global-set-key (kbd "C-h f") 'describe-function)
 (global-set-key (kbd "C-c g") 'helm-google-suggest)
-(global-set-key (kbd "M-g s") 'helm-do-grep)
+(global-set-key (kbd "M-g M-s") 'helm-do-grep-wrapper)
 (global-set-key (kbd "C-x C-d") 'helm-browse-project)
 (global-set-key (kbd "<f1>") 'helm-resume)
 (global-set-key (kbd "C-h C-f") 'helm-apropos)
 (global-set-key (kbd "C-h a") 'helm-apropos)
+(global-set-key (kbd "M-o") 'helm-cmd-t)
 
 ;;; occur
 (define-key global-map [remap occur] 'helm-occur)
