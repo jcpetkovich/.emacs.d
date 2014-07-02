@@ -56,6 +56,7 @@
       helm-idle-delay 0.01
       helm-input-idle-delay 0.01
       helm-m-occur-idle-delay 0.01
+      helm-exit-idle-delay 0.1
       helm-ls-git-status-command 'magit-status
       helm-candidate-number-limit 200
       helm-ff-search-library-in-sexp t
