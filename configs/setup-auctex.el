@@ -65,10 +65,14 @@ an item line."
 
 (evil-declare-key 'insert LaTeX-mode-map
   (kbd "<M-return>" ) 'LaTeX-insert-item)
+
 (-each '(normal insert visual)
   (lambda (mode)
     (evil-declare-key mode LaTeX-mode-map
       (kbd "C-c C-f") 'LaTeX-find-matching-end
       (kbd "C-c C-b") 'LaTeX-find-matching-begin)))
+
+(evil-define-key 'visual
+  LaTeX-mode-map (kbd "\"") 'sp--self-insert-command)
 
 (provide 'setup-auctex)
