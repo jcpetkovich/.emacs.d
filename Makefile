@@ -8,7 +8,6 @@ all: update_submodules rebuildall
 # lot faster than doing each file individually, and leaves the file
 # hierarchy clean of make oriented things.
 rebuildall:
-	pushd site-lisp/haskell-mode && make && popd;
 	$(CC) $(CFLAGS) --eval "(progn (load \"init.el\") (byte-recompile-directory \"$(shell pwd)\" 0) (kill-emacs))"
 	rm init.elc
 	rm custom.elc
