@@ -29,7 +29,7 @@
     (kbd "C-p") 'evil-previous-line
     (kbd "C-l") 'copy-to-register
     (kbd "C-+") 'increment-register
-    (kbd "<f6>") 'browse-kill-ring
+    (kbd "<f6>") 'projectile-compile-project
     (kbd "C-M-<backspace>") 'paredit-backward-delete
     (kbd "<f7>") 'compile
     (kbd "<f8>") 'recompile))
