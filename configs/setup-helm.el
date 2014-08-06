@@ -72,8 +72,8 @@
 
 (defun helm-do-grep-wrapper ()
   (interactive)
-  (let ((helm-grep-default-command "grep -E -a -d recurse %e -n%cH -e %p %f")
-        (helm-grep-default-recurse-command "grep -a -d skip %e -n%cH -e %p %f"))
+  (let ((helm-grep-default-command "grep -a -d skip %e -n%cH -e %p %f")
+        (helm-grep-default-recurse-command "grep -a -d recurse %e -n%cH -e %p %f"))
     (helm-do-grep)))
 
 (defvar all-helm-maps (list helm-map
@@ -109,6 +109,7 @@
 (global-set-key (kbd "C-h C-f") 'helm-apropos)
 (global-set-key (kbd "C-h a") 'helm-apropos)
 (global-set-key (kbd "M-o") 'helm-cmd-t)
+(global-set-key (kbd "M-z") 'helm-cmd-t-git-grep)
 
 ;;; occur
 (define-key global-map [remap occur] 'helm-occur)
