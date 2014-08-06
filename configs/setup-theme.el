@@ -97,4 +97,18 @@
   (interactive)
   (font-lock-add-keywords nil hexcolour-keywords))
 
+;; =============================================================
+;; Line numbers
+;; =============================================================
+
+(require-package 'nlinum)
+
+(global-nlinum-mode)
+(defun nlinum--face-height (face)
+  (condition-case err
+      (aref (font-info (face-font face)) 2)
+    (error (message "Unable to get font at this time.") 0)))
+
+(add-hook 'rcirc-mode-hook (lambda () (nlinum-mode -1)))
+
 (provide 'setup-theme)
