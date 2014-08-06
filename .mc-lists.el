@@ -10,6 +10,7 @@
         TeX-newline
         backward-kill-sentence
         c-electric-colon
+        c-electric-delete-forward
         c-electric-semi&comma
         cperl-electric-backspace
         cperl-electric-brace
@@ -37,11 +38,13 @@
         evil-append
         evil-backward-WORD-begin
         evil-backward-char
+        evil-backward-sentence
         evil-backward-word-begin
         evil-change
         evil-copy-from-below
         evil-delete
         evil-digit-argument-or-evil-beginning-of-line
+        evil-find-char
         evil-forward-WORD-end
         evil-forward-char
         evil-forward-word-begin
@@ -50,12 +53,14 @@
         evil-normal-state
         evil-paste-after
         evil-previous-line
+        evil-ret
         evil-substitute
         fc-eval-and-replace
         fill-paragraph
         helm-M-x
         jedi:dot-complete
         js2-insert-and-indent
+        keyboard-quit
         markdown-dedent-or-delete
         markdown-exdent-or-delete
         message-beginning-of-line
@@ -64,9 +69,14 @@
         org-end-of-line
         org-force-self-insert
         org-kill-line
+        org-meta-return
+        org-metaright
         org-return-indent
         org-self-insert-command
+        org-shiftright
+        orgtbl-hijacker-command-100
         orgtbl-hijacker-command-102
+        orgtbl-hijacker-command-27
         orgtbl-self-insert-command
         paredit-doublequote
         paredit-forward
