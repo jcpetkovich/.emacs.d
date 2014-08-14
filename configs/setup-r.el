@@ -3,6 +3,7 @@
 (require-package 'ess-R-data-view)
 (require 'ess-site)
 (require 'setup-evil)
+(require 'setup-whitespace-mode)
 
 (evil-declare-key 'visual ess-mode-map
   (kbd "<tab>") 'indent-for-tab-command
@@ -17,7 +18,9 @@
 (add-hook 'R-mode-hook
           (lambda ()
             (local-set-key (kbd "M-;") 'comment-dwim)
-            (setq ess-pdf-viewer-pref "zathura")))
+            (setq ess-pdf-viewer-pref "zathura")
+            (set (make-local-variable 'whitespace-style)
+                (remove 'empty whitespace-style))))
 
 (defun ess-noweb-post-command-function ()
   "The hook being run after each command in noweb mode."
