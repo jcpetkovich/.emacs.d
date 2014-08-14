@@ -3,8 +3,15 @@
 ;; =============================================================
 (setq inferior-lisp-program "/usr/bin/sbcl --noinform --no-linedit") ; change the default inferior common-lisp interpreter
 
+(setq slime-helper-install "~/quicklisp/slime-helper.el")
+
+(when (file-exists-p slime-helper-install)
+  (load slime-helper-install))
+
 (when (require 'slime nil :noerror)
   (require 'slime-autoloads)
+  (require 'slime-fancy)
+  (setq slime-contribs '(slime-fancy slime-asdf slime-banner))
   (require-package 'ac-slime)
 
   (slime-setup)
