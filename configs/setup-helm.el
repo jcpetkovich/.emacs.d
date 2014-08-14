@@ -70,18 +70,13 @@
 (setq helm-grep-default-command "ack -H --smart-case --nogroup --nocolour %e %p %f")
 (setq helm-grep-default-recurse-command "ack -Hn --smart-case --nogroup --nocolour %e %p %f")
 
-(defun helm-do-grep-wrapper ()
-  (interactive)
-  (let ((helm-grep-default-command "grep -a -d skip %e -n%cH -e %p %f")
-        (helm-grep-default-recurse-command "grep -a -d recurse %e -n%cH -e %p %f"))
-    (helm-do-grep)))
-
 (defvar all-helm-maps (list helm-map
                             helm-etags-map
                             helm-moccur-map
                             helm-grep-map
                             helm-pdfgrep-map
                             helm-generic-files-map))
+
 ;; =============================================================
 ;; helm bindings
 ;; =============================================================
@@ -117,11 +112,19 @@
 (define-key isearch-mode-map (kbd "C-c m o") 'helm-multi-occur-from-isearch)
 (define-key isearch-mode-map (kbd "C-c o") 'helm-occur-from-isearch)
 
-;; (global-set-key (kbd "<f5> s") 'helm-find)
 (define-key global-map [remap jump-to-register] 'helm-register)
 (define-key global-map [remap list-buffers] 'helm-buffers-list)
 (define-key global-map [remap find-tag] 'helm-etags-select)
-;; (define-key shell-mode-map (kbd "M-p") 'helm-comint-input-ring)
+
+;; =============================================================
+;; Helm grep swap defaults
+;; =============================================================
+(defun helm-do-grep-wrapper ()
+  (interactive)
+  (let ((helm-grep-default-command "grep -a -d skip %e -n%cH -e %p %f")
+        (helm-grep-default-recurse-command "grep -a -d recurse %e -n%cH -e %p %f"))
+    (helm-do-grep)))
+
 
 ;; =============================================================
 ;; helm-ls-git bindings
