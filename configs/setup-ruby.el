@@ -1,27 +1,18 @@
 
 (require-package 'inf-ruby)
+(require-package 'robe)
 (require 'setup-evil)
+
+(add-hook 'ruby-mode-hook 'robe-mode)
+(add-hook 'robe-mode-hook 'ac-robe-setup)
 
 ;;; Use my patched ruby-mode
 (add-to-list 'load-path "~/.emacs.d/site-lisp/inf-ruby-bond")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/ruby-mode")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/yari")
 
-;;; Rsense
-(setq rsense-home (expand-file-name "~/src/ruby/rsense-0.3"))
-(setq rsense-rurema-home "~/.ruby-reference-manual")
-(add-to-list 'load-path (concat rsense-home "/etc"))
-
-(when (require 'rsense nil :noerror)
-  (add-hook 'ruby-mode-hook
-            (lambda ()
-              (define-key ruby-mode-map (kbd "M-<tab>") 'ac-complete-rsense))))
-
 (require 'ruby-mode)
 (require 'inf-ruby-bond)
-
-(autoload 'yari "yari" "Emacs interface to ri documentation" t)
-
 
 (defun open-ruby-section ()
   "Insert <p></p> at cursor point."
@@ -35,18 +26,9 @@
   (ruby-indent-line t)
   (end-of-line))
 
-
-(add-hook 'nxhtml-mode-hook
-          (lambda ()
-            (define-key nxhtml-mode-map  (kbd "\C-c\C-r") 'open-ruby-section)))
-
-(add-hook 'ruby-mode-hook 'auto-complete-mode)
-
 (add-hook 'ruby-mode-hook
           (lambda ()
-            (define-key ruby-mode-map (kbd "\C-c\C-c") 'xmp)
-            (define-key ruby-mode-map (kbd "C-c C-e") 'ruby-insert-end)
-            (define-key ruby-mode-map [f1] 'yari)))
+            (define-key ruby-mode-map (kbd "C-c C-e") 'ruby-insert-end)))
 
 ;; =============================================================
 ;; Evil Keybindings
@@ -64,6 +46,5 @@
            'ruby-mode
            `((,(concat ".\\(" keyword "\\)\\_>") 1 font-lock-keyword-face))))
         (list "each" "collect" "reject" "select" "inject" "include" "map" "reduce"))
-
 
 (provide 'setup-ruby)
