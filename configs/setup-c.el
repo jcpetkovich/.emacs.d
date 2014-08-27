@@ -39,7 +39,7 @@
           (lambda ()
             ;; tab width 8 in C please
             (setq tab-width 8)
-            (setq indent-tabs-mode t)
+            (set (make-local-variable 'indent-tabs-mode) t)
             (let ((filename (buffer-file-name)))
 
               ;; Enable kernel mode for the appropriate files
