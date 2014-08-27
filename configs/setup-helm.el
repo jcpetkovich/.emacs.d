@@ -119,10 +119,11 @@
 ;; =============================================================
 ;; Helm grep swap defaults
 ;; =============================================================
-(defun helm-do-grep-wrapper ()
-  (interactive)
+(defun helm-do-grep-wrapper (arg)
+  (interactive "P")
   (let ((helm-grep-default-command "grep -a -d skip %e -n%cH -e %p %f")
-        (helm-grep-default-recurse-command "grep -a -d recurse %e -n%cH -e %p %f"))
+        (helm-grep-default-recurse-command "grep -a -d recurse %e -n%cH -e %p %f")
+        (current-prefix-arg (not arg)))
     (helm-do-grep)))
 
 
@@ -175,7 +176,7 @@
 It will override `helm-map' with the local map of current source.
 If no map is found in current source do nothing (keep previous map)."
   (condition-case err
-      (progn 
+      (progn
         (with-helm-buffer
           (helm-aif (assoc-default 'keymap (helm-get-current-source))
               ;; Fix #466; we use here set-transient-map
