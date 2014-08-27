@@ -1,5 +1,8 @@
 (require-package 'whitespace-cleanup-mode)
 
+(require 'whitespace)
+(setq whitespace-style (remove 'indentation whitespace-style))
+
 ;;; Be nice to git, whitespace where none is necessary or useful is
 ;;; impolite
 (global-whitespace-cleanup-mode)
