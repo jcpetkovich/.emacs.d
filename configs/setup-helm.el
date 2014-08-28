@@ -104,7 +104,7 @@
 (global-set-key (kbd "C-h C-f") 'helm-apropos)
 (global-set-key (kbd "C-h a") 'helm-apropos)
 (global-set-key (kbd "M-o") 'helm-cmd-t)
-(global-set-key (kbd "M-z") 'helm-cmd-t-git-grep)
+(global-set-key (kbd "M-z") 'helm-cmd-t-grep)
 
 ;;; occur
 (define-key global-map [remap occur] 'helm-occur)
