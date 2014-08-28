@@ -1,8 +1,6 @@
 
 (require-package 'clojure-mode)
 (require-package 'cider)
-(require-package 'ac-cider)
-(require-package 'company)
 
 (require 'setup-evil)
 

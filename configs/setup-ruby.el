@@ -2,9 +2,11 @@
 (require-package 'inf-ruby)
 (require-package 'robe)
 (require 'setup-evil)
+(require 'setup-company)
 
 (add-hook 'ruby-mode-hook 'robe-mode)
-(add-hook 'robe-mode-hook 'ac-robe-setup)
+
+(add-to-list 'company-backends 'company-robe)
 
 ;;; Use my patched ruby-mode
 (add-to-list 'load-path "~/.emacs.d/site-lisp/inf-ruby-bond")
