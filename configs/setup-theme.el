@@ -75,9 +75,9 @@
 (eval-after-load "init"
   '(dark))
 
-(setq-default sml/hidden-modes '(" SliNav" " yas" " ElDoc" " Undo-Tree"
-                                 " AC" " Ref" " OrgTbl" " Doc" " Ind" " WSC"
-                                 " Projectile"))
+(setq-default rm-blacklist '(" SliNav" " yas" " ElDoc" " Undo-Tree"
+                             " AC" " Ref" " OrgTbl" " Doc" " Ind" " WSC"
+                             " Projectile"))
 
 (setq sml/replacer-regexp-list nil)
 (--each '(("^~/jc-public/projects/" ":Proj:")
