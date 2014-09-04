@@ -27,6 +27,7 @@
 
 (require 'helm-config)
 (require 'helm-ls-git)
+(require 'helm-C-x-b)
 (helm-mode 1)
 (helm-descbinds-mode 1)
 
@@ -88,8 +89,6 @@
 ;;; Use helm alternatives
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
-(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-c f") 'helm-recentf)
 (global-set-key (kbd "C-c <SPC>") 'helm-all-mark-rings)
@@ -113,7 +112,7 @@
 (define-key isearch-mode-map (kbd "C-c o") 'helm-occur-from-isearch)
 
 (define-key global-map [remap jump-to-register] 'helm-register)
-(define-key global-map [remap list-buffers] 'helm-buffers-list)
+(define-key global-map [remap list-buffers] 'helm-C-x-b)
 (define-key global-map [remap find-tag] 'helm-etags-select)
 
 ;; =============================================================
@@ -125,7 +124,6 @@
         (helm-grep-default-recurse-command "grep -a -d recurse %e -n%cH -e %p %f")
         (current-prefix-arg (not arg)))
     (helm-do-grep)))
-
 
 ;; =============================================================
 ;; helm-ls-git bindings
@@ -155,6 +153,13 @@
     (define-key map (kbd "M-w") 'helm-yank-text-at-point)))
 
 (define-key helm-find-files-map (kbd "C-w") 'helm-find-files-up-one-level)
+
+;; =============================================================
+;; helm-C-x-b customizations
+;; =============================================================
+(setf helm-C-x-b-sources (-insert-at 1 'helm-source-ido-virtual-buffers helm-C-x-b-sources))
+(global-set-key (kbd "C-x b") 'helm-C-x-b)
+(global-set-key (kbd "C-x C-b") 'helm-C-x-b)
 
 ;; =============================================================
 ;; Hack to swap order of sources in helm-ls-git
