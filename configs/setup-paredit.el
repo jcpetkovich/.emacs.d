@@ -23,7 +23,7 @@
 (setq-default sp-cancel-autoskip-on-backward-movement nil)
 
 (evil-declare-key 'insert paredit-mode-map
-   (kbd "C-k") 'paredit-kill)
+  (kbd "C-k") 'paredit-kill)
 
 (--each '(css-mode-hook
           markdown-mode-hook
@@ -45,5 +45,8 @@
 ;;; Fix smartparens-strict-mode-map for evil:
 (evil-define-key 'insert smartparens-strict-mode-map
   (kbd "DEL") #'sp-backward-delete-char)
+
+(evil-declare-key 'insert paredit-mode-map
+  (kbd "C-w") 'paredit-backward-kill-word)
 
 (provide 'setup-paredit)
