@@ -34,6 +34,7 @@
         ess-smart-comma
         ess-smart-underscore
         ess-yank
+        eval-last-sexp
         evil-ace-jump-word-mode
         evil-append
         evil-backward-WORD-begin
@@ -74,6 +75,7 @@
         org-return-indent
         org-self-insert-command
         org-shiftright
+        org-yank
         orgtbl-hijacker-command-100
         orgtbl-hijacker-command-102
         orgtbl-hijacker-command-27
