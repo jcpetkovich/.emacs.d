@@ -9,9 +9,9 @@
 (add-to-list 'company-backends 'company-robe)
 
 ;;; Use my patched ruby-mode
-(add-to-list 'load-path "~/.emacs.d/site-lisp/inf-ruby-bond")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/ruby-mode")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/yari")
+(add-to-list 'load-path (expand-file-name (concat user-emacs-directory "site-lisp/inf-ruby-bond")))
+(add-to-list 'load-path (expand-file-name (concat user-emacs-directory "site-lisp/ruby-mode")))
+(add-to-list 'load-path (expand-file-name (concat user-emacs-directory "site-lisp/yari")))
 
 (require 'ruby-mode)
 (require 'inf-ruby-bond)
