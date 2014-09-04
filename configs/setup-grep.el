@@ -1,5 +1,5 @@
 
-(add-to-list 'load-path "~/.emacs.d/site-lisp/wgrep/")
+(add-to-list 'load-path (expand-file-name (concat user-emacs-directory "site-lisp/wgrep/")))
 
 (require 'setup-multiple-cursors)
 (require 'setup-evil)

@@ -1,6 +1,6 @@
 
-(add-to-list 'load-path "~/.emacs.d/site-lisp/rcirc-color")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/rcirc-notify")
+(add-to-list 'load-path (expand-file-name (concat user-emacs-directory "site-lisp/rcirc-color")))
+(add-to-list 'load-path (expand-file-name (concat user-emacs-directory "site-lisp/rcirc-notify")))
 
 (require 'auth-source)
 (require 'setup-evil)

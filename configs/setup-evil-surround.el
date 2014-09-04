@@ -1,6 +1,6 @@
 
 (require 'setup-evil)
-(add-to-list 'load-path "~/.emacs.d/site-lisp/evil-surround/")
+(add-to-list 'load-path (expand-file-name (concat user-emacs-directory "site-lisp/evil-surround/")))
 
 (require 'surround)
 (global-surround-mode 1)

@@ -1,4 +1,4 @@
 
-(add-to-list 'load-path "~/.emacs.d/site-lisp/buster-mode")
+(add-to-list 'load-path (expand-file-name (concat user-emacs-directory "site-lisp/buster-mode")))
 
 (provide 'setup-buster-mode)

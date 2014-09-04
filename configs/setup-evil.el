@@ -2,8 +2,8 @@
 ;; Evil keybindings
 ;; =============================================================
 
-(add-to-list 'load-path "~/.emacs.d/site-lisp/evil")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/undo-tree")
+(add-to-list 'load-path (expand-file-name (concat user-emacs-directory "site-lisp/evil")))
+(add-to-list 'load-path (expand-file-name (concat user-emacs-directory "site-lisp/undo-tree")))
 
 ;;; Some versions of evil need these set before it's loaded
 (setq evil-want-C-i-jump nil
