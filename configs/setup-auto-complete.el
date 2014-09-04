@@ -3,18 +3,8 @@
 (require 'auto-complete-config)
 (require 'setup-evil)
 
-(ac-config-default)
-
-;;; I want autocomplete everywhere
-(setq global-auto-complete-mode t
-      ac-show-menu-timer 0.1
+(setq ac-show-menu-timer 0.1
       ac-auto-show-menu t)
-
-(dolist (mode '(org-mode text-mode slime-repl-mode LaTeX-mode
-                         csv-mode haskell-mode literate-haskell-mode
-                         html-mode nxml-mode sh-mode clojure-mode
-                         lisp-mode markdown-mode tuareg-mode))
-  (add-to-list 'ac-modes mode))
 
 (add-hook 'flyspell-mode-hook
           (lambda ()

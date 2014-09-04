@@ -40,9 +40,6 @@
           (lambda ()
             (define-key org-mode-map (kbd "M-e") 'dabbrev-expand))) ; was org-move-paragraph
 
-(eval-after-load "auto-complete"
-  '(add-hook 'org-mode-hook 'auto-complete-mode))
-
 ;;; Some evil things
 (evil-declare-key 'normal org-mode-map
   (kbd "\C-c\/") 'org-sparse-tree)
