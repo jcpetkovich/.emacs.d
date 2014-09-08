@@ -29,7 +29,7 @@
 
 (setq-default rm-blacklist '(" SliNav" " yas" " ElDoc" " Undo-Tree"
                              " AC" " Ref" " OrgTbl" " Doc" " Ind" " WSC"
-                             " Projectile"))
+                             " Projectile" " Helm" " company"))
 
 (setq sml/replacer-regexp-list nil)
 (--each '(("^~/jc-public/projects/" ":Proj:")
@@ -78,7 +78,8 @@
  save-interprogram-paste-before-kill t
  save-place-file                     (concat user-emacs-directory "places")
  mouse-wheel-scroll-amount           '(1)
- show-paren-style                    'expression)
+ show-paren-style                    'expression
+ major-mode                          'org-mode)
 
 ;;; Make the frame title easy to search for among open windows
 (setq-default frame-title-format
