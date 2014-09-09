@@ -22,8 +22,6 @@
 ;; (global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
 (global-set-key (kbd "C-x C-S-b") 'ibuffer)
 (global-set-key (kbd "M-;") 'comment-dwim)
-(global-set-key (kbd "M-p") 'windmove-up)
-(global-set-key (kbd "M-n") 'windmove-down)
 (global-set-key (kbd "M-j") 'move-cursor-next-pane)
 (global-set-key (kbd "M-k") 'move-cursor-previous-pane)
 (global-set-key (kbd "M-l") 'shrink-window-horizontally)
