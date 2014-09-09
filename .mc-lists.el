@@ -123,6 +123,8 @@
         handle-switch-frame
         helm-confirm-and-exit-minibuffer
         keyboard-escape-quit
+        mc-expand-or-mark-next-symbol
+        mc-expand-or-mark-next-word
         move-cursor-previous-pane
         org-update-statistics-cookies
         orgtbl-hijacker-command-105
