@@ -60,6 +60,32 @@
 ;;  - `mc/mark-all-like-this-dwim`: Tries to be smart about marking everything you want. Can be pressed multiple times.
 (global-set-key (kbd "A-C-c") 'mc/mark-all-like-this-dwim)
 
+
+;; Quick keys
+     ;; (kbd "M-u")
+(global-set-key (kbd "M-m") 'mc-expand-or-mark-next-symbol)
+(global-set-key (kbd "M-M") 'mc-expand-or-mark-next-word)
+;; (kbd "M-~")
+;; (kbd "M-`")
+(global-set-key (kbd "M-'") 'mc/mark-all-dwim)
+;; (kbd "M-\"")
+;; (kbd "C-'")
+;; (kbd "C-\"")
+
+
+(defun mc-expand-or-mark-next-symbol ()
+  (interactive)
+  (if (not (region-active-p))
+      (er/mark-symbol)
+    (call-interactively 'mc/mark-next-symbol-like-this)))
+
+(defun mc-expand-or-mark-next-word ()
+  (interactive)
+  (if (not (region-active-p))
+      (er/mark-word)
+    (call-interactively 'mc/mark-next-word-like-this)))
+
+
 (defvar my-mc-evil-previous-state nil)
 (defvar my-mark-was-active nil)
 
