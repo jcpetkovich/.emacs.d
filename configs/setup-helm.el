@@ -104,6 +104,8 @@
 (global-set-key (kbd "C-h a") 'helm-apropos)
 (global-set-key (kbd "M-o") 'helm-cmd-t)
 (global-set-key (kbd "M-z") 'helm-cmd-t-grep)
+(global-set-key (kbd "M-v") 'helm-semantic-or-imenu)
+;; unbound (kbd "M-V")
 
 ;;; occur
 (define-key global-map [remap occur] 'helm-occur)
