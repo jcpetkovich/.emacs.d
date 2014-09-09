@@ -9,4 +9,6 @@
 (define-key company-active-map (kbd "M-2") nil)
 (add-hook 'after-init-hook 'global-company-mode)
 
+(setq-default company-idle-delay 0.2)
+
 (provide 'setup-company)
