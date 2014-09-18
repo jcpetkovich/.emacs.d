@@ -90,6 +90,7 @@
         paredit-kill
         paredit-newline
         paredit-open-round
+        paredit-semicolon
         python-indent-dedent-line-backspace
         python-indent-electric-colon
         reindent-then-newline-and-indent

@@ -40,13 +40,13 @@
 ;; Alright, let's get this started!
 ;; =============================================================
 
-;;; `org-mode' needs to be setup first
-(require 'setup-org-mode)
+;;; `org-mode' needs to be configured first
+(require 'init-org-mode)
 
 ;;; require the rest of the config files!
 (-map (lambda (filespec)
         (require (intern (s-chop-suffix ".el" filespec))))
-      (directory-files ini-configs-directory nil "^setup.*\\.el$"))
+      (directory-files ini-configs-directory nil "^init.*\\.el$"))
 
 (when (file-exists-p my-notes-file)
   (find-file my-notes-file))
