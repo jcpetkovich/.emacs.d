@@ -46,7 +46,14 @@
 (evil-define-key 'insert smartparens-strict-mode-map
   (kbd "DEL") #'sp-backward-delete-char)
 
-(evil-declare-key 'insert paredit-mode-map
-  (kbd "C-w") 'paredit-backward-kill-word)
+(defun kill-region-or-paredit-backward-kill-word ()
+  (interactive)
+  (if (region-active-p)
+      (kill-region (region-beginning) (region-end))
+    (call-interactively 'paredit-backward-kill-word)))
+
+(--each '(insert visual)
+  (evil-declare-key it paredit-mode-map
+    (kbd "C-w") 'kill-region-or-backward-word))
 
 (provide 'init-paredit)

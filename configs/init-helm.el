@@ -151,7 +151,7 @@
 ;;; Muscle memory
 (-each all-helm-maps
   (lambda (map)
-    (define-key map (kbd "C-w") 'backward-kill-word)
+    (define-key map (kbd "C-w") 'kill-region-or-backward-word)
     (define-key map (kbd "M-w") 'helm-yank-text-at-point)))
 
 (define-key helm-find-files-map (kbd "C-w") 'helm-find-files-up-one-level)

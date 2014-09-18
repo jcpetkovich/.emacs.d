@@ -4,7 +4,7 @@
 (require 'init-auto-complete)
 
 (define-key company-active-map (kbd "C-h") 'help-command)
-(define-key company-active-map (kbd "C-w") 'backward-kill-word)
+(define-key company-active-map (kbd "C-w") 'kill-region-or-backward-word)
 (define-key company-active-map (kbd "C-l") 'company-show-location)
 (define-key company-active-map (kbd "M-1") nil)
 (define-key company-active-map (kbd "M-2") nil)
