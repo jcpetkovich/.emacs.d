@@ -119,6 +119,8 @@
       '(
         describe-key
         dired-do-flagged-delete
+        edebug-continue-mode
+        edebug-next-mode
         eval-expression
         evil-emacs-state
         handle-switch-frame
