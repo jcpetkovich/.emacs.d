@@ -1,4 +1,5 @@
 (require-package 'company)
+(require-package 'helm-company)
 (require 'company)
 (require 'init-evil)
 (require 'init-auto-complete)
@@ -17,5 +18,7 @@
   (auto-complete-mode 1))
 
 (add-hook 'ess-mode-hook 'use-auto-complete-instead)
+
+(global-set-key (kbd "C-:") 'helm-company)
 
 (provide 'init-company)

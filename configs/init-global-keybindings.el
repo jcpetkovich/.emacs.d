@@ -9,12 +9,13 @@
 ;;; Load packages
 (require-package 'expand-region)
 (require-package 'smart-forward)
+(require-package 'comment-dwim-2)
 (require 'smart-forward)
 
 ;; =============================================================
 ;; Set nice keybindings (combined with evil)
 ;; =============================================================
-(global-set-key (kbd "M-;") 'comment-dwim)
+(global-set-key (kbd "M-;") 'comment-dwim-2)
 (global-set-key (kbd "M-j") 'move-cursor-next-pane)
 (global-set-key (kbd "M-k") 'move-cursor-previous-pane)
 (global-set-key (kbd "M-e") 'hippie-expand)

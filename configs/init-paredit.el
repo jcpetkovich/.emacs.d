@@ -52,8 +52,9 @@
       (kill-region (region-beginning) (region-end))
     (call-interactively 'paredit-backward-kill-word)))
 
-(--each '(insert visual)
+(--each '(insert visual normal)
   (evil-declare-key it paredit-mode-map
-    (kbd "C-w") 'kill-region-or-backward-word))
+    (kbd "C-w") 'kill-region-or-backward-word
+    (kbd "M-;") 'comment-dwim-2))
 
 (provide 'init-paredit)

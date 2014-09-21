@@ -62,6 +62,7 @@
         jedi:dot-complete
         js2-insert-and-indent
         keyboard-quit
+        kill-region-or-backward-word
         markdown-dedent-or-delete
         markdown-exdent-or-delete
         message-beginning-of-line
