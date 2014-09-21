@@ -27,20 +27,16 @@
   (when (and (bound-and-true-p evil-mode)
              (not (memq evil-state '(insert emacs))))
 
-    ;; Save what state evil was in
     (setq my-mc-evil-previous-state evil-state)
 
-    ;; Save whether or not the region was active
     (when (region-active-p)
       (setq my-mark-was-active t))
 
     (let ((mark-before (mark))
           (point-before (point)))
 
-      ;; Use emacs state for evil in multiple cursors
       (evil-emacs-state 1)
 
-      ;; Only adjust region when it's active
       (when (or my-mark-was-active (region-active-p))
         (goto-char point-before)
         (set-mark mark-before)))))
