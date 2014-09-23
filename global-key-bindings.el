@@ -29,7 +29,9 @@
             helm-descbinds
             helm-proc
             helm-cmd-t
-            helm-ag)
+            helm-ag
+            helm-company
+            company)
 
   :bind
   (("M-x"       . helm-M-x)
@@ -38,7 +40,7 @@
    ("C-c f"     . helm-recentf)
    ("C-c <SPC>" . helm-all-mark-rings)
    ("C-h r"     . helm-info-emacs)
-   ("C-:"       . helm-eval-expression-with-eldoc)
+   ("C-:"       . helm-company)
    ("C-h d"     . helm-info-at-point)
    ("C-c g"     . helm-google-suggest)
    ("C-x C-d"   . helm-browse-project)
@@ -307,7 +309,7 @@ If no map is found in current source do nothing (keep previous map)."
 ;; =============================================================
 
 (req-package paredit
-  :require (evil comment-dwim-2)
+  :require (evil comment-dwim-2 hippie-expand)
   :init
   (let ((turn-on-paredit-mode (lambda () (paredit-mode 1))))
     ;; some hooks: lisp-mode-hook and scheme-mode-hook are recommended
@@ -325,6 +327,9 @@ If no map is found in current source do nothing (keep previous map)."
 
     (defadvice paredit-close-round (after paredit-close-and-indent activate)
       (cleanup-buffer))
+    
+    (bind-keys :map paredit-mode-map
+               ("M-?" . hippie-expand-lines))
 
     (evil-declare-key 'insert paredit-mode-map
       (kbd "C-k") 'paredit-kill)
@@ -402,8 +407,6 @@ If no map is found in current source do nothing (keep previous map)."
 (bind-keys :map global-map
            ("M-j" . move-cursor-next-pane)
            ("M-k" . move-cursor-previous-pane)
-           ("M-e" . hippie-expand)
-           ("M-SPC" . hippie-expand-lines)
            ("M-1" . delete-other-windows)
            ("M-!" . delete-window)
            ("M-2" . split-window-vertically)

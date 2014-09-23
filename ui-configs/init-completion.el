@@ -1,111 +1,140 @@
+;; init-completion.el - Setup all completion methods.
+
 ;; =============================================================
 ;; Auto Complete
 ;; =============================================================
+(req-package auto-complete
+  :require (evil yasnippet company)
+  :init (require 'auto-complete-config)
+  :config
+  (progn
+    ;; =============================================================
+    ;; Evil Keybindings
+    ;; =============================================================
 
-(require-package 'auto-complete)
-(require 'auto-complete-config)
-(require 'init-evil)
+    ;; Navigation in autocomplete menues gets hijacked by evil
+    (bind-keys :map ac-completing-map
+               ("C-n" . ac-next)
+               ("C-p" . ac-previous)
+               ("C-g" . ac-stop)
+               ("ESC" . evil-normal-state))
 
-(setq ac-show-menu-timer 0.1
-      ac-auto-show-menu t)
+    ;; Let me stop autocompleting the emacs/evil way
+    (evil-make-intercept-map ac-completing-map)
 
-(add-hook 'flyspell-mode-hook
-          (lambda ()
-            (ac-flyspell-workaround)))
+    (setq ac-show-menu-timer 0.1
+          ac-auto-show-menu t)
 
-;;; Make sure autocomplete doesn't interfere with yasnippet.
-(setq yas-before-expand-snippet-hook (lambda () (auto-complete-mode -1)))
-(setq yas-after-exit-snippet-hook (lambda () (auto-complete-mode 1)))
+    (defun completion/ac-flyspell-workaround ()
+      (if auto-complete-mode
+          (ac-flyspell-workaround)))
 
-;; =============================================================
-;; Evil Keybindings
-;; =============================================================
+    (add-hook 'flyspell-mode-hook 'completion/ac-flyspell-workaround)
 
-;; Navigation in autocomplete menues gets hijacked by evil
-(define-key ac-completing-map (kbd "M-n") 'ac-next)
-(define-key ac-completing-map (kbd "M-p") 'ac-previous)
+    (defvar completion/yas-ac-was-on nil
+      "This tells `yasnippet' if auto-complete should be on for
+      the current mode.")
 
-;; Let me stop autocompleting the emacs/evil way
-(define-key ac-completing-map (kbd "C-g") 'ac-stop)
-(define-key ac-completing-map (kbd "ESC") 'evil-normal-state)
-(evil-make-intercept-map ac-completing-map)
+    (defun completion/yas-ac-expand-workaround ()
+      "Disable auto-complete-mode during yas expansion, but only
+      if it was enabled in the first place."
+      (when auto-complete-mode
+        (setf (make-local-variable completion/yas-ac-was-on) t)
+        (auto-complete-mode -1)))
 
-(provide 'init-auto-complete)
+    (defun completion/yas-ac-exit-workaround ()
+      "Re-enable auto-complete-mode if it was enabled previously
+      in this mode."
+      (when completion/yas-ac-was-on
+        (setf completion/yas-ac-was-on nil)
+        (auto-complete-mode 1)))
+
+    (add-hook 'yas-before-expand-snippet-hook 'completion/yas-ac-expand-workaround)
+    (add-hook 'yas-after-exit-snippet-hook 'completion/yas-ac-exit-workaround)
+
+    (defun completion/use-auto-complete-instead ()
+      (company-mode -1)
+      (auto-complete-mode 1))
+
+    (add-hook 'ess-mode-hook 'completion/use-auto-complete-instead)))
 
 ;; =============================================================
 ;; Company Mode
 ;; =============================================================
-(require-package 'company)
-(require-package 'helm-company)
-(require 'company)
-(require 'init-evil)
-(require 'init-auto-complete)
+(req-package company
+  :require (evil)
+  :init
+  (progn
+    (require 'company)
+    (add-hook 'after-init-hook 'global-company-mode))
 
-(define-key company-active-map (kbd "C-h") 'help-command)
-(define-key company-active-map (kbd "C-w") 'kill-region-or-backward-word)
-(define-key company-active-map (kbd "C-l") 'company-show-location)
-(define-key company-active-map (kbd "M-1") nil)
-(define-key company-active-map (kbd "M-2") nil)
-(add-hook 'after-init-hook 'global-company-mode)
+  :config
+  (progn
+    (bind-keys :map company-active-map
+               ("C-n" . company-select-next)
+               ("C-p" . company-select-previous)
+               ("C-h" . help-command)
+               ("C-w" . kill-region-or-backward-word)
+               ("C-l" . company-show-location)
+               ("M-1" . nil)
+               ("M-2" . nil))
 
-(setq-default company-idle-delay 0.3)
+    (evil-make-intercept-map company-active-map)
 
-(defun use-auto-complete-instead ()
-  (company-mode -1)
-  (auto-complete-mode 1))
-
-(add-hook 'ess-mode-hook 'use-auto-complete-instead)
-
-(global-set-key (kbd "C-:") 'helm-company)
-
-(provide 'init-company)
+    (setq-default company-idle-delay 0.3)))
 
 ;; =============================================================
 ;; Hippie Expand
 ;; =============================================================
+(req-package hippie-expand
+  :bind (("M-/" . hippie-expand)
+         ("M-?" . hippie-expand-lines))
+  :init
+  (progn
+    (defun hippie-expand-lines ()
+      (interactive)
+      (let ((hippie-expand-try-functions-list '(try-expand-list
+                                                try-expand-list-all-buffers
+                                                try-expand-line
+                                                try-expand-line-all-buffers)))
+        (hippie-expand nil))))
 
-(setq hippie-expand-try-functions-list '(try-expand-dabbrev
-                                         try-expand-dabbrev-all-buffers
-                                         try-expand-dabbrev-from-kill
-                                         try-complete-file-name-partially
-                                         try-complete-file-name
-                                         try-expand-all-abbrevs
-                                         try-complete-lisp-symbol-partially
-                                         try-complete-lisp-symbol
-                                         try-expand-whole-kill
-                                         try-expand-line))
+  :config
+  (progn
+    (setq-default hippie-expand-try-functions-list
+                  '(try-expand-dabbrev
+                    try-expand-dabbrev-all-buffers
+                    try-expand-dabbrev-from-kill
+                    try-complete-file-name-partially
+                    try-complete-file-name
+                    try-expand-all-abbrevs
+                    try-complete-lisp-symbol-partially
+                    try-complete-lisp-symbol
+                    try-expand-whole-kill
+                    try-expand-line))
 
-(defun hippie-expand-lines ()
-  (interactive)
-  (let ((hippie-expand-try-functions-list '(try-expand-list
-                                            try-expand-list-all-buffers
-                                            try-expand-line
-                                            try-expand-line-all-buffers)))
-    (hippie-expand nil)))
-
-(defadvice he-substitute-string (after he-paredit-fix activate)
-  "remove extra paren when expanding line in paredit"
-  (if (and paredit-mode (equal (substring str -1) ")"))
-      (progn (backward-delete-char 1) (forward-char))))
-
-(provide 'init-hippie-expand)
+    (defadvice he-substitute-string (after completion/he-paredit-fix activate)
+      "remove extra paren when expanding line in paredit"
+      (if (and paredit-mode (equal (substring str -1) ")"))
+          (progn (backward-delete-char 1) (forward-char))))))
 
 ;; =============================================================
 ;; yasnippet
 ;; =============================================================
-(require-package 'yasnippet)
-(require-package 'buster-snippets)
-(require 'snippet-helpers)
+(req-package yasnippet
+  :require buster-snippets
+  :bind ("C-x y" . yas/insert-snippet)
+  :init (yas-global-mode 1)
+  :config
+  (progn
+    ;; Use only my own snippets
+    (setq yas-snippet-dirs `(,(expand-file-name (concat user-emacs-directory "snippets"))))
 
-;;; Use only my own snippets
-(setq yas-snippet-dirs `(,(expand-file-name (concat user-emacs-directory "snippets"))))
+    ;; Sometimes with certain more complex snippets, evil can choke
+    ;; trying to get back to normal-mode
+    (defun completion/yas-evil-workaround ()
+      (setq evil-current-insertion nil))
 
-(yas-global-mode 1)
-(global-set-key (kbd "C-x y") 'yas/insert-snippet)
+    (add-hook 'yas-after-exit-snippet-hook 'completion/yas-evil-workaround)))
 
-;;; Sometimes with certain more complex snippets, evil can choke
-;;; trying to get back to normal-mode
-(add-hook 'yas-after-exit-snippet-hook
-          (lambda () (setq evil-current-insertion nil)))
-
-(provide 'init-yasnippet)
+(provide 'init-completion)

@@ -15,7 +15,7 @@
 
 ;; Config files which could be absorbed by emacs functionality
 
-;;; Keybindings/editing (global-key-bindings.el)
+;;; Keybindings/editing (global-key-bindings.el) (revised)
 ;; ace-jump-mode
 ;; helm
 ;; multiple-cursors
@@ -29,7 +29,7 @@
 ;; evil-surround
 ;; ffip
 
-;;; Completion (init-completion.el)
+;;; Completion (init-completion.el) (revised)
 ;; auto-complete
 ;; company
 ;; hippie-expand
