@@ -1,3 +1,7 @@
+;; =============================================================
+;; Eshell
+;; =============================================================
+
 ;;; setup-eshell.el - setup eshell nicely
 
 (setq eshell-cmpl-cycle-completions nil
@@ -134,3 +138,15 @@ directory."
             (define-key eshell-mode-map (kbd "C-c r") 'helm-eshell-history)))
 
 (provide 'init-eshell)
+
+;; =============================================================
+;; Term
+;; =============================================================
+
+(require 'init-evil)
+
+(add-to-list 'evil-emacs-state-modes 'term-mode)
+
+(add-hook 'term-mode-hook (lambda () (yas-minor-mode -1)))
+
+(provide 'init-term)

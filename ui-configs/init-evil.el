@@ -70,3 +70,19 @@ file instead of revert."
 (setq-default evil-symbol-word-search t)
 
 (provide 'init-evil)
+
+;; =============================================================
+;; Evil God
+;; =============================================================
+(require-package 'evil-god)
+
+;; =============================================================
+;; Evil Surround
+;; =============================================================
+(require 'init-evil)
+(add-to-list 'load-path (expand-file-name (concat user-emacs-directory "site-lisp/evil-surround/")))
+
+(require 'surround)
+(global-surround-mode 1)
+
+(provide 'init-evil-surround)

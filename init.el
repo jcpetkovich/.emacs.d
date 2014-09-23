@@ -15,7 +15,7 @@
 
 ;; Config files which could be absorbed by emacs functionality
 
-;;; Keybindings/editing
+;;; Keybindings/editing (global-key-bindings.el)
 ;; ace-jump-mode
 ;; helm
 ;; multiple-cursors
@@ -23,41 +23,36 @@
 ;; req
 ;; visual-regexp
 
-;;; Keybindings?
+;;; Keybindings? (init-evil.el)
 ;; evil
 ;; evil-god
 ;; evil-surround
 ;; ffip
 
-;;; Completion
+;;; Completion (init-completion.el)
 ;; auto-complete
 ;; company
 ;; hippie-expand
 ;; yasnippet
 
-;;; Programming
+;;; Programming (init-programming.el)
 ;; cedet-semantic
 ;; flycheck
 ;; whitespace-mode
 ;; projectile
 ;; magit
 
-;;; Cosmetic
-;; diminish
+;;; Cosmetic (init-cosmetic.el) (needs to be split into init-editing.el and init-cosmetic.el)
 ;; parenface
 ;; theme
 
 ;;; Non editing functionality
-;; dired
+;; dired (crufty)
 ;; email
-;; erc
-;; eshell
-;; grep
-;; twittering-mode
-
-;;; Delete
-;; popwin
-
+;; erc (now init-irc.el, crufty)
+;; eshell (crufty) (now init-shell.el)
+;; grep (crufty) (now init-greplike.el)
+;; twittering-mode (whut)
 
 ;;;
 
@@ -125,6 +120,8 @@
 
 ;; 8. redefine personal custom things under a unified namespace, e.g.,
 ;; sanityinc
+
+;; 9. Fix yasnippet enabling of auto-complete mode
 
 ;; Sketch of the new process:
 ;; 1. Setup path, setup package.el
