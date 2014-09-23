@@ -9,3 +9,13 @@ elpa
 
 eshell/history
 eshell/lastdir
+
+bookmarks
+emms
+semanticdb
+tramp
+url
+places
+projectile-bookmarks.eld
+
+helm-adaptive-history
