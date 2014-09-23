@@ -82,6 +82,7 @@
         orgtbl-hijacker-command-27
         orgtbl-self-insert-command
         paredit-backward
+        paredit-backward-up
         paredit-doublequote
         paredit-forward
         paredit-forward-barf-sexp

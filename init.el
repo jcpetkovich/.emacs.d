@@ -10,7 +10,7 @@
 (add-to-list 'load-path user-packages-directory)
 
 ;; Add user packages to load-path
-(let ((default-directory user-packages))
+(let ((default-directory user-packages-directory))
   (normal-top-level-add-subdirs-to-load-path))
 
 ;; Config files which could be absorbed by emacs functionality
@@ -78,7 +78,8 @@
 ;; =============================================================
 (req-package-force load-dir
   :init
-  (let ((load-dirs (list ui-configs-directory prog-mode-configs-directory)))
+  (let ((load-dirs (list ui-configs-directory ;; prog-mode-configs-directory
+                         )))
     (load-dirs)))
 
 ;; And now, the keybindings
