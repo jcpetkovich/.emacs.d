@@ -50,6 +50,9 @@
 ;; (kbd "C-;")
 ;; (kbd "M-O")
 
+;; Note for the big rebind, M-e, and M-a should be off-limits, and are
+;; pretty useful.
+
 ;; =============================================================
 ;;; Neat stuff from Magnars
 ;; =============================================================

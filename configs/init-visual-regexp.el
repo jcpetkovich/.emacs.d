@@ -2,7 +2,7 @@
 (require-package 'visual-regexp-steroids)
 
 (global-set-key (kbd "M-%") 'vr/select-query-replace)
-(global-set-key (kbd "A-C-5") 'vr/select-mc-mark)
+(global-set-key (kbd "s-C-5") 'vr/select-mc-mark)
 
 (require 'visual-regexp)
 
