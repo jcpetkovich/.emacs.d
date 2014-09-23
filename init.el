@@ -1,11 +1,61 @@
 ;; =============================================================
 ;; Load Path
 ;; =============================================================
-(defconst config-directory (expand-file-name (concat user-emacs-directory "configs")))
-(defconst defuns-directory (expand-file-name (concat user-emacs-directory "defuns")))
+(defconst prog-mode-configs-directory (expand-file-name (concat user-emacs-directory "mode-configs")))
+(defconst ui-configs-directory (expand-file-name (concat user-emacs-directory "ui-configs")))
+(defconst user-packages-directory (expand-file-name (concat user-emacs-directory "user-packages")))
 (add-to-list 'load-path user-emacs-directory)
-(add-to-list 'load-path config-directory)
-(add-to-list 'load-path defuns-directory)
+(add-to-list 'load-path prog-mode-configs-directory)
+(add-to-list 'load-path ui-configs-directory)
+(add-to-list 'load-path user-packages-directory)
+
+;; Config files which could be absorbed by emacs functionality
+
+;;; Keybindings/editing
+;; ace-jump-mode
+;; helm
+;; multiple-cursors
+;; paredit
+;; req
+;; visual-regexp
+
+;;; Keybindings?
+;; evil
+;; evil-god
+;; evil-surround
+;; ffip
+
+;;; Completion
+;; auto-complete
+;; company
+;; hippie-expand
+;; yasnippet
+
+;;; Programming
+;; cedet-semantic
+;; flycheck
+;; whitespace-mode
+;; projectile
+;; magit
+
+;;; Cosmetic
+;; diminish
+;; parenface
+;; theme
+
+;;; Non editing functionality
+;; dired
+;; email
+;; erc
+;; eshell
+;; grep
+;; twittering-mode
+
+;;; Delete
+;; popwin
+
+
+;;;
 
 ;; =============================================================
 ;; Bootstrapping elpa/req-package...
@@ -27,7 +77,10 @@
 ;; =============================================================
 ;; Alright, let's get this started!
 ;; =============================================================
-(req-package-force load-dir :init (load-dir-one config-directory))
+(req-package-force load-dir
+  :init
+  (let ((load-dirs (list ui-configs-directory prog-mode-configs-directory)))
+    (load-dirs)))
 
 ;; And now, the keybindings
 (require 'global-key-bindings)
