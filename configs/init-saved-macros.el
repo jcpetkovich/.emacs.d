@@ -8,7 +8,7 @@
      this name at the end of your .emacs"
      (interactive "SName of the macro :")  ; ask for the name of the macro    
      (kmacro-name-last-macro name)         ; use this name for the macro    
-     (find-file (expand-file-name (concat ini-configs-directory "/setup-saved-macros.el"))) ; open the .emacs file 
+     (find-file (expand-file-name (concat config-directory "/setup-saved-macros.el"))) ; open the .emacs file 
      (goto-char (point-max))               ; go to the end of the .emacs
      (newline)                             ; insert a newline
      (insert-kbd-macro name)               ; copy the macro 

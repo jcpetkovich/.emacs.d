@@ -1,51 +1,46 @@
 ;; =============================================================
 ;; Load Path
 ;; =============================================================
-(defconst ini-configs-directory (expand-file-name (concat user-emacs-directory "configs")))
-(defconst ini-defuns-directory (expand-file-name (concat user-emacs-directory "defuns")))
+(defconst config-directory (expand-file-name (concat user-emacs-directory "configs")))
+(defconst defuns-directory (expand-file-name (concat user-emacs-directory "defuns")))
 (add-to-list 'load-path user-emacs-directory)
-(add-to-list 'load-path ini-configs-directory)
-(add-to-list 'load-path ini-defuns-directory)
+(add-to-list 'load-path config-directory)
+(add-to-list 'load-path defuns-directory)
 
 ;; =============================================================
-;; Load package.el functions, now we can install things
+;; Bootstrapping elpa/req-package...
 ;; =============================================================
-(require 'package-defuns)
+(require 'package)
 
-;; =============================================================
-;; Essential dependencies
-;; =============================================================
+(defvar gnu '("gnu" . "http://elpa.gnu.org/packages/"))
+(defvar melpa '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives melpa)
+(package-initialize)
 
-;;; `s' and `dash' are required by most other config files.
-(require-package 'dash)
-(require-package 's)
+(when (not (package-installed-p 'req-package))
+  (when (not (assoc 'req-package package-archive-contents))
+    (package-refresh-contents))
+  (package-install 'req-package))
 
-(condition-case err
-    (progn
-      (require 'dash)
-      (require 's)
-      (dash-enable-font-lock))
-  (error
-   (message "Error: %s" (error-message-string err))
-   (message "Error: Could not load core deps, did you run: git submodule update --init --recursive")))
+(require 'req-package)
 
 ;; =============================================================
 ;; Alright, let's get this started!
 ;; =============================================================
+(req-package-force load-dir :init (load-dir-one config-directory))
 
-;;; `org-mode' needs to be configured first
-(require 'init-org-mode)
+;; And now, the keybindings
+(require 'global-key-bindings)
 
-;;; require the rest of the config files!
-(-map (lambda (filespec)
-        (require (intern (s-chop-suffix ".el" filespec))))
-      (directory-files ini-configs-directory nil "^init.*\\.el$"))
+;; Fire off req!
+(req-package-finish)
 
+;; Open my notes if they're there
 (when (file-exists-p my-notes-file)
   (find-file my-notes-file))
 
 ;; =============================================================
-;; Variables set by emacs
+;; Custom Set Variables
 ;; =============================================================
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
