@@ -99,4 +99,4 @@
 (global-set-key (kbd "<M-return>") 'new-line-dwim)
 (global-set-key (kbd "M-RET") 'new-line-dwim)
 
-(provide 'init-global-keybindings)
+(provide 'global-key-bindings)
