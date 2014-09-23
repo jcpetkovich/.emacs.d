@@ -9,6 +9,10 @@
 (add-to-list 'load-path ui-configs-directory)
 (add-to-list 'load-path user-packages-directory)
 
+;; Add user packages to load-path
+(let ((default-directory user-packages))
+  (normal-top-level-add-subdirs-to-load-path))
+
 ;; Config files which could be absorbed by emacs functionality
 
 ;;; Keybindings/editing
