@@ -1,7 +1,4 @@
-
-;;; ========================================
-;;; My defuns
-;;; ========================================
+;; shrink-whitespace.el - Tools for shrinking and growing whitespace intelligently
 
 ;; Toggle fullscreen mode
 (defun toggle-fullscreen ()
@@ -151,3 +148,5 @@ lines to just one."
 
 
 (provide 'my-defuns)
+
+;; shrink-whitespace.el ends here

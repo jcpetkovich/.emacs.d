@@ -1,3 +1,4 @@
+;; global-key-bindings.el - Global keybindings, look here for cool stuff.
 
 ;;; Load additional defuns
 (require 'misc-defuns)
