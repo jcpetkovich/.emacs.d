@@ -86,6 +86,7 @@
 (global-set-key (kbd "M-t M-w") 'transpose-words)
 (global-set-key (kbd "M-t M-s") 'transpose-sexps)
 (global-set-key (kbd "M-t M-l") 'transpose-lines)
+(global-set-key (kbd "M-t M-p") 'transpose-params)
 
 ;; Capitalization
 (global-set-key (kbd "M-c M-c") 'capitalize-word)

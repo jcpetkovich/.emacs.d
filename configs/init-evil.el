@@ -21,6 +21,8 @@
 (define-key evil-visual-state-map (kbd "C-w") 'kill-region-or-backward-word)
 (define-key evil-insert-state-map (kbd "C-k") 'kill-line)
 
+(global-set-key (kbd "M-w") 'save-region-or-current-line)
+
 (--each '(normal insert)
   (evil-declare-key it global-map
     (kbd "C-a") 'shrink-whitespace
