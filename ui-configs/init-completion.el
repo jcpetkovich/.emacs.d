@@ -122,11 +122,12 @@
 ;; yasnippet
 ;; =============================================================
 (req-package yasnippet
-  :require buster-snippets
   :bind ("C-x y" . yas/insert-snippet)
+  :defer t
   :init
   (progn
     (setq yas-snippet-dirs `(,(expand-file-name (concat user-emacs-directory "snippets"))))
+    (require 'yasnippet)
     (yas-global-mode 1))
 
   :config
