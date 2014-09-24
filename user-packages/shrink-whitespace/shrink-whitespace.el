@@ -50,15 +50,18 @@ lines to just one."
         (t
          (delete-blank-lines))))
 
-(defun xor (a b)
-  (if a (not b) b))
+(defun xor (&rest args)
+  (let ((true-count 0))
+    (--each args
+      (when it (incf true-count)))
+    (equalp 1 true-count)))
 
 (defun just-one-space-p ()
   "Returns true if there is only one space nearby."
   (if (xor
        (looking-at "^ ")
-       (looking-at "\\( \\|\t\\)[^ \t]")
-       (looking-back "[^ \t]\\( \\|\t\\)"))
+       (and (looking-at "\\( \\|\t\\)[^ \t]") (not (looking-back " \\|\t")))
+       (and (looking-back "[^ \t]\\( \\|\t\\)") (not (looking-at " \\|\t"))))
       t
     nil))
 
@@ -146,7 +149,5 @@ lines to just one."
          (previous-line))
        (evil-append-line (or count 1)))))
 
-
-(provide 'my-defuns)
-
+(provide 'shrink-whitespace)
 ;; shrink-whitespace.el ends here
