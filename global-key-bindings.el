@@ -50,28 +50,28 @@
       (let ((current-prefix-arg (not arg)))
         (helm-do-grep)))
 
-    (bind-keys :map global-map
-               ("M-x"       . helm-M-x)
-               ("M-y"       . helm-show-kill-ring)
-               ("C-x C-f"   . helm-find-files)
-               ("C-c f"     . helm-recentf)
-               ("C-c <SPC>" . helm-all-mark-rings)
-               ("C-h r"     . helm-info-emacs)
-               ("C-:"       . helm-company)
-               ("C-h d"     . helm-info-at-point)
-               ("C-c g"     . helm-google-suggest)
-               ("C-x C-d"   . helm-browse-project)
-               ("C-h C-f"   . helm-apropos)
-               ("C-h a"     . helm-apropos)
-               ("M-o"       . helm-cmd-t)
-               ("M-z"       . helm-cmd-t-grep)
-               ("M-v"       . helm-semantic-or-imenu)
-               ("M-i"       . helm-swoop-custom)
-               ("M-I"       . helm-swoop-back-to-last-point)
-               ("C-c M-i"   . helm-multi-swoop)
-               ("C-x M-i"   . helm-multi-swoop-all)
-               ("C-x b"     . helm-C-x-b)
-               ("C-x C-b"   . helm-C-x-b)))
+    (bind-keys
+     ("M-x"       . helm-M-x)
+     ("M-y"       . helm-show-kill-ring)
+     ("C-x C-f"   . helm-find-files)
+     ("C-c f"     . helm-recentf)
+     ("C-c <SPC>" . helm-all-mark-rings)
+     ("C-h r"     . helm-info-emacs)
+     ("C-:"       . helm-company)
+     ("C-h d"     . helm-info-at-point)
+     ("C-c g"     . helm-google-suggest)
+     ("C-x C-d"   . helm-browse-project)
+     ("C-h C-f"   . helm-apropos)
+     ("C-h a"     . helm-apropos)
+     ("M-o"       . helm-cmd-t)
+     ("M-z"       . helm-cmd-t-grep)
+     ("M-v"       . helm-semantic-or-imenu)
+     ("M-i"       . helm-swoop-custom)
+     ("M-I"       . helm-swoop-back-to-last-point)
+     ("C-c M-i"   . helm-multi-swoop)
+     ("C-x M-i"   . helm-multi-swoop-all)
+     ("C-x b"     . helm-C-x-b)
+     ("C-x C-b"   . helm-C-x-b)))
   :config
   (progn
 
@@ -87,16 +87,15 @@
                ("C-i" . helm-execute-persistent-action)
                ("C-M-i" . helm-select-action))
 
-    (bind-keys :map global-map
-               ("M-g M-s"   . helm-do-grep-wrapper)
-               ("<f1>"      . helm-resume)
-               ("C-c m o" . helm-multi-occur)
-               ("C-x C-o" . helm-ls-git-ls))
-
-    (define-key global-map [remap occur] 'helm-occur)
-    (define-key global-map [remap jump-to-register] 'helm-register)
-    (define-key global-map [remap list-buffers] 'helm-C-x-b)
-    (define-key global-map [remap find-tag] 'helm-etags-select)
+    (bind-keys
+     ("M-g M-s"                . helm-do-grep-wrapper)
+     ("<f1>"                   . helm-resume)
+     ("C-c m o"                . helm-multi-occur)
+     ("C-x C-o"                . helm-ls-git-ls)
+     ([remap occur]            . helm-occur)
+     ([remap jump-to-register] . helm-register)
+     ([remap list-buffers]     . helm-C-x-b)
+     ([remap find-tag]         . helm-etags-select))
 
     (bind-keys :map isearch-mode-map
                ("C-c m o" . helm-multi-occur-from-isearch)
@@ -104,10 +103,11 @@
 
     (-each all-helm-maps
       (lambda (map)
-        (define-key map (kbd "C-w") 'kill-region-or-backward-word)
-        (define-key map (kbd "M-w") 'helm-yank-text-at-point)))
+        `(bind-keys :map ,map
+                    ("C-w" . kill-region-or-backward-word)
+                    ("M-w" . helm-yank-text-at-point))))
 
-    (define-key helm-find-files-map (kbd "C-w") 'helm-find-files-up-one-level)
+    (bind-key "C-w" 'helm-find-files-up-one-level helm-find-files-map)
 
     ;; =============================================================
     ;; Helm Settings
@@ -414,15 +414,20 @@ If no map is found in current source do nothing (keep previous map)."
     (bind-keys :map evil-visual-stat-map
                ("C-w" . kill-region-or-backward-word))))
 
-(bind-keys :map global-map
-           ("M-j" . move-cursor-next-pane)
-           ("M-k" . move-cursor-previous-pane)
-           ("M-1" . delete-other-windows)
-           ("M-!" . delete-window)
-           ("M-2" . split-window-vertically)
-           ("M-@" . split-window-horizontally)
-           ("<f11>" . align-regexp)
-           ("M-<escape>" (lambda (revert-buffer t t))))
+(req-package shrink-whitespace
+  :bind (("M-\\" . shrink-whitespace)
+         ("M-a" . grow-whitespace-around)
+         ("C-M-a" . shrink-whitespace-around)))
+
+(bind-keys
+ ("M-j" . move-cursor-next-pane)
+ ("M-k" . move-cursor-previous-pane)
+ ("M-1" . delete-other-windows)
+ ("M-!" . delete-window)
+ ("M-2" . split-window-vertically)
+ ("M-@" . split-window-horizontally)
+ ("<f11>" . align-regexp)
+ ("M-<escape>" . (lambda (revert-buffer t t))))
 
 ;;; Unbound (or mostly useless) but convenientish keys
 ;; (kbd "M-u")
