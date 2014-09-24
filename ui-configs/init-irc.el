@@ -1,7 +1,8 @@
 ;; init-irc.el - Setup irc within emacs.
 
 (req-package rcirc
-  :require (rcirc-color rcirc-notify auth-source evil)
+  :require (rcirc-notify
+            auth-source evil)
   :commands rcirc
   :config
   (progn
@@ -25,7 +26,6 @@
              ("localhost"))
 
            ;; Configure plugins
-           rcirc-color-is-deterministic t
            rcirc-notify-timeout 0
            rcirc-notify-check-frame t)
 
@@ -109,9 +109,17 @@ This doesn't support the chanserv auth method"
     (add-to-list 'rcirc-markup-text-functions
                  't.co-url-replace)
 
-    (require 'rcirc-color)
     (require 'rcirc-notify)
     (rcirc-notify-add-hooks)
     (add-to-list 'evil-insert-state-modes 'rcirc-mode)))
+
+(req-package rcirc-color
+  :defer t
+  :commands rcirc
+  :require rcirc
+  :config
+  (progn
+    (set-default rcirc-color-is-deterministic t))
+)
 
 (provide 'init-irc)
