@@ -15,44 +15,18 @@
 
 ;; Config files which could be absorbed by emacs functionality
 
-;;; Keybindings/editing (global-key-bindings.el) (revised)
-;; ace-jump-mode
-;; helm
-;; multiple-cursors
-;; paredit
-;; req
-;; visual-regexp
-
-;;; Keybindings? (init-evil.el)
-;; evil
-;; evil-god
-;; evil-surround
-;; ffip
-
-;;; Completion (init-completion.el) (revised)
-;; auto-complete
-;; company
-;; hippie-expand
-;; yasnippet
-
-;;; Programming (init-programming.el)
-;; cedet-semantic
-;; flycheck
-;; whitespace-mode
-;; projectile
-;; magit
-
-;;; Cosmetic (init-cosmetic.el) (needs to be split into init-editing.el and init-cosmetic.el)
-;; parenface
-;; theme
+;; Revise keybindings:
+;;; Keybindings/editing (global-key-bindings.el) (needs revising)
+;;; Keybindings? (init-evil.el) (needs revising)
+;;; Cosmetic (init-cosmetic.el) (needs revising)
+;;; Editing (init-editing.el) (needs custom.el vars etc)
 
 ;;; Non editing functionality
 ;; dired (crufty)
-;; email
 ;; erc (now init-irc.el, crufty)
 ;; eshell (crufty) (now init-shell.el)
-;; grep (crufty) (now init-greplike.el)
-;; twittering-mode (whut)
+
+;; Evil helm workarounds are crufty
 
 ;;;
 
