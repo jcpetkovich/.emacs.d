@@ -41,16 +41,16 @@
                ("k" . dired-do-delete)
                ("C-x C-k" . dired-do-delete))
 
-    (define-key dired-mode-map (vector 'remap 'beginning-of-buffer) 'dired-back-to-top)
-    (define-key dired-mode-map (vector 'remap 'smart-up) 'dired-back-to-top)
-    (define-key dired-mode-map (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)
-    (define-key dired-mode-map (vector 'remap 'smart-down) 'dired-jump-to-bottom)
+    (bind-keys :map dired-mode-map
+               ([remap beginning-of-buffer] . dired-back-to-top)
+               ([remap smart-up] . dired-back-to-top)
+               ([remap end-of-buffer] . dired-jump-to-bottom)
+               ([remap smart-down] . dired-jump-to-bottom))
 
-    (eval-after-load "wdired"
-      '(progn
-         (define-key wdired-mode-map (kbd "C-a") 'dired-back-to-start-of-files)
-         (define-key wdired-mode-map (vector 'remap 'beginning-of-buffer) 'dired-back-to-top)
-         (define-key wdired-mode-map (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)))
+    (bind-keys :map wdired-mode-map
+               ("C-a" . dired-back-to-start-of-files)
+               ([remap beginning-of-buffer] . dired-back-to-top)
+               ([remap end-of-buffer] . dired-jump-to-bottom))
 
     (evil-declare-key 'normal dired-mode-map
       (kbd "n") 'evil-search-next)))
