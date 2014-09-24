@@ -16,9 +16,6 @@
   (progn
     (--each '(normal insert)
       (evil-declare-key it global-map
-        (kbd "C-a") 'shrink-whitespace
-        (kbd "M-a") 'grow-whitespace-around
-        (kbd "C-M-a") 'shrink-whitespace-around
         (kbd "C-n") 'evil-next-line
         (kbd "C-p") 'evil-previous-line
         (kbd "C-l") 'copy-to-register
