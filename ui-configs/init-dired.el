@@ -1,7 +1,7 @@
 ;; init-dired.el - Configure dired.
 
 (req-package dired
-  :require (evil dired-details)
+  :require (evil dired-details wdired)
   :config
   (progn
     (require 'dired-details)
