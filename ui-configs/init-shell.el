@@ -95,6 +95,9 @@ directory."
 
   :config
   (progn
+
+    (bind-key "C-c r" 'helm-eshell-history eshell-mode-map)
+
     (setq-default eshell-cmpl-cycle-completions nil
                   eshell-save-history-on-exit t
                   eshell-buffer-shorthand t
@@ -122,11 +125,7 @@ directory."
                   (let ((inhibit-read-only t))
                     (add-text-properties
                      (save-excursion (beginning-of-line) (point)) (point-max)
-                     '(face esk-eshell-error-prompt-face))))))
-
-    (add-hook 'eshell-mode-hook
-              (lambda ()
-                (define-key eshell-mode-map (kbd "C-c r") 'helm-eshell-history)))))
+                     '(face esk-eshell-error-prompt-face))))))))
 
 ;; =============================================================
 ;; Term
