@@ -32,33 +32,8 @@
             helm-ag
             helm-company
             company)
-
-  :bind
-  (("M-x"       . helm-M-x)
-   ("M-y"       . helm-show-kill-ring)
-   ("C-x C-f"   . helm-find-files)
-   ("C-c f"     . helm-recentf)
-   ("C-c <SPC>" . helm-all-mark-rings)
-   ("C-h r"     . helm-info-emacs)
-   ("C-:"       . helm-company)
-   ("C-h d"     . helm-info-at-point)
-   ("C-c g"     . helm-google-suggest)
-   ("C-x C-d"   . helm-browse-project)
-   ("C-h C-f"   . helm-apropos)
-   ("C-h a"     . helm-apropos)
-   ("M-o"       . helm-cmd-t)
-   ("M-z"       . helm-cmd-t-grep)
-   ("M-v"       . helm-semantic-or-imenu)
-   ("M-i"       . helm-swoop-custom)
-   ("M-I"       . helm-swoop-back-to-last-point)
-   ("C-c M-i"   . helm-multi-swoop)
-   ("C-x M-i"   . helm-multi-swoop-all)
-   ("C-x b"     . helm-C-x-b)
-   ("C-x C-b"   . helm-C-x-b))
-
   :init
   (progn
-
     (require 'helm-config)
     (require 'helm-ls-git)
     (require 'helm-C-x-b)
@@ -75,7 +50,28 @@
       (let ((current-prefix-arg (not arg)))
         (helm-do-grep)))
 
-    )
+    (bind-keys :map global-map
+               ("M-x"       . helm-M-x)
+               ("M-y"       . helm-show-kill-ring)
+               ("C-x C-f"   . helm-find-files)
+               ("C-c f"     . helm-recentf)
+               ("C-c <SPC>" . helm-all-mark-rings)
+               ("C-h r"     . helm-info-emacs)
+               ("C-:"       . helm-company)
+               ("C-h d"     . helm-info-at-point)
+               ("C-c g"     . helm-google-suggest)
+               ("C-x C-d"   . helm-browse-project)
+               ("C-h C-f"   . helm-apropos)
+               ("C-h a"     . helm-apropos)
+               ("M-o"       . helm-cmd-t)
+               ("M-z"       . helm-cmd-t-grep)
+               ("M-v"       . helm-semantic-or-imenu)
+               ("M-i"       . helm-swoop-custom)
+               ("M-I"       . helm-swoop-back-to-last-point)
+               ("C-c M-i"   . helm-multi-swoop)
+               ("C-x M-i"   . helm-multi-swoop-all)
+               ("C-x b"     . helm-C-x-b)
+               ("C-x C-b"   . helm-C-x-b)))
   :config
   (progn
 
