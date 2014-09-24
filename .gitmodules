@@ -67,15 +67,9 @@
 [submodule "site-lisp/smart-forward"]
 	path = site-lisp/smart-forward
 	url = https://github.com/magnars/smart-forward.el.git
-[submodule "site-lisp/wgrep"]
-	path = site-lisp/wgrep
-	url = https://github.com/magnars/Emacs-wgrep.git
 [submodule "site-lisp/emacs-color-theme-solarized"]
 	path = site-lisp/emacs-color-theme-solarized
 	url = https://github.com/mwolson/emacs-color-theme-solarized.git
-[submodule "site-lisp/rcirc-notify"]
-	path = site-lisp/rcirc-notify
-	url = https://github.com/nicferrier/rcirc-notify.git
 [submodule "site-lisp/helm-mu"]
 	path = site-lisp/helm-mu
 	url = https://github.com/emacs-helm/helm-mu.git

@@ -181,8 +181,6 @@ If no map is found in current source do nothing (keep previous map)."
 ;; Multiple Cursors
 ;; =============================================================
 
-;;; setup-multiple-cursors.el - install/configure multiple cursors.
-
 (req-package multiple-cursors
 
   :bind
@@ -229,7 +227,6 @@ If no map is found in current source do nothing (keep previous map)."
 
   :init
   (progn
-
     ;; =============================================================
     ;; Custom multiple cursors functions
     ;; =============================================================
@@ -243,9 +240,7 @@ If no map is found in current source do nothing (keep previous map)."
       (interactive)
       (if (not (region-active-p))
           (er/mark-word)
-        (call-interactively #'mc/mark-next-word-like-this)))
-
-    )
+        (call-interactively #'mc/mark-next-word-like-this))))
 
   :config
   (progn
@@ -406,7 +401,7 @@ If no map is found in current source do nothing (keep previous map)."
 
 (req-package magnars-defuns
   :require evil
-  :bind (("C-w" . 'kill-region-or-backward-word)
+  :bind (("C-w" . kill-region-or-backward-word)
          ("M-w" . save-region-or-current-line)
          ("C-c e" . eval-and-replace)
          ("C-c n" . cleanup-buffer)

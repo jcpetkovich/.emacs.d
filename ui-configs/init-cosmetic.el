@@ -6,9 +6,6 @@
 (req-package parenface
   :init (require 'parenface))
 
-(require 'uniquify)
-(require 'saveplace)
-
 ;; =============================================================
 ;; Color Theme
 ;; =============================================================
@@ -38,6 +35,7 @@
       (push it sml/replacer-regexp-list))))
 
 (req-package moe-theme
+  :defer t
   :require smart-mode-line
   :init
   (progn
@@ -53,7 +51,11 @@
       (sml/setup)
       (sml/apply-theme 'light))
 
-    (add-hook 'after-init-hook 'dark)))
+    (defun cosmetic/install-theme ()
+      (require 'moe-theme)
+      (dark))
+
+    (add-hook 'after-init-hook 'cosmetic/install-theme)))
 
 ;; =============================================================
 ;; Line numbers
@@ -101,6 +103,7 @@
 ;; =============================================================
 
 (req-package diminish
+  :require s
   :init
   (progn
     (defun diminish-major (mode new-string)
@@ -110,7 +113,7 @@ at all like the regular `diminish' function. It uses
 lexical-binding to create a proper closure."
 
       (let ((mode-hook (intern (s-concat (symbol-name mode) "-hook"))))
-        (add-hook mode-hook (lambda () (setq mode-name new-string))))))
+        `(add-hook mode-hook (lambda () (setq mode-name ,new-string))))))
 
   :config
   (progn

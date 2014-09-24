@@ -11,7 +11,6 @@
                   evil-symbol-word-search t)
     (evil-mode 1))
   :config
-
   (progn
     (--each '(normal insert)
       (evil-declare-key it global-map
@@ -68,6 +67,6 @@ file instead of revert."
 ;; =============================================================
 (req-package evil-surround
   :require (evil)
-  :init (global-evil-surrond-mode 1))
+  :init (global-evil-surround-mode 1))
 
 (provide 'init-evil)

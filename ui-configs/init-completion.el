@@ -124,12 +124,13 @@
 (req-package yasnippet
   :require buster-snippets
   :bind ("C-x y" . yas/insert-snippet)
-  :init (yas-global-mode 1)
+  :init
+  (progn
+    (setq yas-snippet-dirs `(,(expand-file-name (concat user-emacs-directory "snippets"))))
+    (yas-global-mode 1))
+
   :config
   (progn
-    ;; Use only my own snippets
-    (setq yas-snippet-dirs `(,(expand-file-name (concat user-emacs-directory "snippets"))))
-
     ;; Sometimes with certain more complex snippets, evil can choke
     ;; trying to get back to normal-mode
     (defun completion/yas-evil-workaround ()

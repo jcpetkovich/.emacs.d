@@ -88,10 +88,6 @@
 ;; Fire off req!
 (req-package-finish)
 
-;; Open my notes if they're there
-(when (file-exists-p my-notes-file)
-  (find-file my-notes-file))
-
 ;; =============================================================
 ;; Custom Set Variables
 ;; =============================================================

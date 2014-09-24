@@ -1,6 +1,5 @@
 ;; init-editing.el - Configure editing related emacs settings.
 
-
 (setq-default
  indent-tabs-mode                    nil
  save-place                          t
@@ -10,6 +9,9 @@
  save-interprogram-paste-before-kill t
  save-place-file                     (concat user-emacs-directory "places")
  major-mode                          'org-mode)
+
+(require 'uniquify)
+(require 'saveplace)
 
 ;;; Make acknowledging stuff faster
 (fset 'yes-or-no-p 'y-or-n-p)
