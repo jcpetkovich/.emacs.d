@@ -4,11 +4,13 @@
 
 (req-package evil
   :require (undo-tree browse-kill-ring)
+  :defer t
   :init
   (progn
     (setq-default evil-want-C-i-jump nil
                   evil-want-C-u-scroll t
                   evil-symbol-word-search t)
+    (require 'evil)
     (evil-mode 1))
   :config
   (progn
