@@ -1,6 +1,30 @@
 ;; init-cosmetic.el - Configure cosmetic emacs settings.
 
 ;; =============================================================
+;; Custom Set Variables
+;; =============================================================
+
+(setq-default
+ mouse-wheel-scroll-amount '(1)
+ show-paren-style          'expression
+ inhibit-splash-screen     t
+ display-time-day-and-date nil
+ display-time-24hr-format  nil)
+
+;;; Make the frame title easy to search for among open windows
+(setq-default frame-title-format
+              (list
+               '(:eval (if buffer-file-name (buffer-file-name) (buffer-name)))))
+
+;;; No decorations please
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
+;;; Display time
+(display-time)
+
+;; =============================================================
 ;; Parenface
 ;; =============================================================
 (req-package parenface
@@ -39,13 +63,13 @@
   :require smart-mode-line
   :init
   (progn
-    (defun dark ()
+    (defun cosmetic/dark ()
       (interactive)
       (load-theme 'moe-dark t)
       (sml/setup)
       (sml/apply-theme 'dark))
 
-    (defun light ()
+    (defun cosmetic/light ()
       (interactive)
       (load-theme 'moe-light t)
       (sml/setup)
@@ -53,7 +77,7 @@
 
     (defun cosmetic/install-theme ()
       (require 'moe-theme)
-      (dark))
+      (cosmetic/dark))
 
     (add-hook 'after-init-hook 'cosmetic/install-theme)))
 
@@ -75,30 +99,6 @@
     (add-hook 'rcirc-mode-hook 'cosmetic/disable-line-numbers)))
 
 ;; =============================================================
-;; Custom Set Variables
-;; =============================================================
-
-(setq-default
- mouse-wheel-scroll-amount '(1)
- show-paren-style          'expression
- inhibit-splash-screen     t
- display-time-day-and-date nil
- display-time-24hr-format  nil)
-
-;;; Make the frame title easy to search for among open windows
-(setq-default frame-title-format
-              (list
-               '(:eval (if buffer-file-name (buffer-file-name) (buffer-name)))))
-
-;;; No decorations please
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-
-;;; Display time
-(display-time)
-
-;; =============================================================
 ;; Diminish
 ;; =============================================================
 
@@ -106,7 +106,7 @@
   :require s
   :init
   (progn
-    (defun diminish-major (mode new-string)
+    (defun cosmetic/diminish-major (mode new-string)
       "Diminish the major mode. It will only diminish the major mode
 such that the string is shorter, not so that it does not appear
 at all like the regular `diminish' function. It uses
@@ -126,6 +126,6 @@ lexical-binding to create a proper closure."
     (eval-after-load "flyspell"
       '(diminish 'flyspell-mode " FS"))
 
-    (diminish-major 'emacs-lisp-mode "Elisp")))
+    (cosmetic/diminish-major 'emacs-lisp-mode "Elisp")))
 
 (provide 'init-cosmetic)

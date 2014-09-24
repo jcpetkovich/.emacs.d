@@ -18,15 +18,16 @@
 ;; Revise keybindings:
 ;;; Keybindings/editing (global-key-bindings.el) (needs revising)
 ;;; Keybindings? (init-evil.el) (needs revising)
-;;; Cosmetic (init-cosmetic.el) (needs revising)
+;;; Cosmetic (init-cosmetic.el) (needs revising, take inspiration from prelude)
 ;;; Editing (init-editing.el) (needs custom.el vars etc)
 
 ;;; Non editing functionality
-;; dired (crufty)
 ;; erc (now init-irc.el, crufty)
 ;; eshell (crufty) (now init-shell.el)
 
 ;; Evil helm workarounds are crufty
+
+;; init-html-mode should probably be merged or changed to web-mode.
 
 ;;;
 

@@ -1,29 +1,27 @@
+;; init-elisp.el - Setup emacs for editing elisp.
 
-(require 'init-evil)
-(require-package 'elisp-slime-nav)
-(require-package 'info+)
-(require-package 'ipretty)
-(require-package 'pcomplete-extension)
+(req-package lisp-mode
+  :require (elisp-slime-nav info+ ipretty pcomplete-extension evil)
+  :bind (("C-h C-j" . ipretty-last-sexp)
+         ("C-h C-k" . ipretty-last-sexp-other-buffer))
+  :init
+  (progn
+    (--each '(emacs-lisp-mode-hook ielm-mode-hook)
+      (add-hook it 'turn-on-elisp-slime-nav-mode)
+      (add-hook it 'eldoc-mode)))
 
-(global-set-key (kbd "C-h C-j") 'ipretty-last-sexp)
-(global-set-key (kbd "C-h C-k") 'ipretty-last-sexp-other-buffer)
+  :config
+  (progn
+    (--each '(normal insert)
+      (evil-declare-key it emacs-lisp-mode-map
+        (kbd "M-.") 'elisp-slime-nav-find-elisp-thing-at-point))
 
-(--each '(emacs-lisp-mode-hook ielm-mode-hook)
-  (add-hook it 'turn-on-elisp-slime-nav-mode)
-  (add-hook it 'eldoc-mode))
+    (defun user-elisp/my-eval-region (start end)
+      (interactive "r")
+      (eval-region start end)
+      (deactivate-mark))
 
-(--each '(normal insert)
-  (evil-declare-key it emacs-lisp-mode-map
-    (kbd "M-.") 'elisp-slime-nav-find-elisp-thing-at-point))
-
-;;; eval region
-
-(defun my-eval-region (start end)
-  (interactive "r")
-  (eval-region start end)
-  (deactivate-mark))
-
-(evil-declare-key 'visual global-map
-  (kbd ",") #'my-eval-region)
+    (evil-declare-key 'visual global-map
+      (kbd ",") #'user-elisp/my-eval-region)))
 
 (provide 'init-elisp)
