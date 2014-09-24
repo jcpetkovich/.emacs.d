@@ -32,7 +32,8 @@
 
   (req-package mu4e
     :require evil
-    :bind ("<f5>" . mu4e-update-index)
+    :bind (("<f4>" . mu4e)
+           ("<f5>" . mu4e-update-index))
     :config
     (progn
 

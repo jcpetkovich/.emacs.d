@@ -309,7 +309,7 @@ If no map is found in current source do nothing (keep previous map)."
 ;; =============================================================
 
 (req-package paredit
-  :require (evil comment-dwim-2 hippie-expand)
+  :require (evil comment-dwim-2 hippie-expand user-utils)
   :init
   (let ((turn-on-paredit-mode (lambda () (paredit-mode 1))))
     ;; some hooks: lisp-mode-hook and scheme-mode-hook are recommended
@@ -327,7 +327,7 @@ If no map is found in current source do nothing (keep previous map)."
 
     (defadvice paredit-close-round (after paredit-close-and-indent activate)
       (cleanup-buffer))
-    
+
     (bind-keys :map paredit-mode-map
                ("M-?" . hippie-expand-lines))
 
@@ -404,6 +404,25 @@ If no map is found in current source do nothing (keep previous map)."
 ;; Global keybindings
 ;; =============================================================
 
+(req-package magnars-defuns
+  :require evil
+  :bind (("C-w" . 'kill-region-or-backward-word)
+         ("M-w" . save-region-or-current-line)
+         ("C-c e" . eval-and-replace)
+         ("C-c n" . cleanup-buffer)
+         ("C-x M-w" . copy-current-file-path)
+         ("C-x C--" . rotate-windows)
+         ("<M-return>" . new-line-dwim)
+         ("M-RET" . new-line-dwim))
+  :config
+  (progn
+    (bind-keys :map evil-insert-state-map
+               ("C-w" . kill-region-or-backward-word)
+               ("C-k" . kill-line))
+
+    (bind-keys :map evil-visual-stat-map
+               ("C-w" . kill-region-or-backward-word))))
+
 (bind-keys :map global-map
            ("M-j" . move-cursor-next-pane)
            ("M-k" . move-cursor-previous-pane)
@@ -411,24 +430,8 @@ If no map is found in current source do nothing (keep previous map)."
            ("M-!" . delete-window)
            ("M-2" . split-window-vertically)
            ("M-@" . split-window-horizontally)
-           ("<f2>" . calc)
-           ("<f4>" . mu4e)
            ("<f11>" . align-regexp)
-           ("C-c a" . org-agenda)
-           ("C-c b" . org-iswitchb)
-           ("C-c e" . fc-eval-and-replace)
-           ("C-ä" . magit-status)
-           ("C-c o" . occur)
-           ("C-c n" . cleanup-buffer)
-           ;; Copy file path to kill ring
-           ("C-x M-w" . copy-current-file-path)
-           ;; Window switching
-           ("C-x C--" . rotate-windows)
-           ;; Revert without any fuss
-           ("M-<escape>" (λ (revert-buffer t t)))
-           ;; Eshell
-           ("<M-return>" . new-line-dwim)
-           ("M-RET" . new-line-dwim))
+           ("M-<escape>" (lambda (revert-buffer t t))))
 
 ;;; Unbound (or mostly useless) but convenientish keys
 ;; (kbd "M-u")
@@ -470,10 +473,15 @@ If no map is found in current source do nothing (keep previous map)."
 
 (bind-keys :prefix "C-x l"
            :prefix-map user-launch-map
-           ("e" . esh))
+           ("g" . magit-status)
+           ("e" . esh)
+           ("t" . term)
+           ("s" . shell)
+           ("c" . calc))
 
 ;; View occurrence in occur mode
 (req-package occur
+  :bind ("C-c o" . occur)
   :config
   (progn
     (bind-keys :map occur-mode-map

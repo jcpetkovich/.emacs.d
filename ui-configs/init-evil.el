@@ -2,87 +2,72 @@
 ;; Evil keybindings
 ;; =============================================================
 
-(add-to-list 'load-path (expand-file-name (concat user-emacs-directory "site-lisp/evil")))
-(add-to-list 'load-path (expand-file-name (concat user-emacs-directory "site-lisp/undo-tree")))
+(req-package evil
+  :require (undo-tree browse-kill-ring)
+  :init
+  (progn
+    (setq-default evil-want-C-i-jump nil
+                  evil-want-C-u-scroll t
+                  evil-symbol-word-search t)
+    (evil-mode 1))
+  :config
 
-;;; Some versions of evil need these set before it's loaded
-(setq evil-want-C-i-jump nil
-      evil-want-C-u-scroll t)
+  (progn
+    (--each '(normal insert)
+      (evil-declare-key it global-map
+        (kbd "C-a") 'shrink-whitespace
+        (kbd "M-a") 'grow-whitespace-around
+        (kbd "C-M-a") 'shrink-whitespace-around
+        (kbd "C-n") 'evil-next-line
+        (kbd "C-p") 'evil-previous-line
+        (kbd "C-l") 'copy-to-register
+        (kbd "C-+") 'increment-register
+        (kbd "<f6>") 'projectile-compile-project
+        (kbd "C-M-<backspace>") 'paredit-backward-delete
+        (kbd "<f7>") 'compile
+        (kbd "<f8>") 'recompile))
 
-(require-package 'browse-kill-ring)
-(require 'undo-tree)
-(require 'my-defuns)
-(require 'evil)
+    (--each '(normal visual motion)
+      (evil-declare-key it global-map
+        (kbd "zu") 'universal-argument))
 
-(evil-mode 1)
+    (--each '(normal visual)
+      (evil-declare-key it global-map
+        (kbd "+") 'next-line-with-meat
+        (kbd "_") 'previous-line-with-meat))
 
-(global-set-key (kbd "C-w") 'kill-region-or-backward-word)
-(define-key evil-insert-state-map (kbd "C-w") 'kill-region-or-backward-word)
-(define-key evil-visual-state-map (kbd "C-w") 'kill-region-or-backward-word)
-(define-key evil-insert-state-map (kbd "C-k") 'kill-line)
+    (--each '(normal visual)
+      (evil-declare-key it dired-mode-map
+        (kbd "+") 'dired-create-directory))
 
-(global-set-key (kbd "M-w") 'save-region-or-current-line)
+    (evil-declare-key (quote normal) view-mode-map
+      (kbd "q") 'View-quit)
 
-(--each '(normal insert)
-  (evil-declare-key it global-map
-    (kbd "C-a") 'shrink-whitespace
-    (kbd "M-a") 'grow-whitespace-around
-    (kbd "C-M-a") 'shrink-whitespace-around
-    (kbd "C-n") 'evil-next-line
-    (kbd "C-p") 'evil-previous-line
-    (kbd "C-l") 'copy-to-register
-    (kbd "C-+") 'increment-register
-    (kbd "<f6>") 'projectile-compile-project
-    (kbd "C-M-<backspace>") 'paredit-backward-delete
-    (kbd "<f7>") 'compile
-    (kbd "<f8>") 'recompile))
 
-(--each '(normal visual motion)
-  (evil-declare-key it global-map
-    (kbd "zu") 'universal-argument))
-
-(--each '(normal visual)
-  (evil-declare-key it global-map
-    (kbd "+") 'next-line-with-meat
-    (kbd "_") 'previous-line-with-meat))
-
-(--each '(normal visual)
-  (evil-declare-key it dired-mode-map
-    (kbd "+") 'dired-create-directory))
-
-(evil-declare-key (quote normal) view-mode-map
-  (kbd "q") 'View-quit)
-
-(evil-define-command evil-ido-find-file (file)
-  "Same as `evil-edit' but fall back to helm-find-files with no
+    (evil-define-command evil-helm-find-file (file)
+      "Same as `evil-edit' but fall back to helm-find-files with no
 file instead of revert."
-  :repeat nil
-  :move-point nil
-  (interactive "<f>")
-  (if file
-      (find-file file)
-    (helm-find-files-1 default-directory)))
+      :repeat nil
+      :move-point nil
+      (interactive "<f>")
+      (if file
+          (find-file file)
+        (helm-find-files-1 default-directory)))
 
-;; Edit should be mapped to something smarter than evil's default
-(evil-ex-define-cmd "e[dit]" 'evil-ido-find-file)
-
-;; I prefer looking for symbols rather than words.
-(setq-default evil-symbol-word-search t)
-
-(provide 'init-evil)
+    ;; Edit should be mapped to something smarter than evil's default
+    (evil-ex-define-cmd "e[dit]" 'evil-helm-find-file)))
 
 ;; =============================================================
 ;; Evil God
 ;; =============================================================
-(require-package 'evil-god)
+(req-package evil-god-state
+  :require evil)
 
 ;; =============================================================
 ;; Evil Surround
 ;; =============================================================
-(require 'init-evil)
-(add-to-list 'load-path (expand-file-name (concat user-emacs-directory "site-lisp/evil-surround/")))
+(req-package evil-surround
+  :require (evil)
+  :init (global-evil-surrond-mode 1))
 
-(require 'surround)
-(global-surround-mode 1)
-
-(provide 'init-evil-surround)
+(provide 'init-evil)

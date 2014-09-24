@@ -1,3 +1,6 @@
+           ("C-c a" . org-agenda)
+           ("C-c b" . org-iswitchb)
+
 (require-package 'org '(20140331))
 (require 'org)
 (require 'init-evil)
