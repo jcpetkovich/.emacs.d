@@ -22,22 +22,16 @@
 ;; =============================================================
 ;; Helm!
 ;; =============================================================
-(req-package helm
-  :require (helm-ls-git
-            helm-swoop
-            helm-R
-            helm-descbinds
-            helm-proc
-            helm-cmd-t
-            helm-ag
-            helm-company
-            company)
+
+(req-package helm-ls-git
+  :bind ("C-x C-o" . helm-ls-git-ls)
+  :config (setf helm-ls-git-status-command 'magit-status))
+
+(req-package helm-swoop
+  :defer t
+  :commands (helm-swoop helm-swoop-back-to-last-point helm-multi-swoop helm-multi-swoop-all)
   :init
   (progn
-    (require 'helm-config)
-    (require 'helm-ls-git)
-    (require 'helm-C-x-b)
-
     (defun helm-swoop-custom (arg)
       "I don't want to have a query by default."
       (interactive "P")
@@ -45,6 +39,42 @@
           (helm-swoop :$multiline nil)
         (helm-swoop :$query "" :$multiline nil)))
 
+    (bind-keys
+     ("M-i"       . helm-swoop-custom)
+     ("M-I"       . helm-swoop-back-to-last-point)
+     ("C-c M-i"   . helm-multi-swoop)
+     ("C-x M-i"   . helm-multi-swoop-all))))
+
+(req-package helm-descbinds
+  :bind ("C-h b" . helm-descbinds)
+  :config (helm-descbinds-mode 1))
+
+(req-package helm-proc
+  :commands helm-proc)
+
+(req-package helm-cmd-t
+  :bind (("M-o" . helm-cmd-t)
+         ("M-z" . helm-cmd-t-grep)
+         ([remap list-buffers] . helm-C-x-b)
+         ("C-x b" . helm-C-x-b)
+         ("C-x C-b" . helm-C-x-b))
+
+  :config
+  (progn
+    (require 'helm-C-x-b)
+    (setf helm-C-x-b-sources (--remove (eq it 'helm-source-cmd-t) helm-C-x-b-sources)
+          helm-C-x-b-sources (-insert-at 1 'helm-source-ido-virtual-buffers helm-C-x-b-sources)
+          helm-C-x-b-sources (-insert-at 2 'helm-source-cmd-t helm-C-x-b-sources))))
+
+(req-package helm-company
+  :require company
+  :bind ("C-:" . helm-company))
+
+(req-package helm
+  :defer t
+  :init
+  (progn
+    (require 'helm-config)
     (defun helm-do-grep-wrapper (arg)
       (interactive "P")
       (let ((current-prefix-arg (not arg)))
@@ -57,24 +87,18 @@
      ("C-c f"     . helm-recentf)
      ("C-c <SPC>" . helm-all-mark-rings)
      ("C-h r"     . helm-info-emacs)
-     ("C-:"       . helm-company)
      ("C-h d"     . helm-info-at-point)
      ("C-c g"     . helm-google-suggest)
      ("C-x C-d"   . helm-browse-project)
      ("C-h C-f"   . helm-apropos)
      ("C-h a"     . helm-apropos)
-     ("M-o"       . helm-cmd-t)
-     ("M-z"       . helm-cmd-t-grep)
-     ("M-v"       . helm-semantic-or-imenu)
-     ("M-i"       . helm-swoop-custom)
-     ("M-I"       . helm-swoop-back-to-last-point)
-     ("C-c M-i"   . helm-multi-swoop)
-     ("C-x M-i"   . helm-multi-swoop-all)
-     ("C-x b"     . helm-C-x-b)
-     ("C-x C-b"   . helm-C-x-b)))
+     ("M-v"       . helm-semantic-or-imenu)))
   :config
   (progn
-
+    (require 'helm-tags)
+    (require 'helm-regexp)
+    (require 'helm-grep)
+    (require 'helm-files)
     (defvar all-helm-maps '(helm-map
                             helm-etags-map
                             helm-moccur-map
@@ -91,10 +115,8 @@
      ("M-g M-s"                . helm-do-grep-wrapper)
      ("<f1>"                   . helm-resume)
      ("C-c m o"                . helm-multi-occur)
-     ("C-x C-o"                . helm-ls-git-ls)
      ([remap occur]            . helm-occur)
      ([remap jump-to-register] . helm-register)
-     ([remap list-buffers]     . helm-C-x-b)
      ([remap find-tag]         . helm-etags-select))
 
     (bind-keys :map isearch-mode-map
@@ -114,7 +136,6 @@
     ;; =============================================================
 
     (helm-mode 1)
-    (helm-descbinds-mode 1)
 
     (recentf-mode 1)
     (setq recentf-max-saved-items 1000
@@ -126,16 +147,11 @@
           helm-input-idle-delay 0.01
           helm-m-occur-idle-delay 0.01
           helm-exit-idle-delay 0.1
-          helm-ls-git-status-command 'magit-status
           helm-candidate-number-limit 200
           helm-ff-search-library-in-sexp t
           helm-ff-file-name-history-use-recentf t
           helm-home-url "https://www.google.ca"
           helm-follow-mode-persistent t)
-
-    (setf helm-C-x-b-sources (--remove (eq it 'helm-source-cmd-t) helm-C-x-b-sources)
-          helm-C-x-b-sources (-insert-at 1 'helm-source-ido-virtual-buffers helm-C-x-b-sources)
-          helm-C-x-b-sources (-insert-at 2 'helm-source-cmd-t helm-C-x-b-sources))
 
     ;; =============================================================
     ;; Hack to fix rare error from helm--maybe-update-keymap
@@ -301,6 +317,7 @@ If no map is found in current source do nothing (keep previous map)."
 
 (req-package paredit
   :require evil
+  :commands paredit-mode
   :init
   (progn
     (--each '(lisp-mode-hook
@@ -335,6 +352,7 @@ If no map is found in current source do nothing (keep previous map)."
 
 (req-package smartparens
   :require evil
+  :commands (turn-on-smartparens-strict-mode smartparens-mode)
   :init
   (progn
     (require 'smartparens-config)
@@ -356,7 +374,6 @@ If no map is found in current source do nothing (keep previous map)."
 
   :config
   (progn
-
     ;; Laying paredit bindings on top of the smartparents one, not very
     ;; pretty but this includes all the functions that I want to use.
     (sp-use-smartparens-bindings)
@@ -373,16 +390,18 @@ If no map is found in current source do nothing (keep previous map)."
 ;; Visual Regexp
 ;; =============================================================
 (req-package visual-regexp
-  :require visual-regexp-steroids
   :bind (("M-%" . vr/select-query-replace)
          ("s-C-5" . vr/select-mc-mark)))
+
+
+(req-package visual-regexp-steroids
+  :require visual-regexp)
 
 ;; =============================================================
 ;; Expand Region
 ;; =============================================================
 
 (req-package expand-region
-  :commands (er/mark-symbol er/mark-word)
   :bind (("C-'" . er/expand-region)
          ("C-\"" . er/contract-region)))
 
