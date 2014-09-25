@@ -5,9 +5,11 @@
 ;; =============================================================
 (req-package auto-complete
   :require (evil yasnippet company)
-  :init (require 'auto-complete-config)
+  :commands auto-complete-mode
   :config
   (progn
+    (require 'auto-complete-config)
+
     ;; =============================================================
     ;; Evil Keybindings
     ;; =============================================================
@@ -54,18 +56,16 @@
 
     (defun completion/use-auto-complete-instead ()
       (company-mode -1)
-      (auto-complete-mode 1))
-
-    (add-hook 'ess-mode-hook 'completion/use-auto-complete-instead)))
+      (auto-complete-mode 1))))
 
 ;; =============================================================
 ;; Company Mode
 ;; =============================================================
 (req-package company
   :require (evil)
+  :commands global-company-mode
   :init
   (progn
-    (require 'company)
     (add-hook 'after-init-hook 'global-company-mode))
 
   :config
@@ -126,12 +126,11 @@
   :defer t
   :init
   (progn
-    (setq yas-snippet-dirs `(,(expand-file-name (concat user-emacs-directory "snippets"))))
-    (require 'yasnippet)
-    (yas-global-mode 1))
+    (setq yas-snippet-dirs `(,(expand-file-name (concat user-emacs-directory "snippets")))))
 
   :config
   (progn
+    (yas-global-mode 1)
     ;; Sometimes with certain more complex snippets, evil can choke
     ;; trying to get back to normal-mode
     (defun completion/yas-evil-workaround ()

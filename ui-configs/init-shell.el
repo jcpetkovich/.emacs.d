@@ -5,6 +5,7 @@
 ;; =============================================================
 (req-package eshell
   :require (esh-opt em-prompt em-term em-cmpl)
+  :defer t
   :init
   (progn
 

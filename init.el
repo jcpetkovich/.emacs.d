@@ -95,6 +95,8 @@
 
 ;; 9. Fix yasnippet enabling of auto-complete mode
 
+;; 10. Fix Makefile
+
 ;; Sketch of the new process:
 ;; 1. Setup path, setup package.el
 ;; 2. load/install req-package

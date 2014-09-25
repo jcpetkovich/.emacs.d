@@ -8,10 +8,12 @@
     (setq-default jedi:setup-keys t
                   jedi:complete-on-dot t)))
 
-(req-package ein)
+(req-package ein
+  :require python)
 
 (req-package python
   :require evil
+  :commands python-mode
   :config
   (progn
     (bind-keys :map python-mode-map

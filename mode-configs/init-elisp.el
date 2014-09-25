@@ -2,6 +2,7 @@
 
 (req-package lisp-mode
   :require (elisp-slime-nav info+ ipretty pcomplete-extension evil)
+  :commands (lisp-mode lisp-interaction-mode emacs-lisp-mode)
   :bind (("C-h C-j" . ipretty-last-sexp)
          ("C-h C-k" . ipretty-last-sexp-other-buffer))
   :init

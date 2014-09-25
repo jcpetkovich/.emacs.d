@@ -28,75 +28,73 @@
 ;; =============================================================
 
 ;; Mu4e should be installed at the system level.
-(when (require 'mu4e nil :noerror)
+(req-package mu4e
+  :require evil
+  :commands (mu4e mu4e-update-index)
+  :bind (("<f4>" . mu4e)
+         ("<f5>" . mu4e-update-index))
+  :config
+  (progn
+    (setq-default mu4e-html2text-command "html2text -nobs -width 1000"
+                  mu4e-view-show-images t
+                  mu4e-confirm-quit nil
+                  mu4e-maildir "~/Maildir"
+                  smtpmail-queue-mail  nil  ;; start in non-queuing mode
+                  smtpmail-queue-dir   "~/Maildir/queue/cur"
 
-  (req-package mu4e
-    :require evil
-    :bind (("<f4>" . mu4e)
-           ("<f5>" . mu4e-update-index))
-    :config
-    (progn
+                  ;; Special folders
+                  mu4e-sent-folder   "/bak.sent"
+                  mu4e-drafts-folder "/bak.drafts"
+                  mu4e-trash-folder  "/bak.trash"
 
-      (setq-default mu4e-html2text-command "html2text -nobs -width 1000"
-                    mu4e-view-show-images t
-                    mu4e-confirm-quit nil
-                    mu4e-maildir "~/Maildir"
-                    smtpmail-queue-mail  nil  ;; start in non-queuing mode
-                    smtpmail-queue-dir   "~/Maildir/queue/cur"
+                  ;; Mail address
+                  mu4e-user-mail-address-list
+                  '("jcpetkovich@gmail.com" "me@jcpetkovich.com" "j2petkov@uwaterloo.ca")
 
-                    ;; Special folders
-                    mu4e-sent-folder   "/bak.sent"
-                    mu4e-drafts-folder "/bak.drafts"
-                    mu4e-trash-folder  "/bak.trash"
+                  ;; Sync program
+                  mu4e-get-mail-command "offlineimap"
 
-                    ;; Mail address
-                    mu4e-user-mail-address-list
-                    '("jcpetkovich@gmail.com" "me@jcpetkovich.com" "j2petkov@uwaterloo.ca")
+                  mu4e-reply-to-address "jcpetkovich@gmail.com"
+                  user-mail-address "jcpetkovich@gmail.com"
+                  user-full-name  "Jean-Christophe Petkovich"
 
-                    ;; Sync program
-                    mu4e-get-mail-command "offlineimap"
+                  ;; include in message with C-c C-w
+                  mu4e-compose-signature
+                  "Jean-Christophe Petkovich"
+                  message-signature
+                  "Jean-Christophe Petkovich")
 
-                    mu4e-reply-to-address "jcpetkovich@gmail.com"
-                    user-mail-address "jcpetkovich@gmail.com"
-                    user-full-name  "Jean-Christophe Petkovich"
+    (when (fboundp 'imagemagick-register-types)
+      (imagemagick-register-types))
 
-                    ;; include in message with C-c C-w
-                    mu4e-compose-signature
-                    "Jean-Christophe Petkovich"
-                    message-signature
-                    "Jean-Christophe Petkovich")
+    (defun email/use-flyspell ()
+      (flyspell-mode 1))
 
-      (when (fboundp 'imagemagick-register-types)
-        (imagemagick-register-types))
+    (add-hook 'mu4e-compose-mode-hook 'email/use-flyspell)
 
-      (defun email/use-flyspell ()
-        (flyspell-mode 1))
+    (-each '(mu4e-view-mode mu4e-headers-mode)
+      (lambda (mode)
+        (add-to-list 'evil-motion-state-modes mode)))
 
-      (add-hook 'mu4e-compose-mode-hook 'email/use-flyspell)
+    (add-to-list 'evil-emacs-state-modes 'mu4e-main-mode)
 
-      (-each '(mu4e-view-mode mu4e-headers-mode)
-        (lambda (mode)
-          (add-to-list 'evil-motion-state-modes mode)))
+    (--each '(motion normal insert visual operator)
+      (evil-declare-key it mu4e-headers-mode-map
+        (kbd "RET") 'mu4e-headers-view-message
+        (kbd "/") 'mu4e-headers-search-narrow
+        (kbd "b") 'mu4e-headers-search-bookmark
+        (kbd "!") 'mu4e-headers-mark-for-read
+        (kbd "?") 'mu4e-headers-mark-for-unread))
 
-      (add-to-list 'evil-emacs-state-modes 'mu4e-main-mode)
+    (evil-declare-key 'motion mu4e-view-mode-map
+      (kbd "o") 'mu4e-view-open-attachment
+      (kbd "i") 'mu4e-view-go-to-url
+      (kbd "c") 'longlines-mode
+      (kbd "|") 'mu4e-view-pipe
+      (kbd "s") 'mu4e-view-save-attachment)
 
-      (--each '(motion normal insert visual operator)
-        (evil-declare-key it mu4e-headers-mode-map
-          (kbd "RET") 'mu4e-headers-view-message
-          (kbd "/") 'mu4e-headers-search-narrow
-          (kbd "b") 'mu4e-headers-search-bookmark
-          (kbd "!") 'mu4e-headers-mark-for-read
-          (kbd "?") 'mu4e-headers-mark-for-unread))
-
-      (evil-declare-key 'motion mu4e-view-mode-map
-        (kbd "o") 'mu4e-view-open-attachment
-        (kbd "i") 'mu4e-view-go-to-url
-        (kbd "c") 'longlines-mode
-        (kbd "|") 'mu4e-view-pipe
-        (kbd "s") 'mu4e-view-save-attachment)
-
-      (--each '(normal insert visual operator)
-        (evil-declare-key it mu4e-compose-mode-map
-          (kbd "C-c C-s") 'message-dont-send)))))
+    (--each '(normal insert visual operator)
+      (evil-declare-key it mu4e-compose-mode-map
+        (kbd "C-c C-s") 'message-dont-send))))
 
 (provide 'init-email)

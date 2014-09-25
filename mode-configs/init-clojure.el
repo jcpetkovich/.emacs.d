@@ -1,6 +1,8 @@
 ;; init-clojure.el - Setup emacs for editing clojure.
 
-(req-package clojure-mode)
+(req-package clojure-mode
+  :commands clojure-mode)
+
 (req-package cider
   :require (clojure-mode evil)
   :config

@@ -4,7 +4,7 @@
   :require evil
   :bind (("C-c a" . org-agenda)
          ("C-c b" . org-iswitchb))
-
+  :commands org-mode
   :config
   (progn
     (add-hook 'remember-mode-hook 'org-remember-apply-template)

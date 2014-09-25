@@ -5,6 +5,7 @@
 
 (req-package cc-mode
   :require smart-tabs-mode
+  :commands (c-mode c++-mode)
   :config
   (progn
     (add-hook 'c-mode-hook (defun user-utils/turn-off-abbrev-mode ()

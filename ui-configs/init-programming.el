@@ -30,7 +30,6 @@
 ;; =============================================================
 (req-package whitespace-cleanup-mode
   :require whitespace
-
   :config
   (progn
     (setq-default whitespace-style (remove 'indentation whitespace-style))
@@ -42,7 +41,6 @@
 ;; Projectile
 ;; =============================================================
 (req-package projectile
-
   :init (projectile-global-mode)
   :config
   (progn

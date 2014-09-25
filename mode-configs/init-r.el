@@ -1,6 +1,7 @@
 ;; init-r.el - Setup emacs for editing R code.
 
-(req-package ess-R-data-view)
+(req-package ess-R-data-view
+  :require ess)
 
 (req-package ess
   :require (auto-complete evil)
@@ -25,9 +26,12 @@
     (add-hook 'R-mode-hook
               (defun user-utils/R-whitespace-config ()
                 (set (make-local-variable 'whitespace-style)
-                     (remove 'empty whitespace-style))))))
+                     (remove 'empty whitespace-style))))
+
+    (add-hook 'ess-mode-hook 'completion/use-auto-complete-instead)))
 
 (req-package ess-noweb
+  :require ess
   :config
   (progn
     (defun ess-noweb-post-command-function ()
@@ -35,5 +39,10 @@
       (condition-case err
           (ess-noweb-select-mode)
         (error)))))
+
+(req-package helm-R
+  :require (ess helm)
+  :defer t
+  :commands helm-for-R)
 
 (provide 'init-r)

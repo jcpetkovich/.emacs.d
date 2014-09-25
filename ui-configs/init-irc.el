@@ -1,8 +1,10 @@
 ;; init-irc.el - Setup irc within emacs.
 
+(req-package rcirc-notify
+  :require rcirc)
+
 (req-package rcirc
-  :require (rcirc-notify
-            auth-source evil)
+  :require (auth-source evil)
   :commands rcirc
   :config
   (progn

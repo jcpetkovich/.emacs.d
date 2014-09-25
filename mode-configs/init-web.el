@@ -1,4 +1,5 @@
 (req-package web-mode
+  :commands web-mode
   :init
   (progn
     (--each '(("\\.html?\\'" . web-mode)
@@ -11,7 +12,8 @@
               ("\\.djhtml\\'" . web-mode))
       (add-to-list 'auto-mode-alist it))))
 
-(req-package less-css-mode)
+(req-package less-css-mode
+  :commands less-css-mode)
 
 (req-package jade-mode
   :mode ("\\.jade$" . jade-mode))

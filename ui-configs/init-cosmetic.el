@@ -27,8 +27,7 @@
 ;; =============================================================
 ;; Parenface
 ;; =============================================================
-(req-package parenface
-  :init (require 'parenface))
+(req-package parenface)
 
 ;; =============================================================
 ;; Color Theme
@@ -46,6 +45,7 @@
   (font-lock-add-keywords nil cosmetic/hexcolour-keywords))
 
 (req-package smart-mode-line
+  :commands sml/setup
   :config
   (progn
     (setq-default rm-blacklist '(" SliNav" " yas" " ElDoc" " Undo-Tree"
@@ -60,7 +60,6 @@
 
 (req-package moe-theme
   :defer t
-  :require smart-mode-line
   :init
   (progn
     (defun cosmetic/dark ()

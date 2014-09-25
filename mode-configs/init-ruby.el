@@ -1,6 +1,7 @@
 ;; init-ruby.el - Setup emacs for editing ruby.
 
-(req-package inf-ruby)
+(req-package inf-ruby
+  :require ruby-mode)
 
 (req-package company-inf-ruby
   :require inf-ruby)
@@ -12,9 +13,11 @@
   (progn
     (add-to-list 'company-backends 'company-robe)))
 
-(req-package yari)
+(req-package yari
+  :require ruby-mode)
 
 (req-package ruby-mode
+  :commands ruby-mode
   :config
   (progn
     (defun open-ruby-section ()

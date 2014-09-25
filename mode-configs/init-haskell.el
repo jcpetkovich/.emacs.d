@@ -2,6 +2,7 @@
 
 (req-package haskell-mode
   :require (flycheck flycheck-haskell)
+  :commands haskell-mode
   :init
   (progn
     (require 'haskell-mode-autoloads)

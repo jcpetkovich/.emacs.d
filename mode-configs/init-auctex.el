@@ -19,6 +19,7 @@
 
 (req-package latex
   :require tex-site
+  :commands latex-mode
   :config
   (progn
     (bind-keys :map LaTeX-mode-map
