@@ -9,7 +9,9 @@
     (autoload 'ghc-init "ghc" nil t))
   :config
   (progn
-    (setq-default haskell-process-type 'cabal-repl)
+    (setq-default haskell-process-type 'cabal-repl
+                  haskell-program-name "ghci -XTemplateHaskell")
+
     (mapcar (lambda (my-hook)
               (add-hook 'haskell-mode-hook my-hook))
             '(turn-on-haskell-indent

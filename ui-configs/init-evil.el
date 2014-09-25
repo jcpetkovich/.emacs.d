@@ -2,6 +2,10 @@
 ;; Evil keybindings
 ;; =============================================================
 
+(req-package browse-kill-ring
+  :config
+  (setq-default browse-kill-ring-quit-action 'save-and-restore))
+
 (req-package evil
   :require (undo-tree browse-kill-ring)
   :defer t
@@ -9,7 +13,10 @@
   (progn
     (setq-default evil-want-C-i-jump nil
                   evil-want-C-u-scroll t
-                  evil-symbol-word-search t)
+                  evil-symbol-word-search t
+                  evil-cross-lines t
+                  evil-default-cursor t
+                  evil-esc-delay 0)
     (require 'evil)
     (evil-mode 1))
   :config

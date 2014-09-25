@@ -102,7 +102,8 @@ directory."
     (setq-default eshell-cmpl-cycle-completions nil
                   eshell-save-history-on-exit t
                   eshell-buffer-shorthand t
-                  eshell-cmpl-dir-ignore "\\`\\(\\.\\.?\\|CVS\\|\\.svn\\|\\.git\\)/\\'")
+                  eshell-cmpl-dir-ignore "\\`\\(\\.\\.?\\|CVS\\|\\.svn\\|\\.git\\)/\\'"
+                  eshell-cmpl-ignore-case t)
 
     (setenv "PAGER" "cat")
     (setq eshell-cmpl-cycle-completions nil)

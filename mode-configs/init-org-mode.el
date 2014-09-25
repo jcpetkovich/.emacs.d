@@ -30,6 +30,9 @@
         (kbd "C-'") 'er/expand-region))
 
     (add-to-list 'org-modules 'org-timer)
+    (add-to-list 'org-modules 'org-habit)
+
+
     (setq-default
      org-hide-leading-stars  t
      org-odd-levels-only     t
@@ -37,6 +40,16 @@
      org-archive-location    "~/org/archive.org::* Finished Tasks"
      org-mobile-directory    "~/mobileorg/webdav"
      org-directory           "~/mobileorg"
+
+     org-src-fontify-natively t
+     org-completion-use-ido t
+     org-default-notes-file "~/org/captured.org"
+     org-file-apps '((auto-mode . emacs)
+                     ("\\.mm\\'" . default)
+                     ("\\.x?html?\\'" . default)
+                     ("\\.pdf\\'" . "zathura %s"))
+
+
 
      remember-annotation-functions '(org-remember-annotation)
      remember-handler-functions '(org-remember-handler)

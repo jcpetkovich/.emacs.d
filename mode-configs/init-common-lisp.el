@@ -21,6 +21,7 @@
       (require 'slime-fancy)
 
       (setq-default slime-contribs '(slime-fancy slime-asdf slime-banner)
+                    slime-complete-symbol-function 'slime-simple-complete-symbol
                     common-lisp-hyperspec-root
                     (if (file-exists-p "/usr/share/doc/hyperspec/HyperSpec")
                         "file:///usr/share/doc/hyperspec/HyperSpec/"

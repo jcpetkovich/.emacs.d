@@ -37,7 +37,9 @@
     (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
     (add-hook 'LaTeX-mode-hook 'orgtbl-mode)
 
-    (setq LaTeX-command-style '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)")))
+    (setq-default LaTeX-command-style '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)"))
+                  LaTeX-beamer-item-overlay-flag nil
+                  TeX-master nil)
 
     (push '("zathura" "zathura -s -x \"emacsclient --no-wait +%%{line} %%{input}\" %s.pdf")
           TeX-view-program-list)

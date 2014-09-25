@@ -24,8 +24,9 @@
     ;; Let me stop autocompleting the emacs/evil way
     (evil-make-intercept-map ac-completing-map)
 
-    (setq ac-show-menu-timer 0.1
-          ac-auto-show-menu t)
+    (setq-default ac-show-menu-timer 0.1
+                  ac-auto-show-menu t
+                  ac-ignore-case nil)
 
     (defun completion/ac-flyspell-workaround ()
       (if auto-complete-mode
@@ -101,7 +102,8 @@
 
   :config
   (progn
-    (setq-default hippie-expand-try-functions-list
+    (setq-default hippie-expand-dabbrev-skip-space t
+                  hippie-expand-try-functions-list
                   '(try-expand-dabbrev
                     try-expand-dabbrev-all-buffers
                     try-expand-dabbrev-from-kill
@@ -126,7 +128,8 @@
   :defer t
   :init
   (progn
-    (setq yas-snippet-dirs `(,(expand-file-name (concat user-emacs-directory "snippets")))))
+    (setq-default yas-snippet-dirs `(,(expand-file-name (concat user-emacs-directory "snippets")))
+                  yas-indent-line 'auto))
 
   :config
   (progn

@@ -7,6 +7,7 @@
 (setq-default
  mouse-wheel-scroll-amount '(1)
  scroll-conservatively     100000
+ show-paren-mode           t
  show-paren-style          'expression
  inhibit-splash-screen     t
  display-time-day-and-date nil
