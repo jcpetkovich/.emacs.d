@@ -15,12 +15,6 @@
 (let ((default-directory user-packages-directory))
   (normal-top-level-add-subdirs-to-load-path))
 
-;; Revise keybindings:
-;;; Keybindings/editing (global-key-bindings.el) (needs revising)
-;;; Keybindings? (init-evil.el) (needs revising)
-
-;;;
-
 ;; =============================================================
 ;; Bootstrapping elpa/req-package...
 ;; =============================================================
@@ -58,31 +52,3 @@
 ;; =============================================================
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
-
-;; Main ideas for rewrite
-
-;; (done) 1. custom.el should be reduced to its minimum, essentially only the
-;; theme should be included
-
-;; (done) 2. switch everything to use req-package or use-package.
-
-;; 3. drop all my keybinding extensions and redesign them from scratch
-;; based on the things I've learned.
-
-;; (done) 4. Trim unused cruft.
-
-;; (done) 5. change order of loaded files, mainly putting global keybindings
-;; at the end, and manually load them.
-
-;; (done) 6. Consider methods of consolidating customizations to mode/package
-;; keybindings in a way that makes sense.
-
-;; 7. regain some of the emacs keybindings I've removed, particularly
-;; the ones involved in movement.
-
-;; (done) 8. redefine personal custom things under a unified namespace, e.g.,
-;; sanityinc
-
-;; (done) 9. Fix yasnippet enabling of auto-complete mode
-
-;; (done) 10. Fix Makefile

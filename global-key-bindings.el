@@ -6,13 +6,16 @@
 
 (req-package ace-jump-mode
   :require (evil dash)
-  :bind ("C-x SPC" . ace-jump-mode-pop-mark)
-  :config
+  :commands (evil-ace-jump-word-mode evil-ace-jump-line-mode)
+  :init
   (progn
     (--each '(normal visual movement)
       (evil-declare-key it global-map
         (kbd "SPC") 'evil-ace-jump-word-mode
-        (kbd "C-SPC") 'evil-ace-jump-line-mode))
+        (kbd "C-SPC") 'evil-ace-jump-line-mode)))
+  :config
+  (progn
+
     (ace-jump-mode-enable-mark-sync)))
 
 (req-package ace-link
@@ -22,10 +25,6 @@
 ;; =============================================================
 ;; Helm!
 ;; =============================================================
-
-(req-package helm-ls-git
-  :bind ("C-x C-o" . helm-ls-git-ls)
-  :config (setf helm-ls-git-status-command 'magit-status))
 
 (req-package helm-swoop
   :defer t
@@ -38,6 +37,10 @@
       (if arg
           (helm-swoop :$multiline nil)
         (helm-swoop :$query "" :$multiline nil)))
+
+    (bind-keys :map isearch-mode-map
+               ("C-c m s" . helm-multi-swoop-all-from-isearch)
+               ("C-c s" . helm-swoop-from-isearch))
 
     (bind-keys
      ("M-i"       . helm-swoop-custom)
@@ -54,7 +57,7 @@
 
 (req-package helm-cmd-t
   :bind (("M-o" . helm-cmd-t)
-         ("M-z" . helm-cmd-t-grep)
+         ("M-l" . helm-cmd-t-grep)
          ([remap list-buffers] . helm-C-x-b)
          ("C-x b" . helm-C-x-b)
          ("C-x C-b" . helm-C-x-b))
@@ -84,11 +87,9 @@
      ("M-x"       . helm-M-x)
      ("M-y"       . helm-show-kill-ring)
      ("C-x C-f"   . helm-find-files)
-     ("C-c f"     . helm-recentf)
      ("C-c <SPC>" . helm-all-mark-rings)
      ("C-h r"     . helm-info-emacs)
      ("C-h d"     . helm-info-at-point)
-     ("C-c g"     . helm-google-suggest)
      ("C-x C-d"   . helm-browse-project)
      ("C-h C-f"   . helm-apropos)
      ("C-h a"     . helm-apropos)
@@ -112,16 +113,10 @@
                ("C-M-i" . helm-select-action))
 
     (bind-keys
-     ("M-g M-s"                . helm-do-grep-wrapper)
      ("<f1>"                   . helm-resume)
-     ("C-c m o"                . helm-multi-occur)
      ([remap occur]            . helm-occur)
      ([remap jump-to-register] . helm-register)
      ([remap find-tag]         . helm-etags-select))
-
-    (bind-keys :map isearch-mode-map
-               ("C-c m o" . helm-multi-occur-from-isearch)
-               ("C-c o" . helm-occur-from-isearch))
 
     (-each all-helm-maps
       (lambda (map)
@@ -421,10 +416,10 @@ If no map is found in current source do nothing (keep previous map)."
 
 (req-package magnars-defuns
   :require evil
+  :commands cleanup-buffer
   :bind (("C-w" . kill-region-or-backward-word)
          ("M-w" . save-region-or-current-line)
          ("C-c e" . eval-and-replace)
-         ("C-c n" . cleanup-buffer)
          ("C-x M-w" . copy-current-file-path)
          ("C-x C--" . rotate-windows)
          ("<M-return>" . new-line-dwim)
@@ -463,10 +458,8 @@ If no map is found in current source do nothing (keep previous map)."
 ;; (kbd "M-n") ; usually bound during certain modes
 ;; (kbd "M-p") ; usually bound during certain modes
 ;; (kbd "M-l")
-;; (kbd "M-h")
 ;; (kbd "M-~")
 ;; (kbd "M-`")
-;; (kbd "M-\"")
 ;; (kbd "C-=")
 ;; (kbd "C-M-=")
 ;; (kbd "C-;")
@@ -505,7 +498,9 @@ If no map is found in current source do nothing (keep previous map)."
            ("e" . esh)
            ("t" . term)
            ("s" . shell)
-           ("c" . calc))
+           ("c" . calc)
+           ("y" . yas/insert-snippet)
+           ("w" . cleanup-buffer))
 
 ;; View occurrence in occur mode
 (bind-keys :map occur-mode-map

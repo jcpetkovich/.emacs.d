@@ -124,7 +124,7 @@
 ;; yasnippet
 ;; =============================================================
 (req-package yasnippet
-  :bind ("C-x y" . yas/insert-snippet)
+  :commands yas/insert-snippet
   :defer t
   :init
   (progn
