@@ -9,6 +9,7 @@
         TeX-insert-sub-or-superscript
         TeX-newline
         backward-kill-sentence
+        backward-sentence
         c-electric-colon
         c-electric-delete-forward
         c-electric-semi&comma

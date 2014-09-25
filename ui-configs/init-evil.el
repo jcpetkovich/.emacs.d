@@ -17,13 +17,7 @@
     (--each '(normal insert)
       (evil-declare-key it global-map
         (kbd "C-n") 'evil-next-line
-        (kbd "C-p") 'evil-previous-line
-        (kbd "C-l") 'copy-to-register
-        (kbd "C-+") 'increment-register
-        (kbd "<f6>") 'projectile-compile-project
-        (kbd "C-M-<backspace>") 'paredit-backward-delete
-        (kbd "<f7>") 'compile
-        (kbd "<f8>") 'recompile))
+        (kbd "C-p") 'evil-previous-line))
 
     (--each '(normal visual motion)
       (evil-declare-key it global-map

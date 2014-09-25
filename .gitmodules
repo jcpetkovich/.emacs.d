@@ -4,12 +4,6 @@
 [submodule "site-lisp/jade-mode"]
 	path = site-lisp/jade-mode
 	url = https://github.com/brianc/jade-mode.git
-[submodule "site-lisp/js2-refactor"]
-	path = site-lisp/js2-refactor
-	url = https://github.com/magnars/js2-refactor.el.git
-[submodule "site-lisp/js2-mode"]
-	path = site-lisp/js2-mode
-	url = https://github.com/magnars/js2-mode
 [submodule "site-lisp/dash"]
 	path = site-lisp/dash
 	url = https://github.com/magnars/dash.el.git

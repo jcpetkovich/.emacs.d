@@ -119,7 +119,6 @@ This doesn't support the chanserv auth method"
   :require rcirc
   :config
   (progn
-    (set-default rcirc-color-is-deterministic t))
-)
+    (set-default rcirc-color-is-deterministic t)))
 
 (provide 'init-irc)

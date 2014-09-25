@@ -86,7 +86,7 @@
 ;; =============================================================
 ;; Hippie Expand
 ;; =============================================================
-(req-package hippie-expand
+(req-package hippie-exp
   :bind (("M-/" . hippie-expand)
          ("M-?" . hippie-expand-lines))
   :init

@@ -113,7 +113,7 @@ at all like the regular `diminish' function. It uses
 lexical-binding to create a proper closure."
 
       (let ((mode-hook (intern (s-concat (symbol-name mode) "-hook"))))
-        `(add-hook mode-hook (lambda () (setq mode-name ,new-string))))))
+        (eval `(add-hook ',mode-hook (lambda () (setq mode-name ,new-string)))))))
 
   :config
   (progn

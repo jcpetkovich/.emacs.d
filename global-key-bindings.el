@@ -75,12 +75,12 @@
   :config
   (progn
 
-    (defvar all-helm-maps (list helm-map
-                                helm-etags-map
-                                helm-moccur-map
-                                helm-grep-map
-                                helm-pdfgrep-map
-                                helm-generic-files-map))
+    (defvar all-helm-maps '(helm-map
+                            helm-etags-map
+                            helm-moccur-map
+                            helm-grep-map
+                            helm-pdfgrep-map
+                            helm-generic-files-map))
 
 
     (bind-keys :map helm-map
@@ -103,9 +103,9 @@
 
     (-each all-helm-maps
       (lambda (map)
-        `(bind-keys :map ,map
-                    ("C-w" . kill-region-or-backward-word)
-                    ("M-w" . helm-yank-text-at-point))))
+        (eval `(bind-keys :map ,map
+                          ("C-w" . kill-region-or-backward-word)
+                          ("M-w" . helm-yank-text-at-point)))))
 
     (bind-key "C-w" 'helm-find-files-up-one-level helm-find-files-map)
 
@@ -300,13 +300,11 @@ If no map is found in current source do nothing (keep previous map)."
 ;; =============================================================
 
 (req-package paredit
-  :require (evil comment-dwim-2 hippie-expand user-utils)
+  :require evil
   :init
-  (let ((turn-on-paredit-mode (lambda () (paredit-mode 1))))
-    ;; some hooks: lisp-mode-hook and scheme-mode-hook are recommended
-    ;; in the paredit source code
+  (progn
     (--each '(lisp-mode-hook scheme-mode-hook emacs-lisp-mode-hook slime-mode-hook cider-repl-mode-hook)
-      (add-hook it turn-on-paredit-mode)))
+      (add-hook it 'enable-paredit-mode)))
 
   :config
   (progn
@@ -379,6 +377,7 @@ If no map is found in current source do nothing (keep previous map)."
 ;; =============================================================
 
 (req-package expand-region
+  :commands (er/mark-symbol er/mark-word)
   :bind (("C-'" . er/expand-region)
          ("C-\"" . er/contract-region)))
 
@@ -411,23 +410,28 @@ If no map is found in current source do nothing (keep previous map)."
                ("C-w" . kill-region-or-backward-word)
                ("C-k" . kill-line))
 
-    (bind-keys :map evil-visual-stat-map
+    (bind-keys :map evil-visual-state-map
                ("C-w" . kill-region-or-backward-word))))
 
 (req-package shrink-whitespace
   :bind (("M-\\" . shrink-whitespace)
-         ("M-a" . grow-whitespace-around)
-         ("C-M-a" . shrink-whitespace-around)))
+         ;; ("M-a" . grow-whitespace-around)
+         ;; ("C-M-a" . shrink-whitespace-around)
+         ))
+
+(req-package user-utils
+  :bind (("M-j" . move-cursor-next-pane)
+         ("M-k" . move-cursor-previous-pane)
+         ("M-<escape>" . user-utils/force-revert)))
 
 (bind-keys
- ("M-j" . move-cursor-next-pane)
- ("M-k" . move-cursor-previous-pane)
  ("M-1" . delete-other-windows)
  ("M-!" . delete-window)
  ("M-2" . split-window-vertically)
  ("M-@" . split-window-horizontally)
- ("<f11>" . align-regexp)
- ("M-<escape>" . (lambda (revert-buffer t t))))
+ ("<f7>" . compile)
+ ("<f8>" . recompile)
+ ("<f11>" . align-regexp))
 
 ;;; Unbound (or mostly useless) but convenientish keys
 ;; (kbd "M-u")
@@ -467,9 +471,12 @@ If no map is found in current source do nothing (keep previous map)."
            ("l" . transpose-lines)
            ("p" . transpose-params))
 
-(bind-keys :prefix "C-x l"
+(global-unset-key (kbd "C-l"))
+(bind-keys :prefix "C-l"
            :prefix-map user-launch-map
-           ("g" . magit-status)
+           ("m" . magit-status)
+           ("g" . helm-do-grep-wrapper)
+           ("f" . find-dired)
            ("e" . esh)
            ("t" . term)
            ("s" . shell)
@@ -477,7 +484,6 @@ If no map is found in current source do nothing (keep previous map)."
 
 ;; View occurrence in occur mode
 (req-package occur
-  :bind ("C-c o" . occur)
   :config
   (progn
     (bind-keys :map occur-mode-map

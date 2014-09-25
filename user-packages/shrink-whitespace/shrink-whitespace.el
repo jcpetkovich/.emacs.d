@@ -1,38 +1,5 @@
 ;; shrink-whitespace.el - Tools for shrinking and growing whitespace intelligently
 
-;; Toggle fullscreen mode
-(defun toggle-fullscreen ()
-  (interactive)
-  (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-                         '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
-  (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-                         '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)))
-
-(defun move-cursor-next-pane ()
-  "Move cursor to the next pane."
-  (interactive)
-  (other-window 1))
-
-(defun move-cursor-previous-pane ()
-  "Move cursor to the previous pane."
-  (interactive)
-  (other-window -1))
-
-(defun call-keyword-completion ()
-  "Call the command that has keyboard shortcut M-TAB."
-  (interactive)
-  (call-interactively (key-binding (kbd "M-TAB"))))
-
-(defun eval-and-replace ()
-  "Replace the preceding sexp with its value."
-  (interactive)
-  (backward-kill-sexp)
-  (condition-case nil
-      (prin1 (eval (read (current-kill 0)))
-             (current-buffer))
-    (error (message "Invalid expression")
-           (insert (current-kill 0)))))
-
 (defun shrink-whitespace ()
   "Remove whitespace around cursor to just one or none.
 If current line contains non-white space chars, then shrink any
@@ -40,9 +7,9 @@ whitespace char surrounding cursor to just one space.  If current
 line does not contain non-white space chars, then remove blank
 lines to just one."
   (interactive)
-  (cond ((just-one-space-p)
+  (cond ((shrink-whitespace/just-one-space-p)
          (delete-horizontal-space))
-        ((and (line-has-meat-p)
+        ((and (shrink-whitespace/line-has-meat-p)
               (or
                (looking-at " \\|\t")
                (looking-back " \\|\t")))
@@ -50,22 +17,22 @@ lines to just one."
         (t
          (delete-blank-lines))))
 
-(defun xor (&rest args)
+(defun shrink-whitespace/xor (&rest args)
   (let ((true-count 0))
     (--each args
       (when it (incf true-count)))
     (equalp 1 true-count)))
 
-(defun just-one-space-p ()
+(defun shrink-whitespace/just-one-space-p ()
   "Returns true if there is only one space nearby."
-  (if (xor
+  (if (shrink-whitespace/xor
        (looking-at "^ ")
        (and (looking-at "\\( \\|\t\\)[^ \t]") (not (looking-back " \\|\t")))
        (and (looking-back "[^ \t]\\( \\|\t\\)") (not (looking-at " \\|\t"))))
       t
     nil))
 
-(defun line-has-meat-p ()
+(defun shrink-whitespace/line-has-meat-p ()
   "Returns `t' if line has any characters, `nil' otherwise."
   (save-excursion
     (move-beginning-of-line 1)
@@ -77,7 +44,7 @@ lines to just one."
           t
         nil))))
 
-(defun grow-whitespace-around ()
+(defun shrink-whitespace/grow-whitespace-around ()
   "Counterpart to shrink-whitespace, grow whitespace in a
   smartish way."
   (interactive)
@@ -88,13 +55,13 @@ lines to just one."
       ;; move up a line and to the beginning
       (beginning-of-line 0)
 
-      (when (line-has-meat-p)
+      (when (shrink-whitespace/line-has-meat-p)
         (setq content-above t)))
 
     (save-excursion
       ;; move down a line and to the beginning
       (beginning-of-line 2)
-      (when (line-has-meat-p)
+      (when (shrink-whitespace/line-has-meat-p)
         (setq content-below t)))
 
     (save-excursion
@@ -106,19 +73,19 @@ lines to just one."
              content-above)
         (forward-line))))
 
-(defun shrink-whitespace-around ()
+(defun shrink-whitespace/shrink-whitespace-around ()
   (interactive)
   (let ((content-above nil)
         (content-below nil))
 
     (save-excursion
       (beginning-of-line 0)
-      (when (line-has-meat-p)
+      (when (shrink-whitespace/line-has-meat-p)
         (setq content-above t)))
 
     (save-excursion
       (beginning-of-line 2)
-      (when (line-has-meat-p)
+      (when (shrink-whitespace/line-has-meat-p)
         (setq content-below t)))
 
     (save-excursion
@@ -131,23 +98,8 @@ lines to just one."
               (beginning-of-line 2)
               (kill-line)))))))
 
-(eval-after-load "evil"
-  '(progn
-     (evil-define-motion next-line-with-meat (count)
-       :type line
-
-       (next-line)
-       (while (not (line-has-meat-p))
-         (next-line))
-       (evil-insert-line (or count 1)))
-
-     (evil-define-motion previous-line-with-meat (count)
-       :type line
-
-       (previous-line)
-       (while (not (line-has-meat-p))
-         (previous-line))
-       (evil-append-line (or count 1)))))
+(defalias 'grow-whitespace-around 'shrink-whitespace/grow-whitespace-around)
+(defalias 'shrink-whitespace-around 'shrink-whitespace/shrink-whitespace-around)
 
 (provide 'shrink-whitespace)
 ;; shrink-whitespace.el ends here

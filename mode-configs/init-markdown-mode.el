@@ -1,7 +1,9 @@
+;; init-markdown-mode.el - Setup emacs for editing markdown
 
-(require-package 'markdown-mode)
-
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(req-package markdown-mode
+  :init
+  (--each '(("\\.md\\'" . markdown-mode)
+            ("\\.markdown\\'" . markdown-mode))
+    (add-to-list 'auto-mode-alist it)))
 
 (provide 'init-markdown-mode)

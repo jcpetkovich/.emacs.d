@@ -12,6 +12,7 @@
 
   :config
   (progn
+    (dash-enable-font-lock)
     (--each '(normal insert)
       (evil-declare-key it emacs-lisp-mode-map
         (kbd "M-.") 'elisp-slime-nav-find-elisp-thing-at-point))

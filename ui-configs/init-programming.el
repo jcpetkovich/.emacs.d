@@ -48,6 +48,8 @@
   (progn
     (setq projectile-completion-system 'default)
 
+    (bind-key "<f6>" 'projectile-compile-project)
+
     ;; Nicer mode-line
     (defun projectile-update-mode-line ()
       "Report project in mode-line."
