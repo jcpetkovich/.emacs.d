@@ -138,4 +138,5 @@
         overwrite-mode
         revert-buffer
         toggle-input-method
+        user-mc/expand-or-mark-next-symbol
         ))

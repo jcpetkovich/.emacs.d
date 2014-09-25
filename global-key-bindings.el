@@ -233,8 +233,8 @@ If no map is found in current source do nothing (keep previous map)."
    ("s-C-x"   . mc/mark-all-symbols-like-this-in-defun)
 
    ;; Mark all god keys
-   ("M-m" . mc-expand-or-mark-next-symbol)
-   ("M-M" . mc-expand-or-mark-next-word)
+   ("M-m" . user-mc/expand-or-mark-next-symbol)
+   ("M-M" . user-mc/expand-or-mark-next-word)
    ("M-'" . mc/mark-all-dwim))
 
   :init
@@ -242,13 +242,13 @@ If no map is found in current source do nothing (keep previous map)."
     ;; =============================================================
     ;; Custom multiple cursors functions
     ;; =============================================================
-    (defun mc-expand-or-mark-next-symbol ()
+    (defun user-mc/expand-or-mark-next-symbol ()
       (interactive)
       (if (not (region-active-p))
           (er/mark-symbol)
         (call-interactively #'mc/mark-next-symbol-like-this)))
 
-    (defun mc-expand-or-mark-next-word ()
+    (defun user-mc/expand-or-mark-next-word ()
       (interactive)
       (if (not (region-active-p))
           (er/mark-word)
@@ -259,46 +259,46 @@ If no map is found in current source do nothing (keep previous map)."
     ;; =============================================================
     ;; Multiple cursors evil compat (use emacs mode during mc)
     ;; =============================================================
-    (defvar my-mc-evil-previous-state nil)
-    (defvar my-mark-was-active nil)
+    (defvar mc-evil-compat/evil-prev-state nil)
+    (defvar mc-evil-compat/mark-was-active nil)
 
-    (defun my-mc-evil-switch-to-emacs-state ()
+    (defun mc-evil-compat/switch-to-emacs-state ()
       (when (and (bound-and-true-p evil-mode)
                  (not (memq evil-state '(insert emacs))))
 
-        (setq my-mc-evil-previous-state evil-state)
+        (setq mc-evil-compat/evil-prev-state evil-state)
 
         (when (region-active-p)
-          (setq my-mark-was-active t))
+          (setq mc-evil-compat/mark-was-active t))
 
         (let ((mark-before (mark))
               (point-before (point)))
 
           (evil-emacs-state 1)
 
-          (when (or my-mark-was-active (region-active-p))
+          (when (or mc-evil-compat/mark-was-active (region-active-p))
             (goto-char point-before)
             (set-mark mark-before)))))
 
-    (defun my-mc-evil-back-to-previous-state ()
-      (when my-mc-evil-previous-state
+    (defun mc-evil-compat/back-to-previous-state ()
+      (when mc-evil-compat/evil-prev-state
         (unwind-protect
-            (case my-mc-evil-previous-state
+            (case mc-evil-compat/evil-prev-state
               ((normal visual) (evil-force-normal-state))
               (t (message "Don't know how to handle previous state: %S"
-                          my-mc-evil-previous-state)))
-          (setq my-mc-evil-previous-state nil)
-          (setq my-mark-was-active nil))))
+                          mc-evil-compat/evil-prev-state)))
+          (setq mc-evil-compat/evil-prev-state nil)
+          (setq mc-evil-compat/mark-was-active nil))))
 
     (add-hook 'multiple-cursors-mode-enabled-hook
-              'my-mc-evil-switch-to-emacs-state)
+              'mc-evil-compat/switch-to-emacs-state)
     (add-hook 'multiple-cursors-mode-disabled-hook
-              'my-mc-evil-back-to-previous-state)
+              'mc-evil-compat/back-to-previous-state)
 
-    (defun my-rrm-evil-switch-state ()
+    (defun mc-evil-compat/rectangular-switch-state ()
       (if rectangular-region-mode
-          (my-mc-evil-switch-to-emacs-state)
-        (setq my-mc-evil-previous-state nil)))
+          (mc-evil-compat/switch-to-emacs-state)
+        (setq mc-evil-compat/evil-prev-state nil)))
 
     ;; When running edit-lines, point will return (position + 1) as a
     ;; result of how evil deals with regions
@@ -307,7 +307,7 @@ If no map is found in current source do nothing (keep previous map)."
           (goto-char (1- (point)))
         (push-mark (1- (mark)))))
 
-    (add-hook 'rectangular-region-mode-hook 'my-rrm-evil-switch-state)
+    (add-hook 'rectangular-region-mode-hook 'mc-evil-compat/rectangular-switch-state)
 
     (defvar mc--default-cmds-to-run-once nil)))
 
@@ -402,6 +402,7 @@ If no map is found in current source do nothing (keep previous map)."
 ;; =============================================================
 
 (req-package expand-region
+  :commands (er/mark-symbol er/mark-word)
   :bind (("C-'" . er/expand-region)
          ("C-\"" . er/contract-region)))
 
