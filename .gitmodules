@@ -22,9 +22,6 @@
 [submodule "site-lisp/flymake-cursor"]
 	path = site-lisp/flymake-cursor
 	url = https://github.com/illusori/emacs-flymake-cursor.git
-[submodule "site-lisp/inf-ruby-bond"]
-	path = site-lisp/inf-ruby-bond
-	url = https://github.com/pd/inf-ruby-bond.git
 [submodule "site-lisp/flymake-ruby"]
 	path = site-lisp/flymake-ruby
 	url = https://github.com/purcell/flymake-ruby.git
@@ -49,9 +46,6 @@
 [submodule "site-lisp/expand-region"]
 	path = site-lisp/expand-region
 	url = https://github.com/magnars/expand-region.el.git
-[submodule "site-lisp/yari"]
-	path = site-lisp/yari
-	url = https://github.com/hron/yari.el.git
 [submodule "site-lisp/undo-tree"]
 	path = site-lisp/undo-tree
 	url = git://github.com/emacsmirror/undo-tree.git
