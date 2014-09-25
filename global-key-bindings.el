@@ -303,7 +303,12 @@ If no map is found in current source do nothing (keep previous map)."
   :require evil
   :init
   (progn
-    (--each '(lisp-mode-hook scheme-mode-hook emacs-lisp-mode-hook slime-mode-hook cider-repl-mode-hook)
+    (--each '(lisp-mode-hook
+              scheme-mode-hook
+              emacs-lisp-mode-hook
+              slime-mode-hook
+              clojure-mode-hook
+              cider-repl-mode-hook)
       (add-hook it 'enable-paredit-mode)))
 
   :config
