@@ -4,16 +4,16 @@
 (defconst prog-mode-configs-directory (expand-file-name (concat user-emacs-directory "mode-configs")))
 (defconst ui-configs-directory (expand-file-name (concat user-emacs-directory "ui-configs")))
 (defconst user-packages-directory (expand-file-name (concat user-emacs-directory "user-packages")))
+(defconst site-lisp-directory (expand-file-name (concat user-emacs-directory "site-lisp")))
 (add-to-list 'load-path user-emacs-directory)
 (add-to-list 'load-path prog-mode-configs-directory)
 (add-to-list 'load-path ui-configs-directory)
 (add-to-list 'load-path user-packages-directory)
+(add-to-list 'load-path site-lisp-directory)
 
 ;; Add user packages to load-path
 (let ((default-directory user-packages-directory))
   (normal-top-level-add-subdirs-to-load-path))
-
-;; Config files which could be absorbed by emacs functionality
 
 ;; Revise keybindings:
 ;;; Keybindings/editing (global-key-bindings.el) (needs revising)
@@ -53,8 +53,8 @@
 ;; =============================================================
 (req-package-force load-dir
   :init
-  (let ((load-dirs (list ui-configs-directory ;; prog-mode-configs-directory
-                         )))
+  (let ((load-dirs (list ui-configs-directory
+                         prog-mode-configs-directory)))
     (load-dirs)))
 
 ;; And now, the keybindings
