@@ -74,6 +74,7 @@
 ;; =============================================================
 ;; Magit
 ;; =============================================================
-(req-package magit)
+(req-package magit
+  :commands magit-status)
 
 (provide 'init-programming)
