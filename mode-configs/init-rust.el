@@ -1,4 +1,5 @@
+;; init-rust.el - Setup emacs for editing rust code.
 
-(require-package 'rust-mode)
+(req-package rust-mode)
 
 (provide 'init-rust)

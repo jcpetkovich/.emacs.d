@@ -1,7 +1,24 @@
 ;; init-auctex.el - Setup emacs for editing latex.
 
+;; Loading auctex is kind of funny, it's a weird process. Auctex
+;; doesn't provide itself, so we need to provide it. We also need to
+;; setup it's autoloads. We also need to setup tex-site, but that's
+;; not all. We need to hook most configs into the latex.el file, since
+;; that's where most things are defined.
 (req-package auctex
   :require evil
+  :defer t
+  :init
+  (progn
+    (provide 'auctex)
+    (require 'auctex-autoloads)))
+
+(req-package tex-site
+  :require auctex
+  :init (require 'tex-site))
+
+(req-package latex
+  :require tex-site
   :config
   (progn
     (bind-keys :map LaTeX-mode-map

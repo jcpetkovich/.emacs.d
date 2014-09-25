@@ -1,5 +1,6 @@
+;; init-psql.el - Setup postgres interaction
 
-(setq auto-mode-alist (cons '("\.psql$" . sql-mode) auto-mode-alist))
-(autoload 'sql-mode "sql" "SQL editing mode" t)
+(req-package sql-mode
+  :mode ("\.psql$" . sql-mode))
 
 (provide 'init-psql)

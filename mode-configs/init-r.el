@@ -1,31 +1,39 @@
+;; init-r.el - Setup emacs for editing R code.
 
-(require-package 'ess)
-(require-package 'ess-R-data-view)
-(require 'ess-site)
-(require 'init-evil)
-(require 'init-whitespace-mode)
+(req-package ess-R-data-view)
 
-(evil-declare-key 'visual ess-mode-map
-  (kbd "<tab>") 'indent-for-tab-command
-  (kbd "C-d") 'evil-scroll-down
-  (kbd ",") #'ess-eval-region)
-(evil-declare-key 'normal inferior-ess-mode-map
-  (kbd "C-d") 'evil-scroll-down)
-(evil-declare-key 'normal ess-help-mode-map
-  (kbd "Q") 'ess-help-quit
-  (kbd "q") 'ess-help-quit)
+(req-package ess
+  :require (auto-complete evil)
+  :init (require 'ess-site)
+  :config
+  (progn
+    (bind-key "M-;" 'comment-dwim-2 ess-mode-map)
 
-(add-hook 'R-mode-hook
-          (lambda ()
-            (local-set-key (kbd "M-;") 'comment-dwim)
-            (setq ess-pdf-viewer-pref "zathura")
-            (set (make-local-variable 'whitespace-style)
-                (remove 'empty whitespace-style))))
+    (setq ess-pdf-viewer-pref "zathura")
 
-(defun ess-noweb-post-command-function ()
-  "The hook being run after each command in noweb mode."
-  (condition-case err
-      (ess-noweb-select-mode)
-    (error)))
+    ;; Fix evil bindings
+    (evil-declare-key 'visual ess-mode-map
+      (kbd "<tab>") 'indent-for-tab-command
+      (kbd "C-d") 'evil-scroll-down
+      (kbd ",") 'ess-eval-region)
+    (evil-declare-key 'normal inferior-ess-mode-map
+      (kbd "C-d") 'evil-scroll-down)
+    (evil-declare-key 'normal ess-help-mode-map
+      (kbd "Q") 'ess-help-quit
+      (kbd "q") 'ess-help-quit)
+
+    (add-hook 'R-mode-hook
+              (defun user-utils/R-whitespace-config ()
+                (set (make-local-variable 'whitespace-style)
+                     (remove 'empty whitespace-style))))))
+
+(req-package ess-noweb
+  :config
+  (progn
+    (defun ess-noweb-post-command-function ()
+      "The hook being run after each command in noweb mode."
+      (condition-case err
+          (ess-noweb-select-mode)
+        (error)))))
 
 (provide 'init-r)

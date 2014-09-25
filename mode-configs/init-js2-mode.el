@@ -1,15 +1,19 @@
 ;;; setup-js2-mode.el --- tweak js2 settings -*- lexical-binding: t; -*-
 
+(req-package js2-refactor
+  :defer t)
+
 (req-package js2-mode
-  :commands js2-mode
+  :require js2-refactor
   :mode ("\\.js$" . js2-mode)
-  :init
+  :defer t
+  :config
   (progn
+    (defvaralias 'site-lisp-dir 'site-lisp-directory)
+
     ;; ==============================================================
     ;; Stuff from Magnars
     ;; ==============================================================
-
-    ;; setup-js2-mode.el --- tweak js2 settings -*- lexical-binding: t; -*-
 
     (setq-default js2-allow-rhino-new-expr-initializer nil)
     (setq-default js2-auto-indent-p nil)
@@ -278,7 +282,7 @@
 
 (req-package company-tern
   :require js2-mode
-  :load-path (expand-file-name (concat user-emacs-directory "site-lisp/tern/emacs"))
+  :load-path ,(expand-file-name (concat user-emacs-directory "site-lisp/tern/emacs"))
   :init
   (progn
     (autoload 'tern-mode "tern.el" nil t)
@@ -286,9 +290,6 @@
     (add-to-list 'company-backends 'company-tern)))
 
 (req-package nodejs-repl
-  :require js2-mode)
-
-(req-package js2-refactor
   :require js2-mode)
 
 (provide 'init-js2-mode)
