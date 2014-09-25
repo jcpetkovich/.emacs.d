@@ -507,12 +507,9 @@ If no map is found in current source do nothing (keep previous map)."
            ("c" . calc))
 
 ;; View occurrence in occur mode
-(req-package occur
-  :config
-  (progn
-    (bind-keys :map occur-mode-map
-               ("v" . occur-mode-display-occurrence)
-               ("n" . next-line)
-               ("p" . previous-line))))
+(bind-keys :map occur-mode-map
+           ("v" . occur-mode-display-occurrence)
+           ("n" . next-line)
+           ("p" . previous-line))
 
 (provide 'global-key-bindings)

@@ -9,9 +9,10 @@ all: update_submodules rebuildall
 # hierarchy clean of make oriented things.
 rebuildall:
 	$(CC) $(CFLAGS) --eval "(progn (load \"init.el\") (byte-recompile-directory \"$(shell pwd)\" 0) (kill-emacs))"
-	rm init.elc
-	rm custom.elc
-	find configs snippets -type f -name "*.elc" -delete
+	rm -f init.elc
+	rm -f custom.elc
+	rm -f global-key-bindings.elc
+	find ui-configs mode-configs snippets -type f -name "*.elc" -delete
 
 update_submodules:
 	git submodule update --init --recursive
