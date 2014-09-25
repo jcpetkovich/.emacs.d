@@ -9,13 +9,13 @@ lines to just one."
   (interactive)
   (cond ((shrink-whitespace/just-one-space-p)
          (delete-horizontal-space))
+        ((not (shrink-whitespace/line-has-meat-p))
+         (delete-blank-lines))
         ((and (shrink-whitespace/line-has-meat-p)
               (or
                (looking-at " \\|\t")
                (looking-back " \\|\t")))
-         (just-one-space))
-        (t
-         (delete-blank-lines))))
+         (just-one-space))))
 
 (defun shrink-whitespace/xor (&rest args)
   (let ((true-count 0))
@@ -24,13 +24,15 @@ lines to just one."
     (equalp 1 true-count)))
 
 (defun shrink-whitespace/just-one-space-p ()
-  "Returns true if there is only one space nearby."
-  (if (shrink-whitespace/xor
-       (looking-at "^ ")
-       (and (looking-at "\\( \\|\t\\)[^ \t]") (not (looking-back " \\|\t")))
-       (and (looking-back "[^ \t]\\( \\|\t\\)") (not (looking-at " \\|\t"))))
-      t
-    nil))
+  (save-excursion
+    (let (beginning end)
+      (skip-chars-backward " \t")
+      (setf beginning (point))
+      (skip-chars-forward " \t")
+      (setf end (point))
+      (equalp 1 (- end beginning)))))
+
+
 
 (defun shrink-whitespace/line-has-meat-p ()
   "Returns `t' if line has any characters, `nil' otherwise."
