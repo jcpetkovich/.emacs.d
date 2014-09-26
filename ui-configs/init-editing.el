@@ -5,15 +5,15 @@
  save-place                          t
  lpr-command                         "xpp" ; default printing command
  backup-directory-alist              `(("." . ,(expand-file-name (concat user-emacs-directory "backups"))))
- make-backup-files t
+ make-backup-files                   t
  vc-make-backup-files                t
  save-interprogram-paste-before-kill t
  save-place-file                     (concat user-emacs-directory "places")
- tags-revert-without-query t
+ tags-revert-without-query           t
  tags-table-list nil
- uniquify-buffer-name-style 'post-forward
- x-select-enable-clipboard t
- x-select-enable-primary t
+ uniquify-buffer-name-style          'post-forward
+ x-select-enable-clipboard           t
+ x-select-enable-primary             t
  major-mode                          'org-mode)
 
 (require 'uniquify)
