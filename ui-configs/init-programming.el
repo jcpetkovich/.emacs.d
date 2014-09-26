@@ -41,6 +41,7 @@
 ;; Projectile
 ;; =============================================================
 (req-package projectile
+  :commands projectile-global-mode
   :idle (projectile-global-mode)
   :config
   (progn
