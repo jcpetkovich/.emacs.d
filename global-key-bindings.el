@@ -484,6 +484,7 @@ If no map is found in current source do nothing (keep previous map)."
            ("l" . transpose-lines)
            ("p" . transpose-params))
 
+;; Launch
 (global-unset-key (kbd "C-l"))
 (bind-keys :prefix "C-l"
            :prefix-map user-launch-map
