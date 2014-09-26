@@ -104,7 +104,6 @@
 ;; =============================================================
 
 (req-package diminish
-  :require s
   :init
   (progn
     (defun cosmetic/diminish-major (mode new-string)
@@ -113,7 +112,7 @@ such that the string is shorter, not so that it does not appear
 at all like the regular `diminish' function. It uses
 lexical-binding to create a proper closure."
 
-      (let ((mode-hook (intern (s-concat (symbol-name mode) "-hook"))))
+      (let ((mode-hook (intern (concat (symbol-name mode) "-hook"))))
         (eval `(add-hook ',mode-hook (lambda () (setq mode-name ,new-string)))))))
 
   :config
