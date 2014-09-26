@@ -26,6 +26,9 @@
 ;; Helm!
 ;; =============================================================
 
+(req-package wgrep-helm
+  :require helm)
+
 (req-package helm-swoop
   :defer t
   :commands (helm-swoop helm-swoop-back-to-last-point helm-multi-swoop helm-multi-swoop-all)
@@ -191,13 +194,7 @@ If no map is found in current source do nothing (keep previous map)."
 (req-package multiple-cursors
 
   :bind
-  (
-   ;; =============================================================
-   ;; Multiple cursors keybindings
-   ;; =============================================================
-
-;;; Strategy;
-   ;; Use these keys (colemak layout):
+  (;; Use these keys (colemak layout):
 
    ;; | q | w | f | p |
    ;; |---+---+---+---|
@@ -435,8 +432,8 @@ If no map is found in current source do nothing (keep previous map)."
 
 (req-package shrink-whitespace
   :bind (("M-\\" . shrink-whitespace)
-         ;; ("M-a" . grow-whitespace-around)
-         ;; ("C-M-a" . shrink-whitespace-around)
+         ("M-n" . grow-whitespace-around)
+         ("M-N" . shrink-whitespace-around)
          ))
 
 (req-package user-utils
@@ -455,9 +452,7 @@ If no map is found in current source do nothing (keep previous map)."
 
 ;;; Unbound (or mostly useless) but convenientish keys
 ;; (kbd "M-u")
-;; (kbd "M-n") ; usually bound during certain modes
 ;; (kbd "M-p") ; usually bound during certain modes
-;; (kbd "M-l")
 ;; (kbd "M-~")
 ;; (kbd "M-`")
 ;; (kbd "C-=")
