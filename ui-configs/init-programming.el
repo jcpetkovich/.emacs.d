@@ -41,7 +41,7 @@
 ;; Projectile
 ;; =============================================================
 (req-package projectile
-  :init (projectile-global-mode)
+  :idle (projectile-global-mode)
   :config
   (progn
     (setq projectile-completion-system 'default)

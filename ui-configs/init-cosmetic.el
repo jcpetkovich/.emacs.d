@@ -86,7 +86,7 @@
 ;; Line numbers
 ;; =============================================================
 (req-package nlinum
-  :init (global-nlinum-mode)
+  :idle (global-nlinum-mode)
   :config
   (progn
     (defun nlinum--face-height (face)
@@ -115,7 +115,7 @@ lexical-binding to create a proper closure."
       (let ((mode-hook (intern (concat (symbol-name mode) "-hook"))))
         (eval `(add-hook ',mode-hook (lambda () (setq mode-name ,new-string)))))))
 
-  :config
+  :idle
   (progn
     (eval-after-load "paredit"
       '(diminish 'paredit-mode "p()"))
