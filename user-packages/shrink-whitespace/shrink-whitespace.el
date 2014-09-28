@@ -17,12 +17,6 @@ lines to just one."
                (looking-back " \\|\t")))
          (just-one-space))))
 
-(defun shrink-whitespace/xor (&rest args)
-  (let ((true-count 0))
-    (--each args
-      (when it (incf true-count)))
-    (equalp 1 true-count)))
-
 (defun shrink-whitespace/just-one-space-p ()
   (save-excursion
     (let (beginning end)
@@ -31,8 +25,6 @@ lines to just one."
       (skip-chars-forward " \t")
       (setf end (point))
       (equalp 1 (- end beginning)))))
-
-
 
 (defun shrink-whitespace/line-has-meat-p ()
   "Returns `t' if line has any characters, `nil' otherwise."

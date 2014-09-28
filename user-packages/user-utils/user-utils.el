@@ -13,6 +13,13 @@
   (interactive)
   (revert-buffer t t))
 
+(defun user-utils/xor (&rest args)
+  "Truthy xor"
+  (let ((true-count 0))
+    (--each args
+      (when it (incf true-count)))
+    (equalp 1 true-count)))
+
 (defalias 'move-cursor-next-pane 'user-utils/move-cursor-next-pane)
 (defun user-utils/move-cursor-next-pane ()
   "Move cursor to the next pane."
