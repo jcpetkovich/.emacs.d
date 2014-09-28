@@ -408,10 +408,6 @@ If no map is found in current source do nothing (keep previous map)."
 (req-package comment-dwim-2
   :bind ("M-;" . comment-dwim-2))
 
-;; =============================================================
-;; Global keybindings
-;; =============================================================
-
 (req-package magnars-defuns
   :require evil
   :commands cleanup-buffer
@@ -434,13 +430,16 @@ If no map is found in current source do nothing (keep previous map)."
 (req-package shrink-whitespace
   :bind (("M-\\" . shrink-whitespace)
          ("M-n" . grow-whitespace-around)
-         ("M-N" . shrink-whitespace-around)
-         ))
+         ("M-N" . shrink-whitespace-around)))
 
 (req-package user-utils
   :bind (("M-j" . move-cursor-next-pane)
          ("M-k" . move-cursor-previous-pane)
          ("M-<escape>" . user-utils/force-revert)))
+
+;; =============================================================
+;; Global non-package related keys. (and list of good free keys)
+;; =============================================================
 
 (bind-keys
  ("M-1" . delete-other-windows)
@@ -461,6 +460,10 @@ If no map is found in current source do nothing (keep previous map)."
 ;; (kbd "C-;")
 ;; (kbd "M-O")
 ;; (kbd "M-V")
+
+;; =============================================================
+;; User Prefix Keys
+;; =============================================================
 
 (global-unset-key (kbd "M-c"))
 
