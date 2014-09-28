@@ -2,23 +2,18 @@
 
 This is my emacs configuration.
 
-Packages which are not installed by `package.el`, or installed as
-submodules:
+If you're interested in using it, please first consider using it as a
+source of inspiration first. Check out `global-key-bindings.el` and
+`init-evil.el` for the most interesting and unusual bits.
 
-- slime
-- mu4e
-- ghc-mod
-- jedi
+Generally the config is organized into the following directories:
 
-These packages are best installed by the local package manager. All of
-these packages include non-elisp portions, which are inconvenient to
-handle through `package.el`. For gentoo you can install these by doing
-the following:
+- `ui-configs` Non-language specific user interface configurations.
+- `mode-configs` Language/mode specific configurations.
+- `user-packages` Not-quite-packages developed by me or others.
+- `site-lisp` Packages or forks not in [melpa](http://melpa.milkbox.net/).
 
-    emerge --autounmask-write slime mu ghc-mod jedi
-
-If you don't want these particluar packages, you may ignore them, as
-the configuration will run without them.
+# Installing
 
 Setting up this config for your own use is fairly simple:
 
@@ -27,7 +22,16 @@ Setting up this config for your own use is fairly simple:
     cd .emacs.d
     make
 
-This will pull in any submodules that are included in `site-lisp`, and
-install several packages using `package.el`. This will also compile
-the majority of the elisp files present to bytecode, with some
-exceptions where it makes sense.
+This config should work without its external dependencies by pulling
+in any necessary packages through `package.el` and
+[melpa](http://melpa.milkbox.net/).
+
+The only other dependencies you might want are:
+
+- slime (through [quicklisp](http://www.quicklisp.org/beta/))
+- mu4e (through your package manager)
+- ghc-mod (through your package manager, or [cabal](http://www.haskell.org/cabal/))
+- jedi (through your package manager, [pip](https://pypi.python.org/pypi/pip) or similar)
+
+If you don't want the functionality of these particluar packages, you
+may ignore them, as the configuration should run without them.
