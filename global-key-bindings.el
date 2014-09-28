@@ -97,6 +97,7 @@
      ("C-h C-f"   . helm-apropos)
      ("C-h a"     . helm-apropos)
      ("M-v"       . helm-semantic-or-imenu)))
+
   :config
   (progn
     (require 'helm-tags)
@@ -461,9 +462,6 @@ If no map is found in current source do nothing (keep previous map)."
 ;; (kbd "M-O")
 ;; (kbd "M-V")
 
-;; Note for the big rebind, M-e, and M-a should be off-limits, and are
-;; pretty useful.
-
 (global-unset-key (kbd "M-c"))
 
 ;; Capitalize
@@ -496,7 +494,13 @@ If no map is found in current source do nothing (keep previous map)."
            ("s" . shell)
            ("c" . calc)
            ("y" . yas/insert-snippet)
-           ("w" . cleanup-buffer))
+           ("w" . woman))
+
+;; User run
+(bind-keys :prefix "M-u"
+           :prefix-map user-run-map
+           ("c b" . cleanup-buffer)
+           ("h" . helm-command-prefix))
 
 ;; View occurrence in occur mode
 (bind-keys :map occur-mode-map
