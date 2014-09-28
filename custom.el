@@ -14,5 +14,6 @@
  '(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)) (:background "Black"))) t))
 
 (put 'narrow-to-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'erase-buffer 'disabled nil)
