@@ -86,6 +86,7 @@
 ;; Line numbers
 ;; =============================================================
 (req-package nlinum
+  :commands global-nlinum-mode
   :idle (global-nlinum-mode)
   :config
   (progn
