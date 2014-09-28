@@ -28,10 +28,10 @@ in any necessary packages through `package.el` and
 
 The only other dependencies you might want are:
 
-- slime (through [quicklisp](http://www.quicklisp.org/beta/))
-- mu4e (through your package manager)
-- ghc-mod (through your package manager, or [cabal](http://www.haskell.org/cabal/))
-- jedi (through your package manager, [pip](https://pypi.python.org/pypi/pip) or similar)
+- `slime` (through [quicklisp](http://www.quicklisp.org/beta/))
+- `mu4e` (through your package manager)
+- `ghc-mod` (through your package manager, or [cabal](http://www.haskell.org/cabal/))
+- `jedi` (through your package manager, [pip](https://pypi.python.org/pypi/pip) or similar)
 
 If you don't want the functionality of these particluar packages, you
 may ignore them, as the configuration should run without them.
