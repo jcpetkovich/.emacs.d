@@ -50,5 +50,9 @@
          (previous-line))
        (evil-append-line (or count 1)))))
 
+(defun user-utils/evil-visual-or-normal-p ()
+  "True if evil mode is enabled, and we are in normal or visual mode."
+  (and (bound-and-true-p evil-mode)
+       (not (memq evil-state '(insert emacs)))))
 
 (provide 'user-utils)

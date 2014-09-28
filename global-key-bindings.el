@@ -256,8 +256,7 @@ If no map is found in current source do nothing (keep previous map)."
     (defvar mc-evil-compat/mark-was-active nil)
 
     (defun mc-evil-compat/switch-to-emacs-state ()
-      (when (and (bound-and-true-p evil-mode)
-                 (not (memq evil-state '(insert emacs))))
+      (when (user-utils/evil-visual-or-normal-p)
 
         (setq mc-evil-compat/evil-prev-state evil-state)
 
@@ -296,9 +295,10 @@ If no map is found in current source do nothing (keep previous map)."
     ;; When running edit-lines, point will return (position + 1) as a
     ;; result of how evil deals with regions
     (defadvice mc/edit-lines (before change-point-by-1 activate)
-      (if (> (point) (mark))
-          (goto-char (1- (point)))
-        (push-mark (1- (mark)))))
+      (when (user-utils/evil-visual-or-normal-p)
+        (if (> (point) (mark))
+            (goto-char (1- (point)))
+          (push-mark (1- (mark))))))
 
     (add-hook 'rectangular-region-mode-hook 'mc-evil-compat/rectangular-switch-state)
 

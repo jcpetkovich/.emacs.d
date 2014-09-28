@@ -129,6 +129,7 @@
         evil-emacs-state
         handle-switch-frame
         helm-confirm-and-exit-minibuffer
+        helm-descbinds
         keyboard-escape-quit
         mc-expand-or-mark-next-symbol
         mc-expand-or-mark-next-word
