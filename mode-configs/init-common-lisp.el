@@ -1,23 +1,24 @@
 ;; init-common-lisp.el - Setup emacs for editing common lisp.
 
-;; Bootstrap common lisp
-(setq-default inferior-lisp-program "/usr/bin/sbcl --noinform --no-linedit"
+;; If we loaded slime, set it up
+
+(req-package slime-company
+  :require slime
+  :config (slime-setup '(slime-company)))
+
+(req-package slime
+  :commands slime
+  :config
+  (progn
+    ;; Bootstrap common lisp
+    (setq-default inferior-lisp-program "/usr/bin/sbcl --noinform --no-linedit"
       slime-helper-install "~/quicklisp/slime-helper.el")
 
-(when (file-exists-p slime-helper-install)
-  (load slime-helper-install))
+    (when (file-exists-p slime-helper-install)
+      (load slime-helper-install))
 
-;; If we loaded slime, set it up
-(when (require 'slime-autoloads nil :noerror)
-
-  (req-package slime-company
-    :require slime
-    :config (slime-setup '(slime-company)))
-
-  (req-package slime
-    :commands slime
-    :config
-    (progn
+    ;; Try loading it
+    (when (require 'slime-autoloads nil :noerror)
       (require 'slime-fancy)
 
       (setq-default slime-contribs '(slime-fancy slime-asdf slime-banner)
