@@ -204,26 +204,26 @@ If no map is found in current source do nothing (keep previous map)."
    ;; | z | x | c | v |
 
    ;; Use left super as s-, build bindings off C-s-
-   ("s-C-v s-C-v" . mc/edit-ends-of-lines)
-   ("s-C-#"       . mc/insert-numbers)
-   ("s-C-t"       . mc/mark-next-like-this)
-   ("s-C-S-t"     . mc/mark-next-word-like-this)
-   ("s-C-p"       . mc/mark-next-symbol-like-this)
-   ("s-C-s"       . mc/mark-previous-like-this)
-   ("s-C-S-s"     . mc/mark-previous-word-like-this)
-   ("s-C-f"       . mc/mark-previous-symbol-like-this)
+   ("C-s-v C-s-v" . mc/edit-ends-of-lines)
+   ("C-s-#"       . mc/insert-numbers)
+   ("C-s-t"       . mc/mark-next-like-this)
+   ("C-s-S-t"     . mc/mark-next-word-like-this)
+   ("C-s-p"       . mc/mark-next-symbol-like-this)
+   ("C-s-s"       . mc/mark-previous-like-this)
+   ("C-s-S-s"     . mc/mark-previous-word-like-this)
+   ("C-s-f"       . mc/mark-previous-symbol-like-this)
 
    ;; ### Mark many occurrences
 
-   ("s-C-a"   . mc/mark-all-like-this)
-   ("s-C-S-a" . mc/mark-all-words-like-this)
-   ("s-C-q"   . mc/mark-all-symbols-like-this)
+   ("C-s-a"   . mc/mark-all-like-this)
+   ("C-s-S-a" . mc/mark-all-words-like-this)
+   ("C-s-q"   . mc/mark-all-symbols-like-this)
 
-   ;; ### Mark all limited by key ->s-C-r (w) (x)
-   ("s-C-r"   . mc/mark-all-in-region)
-   ("s-C-w"   . mc/mark-all-like-this-in-defun)
-   ("s-C-S-w" . mc/mark-all-words-like-this-in-defun)
-   ("s-C-x"   . mc/mark-all-symbols-like-this-in-defun)
+   ;; ### Mark all limited by key C-s-r (w) (x)
+   ("C-s-r"   . mc/mark-all-in-region)
+   ("C-s-w"   . mc/mark-all-like-this-in-defun)
+   ("C-s-S-w" . mc/mark-all-words-like-this-in-defun)
+   ("C-s-x"   . mc/mark-all-symbols-like-this-in-defun)
 
    ;; Mark all god keys
    ("M-m" . user-mc/expand-or-mark-next-symbol)
@@ -384,7 +384,7 @@ If no map is found in current source do nothing (keep previous map)."
 ;; =============================================================
 (req-package visual-regexp
   :bind (("M-%" . vr/select-query-replace)
-         ("s-C-5" . vr/select-mc-mark)))
+         ("C-s-5" . vr/select-mc-mark)))
 
 
 (req-package visual-regexp-steroids
