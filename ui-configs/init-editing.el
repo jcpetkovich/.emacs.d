@@ -25,4 +25,9 @@
 ;;; Save window configurations
 (winner-mode 1)
 
+;; S for nice string manipulation
+
+(req-package s
+  :defer t)
+
 (provide 'init-editing)
