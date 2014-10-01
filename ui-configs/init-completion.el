@@ -4,7 +4,7 @@
 ;; Auto Complete
 ;; =============================================================
 (req-package auto-complete
-  :require (evil yasnippet company)
+  :require (evil company)
   :commands auto-complete-mode
   :config
   (progn
@@ -52,8 +52,10 @@
         (setf completion/yas-ac-was-on nil)
         (auto-complete-mode 1)))
 
-    (add-hook 'yas-before-expand-snippet-hook 'completion/yas-ac-expand-workaround)
-    (add-hook 'yas-after-exit-snippet-hook 'completion/yas-ac-exit-workaround)
+    (eval-after-load "yasnippet"
+      '(progn
+         (add-hook 'yas-before-expand-snippet-hook 'completion/yas-ac-expand-workaround)
+         (add-hook 'yas-after-exit-snippet-hook 'completion/yas-ac-exit-workaround)))
 
     (defun completion/use-auto-complete-instead ()
       (company-mode -1)
