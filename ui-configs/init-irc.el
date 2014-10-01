@@ -8,6 +8,7 @@
   :commands rcirc
   :config
   (progn
+    (require 's)
     (if (or (file-exists-p "~/.authinfo.gpg")
             (file-exists-p "~/.authinfo"))
         (progn
