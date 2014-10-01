@@ -35,6 +35,7 @@
         ess-smart-comma
         ess-smart-underscore
         ess-yank
+        eval-and-replace
         eval-last-sexp
         evil-ace-jump-word-mode
         evil-append
@@ -60,6 +61,7 @@
         fc-eval-and-replace
         fill-paragraph
         helm-M-x
+        indent-for-tab-command
         jedi:dot-complete
         js2-insert-and-indent
         keyboard-quit
