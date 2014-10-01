@@ -4,7 +4,7 @@
   :require ess)
 
 (req-package ess
-  :require (auto-complete evil)
+  :require (evil)
   :init (require 'ess-site)
   :config
   (progn
