@@ -451,7 +451,6 @@ If no map is found in current source do nothing (keep previous map)."
  ("<f11>" . align-regexp))
 
 ;;; Unbound (or mostly useless) but convenientish keys
-;; (kbd "M-u")
 ;; (kbd "M-p") ; usually bound during certain modes
 ;; (kbd "M-~")
 ;; (kbd "M-`")
