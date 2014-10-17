@@ -35,6 +35,10 @@
 ;; =============================================================
 ;; Alright, let's get this started!
 ;; =============================================================
+
+;; Org mode is still picky about when it's compiled
+(require 'init-org-mode)
+
 (req-package-force load-dir
   :init
   (let ((load-dirs (list ui-configs-directory
