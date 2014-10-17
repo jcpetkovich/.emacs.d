@@ -73,6 +73,7 @@
         org-ctrl-c-ctrl-c
         org-end-of-line
         org-force-self-insert
+        org-insert-heading
         org-kill-line
         org-meta-return
         org-metaright
