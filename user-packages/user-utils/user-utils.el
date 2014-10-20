@@ -9,7 +9,26 @@
   (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
                          '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)))
 
+(defun user-utils/kill-region-or-backward-word ()
+  "If the `region-active-p' returns true, kill the current
+region. If `rectangle-mark-mode' is active, kill the current
+rectangle, otherwise, kill the previous word."
+  (interactive)
+  (if (region-active-p)
+      (call-interactively 'kill-region)
+    (backward-kill-word 1)))
+
+(defun user-utils/save-region-or-current-line (arg)
+  "If the `region-active-p' returns true, save the current
+region. If `rectangle-mark-mode' is active, save the current
+rectangle, otherwise, save the current line."
+  (interactive "P")
+  (if (region-active-p)
+      (call-interactively 'kill-ring-save)
+    (copy-line arg)))
+
 (defun user-utils/force-revert ()
+  "Force the buffer to reflect the associated file on disk."
   (interactive)
   (revert-buffer t t))
 

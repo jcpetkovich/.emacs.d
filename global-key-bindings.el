@@ -125,7 +125,7 @@
     (-each all-helm-maps
       (lambda (map)
         (eval `(bind-keys :map ,map
-                          ("C-w" . kill-region-or-backward-word)
+                          ("C-w" . user-utils/kill-region-or-backward-word)
                           ("M-w" . helm-yank-text-at-point)))))
 
     (bind-key "C-w" 'helm-find-files-up-one-level helm-find-files-map)
@@ -326,7 +326,7 @@ If no map is found in current source do nothing (keep previous map)."
     (defun kill-region-or-paredit-backward-kill-word ()
       (interactive)
       (if (region-active-p)
-          (kill-region (region-beginning) (region-end))
+          (call-interactively 'kill-region)
         (call-interactively 'paredit-backward-kill-word)))
 
     (defadvice paredit-close-round (after paredit-close-and-indent activate)
@@ -340,7 +340,7 @@ If no map is found in current source do nothing (keep previous map)."
 
     (--each '(insert visual normal)
       (evil-declare-key it paredit-mode-map
-        (kbd "C-w") 'kill-region-or-backward-word
+        (kbd "C-w") 'user-utils/kill-region-or-backward-word
         (kbd "M-;") 'comment-dwim-2))))
 
 (req-package smartparens
@@ -409,23 +409,22 @@ If no map is found in current source do nothing (keep previous map)."
   :bind ("M-;" . comment-dwim-2))
 
 (req-package magnars-defuns
-  :require evil
-  :commands cleanup-buffer
-  :bind (("C-w" . kill-region-or-backward-word)
-         ("M-w" . save-region-or-current-line)
-         ("C-c e" . eval-and-replace)
+  :require (evil)
+  :commands (cleanup-buffer copy-line)
+  :bind (("C-c e" . eval-and-replace)
          ("C-x M-w" . copy-current-file-path)
          ("C-x C--" . rotate-windows)
          ("<M-return>" . new-line-dwim)
          ("M-RET" . new-line-dwim))
   :config
   (progn
+    (require 's)
     (bind-keys :map evil-insert-state-map
-               ("C-w" . kill-region-or-backward-word)
+               ("C-w" . user-utils/kill-region-or-backward-word)
                ("C-k" . kill-line))
 
     (bind-keys :map evil-visual-state-map
-               ("C-w" . kill-region-or-backward-word))))
+               ("C-w" . user-utils/kill-region-or-backward-word))))
 
 (req-package shrink-whitespace
   :bind (("M-\\" . shrink-whitespace)
