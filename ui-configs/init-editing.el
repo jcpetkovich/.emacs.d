@@ -1,6 +1,7 @@
 ;; init-editing.el - Configure editing related emacs settings.
 
 (setq-default
+ load-prefer-newer                   t
  indent-tabs-mode                    nil
  save-place                          t
  lpr-command                         "xpp" ; default printing command
