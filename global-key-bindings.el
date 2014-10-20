@@ -432,9 +432,12 @@ If no map is found in current source do nothing (keep previous map)."
          ("M-N" . shrink-whitespace-around)))
 
 (req-package user-utils
-  :bind (("M-j" . move-cursor-next-pane)
-         ("M-k" . move-cursor-previous-pane)
-         ("M-<escape>" . user-utils/force-revert)))
+  :bind (("C-w" . user-utils/kill-region-or-backward-word)
+         ("M-w" . user-utils/save-region-or-current-line)
+         ("M-j" . user-utils/move-cursor-next-pane)
+         ("M-k" . user-utils/move-cursor-previous-pane)
+         ("M-<escape>" . user-utils/force-revert))
+  :config (require 's))
 
 ;; =============================================================
 ;; Global non-package related keys. (and list of good free keys)
@@ -494,7 +497,7 @@ If no map is found in current source do nothing (keep previous map)."
            ("t" . term)
            ("s" . shell)
            ("c" . calc)
-           ("y" . yas/insert-snippet)
+           ("y" . yas-insert-snippet)
            ("w" . woman))
 
 ;; User run
