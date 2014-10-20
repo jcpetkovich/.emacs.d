@@ -14,6 +14,24 @@
     (defvar user-cc/linux-source-locations nil
       "Path's to linux source used for pattern matching.")
 
+    (defun user-cc/default-language-standard (value)
+      "C language standard to use for syntax checking through flycheck."
+      (setf flycheck-gcc-language-standard value
+            flycheck-clang-language-standard value))
+    (user-cc/default-language-standard "c99")
+
+    (defun user-cc/default-include-path (value)
+      "C language default include path for flycheck."
+      (setf flycheck-gcc-include-path value
+            flycheck-clang-include-path value))
+    (user-cc/default-include-path '("/usr/include" "/usr/include/linux"))
+
+    (defun user-cc/default-includes (value)
+      "C language default includes for flycheck."
+      (setf flycheck-gcc-includes value
+            flycheck-clang-includes value))
+    (user-cc/default-includes nil)
+
     ;; By default, follow bsd style
     (setq-default c-default-style "bsd"
                   user-cc/linux-source-locations '("~/src/linux-trees"
@@ -41,8 +59,8 @@ for the Linux Kernel style guidelines."
 
   (add-hook 'c-mode-hook
             (defun user-cc/setup-default-c-indentation
-              ;; tab width 8 in C please
-              (setq tab-width 8)
+                ;; tab width 8 in C please
+                (setq tab-width 8)
               (set (make-local-variable 'indent-tabs-mode) t)
               (let ((filename (buffer-file-name)))
 
