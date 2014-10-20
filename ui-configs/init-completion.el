@@ -77,7 +77,7 @@
                ("C-n" . company-select-next)
                ("C-p" . company-select-previous)
                ("C-h" . help-command)
-               ("C-w" . kill-region-or-backward-word)
+               ("C-w" . user-utils/kill-region-or-backward-word)
                ("C-l" . company-show-location)
                ("M-1" . nil)
                ("M-2" . nil))
