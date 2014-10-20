@@ -18,9 +18,10 @@
 
 (req-package latex
   :require tex-site
-  :commands latex-mode
+  :commands TeX-latex-mode
   :config
   (progn
+    (require 'org)
     (bind-keys :map LaTeX-mode-map
                ("C-c DEL" . user-auctex/delete-env-pair)
                ("<M-return>" . LaTeX-insert-item)
