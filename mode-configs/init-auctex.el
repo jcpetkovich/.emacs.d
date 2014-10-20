@@ -10,8 +10,7 @@
   :defer t
   :init
   (progn
-    (provide 'auctex)
-    (require 'auctex-autoloads)))
+    (provide 'auctex)))
 
 (req-package tex-site
   :require auctex

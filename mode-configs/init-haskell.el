@@ -5,7 +5,6 @@
   :commands haskell-mode
   :init
   (progn
-    (require 'haskell-mode-autoloads)
     (autoload 'ghc-init "ghc" nil t))
   :config
   (progn
