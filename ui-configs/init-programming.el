@@ -54,23 +54,30 @@
       "Report project in mode-line."
       (let* ((message " Projectile"))
         (setq projectile-mode-line message))
-      (force-mode-line-update))
+      (force-mode-line-update))))
 
-    (defmacro project-specifics (name &rest body)
-      (declare (indent 1))
-      `(progn
-         (add-hook 'find-file-hook
-                   (lambda ()
-                     (when (string-match-p ,name (buffer-file-name))
-                       ,@body)))
-         (add-hook 'dired-after-readin-hook
-                   (lambda ()
-                     (when (string-match-p ,name (dired-current-directory))
-                       ,@body)))))
+;; =============================================================
+;; Project Specifics
+;; =============================================================
+(defmacro project-specifics (name &rest body)
+  (declare (indent 1))
+  `(progn
+     (add-hook 'find-file-hook
+               (lambda ()
+                 (when (string-match-p ,name (buffer-file-name))
+                   ,@body)))
+     (add-hook 'dired-after-readin-hook
+               (lambda ()
+                 (when (string-match-p ,name (dired-current-directory))
+                   ,@body)))))
 
-    ;; Datamill specifics
-    (project-specifics "projects/eval-lab"
-      (set (make-local-variable 'whitespace-cleanup-mode-only-if-initially-clean) nil))))
+;; Datamill specifics
+(project-specifics "projects/eval-lab"
+  (set (make-local-variable 'whitespace-cleanup-mode-only-if-initially-clean) nil))
+
+;; DWM specifics
+(project-specifics "dwm"
+  (user-cc/default-includes '("/usr/include/X11/Xutil.h")))
 
 ;; =============================================================
 ;; Magit
