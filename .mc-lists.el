@@ -31,6 +31,7 @@
         dired-next-line
         dired-previous-line
         dired-unmark
+        ess-noweb-indent-line
         ess-smart-S-assign
         ess-smart-comma
         ess-smart-underscore
@@ -66,6 +67,7 @@
         js2-insert-and-indent
         keyboard-quit
         kill-region-or-backward-word
+        kill-sexp
         markdown-dedent-or-delete
         markdown-exdent-or-delete
         message-beginning-of-line
@@ -87,12 +89,15 @@
         orgtbl-self-insert-command
         paredit-backward
         paredit-backward-up
+        paredit-close-round
         paredit-doublequote
         paredit-forward
         paredit-forward-barf-sexp
         paredit-forward-delete
+        paredit-forward-down
         paredit-forward-kill-word
         paredit-forward-slurp-sexp
+        paredit-forward-up
         paredit-kill
         paredit-newline
         paredit-open-round
