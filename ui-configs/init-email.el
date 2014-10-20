@@ -89,7 +89,7 @@
     (evil-declare-key 'motion mu4e-view-mode-map
       (kbd "o") 'mu4e-view-open-attachment
       (kbd "i") 'mu4e-view-go-to-url
-      (kbd "c") 'longlines-mode
+      (kbd "c") 'visual-line-mode
       (kbd "|") 'mu4e-view-pipe
       (kbd "s") 'mu4e-view-save-attachment)
 
