@@ -126,11 +126,10 @@
 ;; yasnippet
 ;; =============================================================
 (req-package yasnippet
-  :commands yas/insert-snippet
-  :defer t
   :init
   (progn
-    (setq-default yas-snippet-dirs `(,(expand-file-name (concat user-emacs-directory "snippets")))
+    (setq-default yas-snippet-dirs (list (expand-file-name (concat user-emacs-directory "snippets")))
+                  yas-installed-snippets-dir nil
                   yas-indent-line 'auto))
 
   :config
