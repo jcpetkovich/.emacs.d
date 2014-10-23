@@ -58,9 +58,9 @@ for the Linux Kernel style guidelines."
                            user-cc/c-lineup-arglist-tabs-only))))))
 
   (add-hook 'c-mode-hook
-            (defun user-cc/setup-default-c-indentation
-                ;; tab width 8 in C please
-                (setq tab-width 8)
+            (defun user-cc/setup-default-c-indentation ()
+              ;; tab width 8 in C please
+              (set (make-local-variable 'tab-width) 8)
               (set (make-local-variable 'indent-tabs-mode) t)
               (let ((filename (buffer-file-name)))
 
