@@ -10,6 +10,7 @@
         TeX-newline
         backward-kill-sentence
         backward-sentence
+        backward-sexp
         c-electric-colon
         c-electric-delete-forward
         c-electric-semi&comma
@@ -61,6 +62,7 @@
         evil-substitute
         fc-eval-and-replace
         fill-paragraph
+        forward-sexp
         helm-M-x
         indent-for-tab-command
         jedi:dot-complete
@@ -148,4 +150,5 @@
         revert-buffer
         toggle-input-method
         user-mc/expand-or-mark-next-symbol
+        user-mc/expand-or-mark-next-word
         ))
