@@ -85,21 +85,4 @@
 (req-package magit
   :commands magit-status)
 
-;; =============================================================
-;; aggressive indentation
-;; =============================================================
-(req-package aggressive-indent
-
-  :init
-  (progn (electric-indent-mode -1)
-         (global-aggressive-indent-mode 1))
-  :config
-  (progn
-    (--each '(html-mode
-              python-mode
-              makefile-mode
-              go-mode)                  ; gofmt on save better
-      (add-to-list 'aggressive-indent-excluded-modes it))))
-
-
 (provide 'init-programming)
