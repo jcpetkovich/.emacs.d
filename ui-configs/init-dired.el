@@ -1,26 +1,18 @@
 ;; init-dired.el - Configure dired.
 
 (req-package dired
-  :require (evil dired-details wdired)
+  :require (evil wdired)
   :config
   (progn
-    (require 'dired-details)
-    (setq-default dired-details-hidden-string "--- "
+    (setq-default dired-hide-details-hide-symlink-targets nil
                   dired-guess-shell-alist-user '(("\\.pdf\\'" "zathura "))
                   dired-dwim-target t)
-    (dired-details-install)
 
     (defun dired/use-dired-x ()
       (load "dired-x"))
 
     (add-hook 'dired-load-hook 'dired/use-dired-x)
-
-    (--each '(dired-do-rename
-              dired-do-copy
-              dired-create-directory
-              wdired-abort-changes)
-      (eval `(defadvice ,it (after revert-buffer activate)
-               (revert-buffer))))
+    (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode 1)))
 
     (defun dired-back-to-start-of-files ()
       (interactive)
