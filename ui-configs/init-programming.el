@@ -76,7 +76,7 @@
   (set (make-local-variable 'whitespace-cleanup-mode-only-if-initially-clean) nil))
 
 ;; DWM specifics
-(project-specifics "dwm"
+(project-specifics "dwm.*[c|h]$"
   (user-cc/default-includes '("/usr/include/X11/Xutil.h")))
 
 ;; =============================================================
