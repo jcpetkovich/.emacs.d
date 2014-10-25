@@ -76,6 +76,10 @@
   :require company
   :bind ("C-:" . helm-company))
 
+(req-package helm-man
+  :require helm
+  :config (setq-default helm-man-or-woman-function 'woman))
+
 (req-package helm
   :defer t
   :init
