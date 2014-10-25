@@ -26,8 +26,10 @@
 ;;; Save window configurations
 (winner-mode 1)
 
-;; S for nice string manipulation
+;; Column number mode
+(column-number-mode 1)
 
+;; S for nice string manipulation
 (req-package s
   :defer t)
 
