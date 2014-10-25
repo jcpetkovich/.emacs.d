@@ -21,7 +21,7 @@
 (require 'package)
 
 (defvar gnu '("gnu" . "http://elpa.gnu.org/packages/"))
-(defvar melpa '("melpa" . "http://melpa.milkbox.net/packages/"))
+(defvar melpa '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives melpa)
 (package-initialize)
 
