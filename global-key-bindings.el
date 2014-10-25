@@ -499,7 +499,7 @@ If no map is found in current source do nothing (keep previous map)."
            ("s" . shell)
            ("c" . calc)
            ("y" . yas-insert-snippet)
-           ("w" . woman))
+           ("w" . helm-man-woman))
 
 ;; User run
 (bind-keys :prefix "M-u"
