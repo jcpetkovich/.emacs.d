@@ -11,9 +11,13 @@
         backward-kill-sentence
         backward-sentence
         backward-sexp
+        c-beginning-of-statement
         c-electric-colon
         c-electric-delete-forward
+        c-electric-pound
         c-electric-semi&comma
+        c-electric-slash
+        c-electric-star
         cperl-electric-backspace
         cperl-electric-brace
         cperl-electric-lbrace
