@@ -23,7 +23,7 @@
     (defun user-cc/default-include-path (value)
       "C language default include path for flycheck."
       (setf flycheck-gcc-include-path value
-            flycheck-clang-include-path value))
+            flycheck-clang-include-path (-concat '("/usr/lib/clang/3.5.0/include") value)))
     (user-cc/default-include-path '("/usr/include" "/usr/include/linux"))
 
     (defun user-cc/default-includes (value)
