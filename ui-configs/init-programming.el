@@ -77,7 +77,8 @@
 
 ;; DWM specifics
 (project-specifics "dwm.*[c|h]$"
-  (user-cc/default-includes '("/usr/include/X11/Xutil.h")))
+  (user-cc/default-include-path '("/usr/include" "/usr/include/freetype2" "."))
+  (user-cc/default-includes '("/usr/include/X11/Xutil.h" "dwmstatus.h")))
 
 ;; =============================================================
 ;; Magit
