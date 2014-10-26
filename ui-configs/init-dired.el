@@ -21,7 +21,7 @@
     (defun dired-back-to-top ()
       (interactive)
       (beginning-of-buffer)
-      (dired-next-line 4))
+      (dired-next-line 3))
 
     (defun dired-jump-to-bottom ()
       (interactive)
