@@ -54,6 +54,7 @@
         evil-delete
         evil-digit-argument-or-evil-beginning-of-line
         evil-find-char
+        evil-find-char-to
         evil-forward-WORD-end
         evil-forward-char
         evil-forward-word-begin
