@@ -1,6 +1,13 @@
 ;; init-programming.el - Programming related configurations.
 
 ;; =============================================================
+;; Simple
+;; =============================================================
+(req-package simple
+  ;; Prefer bash over user shell
+  :config (setq-default shell-file-name (executable-find "bash")))
+
+;; =============================================================
 ;; CEDIT and Semantic
 ;; =============================================================
 
