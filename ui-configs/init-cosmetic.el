@@ -85,14 +85,18 @@
 ;; =============================================================
 ;; Line numbers
 ;; =============================================================
-(req-package linum
-  :commands global-linum-mode
-  :idle (global-linum-mode)
+(req-package nlinum
+  :commands global-nlinum-mode
+  :idle (global-nlinum-mode)
   :config
   (progn
+    (defun nlinum--face-height (face)
+      (condition-case err
+          (aref (font-info (face-font face)) 2)
+        (error (message "Unable to get font at this time.") 0)))
 
     (defun cosmetic/disable-line-numbers ()
-      (linum-mode -1))
+      (nlinum-mode -1))
 
     (add-hook 'rcirc-mode-hook 'cosmetic/disable-line-numbers)))
 
