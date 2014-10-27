@@ -437,6 +437,7 @@ If no map is found in current source do nothing (keep previous map)."
          ("M-N" . shrink-whitespace-around)))
 
 (req-package user-utils
+  :commands user-utils/evil-visual-or-normal-p
   :bind (("C-w" . user-utils/kill-region-or-backward-word)
          ("M-w" . user-utils/save-region-or-current-line)
          ("M-j" . user-utils/move-cursor-next-pane)
