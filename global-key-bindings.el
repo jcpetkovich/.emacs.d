@@ -364,7 +364,8 @@ If no map is found in current source do nothing (keep previous map)."
               org-mode-hook
               sgml-mode-hook
               awk-mode-hook
-              go-mode-hook)
+              go-mode-hook
+              rust-mode-hook)
       (add-hook it 'turn-on-smartparens-strict-mode))
     ;; Have to force some modes, as they are based on comint-mode
     (--each '(inferior-ess-mode-hook)
