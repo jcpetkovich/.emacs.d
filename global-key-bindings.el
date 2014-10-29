@@ -173,7 +173,7 @@ If no map is found in current source do nothing (keep previous map)."
                   (if (fboundp 'set-transient-map)
                       (set-transient-map it)
                     (set-temporary-overlay-map it)))))
-        (error  (message "helm--maybe-update-keymap borked"))))
+        (error)))
 
     ;; (defvar helm-source-example
     ;;   '((name . "this example's cool extension")
