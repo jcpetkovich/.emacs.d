@@ -1,5 +1,7 @@
 ;; user-utils.el - Small, self-contained tools.
 
+(require 'shrink-whitespace)
+
 ;; Toggle fullscreen mode
 (defalias 'toggle-fullscreen 'user-utils/toggle-fullscreen)
 (defun user-utils/toggle-fullscreen ()
@@ -57,7 +59,7 @@ rectangle, otherwise, save the current line."
        :type line
 
        (next-line)
-       (while (not (line-has-meat-p))
+       (while (not (shrink-whitespace/line-has-meat-p))
          (next-line))
        (evil-insert-line (or count 1)))
 
@@ -65,7 +67,7 @@ rectangle, otherwise, save the current line."
        :type line
 
        (previous-line)
-       (while (not (line-has-meat-p))
+       (while (not (shrink-whitespace/line-has-meat-p))
          (previous-line))
        (evil-append-line (or count 1)))))
 
