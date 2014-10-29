@@ -36,6 +36,7 @@
         dired-next-line
         dired-previous-line
         dired-unmark
+        electric-newline-and-maybe-indent
         ess-noweb-indent-line
         ess-smart-S-assign
         ess-smart-comma
