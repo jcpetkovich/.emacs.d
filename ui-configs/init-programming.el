@@ -87,6 +87,11 @@
   (user-cc/default-include-path '("/usr/include" "/usr/include/freetype2" "."))
   (user-cc/default-includes '("/usr/include/X11/Xutil.h" "dwmstatus.h")))
 
+(project-specifics "dwmstatus"
+  (user-cc/default-include-path '("/usr/include" "/usr/include/freetype2" "."
+                                  "/usr/include/glib-2.0/" "/usr/lib64/glib-2.0/include" ))
+  (user-cc/default-includes '("/usr/include/X11/Xutil.h" "dwmstatus.h")))
+
 ;; =============================================================
 ;; Magit
 ;; =============================================================
