@@ -79,6 +79,7 @@
         markdown-dedent-or-delete
         markdown-exdent-or-delete
         message-beginning-of-line
+        new-line-dwim
         org-beginning-of-line
         org-ctrl-c-ctrl-c
         org-end-of-line
