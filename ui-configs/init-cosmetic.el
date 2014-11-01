@@ -48,6 +48,7 @@
 
 (req-package smart-mode-line
   :commands sml/setup
+  :init (setq-default sml/no-confirm-load-theme t)
   :config
   (progn
     (setq-default rm-blacklist '(" SliNav" " yas" " ElDoc" " Undo-Tree"
