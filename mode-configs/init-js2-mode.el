@@ -4,9 +4,8 @@
   :defer t)
 
 (req-package js2-mode
-  :require js2-refactor
+  :commands js2-mode
   :mode ("\\.js$" . js2-mode)
-  :defer t
   :config
   (progn
     (defvaralias 'site-lisp-dir 'site-lisp-directory)
