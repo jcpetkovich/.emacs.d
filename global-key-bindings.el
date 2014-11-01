@@ -245,13 +245,13 @@ If no map is found in current source do nothing (keep previous map)."
       (interactive)
       (if (not (region-active-p))
           (er/mark-symbol)
-        (call-interactively #'mc/mark-next-symbol-like-this)))
+        (call-interactively #'mc/mark-next-like-this)))
 
     (defun user-mc/expand-or-mark-next-word ()
       (interactive)
       (if (not (region-active-p))
           (er/mark-word)
-        (call-interactively #'mc/mark-next-word-like-this))))
+        (call-interactively #'mc/mark-next-like-this))))
 
   :config
   (progn
