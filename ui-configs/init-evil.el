@@ -42,6 +42,11 @@
     (evil-declare-key (quote normal) view-mode-map
       (kbd "q") 'View-quit)
 
+    (evil-declare-key 'normal visual-line-mode-map
+      (kbd "j") 'evil-next-visual-line
+      (kbd "k") 'evil-previous-visual-line
+      (kbd "$") 'evil-end-of-visual-line
+      (kbd "0") 'evil-beginning-of-visual-line)
 
     (evil-define-command evil-helm-find-file (file)
       "Same as `evil-edit' but fall back to helm-find-files with no
