@@ -98,4 +98,21 @@
 (req-package magit
   :commands magit-status)
 
+;; =============================================================
+;; gnu global
+;; =============================================================
+(req-package ggtags)
+
+(req-package helm-gtags
+  :require (helm evil)
+  :config
+  (progn
+    (--each '(normal insert)
+      (evil-declare-key it helm-gtags-mode-map
+        (kbd "M-.") 'helm-gtags-dwim
+        (kbd "M-,") 'helm-gtags-pop-stack))
+
+    (add-hook 'c-mode-hook 'helm-gtags-mode)
+    (add-hook 'c++-mode-hook 'helm-gtags-mode)))
+
 (provide 'init-programming)
