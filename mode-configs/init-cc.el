@@ -6,6 +6,24 @@
 (req-package cc-mode
   :require smart-tabs-mode
   :commands (c-mode c++-mode)
+  :init (progn
+          (defun user-cc/default-language-standard (value)
+            "C language standard to use for syntax checking through flycheck."
+            (setf flycheck-gcc-language-standard value
+                  flycheck-clang-language-standard value))
+          (user-cc/default-language-standard "c99")
+
+          (defun user-cc/default-include-path (value)
+            "C language default include path for flycheck."
+            (setf flycheck-gcc-include-path value
+                  flycheck-clang-include-path (-concat '("/usr/lib/clang/3.5.0/include") value)))
+          (user-cc/default-include-path '("/usr/include" "/usr/include/linux"))
+
+          (defun user-cc/default-includes (value)
+            "C language default includes for flycheck."
+            (setf flycheck-gcc-includes value
+                  flycheck-clang-includes value))
+          (user-cc/default-includes nil))
   :config
   (progn
     (add-hook 'c-mode-hook (defun user-utils/turn-off-abbrev-mode ()
@@ -13,24 +31,6 @@
 
     (defvar user-cc/linux-source-locations nil
       "Path's to linux source used for pattern matching.")
-
-    (defun user-cc/default-language-standard (value)
-      "C language standard to use for syntax checking through flycheck."
-      (setf flycheck-gcc-language-standard value
-            flycheck-clang-language-standard value))
-    (user-cc/default-language-standard "c99")
-
-    (defun user-cc/default-include-path (value)
-      "C language default include path for flycheck."
-      (setf flycheck-gcc-include-path value
-            flycheck-clang-include-path (-concat '("/usr/lib/clang/3.5.0/include") value)))
-    (user-cc/default-include-path '("/usr/include" "/usr/include/linux"))
-
-    (defun user-cc/default-includes (value)
-      "C language default includes for flycheck."
-      (setf flycheck-gcc-includes value
-            flycheck-clang-includes value))
-    (user-cc/default-includes nil)
 
     ;; By default, follow bsd style
     (setq-default c-default-style "bsd"
