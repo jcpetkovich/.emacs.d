@@ -232,7 +232,9 @@ If no map is found in current source do nothing (keep previous map)."
    ;; Mark all god keys
    ("M-m" . user-mc/expand-or-mark-next-symbol)
    ("M-M" . user-mc/expand-or-mark-next-word)
-   ("M-'" . mc/mark-all-dwim))
+   ("M-'" . mc/mark-all-dwim)
+   ("C-S-n" . mc/mark-next-like-this)
+   ("C-S-p" . mc/mark-previous-like-this))
 
   :init
   (progn
