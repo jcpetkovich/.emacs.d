@@ -8,7 +8,26 @@
   :mode ("\\.js$" . js2-mode)
   :config
   (progn
+    (require 's)
+    (require 'magnars-defuns)
     (defvaralias 'site-lisp-dir 'site-lisp-directory)
+    (add-hook 'js2-mode-hook 'js2-imenu-extras-mode)
+
+    (defsubst js2-mode-inside-comment-or-string ()
+      "Return non-nil if inside a comment or string."
+      (or
+       (let ((comment-start
+              (save-excursion
+                (goto-char (point-at-bol))
+                (if (re-search-forward "//" (point-at-eol) t)
+                    (match-beginning 0)))))
+         (and comment-start
+              (<= comment-start (point))))
+       (let ((parse-state (save-excursion
+                            (syntax-ppss (point)))))
+         (or (nth 3 parse-state)
+             (nth 4 parse-state)))))
+
 
     ;; ==============================================================
     ;; Stuff from Magnars
