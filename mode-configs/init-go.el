@@ -11,7 +11,7 @@
                ("M-," . pop-tag-mark)
                ("M-." . godef-jump)
                ("C-c C-d" . godoc-at-point))
-    (add-hook 'after-save-hook 'gofmt-before-save)
+    (add-hook 'before-save-hook 'gofmt-before-save)
 
     (add-hook 'go-mode-hook
               (defun user-go/setup-compile ()
