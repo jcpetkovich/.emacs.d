@@ -35,6 +35,9 @@
          ("<f5>" . mu4e-update-index))
   :config
   (progn
+    (bind-keys :map mu4e-compose-mode-map
+               ("M-n" . grow-whitespace-around))
+
     (setq-default mu4e-html2text-command "html2text -nobs -width 1000"
                   mu4e-view-show-images t
                   mu4e-confirm-quit nil

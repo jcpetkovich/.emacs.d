@@ -1,14 +1,22 @@
 ;; init-r.el - Setup emacs for editing R code.
 
+;; ess is kind of annoying this way, this variable needs to exist
+;; before it's loaded, and even that's not enough. Some things in it's map are just hard bound to M-n...
+(setq-default ess-noweb-mode-prefix (kbd "C-c n"))
+
 (req-package ess-R-data-view
   :require ess)
 
 (req-package ess
   :require (evil)
-  :init (require 'ess-site)
+  :init (progn
+          (require 'ess-site))
   :config
   (progn
     (bind-key "M-;" 'comment-dwim-2 ess-mode-map)
+
+    (bind-keys :map ess-noweb-minor-mode-map
+               ("M-n" . grow-whitespace-around))
 
     (setq-default
      ess-pdf-viewer-pref "zathura"

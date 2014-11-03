@@ -418,7 +418,7 @@ If no map is found in current source do nothing (keep previous map)."
 
 (req-package magnars-defuns
   :require (evil)
-  :commands (cleanup-buffer copy-line)
+  :commands (cleanup-buffer copy-line open-line-above open-line-below)
   :bind (("C-c e" . eval-and-replace)
          ("C-x M-w" . copy-current-file-path)
          ("C-x C--" . rotate-windows)
@@ -437,7 +437,8 @@ If no map is found in current source do nothing (keep previous map)."
 (req-package shrink-whitespace
   :bind (("M-\\" . shrink-whitespace)
          ("M-n" . grow-whitespace-around)
-         ("M-N" . shrink-whitespace-around)))
+         ("M-N" . shrink-whitespace-around))
+  :config (require 's))
 
 (req-package user-utils
   :commands user-utils/evil-visual-or-normal-p
