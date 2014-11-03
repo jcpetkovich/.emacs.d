@@ -13,6 +13,9 @@
     (defvaralias 'site-lisp-dir 'site-lisp-directory)
     (add-hook 'js2-mode-hook 'js2-imenu-extras-mode)
 
+    (bind-keys :map js2-mode-map
+               ("M-j" . user-utils/move-cursor-next-pane))
+
     (defsubst js2-mode-inside-comment-or-string ()
       "Return non-nil if inside a comment or string."
       (or
@@ -293,12 +296,7 @@
 
                         (:else 0)))))
         (unless first-line
-          (indent-line-to offset)))))
-
-
-  :config
-  (progn
-    (bind-key "M-j" 'move-cursor-next-pane js2-mode-map)))
+          (indent-line-to offset))))))
 
 (req-package company-tern
   :require js2-mode
