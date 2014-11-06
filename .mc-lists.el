@@ -25,6 +25,7 @@
         cperl-electric-rparen
         cperl-electric-semi
         cperl-electric-terminator
+        dabbrev-completion
         dabbrev-expand
         delete-horizontal-space
         dired-back-to-start-of-files
@@ -133,6 +134,7 @@
         sp-kill-hybrid-sexp
         sp-kill-word
         transpose-sexps
+        transpose-words
         yas-expand
         ))
 
