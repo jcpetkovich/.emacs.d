@@ -300,7 +300,7 @@
 
 (req-package company-tern
   :require js2-mode
-  :load-path ,(expand-file-name (concat user-emacs-directory "site-lisp/tern/emacs"))
+  :load-path ,(expand-file-name (concat site-lisp-directory "/tern/emacs"))
   :init
   (progn
     (autoload 'tern-mode "tern.el" nil t)
