@@ -315,8 +315,7 @@ If no map is found in current source do nothing (keep previous map)."
 ;; =============================================================
 
 (req-package paredit
-  :require evil
-  :commands paredit-mode
+  :commands (enable-paredit-mode paredit-mode)
   :init
   (progn
     (--each '(lisp-mode-hook
@@ -329,6 +328,7 @@ If no map is found in current source do nothing (keep previous map)."
 
   :config
   (progn
+    (require 'evil)
     (defun kill-region-or-paredit-backward-kill-word ()
       (interactive)
       (if (region-active-p)
@@ -354,7 +354,6 @@ If no map is found in current source do nothing (keep previous map)."
   :commands (turn-on-smartparens-strict-mode smartparens-mode)
   :init
   (progn
-    (require 'smartparens-config)
     (--each '(css-mode-hook
               markdown-mode-hook
               python-mode-hook
