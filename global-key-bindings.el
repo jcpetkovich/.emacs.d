@@ -374,6 +374,18 @@ If no map is found in current source do nothing (keep previous map)."
 
   :config
   (progn
+    (require 'smartparens-config)
+    (defun sp-c-like-pre-slurp-handler (id action context)
+      (when (eq action 'slurp-forward)
+        (save-excursion
+          (when (and (= (sp-get ok :end) (sp-get next-thing :beg))
+                     (equal (sp-get ok :op) (sp-get next-thing :op)))
+            (goto-char (sp-get ok :end))
+            (when (looking-back " ")
+              (delete-char -1))))))
+    (sp-local-pair '(latex-mode python-mode org-mode)
+                   "(" nil
+                   :pre-handlers '(sp-c-like-pre-slurp-handler))
     ;; Laying paredit bindings on top of the smartparents one, not very
     ;; pretty but this includes all the functions that I want to use.
     (sp-use-smartparens-bindings)
