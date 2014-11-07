@@ -52,17 +52,19 @@ A list of the highlights of altered or added keybindings is included
 below:
 
 ### General Editing
-M-RET        DWIM newline
-C-'               Expand Region
-C-"               Contract Region
-C-x M-w           Copy current file path
-M-n               Grow whitespace around point
-M-N               Shrink whitespace around point
-M-\               Shrink whitespace DWIM
-M-/               Hippie Expand
-M-?               Hippie Expand Line
+| Keybinding | Description |
+|------------|-------------|
+| `M-RET`      | DWIM newline |
+| `C-'`        |  Expand Region |
+| `C-"`        |  Contract Region |
+| `C-x M-w`    |      Copy current file path |
+| `M-n`        |  Grow whitespace around point |
+| `M-N`        |  Shrink whitespace around point |
+| `M-\`        |  Shrink whitespace DWIM |
+| `M-/`        |  Hippie Expand |
+| `M-?`        |  Hippie Expand Line |
 
-### Multiple Cursors Core keys
+### Multiple Cursors
 M-m               Mark symbol or next like it (Like `C-d` in sublime)
 M-M               Mark word or next like it
 C-S-n             Mark next like this
