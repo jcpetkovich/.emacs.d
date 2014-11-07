@@ -116,6 +116,7 @@
         python-indent-dedent-line-backspace
         python-indent-electric-colon
         reindent-then-newline-and-indent
+        repeat
         sgml-slash
         sh-assignment
         shrink-whitespace
