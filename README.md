@@ -54,59 +54,71 @@ below:
 ### General Editing
 | Keybinding | Description |
 |------------|-------------|
-| `M-RET`      | DWIM newline |
-| `C-'`        |  Expand Region |
-| `C-"`        |  Contract Region |
-| `C-x M-w`    |      Copy current file path |
-| `M-n`        |  Grow whitespace around point |
-| `M-N`        |  Shrink whitespace around point |
-| `M-\`        |  Shrink whitespace DWIM |
-| `M-/`        |  Hippie Expand |
-| `M-?`        |  Hippie Expand Line |
+| `M-RET`    | DWIM newline |
+| `C-'`      | Expand Region |
+| `C-"`      | Contract Region |
+| `C-x M-w`  | Copy current file path |
+| `M-n`      | Grow whitespace around point |
+| `M-N`      | Shrink whitespace around point |
+| `M-\`      | Shrink whitespace DWIM |
+| `M-/`      | Hippie Expand |
+| `M-?`      | Hippie Expand Line |
 
 ### Multiple Cursors
-M-m               Mark symbol or next like it (Like `C-d` in sublime)
-M-M               Mark word or next like it
-C-S-n             Mark next like this
-C-S-p             Mark previous like this
-M-'               Mark all DWIM
+| Keybinding | Description |
+|------------|-------------|
+| `M-m`      | Mark symbol or next like it (Like `C-d` in sublime) |
+| `M-M`      | Mark word or next like it |
+| `C-S-n`    | Mark next like this |
+| `C-S-p`    | Mark previous like this |
+| `M-'`      | Mark all DWIM |
 
 ### Buffer Splitting and Moving
-M-!               Delete current window (not buffer)
-M-1               Delete all other windows (not buffers)
-M-2               Split window vertically
-M-@               Split window horizontally
-M-j               Move focus to next window
-M-k               Move focus to previous window
+| Keybinding | Description |
+|------------|-------------|
+| `M-!`      | Delete current window (not buffer) |
+| `M-1`      | Delete all other windows (not buffers) |
+| `M-2`      | Split window vertically |
+| `M-@`      | Split window horizontally |
+| `M-j`      | Move focus to next window |
+| `M-k`      | Move focus to previous window |
 
 ### File opening, Searching and Navigation
-M-o               Open a file in project
-M-i               Fuzzy search current buffer
-C-x M-i           Fuzzy search all buffers
-M-l               Fuzzy search current project
-M-v               Search buffer by semantic units
+| Keybinding | Description |
+|------------|-------------|
+| `M-o`      | Open a file in project |
+| `M-i`      | Fuzzy search current buffer |
+| `C-x M-i`  | Fuzzy search all buffers |
+| `M-l`      | Fuzzy search current project |
+| `M-v`      | Search buffer by semantic units |
 
-### User Launch `C-l`
-c                 Launch calculator
-e                 Launch eshell
-f                 Launch find
-g                 Launch grep
-m                 Launch magit
-s                 Launch shell
-t                 Launch term
-w                 Launch man
-y                 Launch yasnippet
+### User Launch `C-l <key>`
+| Keybinding | Description |
+|------------|-------------|
+| `c`        | Launch calculator |
+| `e`        | Launch eshell |
+| `f`        | Launch find |
+| `g`        | Launch grep |
+| `m`        | Launch magit |
+| `s`        | Launch shell |
+| `t`        | Launch term |
+| `w`        | Launch man |
+| `y`        | Launch yasnippet |
 
-### Capitalization `M-c`
--                 Turn word to snakecase
-m                 Camel Case word
-c                 Capitalize word
-l                 Downcase word
-u                 Upcase word
+### Capitalization `M-c <key>`
+| Keybinding | Description |
+|------------|-------------|
+| `-`        | Turn word to snakecase |
+| `m`        | Camel Case word |
+| `c`        | Capitalize word |
+| `l`        | Downcase word |
+| `u`        | Upcase word |
 
 
-### Transposition `M-t`
-l                 Transpose line
-p                 Transpose parameter
-s                 Transpose sexpr
-w                 Transpose word
+### Transposition `M-t <key>`
+| Keybinding | Description |
+|------------|-------------|
+| `l`        | Transpose line |
+| `p`        | Transpose parameter |
+| `s`        | Transpose sexpr |
+| `w`        | Transpose word |
