@@ -38,18 +38,17 @@ may ignore them, as the configuration should run without them.
 
 # Significant Keybindings
 
-In general the default evil and emacs keybindings are not altered
-unless they are replaced with commands that are strict supersets of
-the original's functionality. The environment should be pretty
-friendly to someone used to emacs's or evil's keybindings (evil is
-enabled by default).
+The defaults for emacs/evil are used wherever possible, the following
+sections document significant alterations or interesting pieces not
+included in emacs by default.
 
-To show all the custom bindings in this config just run `M-x
-describe-personal-keybindings`. To see an interactive and searchable
-list of any active keybindings in the current buffer, run `C-h b`.
+For more general help, To show every custom custom binding just run
+`M-x describe-personal-keybindings`. To see an interactive and
+searchable list of any active keybindings in the current buffer, run
+`C-h b`.
 
-A list of the highlights of altered or added keybindings is included
-below:
+To understand these keybindings you must understand the emacs
+[keybinding notation](http://www.emacswiki.org/emacs/EmacsKeyNotation).
 
 ### General Editing
 | Keybinding | Description |
