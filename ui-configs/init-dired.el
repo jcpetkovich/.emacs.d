@@ -1,5 +1,18 @@
 ;; init-dired.el - Configure dired.
 
+;; Pretty colours
+(req-package dired-rainbow
+  :config
+  (progn
+    (defconst dired/media-files-extensions
+      '("mp3" "mp4" "MP3" "MP4" "avi" "mpg" "flv" "ogg")
+      "Media files.")
+    (dired-rainbow-define html "#4e9a06" ("htm" "html" "xhtml"))
+    (dired-rainbow-define media "#ce5c00" dired/media-files-extensions)
+    (dired-rainbow-define-chmod executable-unix "Green" "-.*x.*")
+    (dired-rainbow-define log (:inherit default
+                                        :italic t) ".*\\.log")))
+
 (req-package dired
   :require (evil wdired)
   :config
