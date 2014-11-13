@@ -80,6 +80,12 @@
   :require helm
   :config (setq-default helm-man-or-woman-function 'woman))
 
+(req-package helm-projectile
+  :require (helm projectile)
+  :config
+  (progn
+    (helm-projectile-on)))
+
 (req-package helm
   :defer t
   :init
