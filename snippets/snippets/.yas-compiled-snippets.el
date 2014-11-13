@@ -78,7 +78,7 @@
                         nil nil nil nil nil)
                        ("ifnode" "if (typeof require === \"function\" && typeof module !== \"undefined\") {\n    $0\n}" "node.ifnode" nil nil nil nil nil nil)
                        ("mx" "module.exports = $0;" "node.module.exports" nil nil nil nil nil nil)
-                       ("req" "var ${3:${1:$(lower-camel-case (file-name-nondirectory yas/text))}} = require(\"${1:fs}\")$2;$0" "node.require" nil nil nil nil nil nil)
+                       ("req" "var ${3:${1:$(s-lower-camel-case (file-name-nondirectory yas/text))}} = require(\"${1:fs}\")$2;$0" "node.require" nil nil nil nil nil nil)
                        ("create" "create: function (params) {\n  return Object.create(this, {\n    ppp$0\n  });\n}" "object.create" nil nil nil nil nil nil)
                        ("pp" "${2:$1}: { value: params.${1:property} }$0" "object.create-property" nil nil nil nil nil nil)
                        ("ppp" "${2:$1}: { value: params.${1:property} },\nppp$0" "object.create-property+" nil nil nil nil nil nil)
@@ -114,4 +114,4 @@
                        ("tc" "require 'test/unit'\nrequire '$1'\n\nclass ${1:$(upper-camel-case yas/text)}TestCase < Test::Unit::TestCase\n\n  tt$0\n\nend" "testcase" nil nil nil nil nil nil)))
 
 
-;;; Do not edit! File generated at Tue Mar 18 12:42:22 2014
+;;; Do not edit! File generated at Thu Nov 13 12:26:28 2014
