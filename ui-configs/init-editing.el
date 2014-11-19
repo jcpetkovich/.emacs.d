@@ -15,7 +15,8 @@
  uniquify-buffer-name-style          'post-forward
  x-select-enable-clipboard           t
  x-select-enable-primary             t
- major-mode                          'org-mode)
+ major-mode                          'org-mode
+ sentence-end-double-space nil)
 
 (require 'uniquify)
 (require 'saveplace)
