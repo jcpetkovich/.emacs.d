@@ -40,6 +40,11 @@
       (evil-declare-key it org-mode-map
         (kbd "C-'") 'er/expand-region))
 
+    (--each '(normal emacs insert)
+      (evil-declare-key it org-mode-map
+        (kbd "<M-down>") 'org-metadown
+        (kbd "<M-up>") 'org-metaup))
+
     (add-to-list 'org-modules 'org-timer)
     (add-to-list 'org-modules 'org-habit)
 
