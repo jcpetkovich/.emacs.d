@@ -136,6 +136,7 @@
         sp-kill-word
         transpose-sexps
         transpose-words
+        undefined
         yas-expand
         ))
 
