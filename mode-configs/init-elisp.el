@@ -1,5 +1,7 @@
 ;; init-elisp.el - Setup emacs for editing elisp.
 
+(req-package debbugs)
+
 (req-package lisp-mode
   :require (elisp-slime-nav info+ ipretty pcomplete-extension evil)
   :commands (lisp-mode lisp-interaction-mode emacs-lisp-mode)
