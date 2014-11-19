@@ -13,6 +13,11 @@
   :commands org-mode
   :config
   (progn
+
+    (defun user-org/find-bullet-journal ()
+      (set-buffer (find-file-noselect (concat user-org/entries "/" (format-time-string "%Y-%m-%d") ".org")))
+      (goto-char (point-min)))
+
     (add-hook 'remember-mode-hook 'org-remember-apply-template)
 
     (bind-keys
