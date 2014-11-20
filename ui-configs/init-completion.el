@@ -42,7 +42,7 @@
       "Disable auto-complete-mode during yas expansion, but only
       if it was enabled in the first place."
       (when auto-complete-mode
-        (setf (make-local-variable completion/yas-ac-was-on) t)
+        (set (make-local-variable 'completion/yas-ac-was-on) t)
         (auto-complete-mode -1)))
 
     (defun completion/yas-ac-exit-workaround ()
