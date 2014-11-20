@@ -39,6 +39,8 @@
 
     (setq-default gud-pdb-command-name "python -m pdb")
 
+    (add-hook 'python-mode-hook 'completion/use-auto-complete-instead)
+
     ;; When ipython is available, prefer it.
     (when (executable-find "ipython")
       (setq-default python-shell-interpreter "ipython"
