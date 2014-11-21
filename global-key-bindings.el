@@ -534,7 +534,9 @@ If no map is found in current source do nothing (keep previous map)."
 (bind-keys :prefix "M-u"
            :prefix-map user-run-map
            ("c b" . cleanup-buffer)
-           ("h" . helm-command-prefix))
+           ("h" . helm-command-prefix)
+           ("M-w" . copy-current-file-path)
+           ("r" . rotate-windows))
 
 ;; View occurrence in occur mode
 (bind-keys :map occur-mode-map
