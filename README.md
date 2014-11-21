@@ -56,7 +56,6 @@ To understand these keybindings you must understand the emacs
 | `M-RET`    | DWIM newline |
 | `C-'`      | Expand Region |
 | `C-"`      | Contract Region |
-| `C-x M-w`  | Copy current file path |
 | `M-n`      | Grow whitespace around point |
 | `M-N`      | Shrink whitespace around point |
 | `M-\`      | Shrink whitespace DWIM |
@@ -121,3 +120,11 @@ To understand these keybindings you must understand the emacs
 | `p`        | Transpose parameter |
 | `s`        | Transpose sexpr |
 | `w`        | Transpose word |
+
+### User run `M-u <key>`
+| Keybinding | Description |
+|------------|-------------|
+| `M-w`      | Copy current file path |
+| `c b`      | Clean whitespace in buffer |
+| `h`        | General Helm prefix key |
+| `r`        | Rotate buffers |
