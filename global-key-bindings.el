@@ -435,10 +435,13 @@ If no map is found in current source do nothing (keep previous map)."
 
 (req-package magnars-defuns
   :require (evil)
-  :commands (cleanup-buffer copy-line open-line-above open-line-below)
+  :commands (cleanup-buffer
+             copy-line
+             open-line-above
+             open-line-below
+             rotate-windows
+             copy-current-file-path)
   :bind (("C-c e" . eval-and-replace)
-         ("C-x M-w" . copy-current-file-path)
-         ("C-x C--" . rotate-windows)
          ("<M-return>" . new-line-dwim)
          ("M-RET" . new-line-dwim))
   :config
