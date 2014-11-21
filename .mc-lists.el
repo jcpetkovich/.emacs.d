@@ -133,6 +133,7 @@
         sp-forward-sexp
         sp-forward-slurp-sexp
         sp-kill-hybrid-sexp
+        sp-kill-sexp
         sp-kill-word
         transpose-sexps
         transpose-words
@@ -153,6 +154,7 @@
         helm-confirm-and-exit-minibuffer
         helm-descbinds
         helm-find-files
+        helm-show-kill-ring
         keyboard-escape-quit
         mc-expand-or-mark-next-symbol
         mc-expand-or-mark-next-word
