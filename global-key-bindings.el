@@ -538,7 +538,8 @@ If no map is found in current source do nothing (keep previous map)."
            ("c b" . cleanup-buffer)
            ("h" . helm-command-prefix)
            ("M-w" . copy-current-file-path)
-           ("r" . rotate-windows))
+           ("r" . rotate-windows)
+           ("b" . eshell-insert-buffer-name))
 
 ;; View occurrence in occur mode
 (bind-keys :map occur-mode-map
