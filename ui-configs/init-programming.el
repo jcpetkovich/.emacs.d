@@ -96,7 +96,15 @@
 ;; Magit
 ;; =============================================================
 (req-package magit
-  :commands magit-status)
+  :commands magit-status
+  :config
+  (progn
+    (defadvice magit-show-level-4 (after user-magit/center-after-move activate)
+      (recenter))
+    (defadvice magit-goto-next-sibling-section (after user-magit/center-after-move activate)
+      (recenter))
+    (defadvice magit-goto-previous-sibling-section (after user-magit/center-after-move activate)
+      (recenter))))
 
 ;; =============================================================
 ;; gnu global
