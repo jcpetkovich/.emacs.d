@@ -452,7 +452,13 @@ If no map is found in current source do nothing (keep previous map)."
                ("C-k" . kill-line))
 
     (bind-keys :map evil-visual-state-map
-               ("C-w" . user-utils/kill-region-or-backward-word))))
+               ("C-w" . user-utils/kill-region-or-backward-word))
+
+    (defun copy-current-file-path ()
+      "Add current file path to kill ring. Limits the filename to project root if possible."
+      (interactive)
+      (let ((filename (or (buffer-file-name) (buffer-name))))
+        (kill-new (s-chop-prefix (projectile-project-p) filename))))))
 
 (req-package shrink-whitespace
   :bind (("M-\\" . shrink-whitespace)
