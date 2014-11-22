@@ -93,10 +93,12 @@ To understand these keybindings you must understand the emacs
 ### User Launch `C-l <key>`
 | Keybinding | Description |
 |------------|-------------|
-| `c`        | Launch calculator |
+| `a`        | Launch agenda |
+| `c`        | Launch org capture |
 | `e`        | Launch eshell |
 | `f`        | Launch find |
 | `g`        | Launch grep |
+| `=`        | Launch calculator |
 | `m`        | Launch magit |
 | `s`        | Launch shell |
 | `t`        | Launch term |

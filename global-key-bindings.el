@@ -521,12 +521,14 @@ If no map is found in current source do nothing (keep previous map)."
 (bind-keys :prefix "C-l"
            :prefix-map user-launch-map
            ("m" . magit-status)
+           ("a" . org-agenda)
+           ("c" . org-capture)
            ("g" . helm-do-grep-wrapper)
            ("f" . find-dired)
            ("e" . esh)
            ("t" . term)
            ("s" . shell)
-           ("c" . calc)
+           ("=" . calc)
            ("y" . yas-insert-snippet)
            ("w" . helm-man-woman))
 
