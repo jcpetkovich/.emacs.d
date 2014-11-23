@@ -9,21 +9,22 @@
     (setq-default venv-location '("~/.virtualenvs/"))
     (add-hook 'python-mode-hook
               (defun user-python/find-virtualenv ()
-                (when (projectile-project-p)
-                  (let* ((default-venv-directories
-                           (--filter
-                            (and
-                             (not (s-equals-p "" it))
-                             (file-directory-p it))
-                            (-map
-                             's-trim
-                             (s-split "\n"
-                                      (shell-command-to-string
-                                       (concat "find " (projectile-project-root) " -name dev-python -type d"))))))
-                         (current-venv
-                          (--filter (s-match (s-chop-suffix "dev-python" it) buffer-file-name)
-                                    default-venv-directories)))
-                    (set (make-local-variable 'venv-location) (-concat venv-location current-venv))))))))
+                (when buffer-file-name  ; Check that the buffer has a file
+                  (when (projectile-project-p)
+                    (let* ((default-venv-directories
+                             (--filter
+                              (and
+                               (not (s-equals-p "" it))
+                               (file-directory-p it))
+                              (-map
+                               's-trim
+                               (s-split "\n"
+                                        (shell-command-to-string
+                                         (concat "find " (projectile-project-root) " -name dev-python -type d"))))))
+                           (current-venv
+                            (--filter (s-match (s-chop-suffix "dev-python" it) buffer-file-name)
+                                      default-venv-directories)))
+                      (set (make-local-variable 'venv-location) (-concat venv-location current-venv)))))))))
 
 (req-package jedi
   :require python
