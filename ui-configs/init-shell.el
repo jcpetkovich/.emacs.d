@@ -9,11 +9,7 @@
   :init
   (progn
 
-    (defalias 'esh 'esk-eshell-in-dir)
-
-    (defun eshell/cds ()
-      "Change directory to the project's root."
-      (eshell/cd (locate-dominating-file default-directory "src")))
+    (defalias 'esh 'user-eshell/eshell-here)
 
     (defun eshell/cds ()
       "Change directory to the project's root."
@@ -27,8 +23,8 @@
       "Change directory to the project's root."
       (eshell/cd (locate-dominating-file default-directory ".git")))
 
-    (when (not (functionp 'eshell/find))
-      (defun eshell/find (dir &rest opts)
+    (when (not (functionp 'eshell/dfind))
+      (defun eshell/dfind (dir &rest opts)
         (find-dired dir (mapconcat (lambda (arg)
                                      (if (get-text-property 0 'escaped arg)
                                          (concat "\"" arg "\"")
@@ -46,50 +42,23 @@
       (let ((inhibit-read-only t))
         (erase-buffer)))
 
-
-    (defun eshell/extract (file)
-      (let ((command (some (lambda (x)
-                             (if (string-match-p (car x) file)
-                                 (cadr x)))
-                           '((".*\.tar.bz2" "tar xjf")
-                             (".*\.tar.gz" "tar xzf")
-                             (".*\.bz2" "bunzip2")
-                             (".*\.rar" "unrar x")
-                             (".*\.gz" "gunzip")
-                             (".*\.tar" "tar xf")
-                             (".*\.tbz2" "tar xjf")
-                             (".*\.tgz" "tar xzf")
-                             (".*\.zip" "unzip")
-                             (".*\.Z" "uncompress")
-                             (".*" "echo 'Could not extract the file:'")))))
-        (eshell-command-result (concat command " " file))))
-
     (defun eshell/gst () (magit-status default-directory))
 
-    (defun esk-eshell-in-dir (&optional prompt)
-      "Change the directory of an existing eshell to the directory of the file in
-the current buffer or launch a new eshell if one isn't running. If the
-current buffer does not have a file (e.g., a *scratch* buffer) launch or raise
-eshell, as appropriate. Given a prefix arg, prompt for the destination
-directory."
-      (interactive "P")
-      (let* ((name (buffer-file-name))
-             (dir (cond (prompt (read-directory-name "Directory: " nil nil t))
-                        (name (file-name-directory name))
-                        (t nil)))
-             (buffers (delq nil (mapcar (lambda (buf)
-                                          (with-current-buffer buf
-                                            (when (eq 'eshell-mode major-mode)
-                                              (buffer-name))))
-                                        (buffer-list))))
-             (buffer (cond ((eq 1 (length buffers)) (first buffers))
-                           ((< 1 (length buffers)) (ido-completing-read
-                                                    "Eshell buffer: " buffers nil t
-                                                    nil nil (first buffers)))
-                           (t (eshell)))))
+
+    (defun user-eshell/eshell-here ()
+      "Opens up a new shell in the directory associated with the
+      current buffer's file. The eshell is renamed to match that
+      directory to make multiple eshell windows easier."
+      (interactive)
+      (let* ((parent (if (buffer-file-name)
+                         (file-name-directory (buffer-file-name))
+                       default-directory))
+             (dir-name (car (last (split-string parent "/" t))))
+             (eshell-buffer-name (format "*eshell: %s*" dir-name))
+             (buffer (eshell)))
         (with-current-buffer buffer
-          (when dir
-            (eshell/cd (list dir))
+          (when parent
+            (eshell/cd (list parent))
             (eshell-send-input))
           (end-of-buffer)
           (pop-to-buffer buffer)))))
@@ -113,6 +82,9 @@ directory."
                  '("gunzip" "gz\\'"))
     (add-to-list 'eshell-command-completions-alist
                  '("tar" "\\(\\.tar|\\.tgz\\|\\.tar\\.gz\\)\\'"))
+
+    ;; Plan 9 shell please.
+    (require 'em-smart)
 
     (defface esk-eshell-error-prompt-face
       '((((class color) (background dark)) (:foreground "red" :bold t))
