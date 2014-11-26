@@ -11,6 +11,7 @@
         backward-kill-sentence
         backward-sentence
         backward-sexp
+        beginning-of-buffer
         c-beginning-of-statement
         c-electric-colon
         c-electric-delete-forward
@@ -166,4 +167,5 @@
         toggle-input-method
         user-mc/expand-or-mark-next-symbol
         user-mc/expand-or-mark-next-word
+        user-utils/move-cursor-previous-pane
         ))
