@@ -140,6 +140,7 @@
         transpose-words
         undefined
         user-python/smart-delete
+        user-utils/kill-region-or-backward-word
         yas-expand
         ))
 
