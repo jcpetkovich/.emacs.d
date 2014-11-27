@@ -18,6 +18,14 @@
 
     (ace-jump-mode-enable-mark-sync)))
 
+(req-package ibuffer
+  :config
+  (progn
+    (bind-key "SPC" 'ace-jump-mode ibuffer-mode-map)
+    (defadvice ace-jump-done (after ibuffer-ace-select activate)
+      (if (eq major-mode 'ibuffer-mode)
+          (ibuffer-visit-buffer)))))
+
 (req-package ace-link
   :require ace-jump-mode
   :init (ace-link-setup-default))
