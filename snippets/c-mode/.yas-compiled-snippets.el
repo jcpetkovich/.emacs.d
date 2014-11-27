@@ -7,4 +7,4 @@
                        ("printf" "printf(\"${1:%s}\"${1:$(if (string-match \"%\" yas-text) \", \" \"\\);\")}$0${1:$(if (string-match \"%\" yas-text) \"\\);\" \"\")}" "printf" nil nil nil nil nil nil)))
 
 
-;;; Do not edit! File generated at Thu Nov 13 12:26:28 2014
+;;; Do not edit! File generated at Thu Nov 27 15:58:02 2014
