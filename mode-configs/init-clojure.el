@@ -9,6 +9,7 @@
   (progn
     (add-to-list 'evil-emacs-state-modes 'cider-stacktrace-mode)
     (add-to-list 'evil-emacs-state-modes 'cider-docview-mode)
+    (add-hook 'clojure-mode 'cider-turn-on-eldoc-mode)
 
     (--each '(normal insert)
       (evil-declare-key it cider-repl-mode-map
