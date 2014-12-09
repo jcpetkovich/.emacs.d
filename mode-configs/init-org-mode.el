@@ -15,8 +15,15 @@
   (progn
 
     (defun user-org/find-bullet-journal ()
-      (set-buffer (find-file-noselect (concat user-org/entries "/" (format-time-string "%Y-%m-%d") ".org")))
+      (concat user-org/entries "/" (format-time-string "%Y-%m-%d") ".org"))
+
+    (defun user-org/find-and-hide-log ()
+      (set-buffer (find-file-noselect (user-org/find-bullet-journal)))
       (goto-char (point-min)))
+
+    (defun user-org/open-todays-log ()
+      (interactive)
+      (find-file-other-window (user-org/find-bullet-journal)))
 
     (add-hook 'remember-mode-hook 'org-remember-apply-template)
 
@@ -76,9 +83,9 @@
      org-capture-templates
      '(("g" "General Inbox" entry (file+headline my-notes-file "Inbox")
         "* %?\n  %u\n  %a\n %i")
-       ("t" "Task" entry (function user-org/find-bullet-journal)
+       ("t" "Task" entry (function user-org/find-and-hide-log)
         "* TODO %?\n  %u\n  %a\n %i")
-       ("n" "Note" entry (function user-org/find-bullet-journal)
+       ("n" "Note" entry (function user-org/find-and-hide-log)
         "* %?\n  %u\n  %a\n %i")))))
 
 
