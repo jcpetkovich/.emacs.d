@@ -552,6 +552,7 @@ If no map is found in current source do nothing (keep previous map)."
 (global-unset-key (kbd "C-l"))
 (bind-keys :prefix "C-l"
            :prefix-map user-launch-map
+           ("l" . user-org/open-todays-log)
            ("m" . magit-status)
            ("a" . org-agenda)
            ("c" . org-capture)
