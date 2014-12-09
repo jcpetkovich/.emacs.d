@@ -120,7 +120,11 @@
         (kbd "M-.") 'helm-gtags-dwim
         (kbd "M-,") 'helm-gtags-pop-stack))
 
-    (add-hook 'c-mode-hook 'helm-gtags-mode)
-    (add-hook 'c++-mode-hook 'helm-gtags-mode)))
+    (--each '(c-mode-hook
+              c++-mode-hook
+              coffee-mode-hook
+              cperl-mode-hook
+              sh-mode-hook)
+      (add-hook it 'helm-gtags-mode))))
 
 (provide 'init-programming)
