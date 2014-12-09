@@ -19,6 +19,7 @@
         c-electric-semi&comma
         c-electric-slash
         c-electric-star
+        comment-dwim-2
         cperl-electric-backspace
         cperl-electric-brace
         cperl-electric-lbrace
