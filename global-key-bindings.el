@@ -511,7 +511,8 @@ If no map is found in current source do nothing (keep previous map)."
  ("M-@" . split-window-horizontally)
  ("<f7>" . compile)
  ("<f8>" . recompile)
- ("<f11>" . align-regexp))
+ ("<f11>" . align-regexp)
+ ("C-c u" . universal-argument))
 
 ;;; Unbound (or mostly useless) but convenientish keys
 ;; (kbd "M-p") ; usually bound during certain modes
