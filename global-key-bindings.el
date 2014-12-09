@@ -170,7 +170,13 @@
           helm-ff-search-library-in-sexp t
           helm-ff-file-name-history-use-recentf t
           helm-home-url "https://www.google.ca"
-          helm-follow-mode-persistent t)
+          helm-follow-mode-persistent t
+
+          ;; fuzzy completion
+          helm-M-x-fuzzy-match t
+          helm-apropos-fuzzy-match t
+          helm-buffers-fuzzy-matching t
+          helm-lisp-fuzzy-completion t)
 
     ;; =============================================================
     ;; Hack to fix rare error from helm--maybe-update-keymap
