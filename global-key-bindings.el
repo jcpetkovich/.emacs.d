@@ -258,8 +258,10 @@ If no map is found in current source do nothing (keep previous map)."
    ("C-S-n" . mc/mark-next-like-this)
    ("C-S-p" . mc/mark-previous-like-this))
 
-  :init
+  :config
   (progn
+    (require 'mc-mark-more)
+
     ;; =============================================================
     ;; Custom multiple cursors functions
     ;; =============================================================
@@ -267,16 +269,23 @@ If no map is found in current source do nothing (keep previous map)."
       (interactive)
       (if (not (region-active-p))
           (er/mark-symbol)
-        (call-interactively #'mc/mark-next-like-this)))
+        (let ((current-symbol (thing-at-point 'symbol))
+              (current-region (car (mc/region-strings))))
+          (if (string-equal current-symbol current-region)
+              (call-interactively #'mc/mark-next-symbol-like-this)
+            (call-interactively #'mc/mark-next-like-this)))))
 
     (defun user-mc/expand-or-mark-next-word ()
       (interactive)
       (if (not (region-active-p))
           (er/mark-word)
-        (call-interactively #'mc/mark-next-like-this))))
+        (call-interactively #'mc/mark-next-like-this)))
 
-  :config
-  (progn
+    ;; Some "better" versions of emacs functionality don't work too
+    ;; well in multiple cursors mode
+    (bind-keys :map mc/keymap
+               ("M-y" . yank-pop))
+
     ;; =============================================================
     ;; Multiple cursors evil compat (use emacs mode during mc)
     ;; =============================================================
