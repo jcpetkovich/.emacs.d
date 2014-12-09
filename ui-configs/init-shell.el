@@ -85,6 +85,7 @@
 
     ;; Plan 9 shell please.
     (require 'em-smart)
+    (add-hook 'eshell-mode-hook 'eshell-smart-initialize)
 
     (defface esk-eshell-error-prompt-face
       '((((class color) (background dark)) (:foreground "red" :bold t))
