@@ -102,6 +102,7 @@
         paredit-backward
         paredit-backward-up
         paredit-close-round
+        paredit-comment-dwim
         paredit-doublequote
         paredit-forward
         paredit-forward-barf-sexp
