@@ -553,18 +553,19 @@ If no map is found in current source do nothing (keep previous map)."
 (global-unset-key (kbd "C-l"))
 (bind-keys :prefix "C-l"
            :prefix-map user-launch-map
-           ("l" . user-org/open-todays-log)
-           ("m" . magit-status)
+           ("=" . calc)
            ("a" . org-agenda)
            ("c" . org-capture)
-           ("g" . helm-do-grep-wrapper)
-           ("f" . find-dired)
            ("e" . esh)
-           ("t" . term)
+           ("f" . find-dired)
+           ("g" . helm-do-grep-wrapper)
+           ("l" . user-org/open-todays-log)
+           ("m" . magit-status)
+           ("r" . emr-show-refactor-menu)
            ("s" . shell)
-           ("=" . calc)
-           ("y" . yas-insert-snippet)
-           ("w" . helm-man-woman))
+           ("t" . term)
+           ("w" . helm-man-woman)
+           ("y" . yas-insert-snippet))
 
 ;; User run
 (bind-keys :prefix "M-u"
