@@ -15,7 +15,13 @@
   :init (progn
           (global-semanticdb-minor-mode 1)
           (setq-default global-semantic-idle-scheduler-mode 1)
-          (semantic-mode 1)))
+          (semantic-mode 1))
+  :config
+  (progn
+    (defun user-semantic/disable ()
+      (semantic-mode -1))
+    (--each '(text-mode-hook)
+      (add-hook it 'user-semantic/disable))))
 
 ;; =============================================================
 ;; Flycheck
