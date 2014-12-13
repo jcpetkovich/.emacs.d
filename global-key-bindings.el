@@ -176,7 +176,8 @@
           helm-M-x-fuzzy-match t
           helm-apropos-fuzzy-match t
           helm-buffers-fuzzy-matching t
-          helm-lisp-fuzzy-completion t)
+          helm-lisp-fuzzy-completion t
+          helm-recentf-fuzzy-match t)
 
     ;; =============================================================
     ;; Hack to fix rare error from helm--maybe-update-keymap
