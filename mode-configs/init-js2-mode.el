@@ -14,7 +14,14 @@
     (add-hook 'js2-mode-hook 'js2-imenu-extras-mode)
 
     (bind-keys :map js2-mode-map
-               ("M-j" . user-utils/move-cursor-next-pane))
+               ("M-j" . user-utils/move-cursor-next-pane)
+               ("C-M-f" . sp-forward-sexp)
+               ("C-M-b" . sp-backward-sexp)
+               ("C-M-u" . sp-backward-up-sexp)
+               ("C-M-d" . sp-down-sexp)
+               ("C-M-p" . sp-backward-down-sexp)
+               ("C-M-n" . sp-up-sexp)
+               ("C-k" . sp-kill-hybrid-sexp))
 
     (defsubst js2-mode-inside-comment-or-string ()
       "Return non-nil if inside a comment or string."
