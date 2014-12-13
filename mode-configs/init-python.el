@@ -61,6 +61,7 @@
             (while (and (not (looking-at class-regexp))
                         (not (equalp (point) last-point-pos)))
               (setq last-point-pos (point))
+              (beginning-of-line-text)
               (python-nav-backward-up-list))
 
             (when (not (looking-at class-regexp))
@@ -83,6 +84,7 @@
             (while (and (not (looking-at function-regexp))
                         (not (equalp (point) last-point-pos)))
               (setq last-point-pos (point))
+              (beginning-of-line-text)
               (python-nav-backward-up-list))
 
             (when (not (looking-at function-regexp))
