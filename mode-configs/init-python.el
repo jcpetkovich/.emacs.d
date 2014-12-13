@@ -96,7 +96,7 @@
             (end-of-line)
             (setq end (point))
             (setq definition (buffer-substring-no-properties start end))
-            (setq definition (nth 1 (s-match python-nav-beginning-of-defun-regexp definition)))))))
+            (nth 1 (s-match python-nav-beginning-of-defun-regexp definition))))))
 
     (defun user-python/nosetests-cmd-by-context ()
       (interactive)
