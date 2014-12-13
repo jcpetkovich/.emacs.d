@@ -25,11 +25,35 @@
       (interactive)
       (find-file-other-window (user-org/find-bullet-journal)))
 
+    (defun user-org/migrate ()
+      (interactive)
+      (let ((old-todo-state (org-get-todo-state)))
+        (save-excursion
+          (user-org/find-and-hide-log)
+          (let ((buffer-has-no-headings
+                 (condition-case err
+                     (progn (re-search-forward "^\*")
+                            nil)
+                   (error t))))
+
+            (when buffer-has-no-headings
+              (goto-char (point-min))
+              (insert "* Personal\n* Work\n"))))
+
+        (let ((org-refile-targets '((user-org/find-bullet-journal :level . 1))))
+          (when (equal old-todo-state "DONE")
+            (org-todo "TODO"))
+          (org-copy)
+          (if (equal old-todo-state "DONE")
+              (org-todo "DONE")
+            (org-todo "MIGR")))))
+
     (add-hook 'remember-mode-hook 'org-remember-apply-template)
 
     (bind-keys
      ("C-c c" . org-capture)
-     ("C-c l" . org-store-link))
+     ("C-c l" . org-store-link)
+     ("C-c m" . user-org/migrate))
 
     (bind-keys :map org-mode-map
                ("C-c /" . org-sparse-tree)
