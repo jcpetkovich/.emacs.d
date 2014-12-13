@@ -120,6 +120,8 @@
           (message "Not in project")
         (let ((compilation-cmd (user-python/nosetests-cmd-by-context))
               (default-directory (projectile-project-root)))
+          (setq compile-command compilation-cmd)
+          (setq compilation-directory default-directory)
           (compilation-start compilation-cmd))))
 
 
