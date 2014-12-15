@@ -37,6 +37,9 @@
 (req-package ein
   :require python)
 
+(req-package nose
+  :require python)
+
 (req-package python
   :require evil
   :commands python-mode
@@ -52,84 +55,11 @@
             (sp-backward-delete-char)
           (call-interactively 'python-indent-dedent-line-backspace))))
 
-    (defun user-python/get-current-class ()
-      (interactive)
-      (save-excursion
-        (catch 'result
-          (let ((class-regexp "\\s-*class")
-                start end definition last-point-pos)
-            (while (and (not (looking-at class-regexp))
-                        (not (equalp (point) last-point-pos)))
-              (setq last-point-pos (point))
-              (beginning-of-line-text)
-              (python-nav-backward-up-list))
-
-            (when (not (looking-at class-regexp))
-              (message "didn't find a class")
-              (throw 'result ""))
-
-            (beginning-of-line)
-            (setq start (point))
-            (end-of-line)
-            (setq end (point))
-            (setq definition (buffer-substring-no-properties start end))
-            (setq definition (nth 1 (s-match python-nav-beginning-of-defun-regexp definition)))))))
-
-    (defun user-python/get-current-test ()
-      (interactive)
-      (save-excursion
-        (catch 'result
-          (let ((function-regexp "\\s-*def")
-                start end definition last-point-pos)
-            (while (and (not (looking-at function-regexp))
-                        (not (equalp (point) last-point-pos)))
-              (setq last-point-pos (point))
-              (beginning-of-line-text)
-              (python-nav-backward-up-list))
-
-            (when (not (looking-at function-regexp))
-              (message "didn't find a function")
-              (throw 'result ""))
-
-            (beginning-of-line)
-            (setq start (point))
-            (end-of-line)
-            (setq end (point))
-            (setq definition (buffer-substring-no-properties start end))
-            (nth 1 (s-match python-nav-beginning-of-defun-regexp definition))))))
-
-    (defun user-python/nosetests-cmd-by-context ()
-      (interactive)
-      (save-excursion
-        (let* ((current-root (projectile-project-root))
-               (test-name (user-python/get-current-test))
-               (class-name (user-python/get-current-class))
-               (file-name (s-chop-prefix current-root (buffer-file-name)))
-               (test-command (concat
-                              "nosetests "
-                              file-name
-                              (if class-name
-                                  (concat  ":" class-name
-                                           (if test-name
-                                               (concat "." test-name)))))))
-          test-command)))
-
-    (defun user-python/nosetests-by-context ()
-      (interactive)
-      (if (not (projectile-project-p))
-          (message "Not in project")
-        (let ((compilation-cmd (user-python/nosetests-cmd-by-context))
-              (default-directory (projectile-project-root)))
-          (setq compile-command compilation-cmd)
-          (setq compilation-directory default-directory)
-          (compilation-start compilation-cmd))))
-
-
     (bind-keys :map python-mode-map
                ("M-." . jedi:goto-definition)
                ("M-," . jedi:goto-definition-pop-marker)
                ("<backspace>" . user-python/smart-delete)
-               ("<f6>" . user-python/nosetests-by-context))
+               ("<f6>" . nosetests-one))
 
     ;; Fix evil bindings
     (-each '(normal insert)
