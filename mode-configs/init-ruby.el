@@ -1,5 +1,8 @@
 ;; init-ruby.el - Setup emacs for editing ruby.
 
+(req-package ruby-test-mode
+  :require ruby-mode)
+
 (req-package inf-ruby
   :require ruby-mode)
 
