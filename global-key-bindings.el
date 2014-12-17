@@ -80,7 +80,7 @@
             (helm-make-source "Buffers" 'helm-source-buffers)))
     (require 'helm-C-x-b)
     (setf helm-C-x-b-sources (--remove (eq it 'helm-source-cmd-t) helm-C-x-b-sources)
-          helm-C-x-b-sources (-insert-at 1 'helm-source-ido-virtual-buffers helm-C-x-b-sources))))
+          helm-C-x-b-sources (-insert-at 1 'helm-source-recentf helm-C-x-b-sources))))
 
 (req-package helm-company
   :require company
