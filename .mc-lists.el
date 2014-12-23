@@ -65,6 +65,7 @@
         evil-forward-word-begin
         evil-forward-word-end
         evil-insert
+        evil-next-line
         evil-normal-state
         evil-paste-after
         evil-previous-line
@@ -155,6 +156,7 @@
         edebug-next-mode
         eval-expression
         evil-emacs-state
+        evil-scroll-line-up
         handle-switch-frame
         helm-confirm-and-exit-minibuffer
         helm-descbinds
