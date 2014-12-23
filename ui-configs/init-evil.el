@@ -72,6 +72,7 @@ file instead of revert."
 ;; =============================================================
 (req-package evil-surround
   :require (evil)
-  :init (global-evil-surround-mode 1))
+  :init (global-evil-surround-mode 1)
+  :config (bind-key "s" 'evil-surround-region evil-visual-state-map))
 
 (provide 'init-evil)
