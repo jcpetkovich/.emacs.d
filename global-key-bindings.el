@@ -561,6 +561,7 @@ If no map is found in current source do nothing (keep previous map)."
            ("g" . helm-do-grep-wrapper)
            ("l" . user-org/open-todays-log)
            ("m" . magit-status)
+           ("p" . emms-smart-browse)
            ("r" . emr-show-refactor-menu)
            ("s" . shell)
            ("t" . term)
