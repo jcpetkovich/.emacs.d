@@ -140,6 +140,7 @@
         sp-kill-hybrid-sexp
         sp-kill-sexp
         sp-kill-word
+        sp-up-sexp
         transpose-sexps
         transpose-words
         undefined
