@@ -22,3 +22,7 @@ helm-adaptive-history
 
 .org-id-locations
 .python-environments
+
+ede-projects.el
+projectile.cache
+tutorial/
