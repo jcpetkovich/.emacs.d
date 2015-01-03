@@ -5,7 +5,6 @@
 (defconst ui-configs-directory (expand-file-name (concat user-emacs-directory "ui-configs")))
 (defconst user-packages-directory (expand-file-name (concat user-emacs-directory "user-packages")))
 (defconst site-lisp-directory (expand-file-name (concat user-emacs-directory "site-lisp")))
-(add-to-list 'load-path user-emacs-directory)
 (add-to-list 'load-path prog-mode-configs-directory)
 (add-to-list 'load-path ui-configs-directory)
 (add-to-list 'load-path user-packages-directory)
