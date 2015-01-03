@@ -45,9 +45,6 @@
                          prog-mode-configs-directory)))
     (load-dirs)))
 
-;; And now, the keybindings
-(require 'global-key-bindings)
-
 ;; Fire off req!
 (req-package-finish)
 

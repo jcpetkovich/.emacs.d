@@ -1,4 +1,4 @@
-;; global-key-bindings.el - Global keybindings, look here for cool stuff.
+;; init-keybindings.el - Global keybindings, look here for cool stuff.
 
 ;; =============================================================
 ;; Ace Jump Mode
@@ -398,7 +398,8 @@ If no map is found in current source do nothing (keep previous map)."
               sgml-mode-hook
               awk-mode-hook
               go-mode-hook
-              rust-mode-hook)
+              rust-mode-hook
+              elixir-mode-hook)
       (add-hook it 'turn-on-smartparens-strict-mode))
     ;; Have to force some modes, as they are based on comint-mode
     (--each '(inferior-ess-mode-hook)
@@ -583,4 +584,4 @@ If no map is found in current source do nothing (keep previous map)."
            ("n" . next-line)
            ("p" . previous-line))
 
-(provide 'global-key-bindings)
+(provide 'init-keybindings)
