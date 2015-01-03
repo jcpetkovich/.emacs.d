@@ -10,3 +10,5 @@
       (evil-emacs-state))
     (--each '(emms-browser-mode emms-playlist-mode)
       (add-to-list 'evil-emacs-state-modes it))))
+
+(provide 'init-media)
