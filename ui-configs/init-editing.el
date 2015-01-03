@@ -11,6 +11,7 @@
  lpr-command                 "xpp"
  tags-revert-without-query   t
  tags-table-list             nil
+ ediff-window-setup-function 'ediff-setup-windows-plain
 
  ;; Backups
  backup-directory-alist `(("." . ,(expand-file-name (concat user-emacs-directory "backups"))))
