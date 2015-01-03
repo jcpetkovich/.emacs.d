@@ -3,6 +3,9 @@
 (req-package ruby-test-mode
   :require ruby-mode)
 
+(req-package ruby-end
+  :require ruby-mode)
+
 (req-package inf-ruby
   :require ruby-mode)
 
