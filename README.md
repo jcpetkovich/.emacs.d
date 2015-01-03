@@ -3,7 +3,7 @@
 This is my emacs configuration.
 
 If you're interested in using it, please first consider using it as a
-source of inspiration first. Check out `global-key-bindings.el` and
+source of inspiration first. Check out `ui-configs/init-keybindings.el` and
 `init-evil.el` for the most interesting and unusual bits.
 
 Generally the config is organized into the following directories:
