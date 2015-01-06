@@ -56,6 +56,18 @@
      ("C-c m" . user-org/migrate))
 
     (bind-keys :map org-mode-map
+               ("M-s-u" . org-metaup)
+               ("M-s-e" . org-metadown)
+               ("M-s-n" . org-metaleft)
+               ("M-s-i" . org-metaright)
+               ("M-s-U" . org-shiftmetaup)
+               ("M-s-E" . org-shiftmetadown)
+               ("M-s-N" . org-shiftmetaleft)
+               ("M-s-I" . org-shiftmetaright)
+               ("s-U" . org-shiftup)
+               ("s-E" . org-shiftdown)
+               ("s-N" . org-shiftleft)
+               ("s-I" . org-shiftright)
                ("C-c /" . org-sparse-tree)
                ("C-M-l" . org-metaright)
                ("C-M-h" . org-metaleft)
