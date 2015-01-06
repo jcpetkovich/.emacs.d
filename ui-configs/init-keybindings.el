@@ -256,8 +256,10 @@ If no map is found in current source do nothing (keep previous map)."
    ("M-m" . user-mc/expand-or-mark-next-symbol)
    ("M-M" . user-mc/expand-or-mark-next-word)
    ("M-'" . mc/mark-all-dwim)
-   ("C-S-n" . mc/mark-next-like-this)
-   ("C-S-p" . mc/mark-previous-like-this))
+   ("C-S-n" . mc/mmlte--down)
+   ("C-S-p" . mc/mmlte--up)
+   ("C-S-f" . mc/mmlte--right)
+   ("C-S-b" . mc/mmlte--left))
 
   :config
   (progn
