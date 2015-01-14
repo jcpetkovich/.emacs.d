@@ -6,6 +6,26 @@
   :config
   (setq-default browse-kill-ring-quit-action 'save-and-restore))
 
+(req-package evil-args
+  :require evil
+  :init
+  (progn
+    ;; bind evil-args text objects
+    (bind-key "a" 'evil-inner-arg evil-inner-text-objects-map)
+    (bind-key "a" 'evil-outer-arg evil-outer-text-objects-map)
+
+    ;; bind evil-forward/backward-args
+    (bind-keys :map evil-normal-state-map
+               ("L" . evil-forward-arg)
+               ("H" . evil-backward-arg))
+
+    (bind-keys :map evil-motion-state-map
+               ("L" . evil-forward-arg)
+               ("H" . evil-backward-arg))
+
+    ;; bind evil-jump-out-args
+    (bind-key "K" 'evil-jump-out-args evil-normal-state-map)))
+
 (req-package evil
   :require (undo-tree browse-kill-ring)
   :defer t
