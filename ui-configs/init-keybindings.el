@@ -155,13 +155,13 @@
     ;; =============================================================
 
     (helm-mode 1)
+    (helm-adaptive-mode 1)
 
     (recentf-mode 1)
     (setq recentf-max-saved-items 1000
           ido-use-virtual-buffers t)
 
-    (setq helm-adaptative-mode t
-          helm-quick-update t
+    (setq helm-quick-update t
           helm-idle-delay 0.01
           helm-input-idle-delay 0.01
           helm-m-occur-idle-delay 0.01
