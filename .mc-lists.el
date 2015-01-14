@@ -6,6 +6,7 @@
         LaTeX-babel-insert-hyphen
         LaTeX-environment
         TeX-insert-backslash
+        TeX-insert-quote
         TeX-insert-sub-or-superscript
         TeX-newline
         backward-kill-sentence
@@ -92,6 +93,7 @@
         org-insert-heading
         org-kill-line
         org-meta-return
+        org-metaleft
         org-metaright
         org-return-indent
         org-self-insert-command
@@ -118,6 +120,7 @@
         paredit-open-round
         paredit-open-square
         paredit-semicolon
+        paredit-wrap-round
         python-indent-dedent-line-backspace
         python-indent-electric-colon
         reindent-then-newline-and-indent
@@ -141,6 +144,7 @@
         sp-kill-sexp
         sp-kill-word
         sp-up-sexp
+        transpose-params
         transpose-sexps
         transpose-words
         undefined
