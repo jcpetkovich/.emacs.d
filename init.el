@@ -24,7 +24,9 @@
 
 (defvar gnu '("gnu" . "http://elpa.gnu.org/packages/"))
 (defvar melpa '("melpa" . "http://melpa.org/packages/"))
+(defvar org-elpa '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives melpa)
+(add-to-list 'package-archives org-elpa)
 (package-initialize)
 
 (when (not (package-installed-p 'req-package))

@@ -1,13 +1,9 @@
 ;; init-org-mode.el - Setup emacs for editing org files.
 
-;; Do not use bundled org mode. Must happen before other packages call org.
-(when (not (package-installed-p 'org '(20140929)))
-  (when (not (assoc 'org package-archive-contents))
-    (package-refresh-contents))
-  (package-install 'org))
+(req-package org-plus-contrib)
 
 (req-package org
-  :require evil
+  :require evil org-plus-contrib
   :bind (("C-c a" . org-agenda)
          ("C-c b" . org-iswitchb))
   :commands org-mode
