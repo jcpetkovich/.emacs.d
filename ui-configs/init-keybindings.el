@@ -543,39 +543,80 @@ If no map is found in current source do nothing (keep previous map)."
            ("l" . transpose-lines)
            ("p" . transpose-params))
 
-;; Launch
-(global-unset-key (kbd "C-l"))
-(bind-keys :prefix "C-l"
-           :prefix-map user-launch-map
-           ("=" . calc)
-           ("a" . org-agenda)
-           ("c" . org-capture)
-           ("e" . esh)
-           ("f" . find-dired)
-           ("g" . helm-do-grep-wrapper)
-           ("l" . user-org/open-todays-log)
-           ("m" . magit-status)
-           ("p" . emms-smart-browse)
-           ("r" . emr-show-refactor-menu)
-           ("s" . shell)
-           ("t" . term)
-           ("w" . helm-man-woman)
-           ("y" . yas-insert-snippet))
-
-;; User run
-(bind-keys :prefix "M-u"
-           :prefix-map user-run-map
-           ("c b" . cleanup-buffer)
-           ("h" . helm-command-prefix)
-           ("M-w" . copy-current-file-path)
-           ("r" . rotate-windows)
-           ("b" . eshell-insert-buffer-name)
-           ("f" . flycheck-next-error))
-
 ;; View occurrence in occur mode
 (bind-keys :map occur-mode-map
            ("v" . occur-mode-display-occurrence)
            ("n" . next-line)
            ("p" . previous-line))
+
+;; =============================================================
+;; An evil leader, to guide us to ruin
+;; =============================================================
+(req-package evil-leader
+  :require evil
+  :config
+  (progn
+    (global-evil-leader-mode 1)
+    (setq-default evil-leader/in-all-states t
+                  user-leader/prefix-command-string "group:")
+    (evil-leader/set-leader "SPC" "C-S-")
+
+    (defun user-leader/declare-prefix (prefix name)
+      (let ((command (intern (concat user-leader/prefix-command-string name))))
+        (define-prefix-command command)
+        (evil-leader/set-key prefix command)))
+
+    ;; Lead us to applications
+    (user-leader/declare-prefix "a" "applications")
+    (evil-leader/set-key
+      "ac"  'calc-dispatch
+      "ad"  'dired
+      "ai"  'rcirc
+      "ap"  'proced
+      "am"  'emms-smart-browse
+      "ase" 'esh
+      "asi" 'shell
+      "ag"  'helm-do-grep-wrapper
+      "af"  'find-dired
+      "ar"  'emr-show-refactor-menu
+      "au"  'undo-tree-visualize
+      "aw"  'helm-man-woman
+      "ay"  'yas-insert-snippet)
+
+    ;; Lead us to organization
+    (user-leader/declare-prefix "l" "journal")
+    (evil-leader/set-key
+      "ll" 'user-org/open-todays-log
+      "la" 'org-agenda
+      "lc" 'org-capture)
+
+    ;; Lead us to buffers
+    (user-leader/declare-prefix "b" "buffer")
+    (evil-leader/set-key
+      "bc" 'cleanup-buffer
+      "bn" 'copy-current-file-path
+      "bb" 'eshell-insert-buffer-name
+      "bfn" 'flycheck-next-error)
+
+    ;; Lead us to windows
+    (user-leader/declare-prefix "w" "window")
+    (evil-leader/set-key
+      "wr" 'rotate-windows)
+
+    ;; Lead us to helm
+    (user-leader/declare-prefix "h" "helm")
+    (fset 'group:helm 'helm-command-prefix)
+
+    ;; Lead us to projects
+    (user-leader/declare-prefix "p" "project")
+    (fset 'group:project 'projectile-command-map)
+
+    ;; The bindings
+    (evil-leader/set-key
+      "SPC" 'evil-ace-jump-word-mode
+      "u" 'universal-argument
+      "g" 'magit-status
+      "t" 'transpose-map
+      "c" 'caps-warp-map)))
 
 (provide 'init-keybindings)
