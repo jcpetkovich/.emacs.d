@@ -8,7 +8,7 @@
   :require ess)
 
 (req-package ess
-  :require (evil)
+  :require (evil evil-leader)
   :init (progn
           (require 'ess-site))
   :config
@@ -17,6 +17,8 @@
 
     (bind-keys :map ess-noweb-minor-mode-map
                ("M-n" . grow-whitespace-around))
+
+    (evil-leader/set-key-for-mode 'ess-mode "mk" 'ess-swv-knit)
 
     (setq-default
      ess-pdf-viewer-pref "zathura"
