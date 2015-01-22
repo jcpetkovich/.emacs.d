@@ -1,11 +1,29 @@
-;; =============================================================
-;; Evil keybindings
-;; =============================================================
+;; init-evil.el - Setup emacs for evil.
 
+;; =============================================================
+;; Evil Deps, even evil needs help
+;; =============================================================
 (req-package browse-kill-ring
   :config
   (setq-default browse-kill-ring-quit-action 'save-and-restore))
 
+(req-package guide-key
+  :config
+  (progn
+    (setq-default guide-key/guide-key-sequence t)
+    (guide-key-mode 1)))
+
+;; =============================================================
+;; Surround and conquer
+;; =============================================================
+(req-package evil-surround
+  :require (evil)
+  :init (global-evil-surround-mode 1)
+  :config (bind-key "s" 'evil-surround-region evil-visual-state-map))
+
+;; =============================================================
+;; Evil Arrrg
+;; =============================================================
 (req-package evil-args
   :require evil
   :init
@@ -26,8 +44,40 @@
     ;; bind evil-jump-out-args
     (bind-key "K" 'evil-jump-out-args evil-normal-state-map)))
 
+;; =============================================================
+;; Evil Match, to start a fire
+;; =============================================================
+(req-package evil-matchit
+  :require evil
+  :config
+  (global-evil-matchit-mode 1))
+
+;; =============================================================
+;; Disheartening and disrespectful, whispers from the evil god
+;; =============================================================
+(req-package evil-nerd-commenter
+  :require evil
+  :config
+  (evilnc-default-hotkeys))
+
+;; =============================================================
+;; What is an evil god without an evil lingua franca
+;; =============================================================
+(req-package evil-lisp-state
+  :require evil)
+
+;; =============================================================
+;; The evil god himself
+;; =============================================================
+(req-package evil-god-state
+  :require evil)
+
+;; =============================================================
+;; Behold, evil incarnate
+;; =============================================================
 (req-package evil
   :require (undo-tree browse-kill-ring)
+  :commands (evil-declare-key evil-define-key)
   :defer t
   :init
   (progn
@@ -80,19 +130,5 @@ file instead of revert."
 
     ;; Edit should be mapped to something smarter than evil's default
     (evil-ex-define-cmd "e[dit]" 'evil-helm-find-file)))
-
-;; =============================================================
-;; Evil God
-;; =============================================================
-(req-package evil-god-state
-  :require evil)
-
-;; =============================================================
-;; Evil Surround
-;; =============================================================
-(req-package evil-surround
-  :require (evil)
-  :init (global-evil-surround-mode 1)
-  :config (bind-key "s" 'evil-surround-region evil-visual-state-map))
 
 (provide 'init-evil)
