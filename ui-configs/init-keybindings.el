@@ -7,21 +7,12 @@
 (req-package ace-jump-mode
   :require (evil dash)
   :commands (evil-ace-jump-word-mode evil-ace-jump-line-mode)
-  :init
-  (progn
-    (--each '(normal visual movement)
-      (evil-declare-key it global-map
-        (kbd "SPC") 'evil-ace-jump-word-mode
-        (kbd "C-SPC") 'evil-ace-jump-line-mode)))
   :config
-  (progn
-
-    (ace-jump-mode-enable-mark-sync)))
+  (ace-jump-mode-enable-mark-sync))
 
 (req-package ibuffer
   :config
   (progn
-    (bind-key "SPC" 'ace-jump-mode ibuffer-mode-map)
     (defadvice ace-jump-done (after ibuffer-ace-select activate)
       (if (eq major-mode 'ibuffer-mode)
           (ibuffer-visit-buffer)))))
