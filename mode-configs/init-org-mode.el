@@ -1,15 +1,16 @@
 ;; init-org-mode.el - Setup emacs for editing org files.
 
-(req-package org-plus-contrib)
+(req-package org-plus-contrib
+  :defer t
+  :init (progn (provide 'org-plus-contrib)))
 
 (req-package org
-  :require evil org-plus-contrib
+  :require (evil org-plus-contrib)
   :bind (("C-c a" . org-agenda)
          ("C-c b" . org-iswitchb))
   :commands org-mode
-  :config
+  :init
   (progn
-
     (defun user-org/find-bullet-journal ()
       (concat user-org/entries "/" (format-time-string "%Y-%m-%d") ".org"))
 
@@ -42,7 +43,10 @@
           (org-copy)
           (if (equal old-todo-state "DONE")
               (org-todo "DONE")
-            (org-todo "MIGR")))))
+            (org-todo "MIGR"))))))
+
+  :config
+  (progn
 
     (add-hook 'remember-mode-hook 'org-remember-apply-template)
 
