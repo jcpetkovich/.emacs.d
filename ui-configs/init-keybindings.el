@@ -552,6 +552,7 @@ If no map is found in current source do nothing (keep previous map)."
 ;; =============================================================
 ;; An evil leader, to guide us to ruin
 ;; =============================================================
+(req-package pcre2el)
 (req-package evil-leader
   :require evil
   :config
