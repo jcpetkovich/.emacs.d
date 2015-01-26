@@ -613,6 +613,7 @@ If no map is found in current source do nothing (keep previous map)."
       "efp" 'flycheck-previous-error)
 
     ;; Files
+    (user-leader/declare-prefix "f" "files/directories")
     (evil-leader/set-key
       "ff" 'helm-find-files
       "fg" 'helm-do-grep-wrapper)
