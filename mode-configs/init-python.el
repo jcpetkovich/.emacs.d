@@ -7,6 +7,7 @@
     (venv-initialize-interactive-shells)
     (venv-initialize-eshell)
     (setq-default venv-location '("~/.virtualenvs/"))
+    (evil-leader/set-key-for-mode 'python-mode "mv" 'pyvenv-workon)
     (add-hook 'python-mode-hook
               (defun user-python/find-virtualenv ()
                 (when buffer-file-name  ; Check that the buffer has a file
@@ -38,7 +39,19 @@
   :require python)
 
 (req-package nose
-  :require python)
+  :require python
+  :init
+  (evil-leader/set-key-for-mode 'python-mode
+    "mTa" 'nosetests-pdb-all
+    "mta" 'nosetests-all
+    "mTb" 'nosetests-pdb-module
+    "mtb" 'nosetests-module
+    "mTt" 'nosetests-pdb-one
+    "mtt" 'nosetests-one
+    "mTm" 'nosetests-pdb-module
+    "mtm" 'nosetests-module
+    "mTs" 'nosetests-pdb-suite
+    "mts" 'nosetests-suite))
 
 (req-package python
   :require evil
@@ -60,6 +73,17 @@
                ("M-," . jedi:goto-definition-pop-marker)
                ("<backspace>" . user-python/smart-delete)
                ("<f6>" . nosetests-one))
+
+
+    (evil-leader/set-key-for-mode 'python-mode
+      "mB"  'python-shell-send-buffer-switch
+      "mb"  'python-shell-send-buffer
+      "mdb" 'python-toggle-breakpoint
+      "mF"  'python-shell-send-defun-switch
+      "mf"  'python-shell-send-defun
+      "mi"  'python-start-or-switch-repl
+      "mR"  'python-shell-send-region-switch
+      "mr"  'python-shell-send-region)
 
     ;; Fix evil bindings
     (-each '(normal insert)
