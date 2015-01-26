@@ -66,7 +66,10 @@
         evil-forward-word-begin
         evil-forward-word-end
         evil-insert
+        evil-insert-state
+        evil-lisp-state-sp-forward-barf-sexp
         evil-lisp-state-sp-unwrap-sexp
+        evil-lisp-state-wrap
         evil-next-line
         evil-normal-state
         evil-paste-after
@@ -83,6 +86,7 @@
         keyboard-quit
         kill-region-or-backward-word
         kill-sexp
+        lisp-state-beginning-of-sexp
         lisp-state-forward-symbol
         markdown-dedent-or-delete
         markdown-exdent-or-delete
