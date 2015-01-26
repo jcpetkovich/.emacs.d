@@ -33,7 +33,12 @@
       "mT" 'ess-eval-function-and-go
       "mt" 'ess-eval-function
       "mvp" 'ess-R-dv-pprint
-      "mvt" 'ess-R-dv-ctable)
+      "mvt" 'ess-R-dv-ctable
+      "mcn" 'ess-noweb-next-chunk
+      "mcp" 'ess-noweb-previous-chunk
+      "mce" 'ess-eval-chunk
+      "mcg" 'ess-eval-chunk-and-go
+      "mcs" 'ess-eval-chunk-and-step)
 
     (setq-default
      ess-pdf-viewer-pref "zathura"
