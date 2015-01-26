@@ -581,12 +581,62 @@ If no map is found in current source do nothing (keep previous map)."
       "am"  'emms-smart-browse
       "ase" 'esh
       "asi" 'shell
-      "ag"  'helm-do-grep-wrapper
       "af"  'find-dired
       "ar"  'emr-show-refactor-menu
       "au"  'undo-tree-visualize
       "aw"  'helm-man-woman
       "ay"  'yas-insert-snippet)
+
+
+    ;; Buffers
+    (user-leader/declare-prefix "b" "buffer")
+    (evil-leader/set-key
+      "b0"  'beginning-of-buffer
+      "b$"  'end-of-buffer
+      "bc" 'cleanup-buffer
+      "bK"  'kill-other-buffers
+      "bk"  'kill-buffer
+      "bn"  'switch-to-next-buffer
+      "bp"  'switch-to-prev-buffer
+      "bR"  'user-utils/force-revert
+      "bb" 'eshell-insert-buffer-name
+      "bw"  'toggle-read-only)
+
+    (evil-leader/set-key "c" 'caps-warp-map)
+
+    ;; errors
+    (user-leader/declare-prefix "e" "errors")
+    (evil-leader/set-key
+      "en" 'next-error
+      "ep" 'previous-error
+      "efn" 'flycheck-next-error
+      "efp" 'flycheck-previous-error)
+
+    ;; Files
+    (evil-leader/set-key
+      "ff" 'helm-find-files
+      "fg" 'helm-do-grep-wrapper)
+    (evil-leader/set-key
+      "fj" 'dired-jump
+      "fo" 'spacemacs/open-in-external-app
+      "fS" 'evil-write-all
+      "fs" 'evil-write
+      "fy" 'copy-current-file-path)
+
+    (user-leader/declare-prefix "g" "git/vc")
+    (evil-leader/set-key
+      "gs" 'magit-status)
+
+    (user-leader/declare-prefix "h" "helm/help")
+    (evil-leader/set-key
+      "hdc" 'describe-char
+      "hdf" 'describe-function
+      "hdk" 'describe-key
+      "hdm" 'describe-mode
+      "hdp" 'describe-package
+      "hdb" 'helm-descbinds
+      "hdt" 'describe-theme
+      "hdv" 'describe-variable)
 
     ;; Lead us to organization
     (user-leader/declare-prefix "l" "journal")
