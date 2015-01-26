@@ -10,7 +10,8 @@
 (req-package guide-key
   :config
   (progn
-    (setq-default guide-key/guide-key-sequence t)
+    (setq-default guide-key/guide-key-sequence t
+                  guide-key/idle-delay 0.4)
     (guide-key-mode 1)))
 
 ;; =============================================================
