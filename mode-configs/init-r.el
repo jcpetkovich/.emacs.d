@@ -18,7 +18,22 @@
     (bind-keys :map ess-noweb-minor-mode-map
                ("M-n" . grow-whitespace-around))
 
-    (evil-leader/set-key-for-mode 'ess-mode "mk" 'ess-swv-knit)
+    (evil-leader/set-key-for-mode 'latex-mode "mk" 'ess-swv-knit)
+    (evil-leader/set-key-for-mode 'ess-mode "mk" 'ess-swv-knit
+      "mi" 'R
+      "mp" 'ess-R-object-popup
+      "mB" 'ess-eval-buffer-and-go
+      "mb" 'ess-eval-buffer
+      "mhD" 'ess-eval-function-or-paragraph-and-step
+      "mhd" 'ess-eval-region-or-line-and-step
+      "mL" 'ess-eval-line-and-go
+      "ml" 'ess-eval-line
+      "mR" 'ess-eval-region-and-go
+      "mr" 'ess-eval-region
+      "mT" 'ess-eval-function-and-go
+      "mt" 'ess-eval-function
+      "mvp" 'ess-R-dv-pprint
+      "mvt" 'ess-R-dv-ctable)
 
     (setq-default
      ess-pdf-viewer-pref "zathura"
