@@ -90,21 +90,6 @@ To understand these keybindings you must understand the emacs
 | `M-l`      | Fuzzy search current project |
 | `M-v`      | Search buffer by semantic units |
 
-### User Launch `C-l <key>`
-| Keybinding | Description |
-|------------|-------------|
-| `a`        | Launch agenda |
-| `c`        | Launch org capture |
-| `e`        | Launch eshell |
-| `f`        | Launch find |
-| `g`        | Launch grep |
-| `=`        | Launch calculator |
-| `m`        | Launch magit |
-| `s`        | Launch shell |
-| `t`        | Launch term |
-| `w`        | Launch man |
-| `y`        | Launch yasnippet |
-
 ### Capitalization `M-c <key>`
 | Keybinding | Description |
 |------------|-------------|
@@ -123,10 +108,13 @@ To understand these keybindings you must understand the emacs
 | `s`        | Transpose sexpr |
 | `w`        | Transpose word |
 
-### User run `M-u <key>`
+### Spacemacs
+
+I've copied a good deal of functionality from spacemacs and use `SPC`
+as a leader key. Many mode specific keybindings are arranged in the
+leader keymap hierarchically and it should be mostly self explanatory.
+
 | Keybinding | Description |
 |------------|-------------|
-| `M-w`      | Copy current file path |
-| `c b`      | Clean whitespace in buffer |
-| `h`        | General Helm prefix key |
-| `r`        | Rotate buffers |
+| `SPC`      | Leader Key (in evil) |
+| `C-S-SPC`  | Leader Key (anywhere) |
