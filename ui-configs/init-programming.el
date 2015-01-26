@@ -96,6 +96,7 @@
 ;; Magit
 ;; =============================================================
 (req-package magit
+  :require evil-leader
   :commands magit-status
   :config
   (progn
@@ -104,7 +105,61 @@
     (defadvice magit-goto-next-sibling-section (after user-magit/center-after-move activate)
       (recenter))
     (defadvice magit-goto-previous-sibling-section (after user-magit/center-after-move activate)
-      (recenter))))
+      (recenter))
+
+    (evil-leader/set-key
+      "gb" 'magit-blame-mode
+      "gl" 'magit-log
+      "gs" 'magit-status
+      "gC" 'magit-commit)))
+
+(req-package github-browse-file
+  :require evil-leader
+  :init
+  (progn
+    (user-leader/declare-prefix "gf" "github")
+    (evil-leader/set-key "gfb" 'github-browse-file)))
+
+(req-package gist
+  :require evil-leader
+  :init
+  (progn
+    (user-leader/declare-prefix "gg" "gist")
+    (evil-leader/set-key
+      "ggb" 'gist-buffer
+      "ggB" 'gist-buffer-private
+      "ggl" 'gist-list
+      "ggr" 'gist-region
+      "ggR" 'gist-region-private)))
+
+(req-package git-gutter
+  :require evil-leader
+  :init
+  (progn
+    (user-leader/declare-prefix "gh" "git-gutter")
+    (evil-leader/set-key
+      "ghs" 'git-gutter:stage-hunk
+      "ghr" 'git-gutter:revert-hunk
+      "ghN" 'git-gutter:previous-hunk
+      "ghn" 'git-gutter:next-hunk)))
+
+(req-package git-messenger
+  :require evil-leader
+  :init
+  (evil-leader/set-key "gm" 'git-messenger:popup-message))
+
+(req-package git-timemachine
+  :require evil-leader
+  :init
+  (evil-leader/set-key "gt" 'git-timemachine))
+
+(req-package smeargle
+  :require evil-leader
+  :init
+  (evil-leader/set-key
+    "ghc" 'smeargle-clear
+    "ghh" 'smeargle-commits
+    "ght" 'smeargle))
 
 ;; =============================================================
 ;; Refactoring
