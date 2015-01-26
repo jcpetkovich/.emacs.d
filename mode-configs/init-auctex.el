@@ -17,7 +17,7 @@
   :init (require 'tex-site))
 
 (req-package latex
-  :require tex-site
+  :require (tex-site evil-leader)
   :commands TeX-latex-mode
   :config
   (progn
@@ -30,6 +30,23 @@
 
     (evil-define-key 'visual
       LaTeX-mode-map (kbd "\"") 'sp--self-insert-command)
+
+    (evil-leader/set-key-for-mode 'latex-mode
+      "mb" 'auctex/build-view
+      "me" 'LaTeX-environment
+      "mc" 'LaTeX-close-environment
+      "mi" 'LaTeX-insert-item
+      "mf" 'TeX-font
+      "mC" 'TeX-command-master
+      "mpr" 'preview-region
+      "mpb" 'preview-buffer
+      "mpd" 'preview-document
+      "mpe" 'preview-environment
+      "mps" 'preview-section
+      "mpp" 'preview-at-point
+      "mpf" 'preview-cache-preamble
+      "mpc" 'preview-clearout
+      "mhd" 'TeX-doc)
 
     (add-hook 'LaTeX-mode-hook 'TeX-PDF-mode)
     (add-hook 'LaTeX-mode-hook 'flyspell-mode)
