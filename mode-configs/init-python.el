@@ -1,7 +1,7 @@
 ;; init-python.el - Setup emacs for editing python.
 
 (req-package virtualenvwrapper
-  :require python
+  :require (python evil-leader)
   :config
   (progn
     (venv-initialize-interactive-shells)
@@ -39,7 +39,7 @@
   :require python)
 
 (req-package nose
-  :require python
+  :require (python evil-leader)
   :init
   (evil-leader/set-key-for-mode 'python-mode
     "mTa" 'nosetests-pdb-all
@@ -54,7 +54,7 @@
     "mts" 'nosetests-suite))
 
 (req-package python
-  :require evil
+  :require (evil evil-leader)
   :commands python-mode
   :config
   (progn
