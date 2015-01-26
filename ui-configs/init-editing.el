@@ -40,4 +40,18 @@
 (req-package s
   :defer t)
 
+;; Translation
+(req-package google-translate
+  :require evil-leader
+  :init
+  (progn
+    (setq-default google-translate-default-source-language "auto")
+    (user-leader/declare-prefix "xg" "text-google-translate")
+    (evil-leader/set-key
+      "xgl" 'set-google-translate-languages
+      "xgQ" 'google-translate-query-translate-reverse
+      "xgq" 'google-translate-query-translate
+      "xgT" 'google-translate-at-point-reverse
+      "xgt" 'google-translate-at-point)))
+
 (provide 'init-editing)
