@@ -34,7 +34,9 @@
     (evil-leader/set-key-for-mode 'latex-mode
       "mb" 'auctex/build-view
       "me" 'LaTeX-environment
-      "mc" 'LaTeX-close-environment
+      "mcc" 'LaTeX-close-environment
+      "mcn" 'ess-noweb-next-chunk
+      "mcp" 'ess-noweb-previous-chunk
       "mi" 'LaTeX-insert-item
       "mf" 'TeX-font
       "mC" 'TeX-command-master
