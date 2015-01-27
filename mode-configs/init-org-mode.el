@@ -5,7 +5,7 @@
   :init (progn (provide 'org-plus-contrib)))
 
 (req-package org
-  :require (evil org-plus-contrib)
+  :require (evil org-plus-contrib evil-leader)
   :bind (("C-c a" . org-agenda)
          ("C-c b" . org-iswitchb))
   :commands org-mode
