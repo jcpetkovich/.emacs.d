@@ -765,44 +765,6 @@ If no map is found in current source do nothing (keep previous map)."
 
 ;; TODO:
 
-;; packages.el:86:        "mt"   'haskell-process-do-type
-;; packages.el:87:        "mi"   'haskell-process-do-info
-;; packages.el:88:        "mu"   'haskell-mode-find-uses
-;; packages.el:89:        "mgg"  'haskell-mode-jump-to-def-or-tag
-;; packages.el:90:        "mf"   'haskell-mode-stylish-buffer
-;; packages.el:92:        "msb"  'haskell-process-load-or-reload
-;; packages.el:93:        "msc"  'haskell-interactive-mode-clear
-;; packages.el:94:        "mss"  'haskell-interactive-bring
-;; packages.el:95:        "msS"  'haskell-interactive-switch
-;; packages.el:97:        "mca"  'haskell-process-cabal
-;; packages.el:98:        "mcb"  'haskell-process-cabal-build
-;; packages.el:99:        "mcc"  'haskell-compile
-;; packages.el:100:        "mcv"  'haskell-cabal-visit-file
-;; packages.el:102:        "mhh"  'hoogle
-;; packages.el:103:        "mhy"  'hayoo
-;; packages.el:104:        "mhd"  'inferior-haskell-find-haddock
-;; packages.el:106:        "mdd"  'haskell-debug
-;; packages.el:107:        "mdb"  'haskell-debug/break-on-function
-;; packages.el:108:        "mdn"  'haskell-debug/next
-;; packages.el:109:        "mdN"  'haskell-debug/previous
-;; packages.el:110:        "mdB"  'haskell-debug/delete
-;; packages.el:111:        "mdc"  'haskell-debug/continue
-;; packages.el:112:        "mda"  'haskell-debug/abandon
-;; packages.el:113:        "mdr"  'haskell-debug/refresh
-;; packages.el:117:        "msS"  'haskell-interactive-switch
-;; packages.el:122:        "mC"  'haskell-compile
-;; packages.el:127:        "md" 'haskell-cabal-add-dependency
-;; packages.el:128:        "mb" 'haskell-cabal-goto-benchmark-section
-;; packages.el:129:        "me" 'haskell-cabal-goto-executable-section
-;; packages.el:130:        "mt" 'haskell-cabal-goto-test-suite-section
-;; packages.el:131:        "mm" 'haskell-cabal-goto-exposed-modules
-;; packages.el:132:        "ml" 'haskell-cabal-goto-library-section
-;; packages.el:133:        "mn" 'haskell-cabal-next-subsection
-;; packages.el:134:        "mp" 'haskell-cabal-previous-subsection
-;; packages.el:135:        "mN" 'haskell-cabal-next-section
-;; packages.el:136:        "mP" 'haskell-cabal-previous-section
-;; packages.el:137:        "mf" 'haskell-cabal-find-or-create-source-file
-;; packages.el:138:        ;; "m="  'haskell-cabal-subsection-arrange-lines ;; Does a bad job, 'gg=G' works better
 ;; packages.el:32:      '(evil-leader/set-key-for-mode 'scss-mode "mgh" 'helm-css-scss))))
 ;; packages.el:58:      ;;(spacemacs/declare-prefix-for-mode 'js2-mode "m" "major mode")
 ;; packages.el:60:      (evil-leader/set-key-for-mode 'js2-mode "mw" 'js2-mode-toggle-warnings-and-errors)
