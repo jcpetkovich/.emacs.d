@@ -853,8 +853,6 @@ If no map is found in current source do nothing (keep previous map)."
 ;; packages.el:52:                   (evil-leader/set-key-for-mode 'enh-ruby-mode "mi" 'robe-start))))
 ;; packages.el:70:    :config (progn (evil-leader/set-key "mtb" 'ruby-test-run)
 ;; packages.el:71:                   (evil-leader/set-key "mtt" 'ruby-test-run-at-point))))
-;; packages.el:45:        (kbd "M-n") 'forward-button
-;; packages.el:46:        (kbd "M-p") 'backward-button
 ;; extensions.el:38:      "mhD" 'dos-help-cmd
 ;; extensions.el:39:      "meb" 'dos-run
 ;; extensions.el:40:      "meB" 'dos-run-args
@@ -862,14 +860,6 @@ If no map is found in current source do nothing (keep previous map)."
 ;; extensions.el:42:      "mt"  'dos-template-mini
 ;; extensions.el:43:      "mT"  'dos-template
 ;; extensions.el:44:      "mz"  'windows-scripts/dos-outline)))
-;; dos.el:30:;;      (add-to-list 'load-path "mypath/dos")
-;; dos.el:51:;; 22 Jan 2013  2.18 Moved keywords "mkdir" and "rmdir" from `font-lock-warning-face' to `font-lock-builtin-face'.
-;; dos.el:88:(defgroup dos nil "Major mode for editing Dos scripts." :tag "Dos" :group 'languages)
-;; dos.el:112:             "doskey"   "echo"     "endlocal" "erase"    "exist"    "fc"       "find"     "md"       "mkdir"    "more"
-;; dos.el:113:             "move"     "path"     "pause"    "popd"     "prompt"   "pushd"    "ren"      "rd"       "rmdir"    "set"
-;; dos.el:119:           '("cat"      "cp"       "ls"       "mv"       "rm")))
-;; dos.el:139:    ["Mini Template" dos-template-mini] ; :help "Insert minimal template"
-;; dos.el:235:(defun dos-mode () "Major mode for editing Dos scripts.\n
 ;; packages.el:19:        "ms" 'restclient-http-send-current-stay-in-window
 ;; packages.el:20:        "mS" 'restclient-http-send-current
 ;; packages.el:21:        "mr" 'restclient-http-send-current-raw-stay-in-window
@@ -883,104 +873,10 @@ If no map is found in current source do nothing (keep previous map)."
 ;; packages.el:64:        "mhd" 'racket-doc)
 ;; packages.el:29:      "mgg" 'ycmd-goto
 ;; packages.el:30:      "mgG" 'ycmd-goto-imprecise)))
-;; configuration-layer.el:20:                           ("melpa" . "http://melpa.org/packages/")))
-;; configuration-layer.el:28:                 '("marmalade" . "http://marmalade-repo.org/packages/")))
-;; dotspacemacs.el:39:  "Major mode leader key is a shortcut key which is the equivalent of
-;; spacemacs-mode.el:26:(defconst spacemacs-checkversion-branch "master"
-;; spacemacs-mode.el:463:  (insert-button "Messages Buffer" 'action (lambda (b) (switch-to-buffer "*Messages*")) 'follow-link t)
-;; init.el:13:(defconst spacemacs-min-version   "24.3" "Mininal required version of Emacs.")
-;; centered-cursor-mode.el:99:  "Makes the cursor stay vertically in a defined position (usually centered).
-;; centered-cursor-mode.el:389:  "Makes the cursor stay vertically in a defined
-;; evil-escape.el:78:    "Max time delay between the two key press to be considered successful."
-;; evil-escape.el:167:                     (cond ((string-match "magit" (symbol-name major-mode))
-;; evil-escape.el:189:    (eval `(evil-escape-define-escape "motion-state" evil-motion-state-map ,exit-func
-;; evil-escape.el:192:  (eval `(evil-escape-define-escape "minibuffer" minibuffer-local-map abort-recursive-edit
-;; evil-lisp-state.el:150:  (defcustom evil-lisp-state-leader-prefix "m"
-;; evil-lisp-state.el:156:    "Major modes where evil leader key bindings are defined."
-;; evil-lisp-state.el:193:  (evil-leader/set-key-for-mode mm "me$" 'lisp-state-eval-sexp-end-of-line)
-;; evil-lisp-state.el:194:  (evil-leader/set-key-for-mode mm "mee" 'eval-last-sexp)
-;; evil-lisp-state.el:195:  (evil-leader/set-key-for-mode mm "mef" 'eval-defun)
-;; evil-lisp-state.el:196:  (evil-leader/set-key-for-mode mm "mgg" 'elisp-slime-nav-find-elisp-thing-at-point)
-;; evil-lisp-state.el:197:  (evil-leader/set-key-for-mode mm "mhh" 'elisp-slime-nav-describe-elisp-thing-at-point)
-;; evil-lisp-state.el:198:  (evil-leader/set-key-for-mode mm "m,"  'lisp-state-toggle-lisp-state)
-;; evil-lisp-state.el:199:  (evil-leader/set-key-for-mode mm "mtb" 'spacemacs/ert-run-tests-buffer)
-;; evil-lisp-state.el:200:  (evil-leader/set-key-for-mode mm "mtq" 'ert))
-;; evil-lisp-state.el:230:    ("m"   . sp-join-sexp)
-;; evil-tutor.el:40:  "Major mode for evil-tutor.")
-;; evil-tutor.el:95:  "Move the next lesson.
-;; evil-tutor.el:115:  "Move to the previous lession.
-;; paradox.el:374:  "Major mode for browsing a list of packages.
-;; paradox.el:453:  "Move to previous entry, which might not be the previous line.
-;; paradox.el:461:  "Move to next entry, which might not be the next line.
-;; paradox.el:471:  "Move to the next package and describe it.
-;; paradox.el:478:  "Move to the previous package and describe it.
-;; paradox.el:1279:  "Max number of pages we read from github when fetching the commit-list.
-;; paradox.el:1438:  "Move to previous commit, which might not be the previous line.
-;; paradox.el:1444:  "Move to next commit, which might not be the next line.
-;; paradox.el:1455:  "Major mode for browsing a list of commits.
-;; paradox.el:1462:          ("Message" 0 nil)])
-;; rcirc-reconnect.el:60:;;            process "my-rcirc.el" "ERROR" rcirc-target
-;; rcirc-reconnect.el:83:;;             (rcirc-print process "my-rcirc.el" "ERROR" rcirc-target
-;; rcirc-reconnect.el:94:;;              (rcirc-print process "my-rcirc.el" "ERROR" rcirc-target
-;; solarized.el:54:  "Make the fringe background different from the normal background color.
-;; solarized.el:80:  "Make the active/inactive mode line stand out more."
-;; frame-cmds.el:226:;;       :help "Maximize or restore the selected frame vertically"
-;; frame-cmds.el:230:;;       :help "Maximize or restore the selected frame horizontally"
-;; frame-cmds.el:234:;;       :help "Maximize or restore the selected frame (in both directions)"
-;; frame-cmds.el:237:;;     '(menu-item "Maximize Frame Vertically" maximize-frame-vertically
-;; frame-cmds.el:238:;;       :help "Maximize the selected frame vertically"))
-;; frame-cmds.el:240:;;     '(menu-item "Maximize Frame Horizontally" maximize-frame-horizontally
-;; frame-cmds.el:241:;;       :help "Maximize the selected frame horizontally"))
-;; frame-cmds.el:243:;;     '(menu-item "Maximize Frame" maximize-frame
-;; frame-cmds.el:244:;;       :help "Maximize the selected frame (in both directions)"))
-;; frame-cmds.el:578:  "Miscellaneous frame and window commands."
-;; frame-cmds.el:582:          ,(concat "mailto:" "drew.adams" "@" "oracle" ".com?subject=\
-;; frame-cmds.el:1081:  "Make FRAME visible and raise it, without selecting it.
-;; frame-cmds.el:1090:  "Make FRAME invisible.  Like `make-frame-invisible', but reads frame name.
-;; frame-cmds.el:1097:  "Make visible and raise a frame showing BUFFER, if there is one.
-;; frame-cmds.el:1141:  "Maximize selected frame horizontally."
-;; frame-cmds.el:1147:  "Maximize selected frame vertically."
-;; frame-cmds.el:1153:  "Maximize selected frame horizontally, vertically, or both.
-;; frame-cmds.el:1522:    "Modifies LIST to remove the last N elements."
-;; frame-cmds.el:1595:  "Move selected frame down.
-;; frame-cmds.el:1605:  "Move selected frame up.
-;; frame-cmds.el:1613:  "Move frame to the right.
-;; frame-cmds.el:1623:  "Move frame to the left.
-;; frame-cmds.el:1648:  "Move FRAME (default: selected-frame) to the top of the screen.
-;; frame-cmds.el:1658:  "Move FRAME (default: selected-frame) to the bottom of the screen.
-;; frame-cmds.el:1678:  "Move FRAME (default: selected-frame) to the left side of the screen.
-;; frame-cmds.el:1688:  "Move FRAME (default: selected-frame) to the right side of the screen.
-;; frame-cmds.el:1700:  "Move FRAME (default: selected-frame) to the top and left of the screen.
-;; frame-cmds.el:1905:                   ("menu-bar-lines")
-;; frame-cmds.el:1906:                   ("minibuffer")
-;; frame-cmds.el:1907:                   ("mouse-color")
-;; zoom-frm.el:219:          ,(concat "mailto:" "drew.adams" "@" "oracle" ".com?subject=\
-;; zoom-frm.el:314:          (if (string-match "mouse" (format "%S" (event-basic-type
-;; zoom-frm.el:331:          (if (string-match "mouse" (format "%S" (event-basic-type
-;; zoom-frm.el:390:                (if (string-match "mouse" (format "%S" (event-basic-type last-command-event)))
-;; funcs.el:98:    (setq major-mode-map (lookup-key mode-map (kbd "m")))
-;; funcs.el:214:  "Maximize buffer"
-;; funcs.el:223:  "Maximize buffer and center it on the screen"
-;; funcs.el:666:  "Minor mode to use big fringe in the current buffer."
-;; keybindings.el:20:(define-key isearch-mode-map (kbd "M-S-<return>") 'isearch-repeat-backward)
 ;; packages.el:1190:        (evil-leader/set-key-for-mode 'eshell-mode "mH" 'spacemacs/helm-eshell-history))
 ;; packages.el:1193:      (evil-leader/set-key-for-mode 'shell-mode "mH" 'spacemacs/helm-shell-history)
 ;; packages.el:1339:        "mhd" 'ledger-delete-current-transaction
 ;; packages.el:1340:        "ma"  'ledger-add-transaction))))
-;; packages.el:1491:        "mc" 'org-capture
-;; packages.el:1492:        "md" 'org-deadline
-;; packages.el:1493:        "me" 'org-export-dispatch
-;; packages.el:1494:        "mi" 'org-clock-in
-;; packages.el:1495:        "mo" 'org-clock-out
-;; packages.el:1496:        "mm" 'org-ctrl-c-ctrl-c
-;; packages.el:1497:        "mr" 'org-refile
-;; packages.el:1498:        "ms" 'org-schedule)
-;; packages.el:1503:           "a" nil "ma" 'org-agenda
-;; packages.el:1504:           "c" nil "mA" 'org-archive-subtree
-;; packages.el:1505:           "o" nil "mC" 'evil-org-recompute-clocks
-;; packages.el:1506:           "l" nil "ml" 'evil-org-open-links
-;; packages.el:1507:           "t" nil "mt" 'org-show-todo-tree)))
-;; packages.el:1606:                      'help-echo "Minor mode\n mouse-1: Display minor mode menu\n mouse-2: Show help for minor mode\n mouse-3: Toggle minor modes"
 
 
 (provide 'init-keybindings)
