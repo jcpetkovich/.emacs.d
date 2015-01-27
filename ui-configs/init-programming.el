@@ -52,7 +52,8 @@
   :idle (projectile-global-mode)
   :config
   (progn
-    (setq-default projectile-completion-system 'default)
+    (setq-default projectile-completion-system 'default
+                  projectile-enable-caching t)
 
     (bind-key "<f6>" 'projectile-compile-project)
 
