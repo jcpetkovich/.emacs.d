@@ -655,6 +655,8 @@ If no map is found in current source do nothing (keep previous map)."
 
     (user-leader/declare-prefix "m" "mode-specific")
 
+    (evil-leader/set-key "o" 'helm-C-x-b)
+
     ;; Lead us to projects
     (user-leader/declare-prefix "p" "project")
     (evil-leader/set-key
