@@ -440,9 +440,16 @@ If no map is found in current source do nothing (keep previous map)."
 ;; =============================================================
 
 (req-package expand-region
+  :require evil-leader
   :commands (er/mark-symbol er/mark-word)
   :bind (("C-'" . er/expand-region)
-         ("C-\"" . er/contract-region)))
+         ("C-\"" . er/contract-region))
+  :init
+  (progn
+    (evil-leader/set-key "v" 'er/expand-region)
+    (setq-default expand-region-fast-keys-enabled t
+                  expand-region-contract-fast-key "V"
+                  expand-region-reset-fast-key "r")))
 
 (req-package smart-forward
   :bind (("M-<up>" . smart-up)
