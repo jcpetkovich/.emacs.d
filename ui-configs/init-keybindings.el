@@ -606,7 +606,7 @@ If no map is found in current source do nothing (keep previous map)."
       "bn"  'switch-to-next-buffer
       "bp"  'switch-to-prev-buffer
       "bR"  'user-utils/force-revert
-      "bb" 'eshell-insert-buffer-name
+      "b RET" 'eshell-insert-buffer-name
       "bw"  'toggle-read-only)
 
     (evil-leader/set-key "c" 'caps-warp-map)
