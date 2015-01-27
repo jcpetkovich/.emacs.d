@@ -168,6 +168,7 @@
         eval-expression
         evil-emacs-state
         evil-scroll-line-up
+        evil-scroll-line-down
         handle-switch-frame
         helm-confirm-and-exit-minibuffer
         helm-descbinds
