@@ -78,6 +78,21 @@
                ("C-M-S-k" . org-shiftmetaup)
                ("C-M-S-j" . org-shiftmetadown))
 
+    (evil-leader/set-key-for-mode 'org-mode
+      "mc" 'org-capture
+      "md" 'org-deadline
+      "me" 'org-export-dispatch
+      "mi" 'org-clock-in
+      "mo" 'org-clock-out
+      "mm" 'org-ctrl-c-ctrl-c
+      "mr" 'org-refile
+      "ms" 'org-schedule
+      "a" nil "ma" 'org-agenda
+      "c" nil "mA" 'org-archive-subtree
+      "o" nil "mC" 'evil-org-recompute-clocks
+      "l" nil "ml" 'evil-org-open-links
+      "t" nil "mt" 'org-show-todo-tree)
+
     ;; Fix for expand region
     (--each '(normal emacs visual insert)
       (evil-declare-key it org-mode-map
