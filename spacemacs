@@ -47,7 +47,7 @@
   )
 
 (defvar user/internal-layers
-  '(theme))
+  '(theme elisp-extras))
 
 (defun user/bootstrap-emacs-config ()
   (shell-command (concat "git clone --recursive " user/spacemacs-repo " " user-emacs-directory))
