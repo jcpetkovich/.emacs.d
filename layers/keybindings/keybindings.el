@@ -11,3 +11,11 @@
 ;;; License: GPLv3
 
 ;; instantly display current keystrokes in mini buffer
+(bind-keys
+ ("M-m" . multiple-cursors/expand-or-mark-next-symbol)
+ ("M-M" . multiple-cursors/expand-or-mark-next-word)
+ ("M-'" . mc/mark-all-dwim)
+ ("C-S-n" . mc/mmlte--down)
+ ("C-S-p" . mc/mmlte--up)
+ ("C-S-f" . mc/mmlte--right)
+ ("C-S-b" . mc/mmlte--left))
