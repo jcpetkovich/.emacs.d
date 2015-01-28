@@ -1,32 +1,26 @@
-# My Emacs Config
+* My Emacs Config
 
-This is my emacs configuration.
+  This is my emacs configuration.
 
-If you're interested in using it, please first consider using it as a
-source of inspiration first. Check out `ui-configs/init-keybindings.el` and
-`init-evil.el` for the most interesting and unusual bits.
+  If you're interested in using it, please first consider using it as
+  a source of inspiration first. Check out =spacemacs= and
+  =layers/keybindings= for the most interesting and unusual bits.
 
-Generally the config is organized into the following directories:
+* Installing
 
-- `ui-configs` Non-language specific user interface configurations.
-- `mode-configs` Language/mode specific configurations.
-- `user-packages` Not-quite-packages developed by me or others.
-- `site-lisp` Packages or forks not in [melpa](http://melpa.milkbox.net/).
+  Setting up this config for your own use is fairly simple:
 
-# Installing
-
-Setting up this config for your own use is fairly simple:
-
+#+BEGIN_SRC sh
     cd $HOME
-    git clone https://github.com/jcpetkovich/.emacs.d.git
-    cd .emacs.d
-    make
+    git clone https://github.com/jcpetkovich/.emacs.d.git ~/.spacemacs.d
+    emacs --batch -l ~/.spacemacs.d/spacemacs
+#+END_SRC
 
-This config should work without its external dependencies by pulling
-in any necessary packages through `package.el` and
-[melpa](http://melpa.milkbox.net/).
+=spacemacs= is both the config and a script for bootstrapping both
+=~/.emacs.d/= with [[https://github.com/syl20bnr/spacemacs][spacemacs]], and for any external spacemacs layers
+used.
 
-The only other dependencies you might want are:
+Some other dependencies you may want to install:
 
 - `slime` (through [quicklisp](http://www.quicklisp.org/beta/))
 - `mu4e` (through your package manager)
@@ -36,7 +30,7 @@ The only other dependencies you might want are:
 If you don't want the functionality of these particluar packages, you
 may ignore them, as the configuration should run without them.
 
-# Significant Keybindings
+* Significant Keybindings
 
 The defaults for emacs/evil are used wherever possible, the following
 sections document significant alterations or interesting pieces not
@@ -50,71 +44,66 @@ searchable list of any active keybindings in the current buffer, run
 To understand these keybindings you must understand the emacs
 [keybinding notation](http://www.emacswiki.org/emacs/EmacsKeyNotation).
 
-### General Editing
-| Keybinding | Description |
-|------------|-------------|
-| `M-RET`    | DWIM newline |
-| `C-'`      | Expand Region |
-| `C-"`      | Contract Region |
-| `M-n`      | Grow whitespace around point |
-| `M-N`      | Shrink whitespace around point |
-| `M-\`      | Shrink whitespace DWIM |
-| `M-/`      | Hippie Expand |
-| `M-?`      | Hippie Expand Line |
+*** General Editing
+| Keybinding       | Description                    |
+|------------------+--------------------------------|
+| <key>M-RET</key> | DWIM newline                   |
+| <key>C-'</key>   | Expand Region                  |
+| <key>C-"</key>   | Contract Region                |
+| <key>M-n</key>   | Grow whitespace around point   |
+| <key>M-N</key>   | Shrink whitespace around point |
+| <key>M-\</key>   | Shrink whitespace DWIM         |
+| <key>M-/</key>   | Hippie Expand                  |
+| <key>M-?</key>   | Hippie Expand Line             |
 
-### Multiple Cursors
-| Keybinding | Description |
-|------------|-------------|
+*** Multiple Cursors
+| Keybinding | Description                                         |
+|------------+-----------------------------------------------------|
 | `M-m`      | Mark symbol or next like it (Like `C-d` in sublime) |
-| `M-M`      | Mark word or next like it |
-| `C-S-n`    | Mark next like this |
-| `C-S-p`    | Mark previous like this |
-| `M-'`      | Mark all DWIM |
+| `M-M`      | Mark word or next like it                           |
+| `C-S-n`    | Mark next like this                                 |
+| `C-S-p`    | Mark previous like this                             |
+| `M-'`      | Mark all DWIM                                       |
 
-### Buffer Splitting and Moving
-| Keybinding | Description |
-|------------|-------------|
-| `M-!`      | Delete current window (not buffer) |
+*** Buffer Splitting and Moving
+| Keybinding | Description                            |
+|------------+----------------------------------------|
+| `M-!`      | Delete current window (not buffer)     |
 | `M-1`      | Delete all other windows (not buffers) |
-| `M-2`      | Split window vertically |
-| `M-@`      | Split window horizontally |
-| `M-j`      | Move focus to next window |
-| `M-k`      | Move focus to previous window |
+| `M-2`      | Split window vertically                |
+| `M-@`      | Split window horizontally              |
+| `M-j`      | Move focus to next window              |
+| `M-k`      | Move focus to previous window          |
 
-### File opening, Searching and Navigation
-| Keybinding | Description |
-|------------|-------------|
-| `M-o`      | Open a file in project |
-| `M-i`      | Fuzzy search current buffer |
-| `C-x M-i`  | Fuzzy search all buffers |
-| `M-l`      | Fuzzy search current project |
+*** File opening, Searching and Navigation
+| Keybinding | Description                     |
+|------------+---------------------------------|
+| `M-o`      | Open a file in project          |
+| `M-i`      | Fuzzy search current buffer     |
+| `C-x M-i`  | Fuzzy search all buffers        |
+| `M-l`      | Fuzzy search current project    |
 | `M-v`      | Search buffer by semantic units |
 
-### Capitalization `M-c <key>`
-| Keybinding | Description |
-|------------|-------------|
+*** Capitalization `M-c <key>`
+| Keybinding | Description            |
+|------------+------------------------|
 | `-`        | Turn word to snakecase |
-| `m`        | Camel Case word |
-| `c`        | Capitalize word |
-| `l`        | Downcase word |
-| `u`        | Upcase word |
+| `m`        | Camel Case word        |
+| `c`        | Capitalize word        |
+| `l`        | Downcase word          |
+| `u`        | Upcase word            |
 
-
-### Transposition `M-t <key>`
-| Keybinding | Description |
-|------------|-------------|
-| `l`        | Transpose line |
+*** Transposition `M-t <key>`
+| Keybinding | Description         |
+|------------+---------------------|
+| `l`        | Transpose line      |
 | `p`        | Transpose parameter |
-| `s`        | Transpose sexpr |
-| `w`        | Transpose word |
+| `s`        | Transpose sexpr     |
+| `w`        | Transpose word      |
 
-### Spacemacs
+*** Spacemacs
 
-I've copied a good deal of functionality from spacemacs and use `SPC`
-as a leader key. Many mode specific keybindings are arranged in the
-leader keymap hierarchically and it should be mostly self explanatory.
-
-| Keybinding | Description |
-|------------|-------------|
-| `SPC`      | Leader Key (in evil) |
+| Keybinding | Description           |
+|------------+-----------------------|
+| `SPC`      | Leader Key (in evil)  |
 | `C-S-SPC`  | Leader Key (anywhere) |
