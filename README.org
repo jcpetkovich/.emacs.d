@@ -48,8 +48,8 @@ To understand these keybindings you must understand the emacs
 | Keybinding | Description                    |
 |------------+--------------------------------|
 | =M-RET=    | DWIM newline                   |
-| =C-'=      | Expand Region                  |
-| =C-"=      | Contract Region                |
+| =C-'==     | Expand Region                  |
+| =C-"==     | Contract Region                |
 | =M-n=      | Grow whitespace around point   |
 | =M-N=      | Shrink whitespace around point |
 | =M-\=      | Shrink whitespace DWIM         |
