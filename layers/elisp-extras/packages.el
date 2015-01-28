@@ -54,8 +54,8 @@ which require an initialization must be listed explicitly in the list.")
   (eval-after-load 'comment-dwim-2
     '(progn
        (--each '(insert visual normal)
-        (evil-declare-key it paredit-mode-map
-          (kbd "M-;") 'comment-dwim-2))))
+         (evil-declare-key it paredit-mode-map
+           (kbd "M-;") 'comment-dwim-2))))
 
   (eval-after-load 'user-utils
     (--each '(insert visual normal)
@@ -65,7 +65,7 @@ which require an initialization must be listed explicitly in the list.")
 (defun elisp-extras/init-ipretty ()
   "Initialize ipretty"
   (evil-leader/set-key-for-mode 'emacs-lisp-mode
-        "ms" 'ipretty-last-sexp))
+    "ms" 'ipretty-last-sexp))
 
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
