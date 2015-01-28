@@ -45,16 +45,16 @@ To understand these keybindings you must understand the emacs
 [keybinding notation](http://www.emacswiki.org/emacs/EmacsKeyNotation).
 
 *** General Editing
-| Keybinding       | Description                    |
-|------------------+--------------------------------|
-| <key>M-RET</key> | DWIM newline                   |
-| <key>C-'</key>   | Expand Region                  |
-| <key>C-"</key>   | Contract Region                |
-| <key>M-n</key>   | Grow whitespace around point   |
-| <key>M-N</key>   | Shrink whitespace around point |
-| <key>M-\</key>   | Shrink whitespace DWIM         |
-| <key>M-/</key>   | Hippie Expand                  |
-| <key>M-?</key>   | Hippie Expand Line             |
+| Keybinding | Description                    |
+|------------+--------------------------------|
+| =M-RET=    | DWIM newline                   |
+| =C-'=      | Expand Region                  |
+| =C-"=      | Contract Region                |
+| =M-n=      | Grow whitespace around point   |
+| =M-N=      | Shrink whitespace around point |
+| =M-\=      | Shrink whitespace DWIM         |
+| =M-/=      | Hippie Expand                  |
+| =M-?=      | Hippie Expand Line             |
 
 *** Multiple Cursors
 | Keybinding | Description                                         |
