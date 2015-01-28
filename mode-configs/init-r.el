@@ -38,7 +38,8 @@
       "mcp" 'ess-noweb-previous-chunk
       "mce" 'ess-eval-chunk
       "mcg" 'ess-eval-chunk-and-go
-      "mcs" 'ess-eval-chunk-and-step)
+      "mcs" 'ess-eval-chunk-and-step
+      "mcm" 'ess-noweb-mark-chunk)
 
     (setq-default
      ess-pdf-viewer-pref "zathura"
