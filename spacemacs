@@ -6,7 +6,7 @@
 ;; --------------------
 
 (setq-default
- dotspacemacs-configuration-layer-path '()
+ dotspacemacs-configuration-layer-path '("~/.spacemacs.d/layers/")
  dotspacemacs-configuration-layers '(ess clojure c-c++ erlang-elixir go
                                          html javascript python ruby
                                          (git :variables
@@ -41,7 +41,10 @@
 (defconst user/spacemacs-d-path "~/.spacemacs.d/")
 
 (defvar user/external-layers
-  '(("git@github.com:jcpetkovich/spacemacs.elisp-extras" . elisp-extras)))
+  '(
+;;    ("git@github.com:jcpetkovich/spacemacs.elisp-extras" . elisp-extras)
+    )
+  )
 
 (defvar user/internal-layers
   '(theme))
@@ -76,7 +79,7 @@
                              spacemacs-layer-string)))
             (if (not (file-exists-p repo-path))
                 (user/bootstrap-layer repo-string repo-path))
-            (push 'spacemacs-layer 'dotspacemacs-configuration-layers)
+            (push 'spacemacs-layer dotspacemacs-configuration-layers)
             (user/update-layer repo-path)))
         user/external-layers)
 
