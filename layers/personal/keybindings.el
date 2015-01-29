@@ -15,3 +15,7 @@
  ("M-!" . delete-window)
  ("M-2" . split-window-vertically)
  ("M-@" . split-window-horizontally))
+
+(--each '(insert visual normal)
+  (evil-declare-key it paredit-mode-map
+    (kbd "C-w") 'user-utils/kill-region-or-backward-word))

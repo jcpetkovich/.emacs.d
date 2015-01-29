@@ -12,13 +12,15 @@
 
 (defvar personal-pre-extensions
   '(
-    simple
     )
   "List of all extensions to load before the packages.")
 
 (defvar personal-post-extensions
   '(
     ;; personals go here
+    simple
+    mu4e
+    rcirc
     )
   "List of all extensions to load after the packages.")
 
