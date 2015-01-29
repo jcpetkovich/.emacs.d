@@ -11,15 +11,14 @@
 
 (defvar personal-packages
   '(
-    evil
-    paredit
     comment-dwim-2
+    dash
+    ess
+    evil
+    evil-leader
     helm
     multiple-cursors
-    helm-swoop
-    dash
-    evil-leader
-    ess
+    paredit
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
@@ -44,10 +43,19 @@ which require an initialization must be listed explicitly in the list.")
   (setq-default recentf-max-saved-items 1000
                 ido-use-virtual-buffers t))
 
+(defun personal/helm-configs ()
+  (setq-default helm-always-two-windows nil)
+  (evil-leader/set-key
+    "ss" 'helm-everything/swoop-no-arg
+    "bs" 'helm-C-x-b
+    "o"  'helm-cmd-t
+    "/"  'helm-cmd-t-grep))
+
 (defadvice dotspacemacs/config (before personal-vars activate)
   "Overriding spacemacs and other layer defaults."
   (personal/appearance-configs)
   (personal/editing-configs)
+  (personal/helm-configs)
 
   (window-numbering-mode -1)
   ;; This is a good time to load the recentf list
@@ -74,8 +82,6 @@ which require an initialization must be listed explicitly in the list.")
       (require 'helm-grep)
       (require 'helm-files)
       (require 'helm-man)
-
-      (setq-default helm-always-two-windows nil)
 
       (bind-keys :map helm-map
                  ("C-i" . helm-execute-persistent-action)
@@ -105,13 +111,6 @@ which require an initialization must be listed explicitly in the list.")
                             ("M-w" . helm-yank-text-at-point)))))
 
       (bind-key "C-w" 'helm-find-files-up-one-level helm-find-files-map))))
-
-(defun personal/init-helm-swoop ()
-  (use-package helm-swoop
-    :init
-    (progn
-      (evil-leader/set-key
-        "ss" 'helm-everything/swoop-no-arg))))
 
 (defun personal/init-evil ()
   "Initialize my package"
