@@ -13,7 +13,7 @@
                                               git-magit-status-fullscreen t)
                                          auctex company-mode fasd pcre2el
                                          restclient)
- dotspacemacs-excluded-packages '())
+ dotspacemacs-excluded-packages '(rainbow-delimiters))
 
 (setq-default
  dotspacemacs-startup-banner 'random
@@ -47,7 +47,7 @@
   )
 
 (defvar user/internal-layers
-  '(theme elisp-extras multiple-cursors helm-everything personal))
+  '(theme shrink-whitespace elisp-extras multiple-cursors helm-everything personal))
 
 (defun user/bootstrap-emacs-config ()
   (shell-command (concat "git clone --recursive " user/spacemacs-repo " " user-emacs-directory))
