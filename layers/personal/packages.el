@@ -129,7 +129,18 @@ which require an initialization must be listed explicitly in the list.")
       (bind-keys :map paredit-mode-map
                  ("M-?" . hippie-expand-lines))
       (defadvice paredit-close-round (after paredit-close-and-indent activate)
-        (cleanup-buffer)))))
+        (cleanup-buffer))
+
+      (eval-after-load 'comment-dwim-2
+        '(progn
+           (--each '(insert visual normal)
+             (evil-declare-key it paredit-mode-map
+               (kbd "M-;") 'comment-dwim-2))))
+      (eval-after-load 'user-utils
+        '(progn
+           (--each '(insert visual normal)
+             (evil-declare-key it paredit-mode-map
+               (kbd "C-w") 'user-utils/kill-region-or-backward-word)))))))
 
 (defun personal/init-comment-dwim-2 ()
   (use-package comment-dwim-2

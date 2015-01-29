@@ -38,30 +38,12 @@ which require an initialization must be listed explicitly in the list.")
     :init
     (progn
       (add-hook 'emacs-lisp-mode-hook 'elisp-extras/prefer-paredit))
-
     :config
     (progn
-
       (evil-declare-key 'insert paredit-mode-map
-        (kbd "C-k") 'paredit-kill)))
-
-  (eval-after-load 'comment-dwim-2
-    '(progn
-       (--each '(insert visual normal)
-         (evil-declare-key it paredit-mode-map
-           (kbd "M-;") 'comment-dwim-2))))
-
-  (eval-after-load 'user-utils
-    '(progn
-       (--each '(insert visual normal)
-         (evil-declare-key it paredit-mode-map
-           (kbd "C-w") 'user-utils/kill-region-or-backward-word)))))
+        (kbd "C-k") 'paredit-kill))))
 
 (defun elisp-extras/init-ipretty ()
   "Initialize ipretty"
   (evil-leader/set-key-for-mode 'emacs-lisp-mode
     "ms" 'ipretty-last-sexp))
-
-;; Often the body of an initialize function uses `use-package'
-;; For more info on `use-package', see readme:
-;; https://github.com/jwiegley/use-package
