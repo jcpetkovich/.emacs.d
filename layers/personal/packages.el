@@ -19,6 +19,9 @@
     helm
     multiple-cursors
     paredit
+    whitespace-cleanup-mode
+    parenface
+    company
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
@@ -226,10 +229,36 @@ which require an initialization must be listed explicitly in the list.")
           (kbd "Q") 'ess-help-quit
           (kbd "q") 'ess-help-quit)))))
 
-;; (add-hook 'R-mode-hook
-;;                   (defun user-utils/R-whitespace-config ()
-;;                     (set (make-local-variable 'whitespace-style)
-;;                          (remove 'empty whitespace-style))))
+(use-package whitespace-cleanup-mode
+  :config
+  (progn
+    (setq-default whitespace-style (remove 'indentation whitespace-style))
+    
+    (global-whitespace-cleanup-mode)
+    (add-hook 'makefile-mode-hook (lambda () (whitespace-cleanup-mode -1)))
+
+    (eval-after-load 'ess-site
+      (add-hook 'R-mode-hook
+                (defun user-utils/R-whitespace-config ()
+                  (set (make-local-variable 'whitespace-style)
+                       (remove 'empty whitespace-style)))))))
+
+(defun personal/init-parenface ()
+  (use-package parenface))
+
+
+(defun personal/init-company ()
+
+  (use-package company
+    :defer t
+    (bind-keys :map company-active-map
+               ("C-n" . company-select-next)
+               ("C-p" . company-select-previous)
+               ("C-h" . help-command)
+               ("C-w" . user-utils/kill-region-or-backward-word)
+               ("C-l" . company-show-location)
+               ("M-1" . nil)
+               ("M-2" . nil))))
 
 ;; (eval-after-load 'user-utils
 ;;   '(progn
