@@ -84,8 +84,8 @@
         user/external-layers)
 
   ;; Initialize internal layers
-  (mapc (lambda (layer) (add-to-list 'dotspacemacs-configuration-layers layer))
-        user/internal-layers))
+  (setq dotspacemacs-configuration-layers
+        (append dotspacemacs-configuration-layers user/internal-layers)))
 
 (defun dotspacemacs/config ()
   "This is were you can ultimately override default Spacemacs configuration.
