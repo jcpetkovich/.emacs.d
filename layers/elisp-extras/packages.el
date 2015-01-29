@@ -42,12 +42,6 @@ which require an initialization must be listed explicitly in the list.")
     :config
     (progn
 
-      (defadvice paredit-close-round (after paredit-close-and-indent activate)
-        (cleanup-buffer))
-
-      (bind-keys :map paredit-mode-map
-                 ("M-?" . hippie-expand-lines))
-
       (evil-declare-key 'insert paredit-mode-map
         (kbd "C-k") 'paredit-kill)))
 
@@ -58,9 +52,10 @@ which require an initialization must be listed explicitly in the list.")
            (kbd "M-;") 'comment-dwim-2))))
 
   (eval-after-load 'user-utils
-    (--each '(insert visual normal)
-      (evil-declare-key it paredit-mode-map
-        (kbd "C-w") 'user-utils/kill-region-or-backward-word))))
+    '(progn
+       (--each '(insert visual normal)
+         (evil-declare-key it paredit-mode-map
+           (kbd "C-w") 'user-utils/kill-region-or-backward-word)))))
 
 (defun elisp-extras/init-ipretty ()
   "Initialize ipretty"

@@ -12,6 +12,14 @@
 (defvar personal-packages
   '(
     evil
+    paredit
+    comment-dwim-2
+    helm
+    multiple-cursors
+    helm-swoop
+    dash
+    evil-leader
+    ess
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
@@ -19,12 +27,202 @@ which require an initialization must be listed explicitly in the list.")
 (defvar personal-excluded-packages '()
   "List of packages to exclude.")
 
+(defun personal/appearance-configs ()
+  (setq-default
+   mouse-wheel-scroll-amount '(1)
+   scroll-conservatively     100000
+   show-paren-style          'expression
+   display-time-day-and-date nil
+   display-time-24hr-format  nil)
+
+  (setq-default frame-title-format
+                (list
+                 '(:eval (if buffer-file-name (buffer-file-name) (buffer-name))))))
+
+(defun personal/editing-configs ()
+  ;; Conven
+  (setq-default recentf-max-saved-items 1000
+                ido-use-virtual-buffers t))
+
+(defadvice dotspacemacs/config (before personal-vars activate)
+  "Overriding spacemacs and other layer defaults."
+  (personal/appearance-configs)
+  (personal/editing-configs)
+
+  (window-numbering-mode -1)
+  ;; This is a good time to load the recentf list
+  (recentf-load-list))
+
+(defun personal/init-multiple-cursors ()
+  (use-package multiple-cursors
+    :init
+    (bind-keys
+     ("M-m" . multiple-cursors/expand-or-mark-next-symbol)
+     ("M-M" . multiple-cursors/expand-or-mark-next-word)
+     ("M-'" . mc/mark-all-dwim)
+     ("C-S-n" . mc/mmlte--down)
+     ("C-S-p" . mc/mmlte--up)
+     ("C-S-f" . mc/mmlte--right)
+     ("C-S-b" . mc/mmlte--left))))
+
+(defun personal/init-helm ()
+  (use-package helm
+    :config
+    (progn
+      (require 'helm-tags)
+      (require 'helm-regexp)
+      (require 'helm-grep)
+      (require 'helm-files)
+      (require 'helm-man)
+
+      (setq-default helm-always-two-windows nil)
+
+      (bind-keys :map helm-map
+                 ("C-i" . helm-execute-persistent-action)
+                 ("C-M-i" . helm-select-action))
+
+      (defvar all-helm-maps '(helm-map
+                              helm-etags-map
+                              helm-moccur-map
+                              helm-grep-map
+                              helm-pdfgrep-map
+                              helm-generic-files-map))
+
+      (bind-keys :map helm-map
+                 ("C-i" . helm-execute-persistent-action)
+                 ("C-M-i" . helm-select-action))
+
+      (bind-keys
+       ("<f1>"                   . helm-resume)
+       ([remap occur]            . helm-occur)
+       ([remap jump-to-register] . helm-register)
+       ([remap find-tag]         . helm-etags-select))
+
+      (-each all-helm-maps
+        (lambda (map)
+          (eval `(bind-keys :map ,map
+                            ("C-w" . user-utils/kill-region-or-backward-word)
+                            ("M-w" . helm-yank-text-at-point)))))
+
+      (bind-key "C-w" 'helm-find-files-up-one-level helm-find-files-map))))
+
+(defun personal/init-helm-swoop ()
+  (use-package helm-swoop
+    :init
+    (progn
+      (evil-leader/set-key
+        "ss" 'helm-everything/swoop-no-arg))))
+
 (defun personal/init-evil ()
   "Initialize my package"
   (use-package evil
-    :config
+    :init
     (progn
-      (setq-default evil-want-C-i-jump nil
-                    evil-symbol-word-search t
+      (setq-default evil-symbol-word-search t
                     evil-cross-lines t
                     evil-esc-delay 0))))
+
+(defun personal/init-paredit ()
+  (use-package paredit
+    :config
+    (progn
+      (bind-keys :map paredit-mode-map
+                 ("M-?" . hippie-expand-lines))
+      (defadvice paredit-close-round (after paredit-close-and-indent activate)
+        (cleanup-buffer)))))
+
+(defun personal/init-comment-dwim-2 ()
+  (use-package comment-dwim-2
+    :init
+    (progn
+      (bind-key "M-;" 'comment-dwim-2))))
+
+(defun personal/init-dash ()
+  (use-package dash
+    :config
+    (dash-enable-font-lock)))
+
+(defun personal/init-ess ()
+  (defadvice load-ess-on-demand (after personal-ess-settings activate)
+    (use-package ess-noweb
+      :defer t
+      :config
+      (progn
+        (defun ess-noweb-post-command-function ()
+          "The hook being run after each command in noweb mode."
+          (condition-case err
+              (ess-noweb-select-mode)
+            (error)))))
+
+    (use-package ess-site
+      :defer t
+      :config
+      (progn 
+        (bind-key "M-;" 'comment-dwim-2 ess-mode-map)
+
+        (evil-leader/set-key-for-mode 'latex-mode "mk" 'ess-swv-knit)
+        (evil-leader/set-key-for-mode 'ess-mode "mk" 'ess-swv-knit
+          "mcn" 'ess-noweb-next-chunk
+          "mcN" 'ess-noweb-previous-chunk
+          "mcc" 'ess-eval-chunk
+          "mcC" 'ess-eval-chunk-and-go
+          "mcd" 'ess-eval-chunk-and-step)
+
+        (setq-default
+         ess-pdf-viewer-pref "zathura"
+         ess-R-font-lock-keywords '((ess-R-fl-keyword:modifiers . t)
+                                    (ess-R-fl-keyword:fun-defs . t)
+                                    (ess-R-fl-keyword:keywords . t)
+                                    (ess-R-fl-keyword:assign-ops . t)
+                                    (ess-R-fl-keyword:constants . t)
+                                    (ess-fl-keyword:fun-calls . t)
+                                    (ess-fl-keyword:numbers . t)
+                                    (ess-fl-keyword:operators . t)
+                                    (ess-fl-keyword:delimiters)
+                                    (ess-fl-keyword:= . t)
+                                    (ess-R-fl-keyword:F&T . t))
+         ess-default-style 'OWN
+         ess-own-style-list '((ess-indent-level . 4)
+                              (ess-continued-statement-offset . 4)
+                              (ess-brace-offset . 0)
+                              (ess-expression-offset . 4)
+                              (ess-else-offset . 0)
+                              (ess-brace-imaginary-offset . 0)
+                              (ess-continued-brace-offset . 0)
+                              (ess-arg-function-offset . 2)
+                              (ess-close-brace-offset . 0))
+
+         inferior-R-font-lock-keywords '((ess-S-fl-keyword:prompt . t)
+                                         (ess-R-fl-keyword:messages . t)
+                                         (ess-R-fl-keyword:modifiers . t)
+                                         (ess-R-fl-keyword:fun-defs . t)
+                                         (ess-R-fl-keyword:keywords . t)
+                                         (ess-R-fl-keyword:assign-ops . t)
+                                         (ess-R-fl-keyword:constants . t)
+                                         (ess-fl-keyword:matrix-labels . t)
+                                         (ess-fl-keyword:fun-calls)
+                                         (ess-fl-keyword:numbers . t)
+                                         (ess-fl-keyword:operators . t)
+                                         (ess-fl-keyword:delimiters)
+                                         (ess-fl-keyword:= . t)
+                                         (ess-R-fl-keyword:F&T . t)))
+
+        (evil-declare-key 'visual ess-mode-map
+          (kbd "<tab>") 'indent-for-tab-command
+          (kbd "C-d") 'evil-scroll-down)
+        (evil-declare-key 'normal inferior-ess-mode-map
+          (kbd "C-d") 'evil-scroll-down)
+        (evil-declare-key 'normal ess-help-mode-map
+          (kbd "Q") 'ess-help-quit
+          (kbd "q") 'ess-help-quit)))))
+
+;; (add-hook 'R-mode-hook
+;;                   (defun user-utils/R-whitespace-config ()
+;;                     (set (make-local-variable 'whitespace-style)
+;;                          (remove 'empty whitespace-style))))
+
+;; (eval-after-load 'user-utils
+;;   '(progn
+;;      (--each '(insert visual normal)
+;;        (evil-declare-key it paredit-mode-map
+;;          (kbd "C-w") 'user-utils/kill-region-or-backward-word))))
