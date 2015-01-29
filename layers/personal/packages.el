@@ -131,7 +131,7 @@ which require an initialization must be listed explicitly in the list.")
       (bind-keys :map paredit-mode-map
                  ("M-?" . hippie-expand-lines))
       (defadvice paredit-close-round (after paredit-close-and-indent activate)
-        (cleanup-buffer))
+        (user-utils/cleanup-buffer))
 
       (eval-after-load 'comment-dwim-2
         '(progn
@@ -170,7 +170,7 @@ which require an initialization must be listed explicitly in the list.")
     (use-package ess-site
       :defer t
       :config
-      (progn 
+      (progn
         (bind-key "M-;" 'comment-dwim-2 ess-mode-map)
 
         (evil-leader/set-key-for-mode 'latex-mode "mk" 'ess-swv-knit)
