@@ -13,13 +13,13 @@
 (defvar helm-everything-packages
   '(
     ;; package helm-everythings go here
-    wgrep-helm
-    helm-swoop
-    helm-descbinds
-    helm-proc
-    helm-company
     helm
     helm-cmd-t
+    helm-company
+    helm-descbinds
+    helm-proc
+    helm-swoop
+    wgrep-helm
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
@@ -54,6 +54,18 @@ which require an initialization must be listed explicitly in the list.")
   "Initialize helm-man"
   (use-package helm-man
     :config (setq-default helm-man-or-woman-function 'woman)))
+
+(defun helm-everything/init-helm-cmd-t ()
+  "Initialize helm-cmd-t"
+  (use-package helm-cmd-t
+    :config
+    (progn
+      (unless helm-source-buffers-list
+        (setq helm-source-buffers-list
+              (helm-make-source "Buffers" 'helm-source-buffers)))
+      (require 'helm-C-x-b)
+      (setf helm-C-x-b-sources (--remove (eq it 'helm-source-cmd-t) helm-C-x-b-sources)
+            helm-C-x-b-sources (-insert-at 1 'helm-source-recentf helm-C-x-b-sources)))))
 
 (defun helm-everything/init-helm ()
   "Initialize helm"
@@ -99,10 +111,7 @@ which require an initialization must be listed explicitly in the list.")
           helm-apropos-fuzzy-match t
           helm-buffers-fuzzy-matching t
           helm-lisp-fuzzy-completion t
-          helm-recentf-fuzzy-match t)
-    
-      )
-    ))
+          helm-recentf-fuzzy-match t))))
 
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
