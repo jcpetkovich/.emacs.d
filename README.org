@@ -47,14 +47,14 @@ To understand these keybindings you must understand the emacs
 *** General Editing
 | Keybinding | Description                    |
 |------------+--------------------------------|
-| =M-RET=    | DWIM newline                   |
-| =C-'==     | Expand Region                  |
-| =C-"==     | Contract Region                |
-| =M-n=      | Grow whitespace around point   |
-| =M-N=      | Shrink whitespace around point |
-| =M-\=      | Shrink whitespace DWIM         |
-| =M-/=      | Hippie Expand                  |
-| =M-?=      | Hippie Expand Line             |
+| ~M-RET~    | DWIM newline                   |
+| ~C-'~      | Expand Region                  |
+| ~C-"~      | Contract Region                |
+| ~M-n~      | Grow whitespace around point   |
+| ~M-N~      | Shrink whitespace around point |
+| ~M-\~      | Shrink whitespace DWIM         |
+| ~M-/~      | Hippie Expand                  |
+| ~M-?~      | Hippie Expand Line             |
 
 *** Multiple Cursors
 | Keybinding | Description                                         |
