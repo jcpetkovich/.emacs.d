@@ -47,7 +47,7 @@
   )
 
 (defvar user/internal-layers
-  '(theme elisp-extras keybindings multiple-cursors personal))
+  '(theme elisp-extras multiple-cursors helm-everything personal))
 
 (defun user/bootstrap-emacs-config ()
   (shell-command (concat "git clone --recursive " user/spacemacs-repo " " user-emacs-directory))
