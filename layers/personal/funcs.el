@@ -11,7 +11,7 @@
 
 ;; add personal functions
 
-(defun user-utils/kill-region-or-backward-word ()
+(defun personal/kill-region-or-backward-word ()
   "If the `region-active-p' returns true, kill the current
 region. If `rectangle-mark-mode' is active, kill the current
 rectangle, otherwise, kill the previous word."
@@ -20,7 +20,7 @@ rectangle, otherwise, kill the previous word."
       (call-interactively 'kill-region)
     (backward-kill-word 1)))
 
-(defun user-utils/save-region-or-current-line (arg)
+(defun personal/save-region-or-current-line (arg)
   "If the `region-active-p' returns true, save the current
 region. If `rectangle-mark-mode' is active, save the current
 rectangle, otherwise, save the current line."
@@ -29,26 +29,26 @@ rectangle, otherwise, save the current line."
       (call-interactively 'kill-ring-save)
     (copy-line arg)))
 
-(defun user-utils/force-revert ()
+(defun personal/force-revert ()
   "Force the buffer to reflect the associated file on disk."
   (interactive)
   (revert-buffer t t))
 
-(defun user-utils/xor (&rest args)
+(defun personal/xor (&rest args)
   "Truthy xor"
   (let ((true-count 0))
     (--each args
       (when it (incf true-count)))
     (equalp 1 true-count)))
 
-(defalias 'move-cursor-next-pane 'user-utils/move-cursor-next-pane)
-(defun user-utils/move-cursor-next-pane ()
+(defalias 'move-cursor-next-pane 'personal/move-cursor-next-pane)
+(defun personal/move-cursor-next-pane ()
   "Move cursor to the next pane."
   (interactive)
   (other-window 1))
 
-(defalias 'move-cursor-previous-pane 'user-utils/move-cursor-previous-pane)
-(defun user-utils/move-cursor-previous-pane ()
+(defalias 'move-cursor-previous-pane 'personal/move-cursor-previous-pane)
+(defun personal/move-cursor-previous-pane ()
   "Move cursor to the previous pane."
   (interactive)
   (other-window -1))
@@ -71,25 +71,25 @@ rectangle, otherwise, save the current line."
          (previous-line))
        (evil-append-line (or count 1)))))
 
-(defun user-utils/evil-visual-or-normal-p ()
+(defun personal/evil-visual-or-normal-p ()
   "True if evil mode is enabled, and we are in normal or visual mode."
   (and (bound-and-true-p evil-mode)
        (not (memq evil-state '(insert emacs)))))
 
-(defun user-utils/untabify-buffer ()
+(defun personal/untabify-buffer ()
   (interactive)
   (untabify (point-min) (point-max)))
 
-(defun user-utils/indent-buffer ()
+(defun personal/indent-buffer ()
   (interactive)
   (indent-region (point-min) (point-max)))
 
-(defun user-utils/cleanup-buffer ()
+(defun personal/cleanup-buffer ()
   "Perform a bunch of operations on the whitespace content of a buffer.
 Including indent-buffer, which should not be called automatically on save."
   (interactive)
-  (user-utils/untabify-buffer)
+  (personal/untabify-buffer)
   (delete-trailing-whitespace)
-  (user-utils/indent-buffer))
+  (personal/indent-buffer))
 
 (provide 'user-utils)

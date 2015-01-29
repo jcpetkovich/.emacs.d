@@ -114,7 +114,7 @@ which require an initialization must be listed explicitly in the list.")
       (-each all-helm-maps
         (lambda (map)
           (eval `(bind-keys :map ,map
-                            ("C-w" . user-utils/kill-region-or-backward-word)
+                            ("C-w" . personal/kill-region-or-backward-word)
                             ("M-w" . helm-yank-text-at-point)))))
 
       (bind-key "C-w" 'helm-find-files-up-one-level helm-find-files-map)
@@ -154,7 +154,7 @@ If no map is found in current source do nothing (keep previous map)."
       (bind-keys :map paredit-mode-map
                  ("M-?" . hippie-expand-lines))
       (defadvice paredit-close-round (after paredit-close-and-indent activate)
-        (user-utils/cleanup-buffer))
+        (personal/cleanup-buffer))
 
       (eval-after-load 'comment-dwim-2
         '(progn
@@ -165,7 +165,7 @@ If no map is found in current source do nothing (keep previous map)."
         '(progn
            (--each '(insert visual normal)
              (evil-declare-key it paredit-mode-map
-               (kbd "C-w") 'user-utils/kill-region-or-backward-word)))))))
+               (kbd "C-w") 'personal/kill-region-or-backward-word)))))))
 
 (defun personal/init-comment-dwim-2 ()
   (use-package comment-dwim-2
@@ -262,7 +262,7 @@ If no map is found in current source do nothing (keep previous map)."
 
     (eval-after-load 'ess-site
       (add-hook 'R-mode-hook
-                (defun user-utils/R-whitespace-config ()
+                (defun personal/R-whitespace-config ()
                   (set (make-local-variable 'whitespace-style)
                        (remove 'empty whitespace-style)))))))
 
@@ -278,7 +278,7 @@ If no map is found in current source do nothing (keep previous map)."
                ("C-n" . company-select-next)
                ("C-p" . company-select-previous)
                ("C-h" . help-command)
-               ("C-w" . user-utils/kill-region-or-backward-word)
+               ("C-w" . personal/kill-region-or-backward-word)
                ("C-l" . company-show-location)
                ("M-1" . nil)
                ("M-2" . nil))))
@@ -287,4 +287,4 @@ If no map is found in current source do nothing (keep previous map)."
 ;;   '(progn
 ;;      (--each '(insert visual normal)
 ;;        (evil-declare-key it paredit-mode-map
-;;          (kbd "C-w") 'user-utils/kill-region-or-backward-word))))
+;;          (kbd "C-w") 'personal/kill-region-or-backward-word))))

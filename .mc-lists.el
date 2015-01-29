@@ -155,7 +155,7 @@
         transpose-words
         undefined
         user-python/smart-delete
-        user-utils/kill-region-or-backward-word
+        personal/kill-region-or-backward-word
         yas-expand
         ))
 
@@ -185,5 +185,5 @@
         toggle-input-method
         user-mc/expand-or-mark-next-symbol
         user-mc/expand-or-mark-next-word
-        user-utils/move-cursor-previous-pane
+        personal/move-cursor-previous-pane
         ))

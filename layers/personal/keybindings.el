@@ -18,4 +18,4 @@
 
 (--each '(insert visual normal)
   (evil-declare-key it paredit-mode-map
-    (kbd "C-w") 'user-utils/kill-region-or-backward-word))
+    (kbd "C-w") 'personal/kill-region-or-backward-word))
