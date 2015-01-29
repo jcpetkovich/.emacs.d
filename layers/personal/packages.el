@@ -42,12 +42,16 @@ which require an initialization must be listed explicitly in the list.")
                  '(:eval (if buffer-file-name (buffer-file-name) (buffer-name))))))
 
 (defun personal/editing-configs ()
-  ;; Conven
   (setq-default recentf-max-saved-items 1000
                 ido-use-virtual-buffers t))
 
 (defun personal/helm-configs ()
   (setq-default helm-always-two-windows nil)
+
+  (bind-keys
+   ("C-x C-b" . helm-C-x-b)
+   ("C-x b" . helm-C-x-b))
+
   (evil-leader/set-key
     "ss" 'helm-everything/swoop-no-arg
     "bs" 'helm-C-x-b
