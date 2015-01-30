@@ -283,6 +283,24 @@ If no map is found in current source do nothing (keep previous map)."
                ("M-1" . nil)
                ("M-2" . nil))))
 
+(defun personal/init-dired-rainbow ()
+  (use-package dired-rainbow
+    :config
+    (progn
+      (defconst dired/media-files-extensions
+        '("mp3" "mp4" "MP3" "MP4" "avi" "mpg" "flv" "ogg")
+        "Media files.")
+      (dired-rainbow-define html "#4e9a06" ("htm" "html" "xhtml"))
+      (dired-rainbow-define media "#ce5c00" dired/media-files-extensions)
+      (dired-rainbow-define-chmod executable-unix "Green" "-.*x.*")
+      (dired-rainbow-define log (:inherit default
+                                          :italic t) ".*\\.log"))))
+
+(defun personal/init-helm-swoop ()
+  (use-package helm-swoop
+    :init
+    (setq helm-swoop-pre-input-function (lambda () ""))))
+
 ;; (eval-after-load 'user-utils
 ;;   '(progn
 ;;      (--each '(insert visual normal)
