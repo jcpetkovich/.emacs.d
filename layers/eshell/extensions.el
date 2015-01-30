@@ -24,8 +24,39 @@
     em-prompt
     em-term
     em-cmpl
+    esh-mode
     )
   "List of all extensions to load after the packages.")
+
+
+
+(defun eshell/init-esh-mode ()
+  (use-package esh-mode
+    :defer t
+    :config
+    (add-hook 'eshell-mode-hook
+              (defun eshell/fix-keys ()
+                (bind-key "M-r" 'helm-eshell-history eshell-mode-map)))))
+
+(defun eshell/init-esh-opt ()
+  (use-package esh-opt
+    :defer t))
+
+(defun eshell/init-em-prompt ()
+  (use-package em-prompt
+    :defer t))
+
+(defun eshell/init-em-term ()
+  (use-package em-term
+    :defer t
+    :config
+    (progn
+      (add-to-list 'eshell-visual-commands "ssh")
+      (add-to-list 'eshell-visual-commands "tail"))))
+
+(defun eshell/init-em-cmpl ()
+  (use-package em-cmpl
+    :defer t))
 
 (defun eshell/init-eshell ()
   (use-package eshell
@@ -34,7 +65,6 @@
     (progn
 
       (defalias 'esh 'eshell/eshell-here)
-      (evil-leader/set-key "ase" 'esh)
 
       (defun eshell/cds ()
         "Change directory to the project's root."
@@ -91,7 +121,11 @@
     :config
     (progn
 
-      (bind-key "M-r" 'helm-eshell-history eshell-mode-map)
+      (require 'esh-mode)
+      (require 'esh-opt)
+      (require 'em-prompt)
+      (require 'em-term)
+      (require 'em-cmpl)
 
       (setq-default eshell-cmpl-cycle-completions nil
                     eshell-save-history-on-exit t
@@ -101,14 +135,13 @@
 
       (setenv "PAGER" "cat")
       (setq eshell-cmpl-cycle-completions nil)
-      (add-to-list 'eshell-visual-commands "ssh")
-      (add-to-list 'eshell-visual-commands "tail")
       (add-to-list 'eshell-command-completions-alist
                    '("gunzip" "gz\\'"))
       (add-to-list 'eshell-command-completions-alist
                    '("tar" "\\(\\.tar|\\.tgz\\|\\.tar\\.gz\\)\\'"))
 
       ;; Plan 9 shell please.
+
       (require 'em-smart)
       (add-hook 'eshell-mode-hook 'eshell-smart-initialize)
 
@@ -125,7 +158,11 @@
                     (let ((inhibit-read-only t))
                       (add-text-properties
                        (save-excursion (beginning-of-line) (point)) (point-max)
-                       '(face esk-eshell-error-prompt-face)))))))))
+                       '(face esk-eshell-error-prompt-face))))))
+
+      (add-hook 'eshell-mode-hook
+                (defun eshell/no-company-please ()
+                  (company-mode -1))))))
 
 ;; For each extension, define a function eshell/init-<extension-eshell>
 ;;
