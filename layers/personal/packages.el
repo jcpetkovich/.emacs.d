@@ -106,7 +106,6 @@ which require an initialization must be listed explicitly in the list.")
   (personal/spacemacs-configs)
   (personal/helm-configs)
 
-  (window-numbering-mode -1)
   ;; This is a good time to load the recentf list
   (recentf-load-list))
 
@@ -301,24 +300,24 @@ If no map is found in current source do nothing (keep previous map)."
           (kbd "C-d") 'evil-scroll-down)
         (evil-declare-key 'normal ess-help-mode-map
           (kbd "Q") 'ess-help-quit
-          (kbd "q") 'ess-help-quit))))
+          (kbd "q") 'ess-help-quit)
+
+        (add-hook 'R-mode-hook
+                  (defun personal/R-whitespace-config ()
+                    (set (make-local-variable 'whitespace-style)
+                         (remove 'empty whitespace-style)))))))
 
   ;; I use R all the time, load it on boot please
   (load-ess-on-demand))
 
-(use-package whitespace-cleanup-mode
-  :init
-  (progn
-    (setq-default whitespace-style (remove 'indentation whitespace-style))
+(defun personal/init-whitespace-cleanup-mode ()
+  (use-package whitespace-cleanup-mode
+    :init
+    (progn
+      (setq-default whitespace-style (remove 'indentation whitespace-style))
 
-    (global-whitespace-cleanup-mode)
-    (add-hook 'makefile-mode-hook (lambda () (whitespace-cleanup-mode -1)))
-
-    (eval-after-load 'ess-site
-      (add-hook 'R-mode-hook
-                (defun personal/R-whitespace-config ()
-                  (set (make-local-variable 'whitespace-style)
-                       (remove 'empty whitespace-style)))))))
+      (global-whitespace-cleanup-mode 1)
+      (add-hook 'makefile-mode-hook (lambda () (whitespace-cleanup-mode -1))))))
 
 (defun personal/init-parenface ()
   (use-package parenface))
