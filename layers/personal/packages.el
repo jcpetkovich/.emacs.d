@@ -11,17 +11,20 @@
 
 (defvar personal-packages
   '(
+    auctex
     comment-dwim-2
+    company
     dash
+    dired-rainbow
     ess
     evil
     evil-leader
     helm
+    helm-swoop
     multiple-cursors
     paredit
-    whitespace-cleanup-mode
     parenface
-    company
+    whitespace-cleanup-mode
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
@@ -42,31 +45,62 @@ which require an initialization must be listed explicitly in the list.")
                  '(:eval (if buffer-file-name (buffer-file-name) (buffer-name))))))
 
 (defun personal/editing-configs ()
-  (setq-default recentf-max-saved-items 1000
-                ido-use-virtual-buffers t))
+  (setq-default
+   ;; Editing
+   major-mode                  'org-mode
+   indent-tabs-mode            nil
+   sentence-end-double-space   nil
+   uniquify-buffer-name-style  'post-forward
+   save-place                  t
+   save-place-file             (concat user-emacs-directory "places")
+   lpr-command                 "xpp"
+   tags-revert-without-query   t
+   tags-table-list             nil
+   ediff-window-setup-function 'ediff-setup-windows-plain
+   recentf-max-saved-items     1000
+   ido-use-virtual-buffers     t
+
+   ;; Backups
+   backup-directory-alist `(("." . ,(expand-file-name (concat user-emacs-directory "backups"))))
+   make-backup-files      t
+   vc-make-backup-files   t
+
+   ;; Copy and Paste
+   x-select-enable-clipboard           t
+   x-select-enable-primary             t
+   save-interprogram-paste-before-kill t
+   mouse-yank-at-point                 t))
+
+(defun personal/spacemacs-configs ()
+  (evil-leader/set-leader "SPC" "C-S-"))
 
 (defun personal/helm-configs ()
-  (setq-default helm-always-two-windows nil)
 
-  (bind-keys
-   ("C-x C-b" . helm-C-x-b)
-   ("C-x b" . helm-C-x-b))
+  (setq-default helm-split-window-default-side 'other
+                helm-always-two-windows nil)
+
+  (bind-key "M-o" 'helm-cmd-t)
 
   (evil-leader/set-key
-    "ss" 'helm-everything/swoop-no-arg
-    "bs" 'helm-C-x-b
-    "o"  'helm-cmd-t
+    "qq" 'spacemacs/save-buffers-kill-emacs
+    "o"  'helm-C-x-b
     "/"  'helm-cmd-t-grep))
 
 (defadvice dotspacemacs/config (before personal-vars activate)
   "Overriding spacemacs and other layer defaults."
   (personal/appearance-configs)
   (personal/editing-configs)
+  (personal/spacemacs-configs)
   (personal/helm-configs)
 
   (window-numbering-mode -1)
   ;; This is a good time to load the recentf list
   (recentf-load-list))
+
+(defun personal/init-auctex ()
+  (use-package tex
+    :config
+    (add-hook 'LaTeX-mode-hook 'turn-on-smartparens-mode)))
 
 (defun personal/init-multiple-cursors ()
   (use-package multiple-cursors
@@ -196,6 +230,9 @@ If no map is found in current source do nothing (keep previous map)."
       (progn
         (bind-key "M-;" 'comment-dwim-2 ess-mode-map)
 
+        (add-hook 'ess-mode-hook 'turn-on-smartparens-strict-mode)
+        (add-hook 'inferior-ess-mode-hook 'smartparens-mode)
+
         (evil-leader/set-key-for-mode 'latex-mode "mk" 'ess-swv-knit)
         (evil-leader/set-key-for-mode 'ess-mode "mk" 'ess-swv-knit
           "mcn" 'ess-noweb-next-chunk
@@ -246,17 +283,21 @@ If no map is found in current source do nothing (keep previous map)."
         (evil-declare-key 'visual ess-mode-map
           (kbd "<tab>") 'indent-for-tab-command
           (kbd "C-d") 'evil-scroll-down)
+
         (evil-declare-key 'normal inferior-ess-mode-map
           (kbd "C-d") 'evil-scroll-down)
         (evil-declare-key 'normal ess-help-mode-map
           (kbd "Q") 'ess-help-quit
-          (kbd "q") 'ess-help-quit)))))
+          (kbd "q") 'ess-help-quit))))
+
+  ;; I use R all the time, load it on boot please
+  (load-ess-on-demand))
 
 (use-package whitespace-cleanup-mode
-  :config
+  :init
   (progn
     (setq-default whitespace-style (remove 'indentation whitespace-style))
-    
+
     (global-whitespace-cleanup-mode)
     (add-hook 'makefile-mode-hook (lambda () (whitespace-cleanup-mode -1)))
 
@@ -274,6 +315,7 @@ If no map is found in current source do nothing (keep previous map)."
 
   (use-package company
     :defer t
+    :config
     (bind-keys :map company-active-map
                ("C-n" . company-select-next)
                ("C-p" . company-select-previous)
