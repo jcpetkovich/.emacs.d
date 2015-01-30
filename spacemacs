@@ -131,6 +131,7 @@ This function is called at the very end of Spacemacs initialization."
    (quote
     ("2f48d3e78a730496187bad754d1ba308f4124463cfd130ad315395c9de116e00" default)))
  '(evil-want-C-i-jump nil)
+ '(paradox-automatically-star nil)
  '(ring-bell-function (quote ignore) t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
