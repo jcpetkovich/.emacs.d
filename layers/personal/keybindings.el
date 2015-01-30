@@ -14,8 +14,23 @@
  ("M-1" . delete-other-windows)
  ("M-!" . delete-window)
  ("M-2" . split-window-vertically)
- ("M-@" . split-window-horizontally))
+ ("M-@" . split-window-horizontally)
+ ("M-j" . personal/move-cursor-next-pane)
+ ("M-k" . personal/move-cursor-previous-pane))
 
 (--each '(insert visual normal)
   (evil-declare-key it paredit-mode-map
     (kbd "C-w") 'personal/kill-region-or-backward-word))
+
+(defun annoying ()
+  (interactive)
+  (message "Try something else"))
+
+(bind-keys
+ ("C-x C-f" . annoying)
+ ("C-x C-b" . annoying)
+ ("C-x b" . annoying)
+ ("C-x C-s" . annoying)
+ ([remap ido-find-file] . helm-find-files)
+ ([remap ido-kill-buffer] . kill-buffer)
+ ([remap ido-switch-buffer] . helm-C-x-b))
