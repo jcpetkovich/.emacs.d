@@ -36,4 +36,5 @@
  ([remap ido-switch-buffer] . helm-C-x-b))
 
 (evil-leader/set-key
-  "am" 'emms-smart-browse)
+  "am" 'emms-smart-browse
+  "ase" 'esh)
