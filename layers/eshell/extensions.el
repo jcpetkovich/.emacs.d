@@ -141,7 +141,6 @@
                    '("tar" "\\(\\.tar|\\.tgz\\|\\.tar\\.gz\\)\\'"))
 
       ;; Plan 9 shell please.
-
       (require 'em-smart)
       (add-hook 'eshell-mode-hook 'eshell-smart-initialize)
 
