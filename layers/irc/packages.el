@@ -130,9 +130,9 @@ This doesn't support the chanserv auth method"
       (add-to-list 'rcirc-markup-text-functions
                    't.co-url-replace)
 
-      (require 'rcirc-notify)
-      (rcirc-notify-add-hooks)
-      (add-to-list 'evil-insert-state-modes 'rcirc-mode))))
+      (defadvice rcirc (after add-notify-hooks activate)
+        (require 'rcirc-notify)
+        (rcirc-notify-add-hooks)))))
 
 
 (defun irc/init-rcirc-notify ()

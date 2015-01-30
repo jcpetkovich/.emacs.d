@@ -27,13 +27,6 @@ which require an initialization must be listed explicitly in the list.")
 (defvar helm-everything-excluded-packages '()
   "List of packages to exclude.")
 
-(defun helm-everything/swoop-no-arg (arg)
-  "Helm swoop, but without a default argument"
-  (interactive "P")
-  (if arg
-      (helm-swoop :$multiline nil)
-    (helm-swoop :$query "" :$multiline nil)))
-
 ;; For each package, define a function helm-everything/init-<package-helm-everything>
 
 (defun helm-everything/init-helm-swoop ()
@@ -46,9 +39,7 @@ which require an initialization must be listed explicitly in the list.")
   (use-package helm-descbinds
     :defer t
     :init
-    (progn
-      (evil-leader/set-key "hdb" 'helm-descbinds)
-      (helm-descbinds-mode 1))))
+    (helm-descbinds-mode 1)))
 
 (defun helm-everything/init-helm-man ()
   "Initialize helm-man"
