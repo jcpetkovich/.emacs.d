@@ -19,6 +19,7 @@
     helm-descbinds
     helm-proc
     helm-swoop
+    helm-gtags
     wgrep-helm
     )
   "List of all packages to install and/or initialize. Built-in packages
@@ -76,33 +77,49 @@ which require an initialization must be listed explicitly in the list.")
     :config
     (progn
 
-    (require 'helm-tags)
-    (require 'helm-regexp)
-    (require 'helm-grep)
-    (require 'helm-files)
-    (require 'helm-man)
+      (require 'helm-tags)
+      (require 'helm-regexp)
+      (require 'helm-grep)
+      (require 'helm-files)
+      (require 'helm-man)
 
-    (helm-mode 1)
-    (helm-adaptive-mode 1)
-    (recentf-mode 1)
+      (helm-mode 1)
+      (helm-adaptive-mode 1)
+      (recentf-mode 1)
 
-    (setq helm-quick-update t
-          helm-idle-delay 0.01
-          helm-input-idle-delay 0.01
-          helm-m-occur-idle-delay 0.01
-          helm-exit-idle-delay 0.1
-          helm-candidate-number-limit 200
-          helm-ff-search-library-in-sexp t
-          helm-ff-file-name-history-use-recentf t
-          helm-home-url "https://www.google.ca"
-          helm-follow-mode-persistent t
+      (setq helm-quick-update t
+            helm-idle-delay 0.01
+            helm-input-idle-delay 0.01
+            helm-m-occur-idle-delay 0.01
+            helm-exit-idle-delay 0.1
+            helm-candidate-number-limit 200
+            helm-ff-search-library-in-sexp t
+            helm-ff-file-name-history-use-recentf t
+            helm-home-url "https://www.google.ca"
+            helm-follow-mode-persistent t
 
-          ;; fuzzy completion
-          helm-M-x-fuzzy-match t
-          helm-apropos-fuzzy-match t
-          helm-buffers-fuzzy-matching t
-          helm-lisp-fuzzy-completion t
-          helm-recentf-fuzzy-match t))))
+            ;; fuzzy completion
+            helm-M-x-fuzzy-match t
+            helm-apropos-fuzzy-match t
+            helm-buffers-fuzzy-matching t
+            helm-lisp-fuzzy-completion t
+            helm-recentf-fuzzy-match t))))
+
+(defun helm-everything/init-helm-gtags ()
+  (use-package helm-gtags
+    :config
+    (progn
+      (--each '(normal insert)
+        (evil-declare-key it helm-gtags-mode-map
+          (kbd "M-.") 'helm-gtags-dwim
+          (kbd "M-,") 'helm-gtags-pop-stack))
+
+      (--each '(c-mode-hook
+                c++-mode-hook
+                coffee-mode-hook
+                cperl-mode-hook
+                sh-mode-hook)
+        (add-hook it 'helm-gtags-mode)))))
 
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
