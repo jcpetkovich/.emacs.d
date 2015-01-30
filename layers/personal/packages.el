@@ -16,14 +16,19 @@
     company
     dash
     dired-rainbow
+    emms
+    emr
     ess
     evil
     evil-leader
     helm
     helm-swoop
+    magit
     multiple-cursors
+    paradox
     paredit
     parenface
+    prodigy
     whitespace-cleanup-mode
     )
   "List of all packages to install and/or initialize. Built-in packages
@@ -73,6 +78,14 @@ which require an initialization must be listed explicitly in the list.")
 
 (defun personal/spacemacs-configs ()
   (evil-leader/set-leader "SPC" "C-S-"))
+
+(defun load-secrets ()
+  (load (concat user/spacemacs-d-path "secrets.el.gpg")))
+
+(defun personal/init-paradox ()
+  (use-package paradox
+    :config
+    (load-secrets)))
 
 (defun personal/helm-configs ()
 
@@ -312,7 +325,6 @@ If no map is found in current source do nothing (keep previous map)."
 
 
 (defun personal/init-company ()
-
   (use-package company
     :defer t
     :config
@@ -342,6 +354,53 @@ If no map is found in current source do nothing (keep previous map)."
   (use-package helm-swoop
     :init
     (setq helm-swoop-pre-input-function (lambda () ""))))
+
+(defun personal/init-emms ()
+  (use-package emms
+    :config
+    (progn
+      (emms-standard)
+      (setq emms-player-list '(emms-player-mpd))
+      (emms-devel)
+      (defadvice emms-browser-mode (after use-emacs-mode-please activate)
+        (evil-emacs-state))
+      (--each '(emms-browser-mode emms-playlist-mode)
+        (add-to-list 'evil-emacs-state-modes it)))))
+
+(defun personal/init-emr ()
+  (use-package emr
+    :commands emr-initialize
+    :init (evil-leader/set-key "ar" 'emr-initialize)
+    :config
+    (req-package emr
+                 :commands emr-initialize
+                 :init (add-hook 'prog-mode-hook 'emr-initialize))))
+
+(defun personal/init-prodigy ()
+  (use-package prodigy
+    :init (evil-leader/set-key "aS" 'prodigy)
+    :config
+    (progn
+      (add-to-list 'evil-emacs-state-modes 'prodigy-mode)
+      (prodigy-define-service
+        :name "Leiningen"
+        :command "lein"
+        :args '("repl" ":headless")
+        :cwd user-emacs-directory
+        :tags '(clojure)
+        :stop-signal 'int
+        :kill-process-buffer-on-stop t))))
+
+(defun personal/init-magit ()
+  (use-package magit
+    :config
+    (progn
+      (defadvice magit-show-level-4 (after user-magit/center-after-move activate)
+        (recenter))
+      (defadvice magit-goto-next-sibling-section (after user-magit/center-after-move activate)
+        (recenter))
+      (defadvice magit-goto-previous-sibling-section (after user-magit/center-after-move activate)
+        (recenter)))))
 
 ;; (eval-after-load 'user-utils
 ;;   '(progn
