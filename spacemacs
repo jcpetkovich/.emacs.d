@@ -47,7 +47,15 @@
   )
 
 (defvar user/internal-layers
-  '(theme shrink-whitespace elisp-extras multiple-cursors helm-everything journal irc personal))
+  '(theme
+    shrink-whitespace
+    elisp-extras
+    multiple-cursors
+    helm-everything
+    journal
+    irc
+    email
+    personal))
 
 (defun user/bootstrap-emacs-config ()
   (shell-command (concat "git clone --recursive " user/spacemacs-repo " " user-emacs-directory))
