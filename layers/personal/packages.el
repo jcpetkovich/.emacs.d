@@ -89,7 +89,6 @@ which require an initialization must be listed explicitly in the list.")
     (load-secrets)))
 
 (defun personal/helm-configs ()
-
   (setq-default helm-split-window-default-side 'other
                 helm-always-two-windows nil)
 
@@ -113,7 +112,8 @@ which require an initialization must be listed explicitly in the list.")
 (defun personal/init-auctex ()
   (use-package tex
     :config
-    (add-hook 'LaTeX-mode-hook 'turn-on-smartparens-mode)))
+    (progn
+      (add-hook 'LaTeX-mode-hook 'turn-on-smartparens-mode))))
 
 (defun personal/init-multiple-cursors ()
   (use-package multiple-cursors
