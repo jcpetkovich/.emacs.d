@@ -30,9 +30,9 @@ which require an initialization must be listed explicitly in the list.")
       (add-to-list 'org-modules 'org-timer)
       (add-to-list 'org-modules 'org-habit)
 
+      (add-hook 'org-mode-hook (defun journal/org-bullets ()
+                                 (org-bullets-mode 1)))
       (setq-default
-       org-hide-leading-stars  t
-       org-odd-levels-only     t
        org-directory           "~/journal"
        journal/entries        (concat org-directory "/entries")
        org-agenda-files        (list org-directory journal/entries)
