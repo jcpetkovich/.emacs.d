@@ -59,8 +59,6 @@ which require an initialization must be listed explicitly in the list.")
    indent-tabs-mode            nil
    sentence-end-double-space   nil
    uniquify-buffer-name-style  'post-forward
-   save-place                  t
-   save-place-file             (concat user-emacs-directory "places")
    lpr-command                 "xpp"
    tags-revert-without-query   t
    tags-table-list             nil
