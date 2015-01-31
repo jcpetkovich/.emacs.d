@@ -25,9 +25,9 @@ which require an initialization must be listed explicitly in the list.")
 (defun multiple-cursors/init-multiple-cursors ()
   "Initialize multiple cursors"
   (use-package multiple-cursors
-    :init
+    :defer t
+    :config
     (progn
-      (require 'mc-mark-more)
       (multiple-cursors/enable-compat))))
 
 (defun multiple-cursors/init-expand-region ()
