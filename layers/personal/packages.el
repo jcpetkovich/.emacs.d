@@ -77,6 +77,14 @@ which require an initialization must be listed explicitly in the list.")
    save-interprogram-paste-before-kill t
    mouse-yank-at-point                 t))
 
+(defun personal/org-mode-configs ()
+  (use-package evil-org
+    :config
+    (--each '(insert normal)
+      (evil-declare-key it evil-org-mode-map
+        (kbd "M-k") 'personal/move-cursor-previous-pane
+        (kbd "M-j") 'personal/move-cursor-next-pane))))
+
 (defun personal/spacemacs-configs ()
   (evil-leader/set-leader "SPC" "C-S-"))
 
@@ -105,6 +113,7 @@ which require an initialization must be listed explicitly in the list.")
   (personal/editing-configs)
   (personal/spacemacs-configs)
   (personal/helm-configs)
+  (personal/org-mode-configs)
 
   ;; This is a good time to load the recentf list
   (recentf-load-list))
