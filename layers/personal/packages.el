@@ -79,6 +79,7 @@ which require an initialization must be listed explicitly in the list.")
 
 (defun personal/org-mode-configs ()
   (use-package evil-org
+    :commands evil-org-mode
     :config
     (--each '(insert normal)
       (evil-declare-key it evil-org-mode-map
