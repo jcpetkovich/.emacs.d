@@ -11,10 +11,10 @@
 ;;; License: GPLv3
 
 (bind-keys
- ("M-1" . delete-other-windows)
- ("M-!" . delete-window)
- ("M-2" . split-window-vertically)
- ("M-@" . split-window-horizontally)
+ ;; ("M-1" . delete-other-windows)
+ ;; ("M-!" . delete-window)
+ ;; ("M-2" . split-window-vertically)
+ ;; ("M-@" . split-window-horizontally)
  ("M-j" . personal/move-cursor-next-pane)
  ("M-k" . personal/move-cursor-previous-pane))
 
