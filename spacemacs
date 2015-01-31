@@ -55,7 +55,7 @@
 
 (defvar user/external-layers
   '(
-;;    ("git@github.com:jcpetkovich/spacemacs.elisp-extras" . elisp-extras)
+    ;;    ("git@github.com:jcpetkovich/spacemacs.elisp-extras" . elisp-extras)
     )
   )
 
