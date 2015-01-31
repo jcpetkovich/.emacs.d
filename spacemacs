@@ -7,13 +7,26 @@
 
 (setq-default
  dotspacemacs-configuration-layer-path '("~/.spacemacs.d/layers/")
- dotspacemacs-configuration-layers '(ess clojure c-c++ erlang-elixir go
-                                         html javascript python ruby
-                                         (git :variables
-                                              git-magit-status-fullscreen t)
-                                         auctex company-mode fasd pcre2el
-                                         restclient)
- dotspacemacs-excluded-packages '(rainbow-delimiters))
+ dotspacemacs-configuration-layers '(
+                                     (git :variables
+                                          git-magit-status-fullscreen t)
+                                     auctex
+                                     c-c++
+                                     clojure
+                                     colors
+                                     company-mode
+                                     erlang-elixir
+                                     ess
+                                     fasd
+                                     go
+                                     html
+                                     javascript
+                                     pcre2el
+                                     python
+                                     restclient
+                                     ruby
+                                     )
+ dotspacemacs-excluded-packages '())
 
 (setq-default
  dotspacemacs-startup-banner 'random
