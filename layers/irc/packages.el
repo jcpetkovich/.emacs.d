@@ -24,6 +24,8 @@ which require an initialization must be listed explicitly in the list.")
 
 (defun irc/init-rcirc ()
   (use-package rcirc
+    :commands rcirc
+    :defer t
     :config
     (progn
       (require 's)
@@ -143,5 +145,4 @@ This doesn't support the chanserv auth method"
   (use-package rcirc-color
     :defer t
     :config
-    (progn
-      (set-default rcirc-color-is-deterministic t))))
+    (setq-default rcirc-color-is-deterministic t)))
