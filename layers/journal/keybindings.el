@@ -47,8 +47,8 @@
         (org-todo "MIGR")))))
 
 
-(spacemacs/declare-prefix "l" "journal")
+(spacemacs/declare-prefix "," "journal")
 (evil-leader/set-key
-  "ll" 'journal/open-todays-log
-  "la" 'org-agenda
-  "lc" 'org-capture)
+  ",," 'journal/open-todays-log
+  ",a" 'org-agenda
+  ",c" 'org-capture)
