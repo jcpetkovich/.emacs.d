@@ -33,7 +33,8 @@
  ("C-x C-s" . annoying)
  ([remap ido-find-file] . helm-find-files)
  ([remap ido-kill-buffer] . kill-buffer)
- ([remap ido-switch-buffer] . helm-C-x-b))
+ ([remap ido-switch-buffer] . helm-C-x-b)
+ ([remap rgrep] . helm-do-grep))
 
 (evil-leader/set-key
   "am" 'emms-smart-browse
