@@ -22,20 +22,6 @@
   (evil-declare-key it paredit-mode-map
     (kbd "C-w") 'personal/kill-region-or-backward-word))
 
-(defun annoying ()
-  (interactive)
-  (message "Try something else"))
-
-(bind-keys
- ("C-x C-f" . annoying)
- ("C-x C-b" . annoying)
- ("C-x b" . annoying)
- ("C-x C-s" . annoying)
- ([remap ido-find-file] . helm-find-files)
- ([remap ido-kill-buffer] . kill-buffer)
- ([remap ido-switch-buffer] . helm-C-x-b)
- ([remap rgrep] . helm-do-grep))
-
 (evil-leader/set-key
   "am" 'emms-smart-browse
   "ase" 'esh)

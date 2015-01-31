@@ -94,6 +94,7 @@ which require an initialization must be listed explicitly in the list.")
 
 (defun personal/init-paradox ()
   (use-package paradox
+    :defer t
     :config
     (load-secrets)))
 
@@ -108,6 +109,19 @@ which require an initialization must be listed explicitly in the list.")
     "o"  'helm-C-x-b
     "/"  'helm-cmd-t-grep))
 
+(defun personal/keybinding-configs ()
+
+  (defun annoying ()
+    (interactive)
+    (message "Try something else"))
+
+  (bind-keys
+   ("C-x C-f" . annoying)
+   ("C-x C-b" . annoying)
+   ("C-x b" . annoying)
+   ("C-x C-s" . annoying)
+   ("C-x k" . annoying)))
+
 (defadvice dotspacemacs/config (before personal-vars activate)
   "Overriding spacemacs and other layer defaults."
   (personal/appearance-configs)
@@ -115,18 +129,18 @@ which require an initialization must be listed explicitly in the list.")
   (personal/spacemacs-configs)
   (personal/helm-configs)
   (personal/org-mode-configs)
-
-  ;; This is a good time to load the recentf list
-  (recentf-load-list))
+  (personal/keybinding-configs))
 
 (defun personal/init-auctex ()
   (use-package tex
+    :defer t
     :config
     (progn
       (add-hook 'LaTeX-mode-hook 'turn-on-smartparens-mode))))
 
 (defun personal/init-multiple-cursors ()
   (use-package multiple-cursors
+    :defer t
     :init
     (bind-keys
      ("M-m" . multiple-cursors/expand-or-mark-next-symbol)
@@ -139,6 +153,7 @@ which require an initialization must be listed explicitly in the list.")
 
 (defun personal/init-helm ()
   (use-package helm
+    :defer t
     :config
     (progn
       (require 'helm-tags)
@@ -206,6 +221,7 @@ If no map is found in current source do nothing (keep previous map)."
 
 (defun personal/init-paredit ()
   (use-package paredit
+    :defer t
     :config
     (progn
       (bind-keys :map paredit-mode-map
@@ -226,12 +242,14 @@ If no map is found in current source do nothing (keep previous map)."
 
 (defun personal/init-comment-dwim-2 ()
   (use-package comment-dwim-2
+    :commands comment-dwim-2
     :init
     (progn
       (bind-key "M-;" 'comment-dwim-2))))
 
 (defun personal/init-dash ()
   (use-package dash
+    :defer t
     :config
     (dash-enable-font-lock)))
 
@@ -319,11 +337,15 @@ If no map is found in current source do nothing (keep previous map)."
                          (remove 'empty whitespace-style)))))))
 
   ;; I use R all the time, load it on boot please
-  (load-ess-on-demand))
+  ;; (load-ess-on-demand)
+  )
 
 (defun personal/init-whitespace-cleanup-mode ()
   (use-package whitespace-cleanup-mode
-    :init
+    :init (add-hook 'prog-mode
+                    (defun personal/turn-on-whitespace-cleanup ()
+                      (global-whitespace-cleanup-mode 1)))
+    :config
     (progn
       (setq-default whitespace-style (remove 'indentation whitespace-style))
 
@@ -362,11 +384,13 @@ If no map is found in current source do nothing (keep previous map)."
 
 (defun personal/init-helm-swoop ()
   (use-package helm-swoop
+    :commands (helm-swoop helm-multi-swoop)
     :init
     (setq helm-swoop-pre-input-function (lambda () ""))))
 
 (defun personal/init-emms ()
   (use-package emms
+    :commands emms-smart-browse
     :config
     (progn
       (emms-standard)
@@ -387,6 +411,7 @@ If no map is found in current source do nothing (keep previous map)."
 (defun personal/init-prodigy ()
   (use-package prodigy
     :init (evil-leader/set-key "aS" 'prodigy)
+    :commands prodigy
     :config
     (progn
       (add-to-list 'evil-emacs-state-modes 'prodigy-mode)
@@ -401,6 +426,7 @@ If no map is found in current source do nothing (keep previous map)."
 
 (defun personal/init-magit ()
   (use-package magit
+    :defer t
     :config
     (progn
       (defadvice magit-show-level-4 (after user-magit/center-after-move activate)

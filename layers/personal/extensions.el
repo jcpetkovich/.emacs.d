@@ -19,8 +19,6 @@
   '(
     ;; personals go here
     simple
-    mu4e
-    rcirc
     hippie-expand
     dired
     wdired
@@ -66,10 +64,12 @@
             (progn (backward-delete-char 1) (forward-char)))))))
 
 (defun personal/init-wdired ()
-  (use-package wdired))
+  (use-package wdired
+    :defer t))
 
 (defun personal/init-dired ()
   (use-package dired
+    :defer t
     :config
     (progn
       (require 'wdired)
