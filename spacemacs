@@ -45,7 +45,7 @@
  dotspacemacs-smartparens-strict-mode t
  dotspacemacs-persistent-server t
  dotspacemacs-default-package-repository nil
- dotspacemacs-default-font '("Sauce Code Powerline" :size 7 :weight normal :width normal :powerline-offset 2))
+ dotspacemacs-default-font '("Sauce Code Powerline" :size 14 :weight normal :width normal :powerline-offset 2))
 
 ;; Initialization Hooks
 ;; --------------------
