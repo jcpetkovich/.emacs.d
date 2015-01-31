@@ -15,9 +15,7 @@
     ;; package helm-everythings go here
     helm
     helm-cmd-t
-    helm-company
     helm-descbinds
-    helm-proc
     helm-swoop
     helm-gtags
     wgrep-helm
@@ -39,40 +37,53 @@ which require an initialization must be listed explicitly in the list.")
   "Initialize helm-descbinds"
   (use-package helm-descbinds
     :defer t
-    :init
+    :config
     (helm-descbinds-mode 1)))
 
 (defun helm-everything/init-helm-man ()
   "Initialize helm-man"
   (use-package helm-man
+    :commands helm-man
     :config (setq-default helm-man-or-woman-function 'woman)))
 
 (defun helm-everything/init-helm-cmd-t ()
   "Initialize helm-cmd-t"
+  (use-package helm-C-x-b
+    :commands (helm-C-x-b)
+    :config
+    (setf helm-C-x-b-sources (--remove (eq it 'helm-source-cmd-t) helm-C-x-b-sources)
+          helm-C-x-b-sources (-insert-at 1 'helm-source-recentf helm-C-x-b-sources)))
+
   (use-package helm-cmd-t
+    :commands (helm-cmd-t)
     :config
     (progn
       (unless helm-source-buffers-list
         (setq helm-source-buffers-list
-              (helm-make-source "Buffers" 'helm-source-buffers)))
-      (require 'helm-C-x-b)
-      (setf helm-C-x-b-sources (--remove (eq it 'helm-source-cmd-t) helm-C-x-b-sources)
-            helm-C-x-b-sources (-insert-at 1 'helm-source-recentf helm-C-x-b-sources)))))
+              (helm-make-source "Buffers" 'helm-source-buffers))))))
 
 (defun helm-everything/init-helm ()
   "Initialize helm"
   (use-package helm
+    :defer t
     :init
     (progn
-      (bind-keys
-       ("M-x"       . helm-M-x)
-       ("M-y"       . helm-show-kill-ring)
-       ("C-x C-f"   . helm-find-files)
-       ("C-h r"     . helm-info-emacs)
-       ("C-h d"     . helm-info-at-point)
-       ("C-x C-d"   . helm-browse-project)
-       ("C-h C-f"   . helm-apropos)
-       ("C-h a"     . helm-apropos)))
+
+      (if helm-everything/really-everything
+          (bind-keys
+           ([remap ido-find-file] . helm-find-files)
+           ([remap ido-kill-buffer] . kill-buffer)
+           ([remap ido-switch-buffer] . helm-C-x-b)
+           ([remap rgrep] . helm-do-grep)
+           ("M-x"       . helm-M-x)
+           ("M-y"       . helm-show-kill-ring)
+           ("C-x k"     . kill-buffer)
+           ("C-x C-f"   . helm-find-files)
+           ("C-h r"     . helm-info-emacs)
+           ("C-h d"     . helm-info-at-point)
+           ("C-x C-d"   . helm-browse-project)
+           ("C-h C-f"   . helm-apropos)
+           ("C-h a"     . helm-apropos))))
 
     :config
     (progn
@@ -107,7 +118,8 @@ which require an initialization must be listed explicitly in the list.")
 
 (defun helm-everything/init-helm-gtags ()
   (use-package helm-gtags
-    :config
+    :defer t
+    :init
     (progn
       (--each '(normal insert)
         (evil-declare-key it helm-gtags-mode-map

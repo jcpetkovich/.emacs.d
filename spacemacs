@@ -64,7 +64,8 @@
     elisp-extras
     email
     eshell
-    helm-everything
+    (helm-everything :variables
+                     helm-everything/really-everything t)
     irc
     journal
     multiple-cursors
