@@ -43,11 +43,14 @@ which require an initialization must be listed explicitly in the list.")
    scroll-conservatively     100000
    show-paren-style          'expression
    display-time-day-and-date nil
-   display-time-24hr-format  nil)
+   display-time-24hr-format  nil
 
-  (setq-default frame-title-format
-                (list
-                 '(:eval (if buffer-file-name (buffer-file-name) (buffer-name))))))
+   frame-title-format
+   (list
+    '(:eval (if buffer-file-name (buffer-file-name) (buffer-name)))))
+
+  ;; (window-numbering-mode -1)
+  (golden-ratio-mode 1))
 
 (defun personal/editing-configs ()
   (setq-default
