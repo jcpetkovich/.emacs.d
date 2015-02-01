@@ -16,7 +16,9 @@
  ;; ("M-2" . split-window-vertically)
  ;; ("M-@" . split-window-horizontally)
  ("M-j" . personal/move-cursor-next-pane)
- ("M-k" . personal/move-cursor-previous-pane))
+ ("M-k" . personal/move-cursor-previous-pane)
+ ("<M-return>" . personal/new-line-dwim)
+ ("M-RET" . personal/new-line-dwim))
 
 (--each '(insert visual normal)
   (evil-declare-key it paredit-mode-map

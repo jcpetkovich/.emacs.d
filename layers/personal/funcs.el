@@ -92,4 +92,17 @@ Including indent-buffer, which should not be called automatically on save."
   (delete-trailing-whitespace)
   (personal/indent-buffer))
 
+(defun personal/new-line-dwim ()
+  (interactive)
+  (let ((break-open-pair (or (and (looking-back "{" 1) (looking-at "}"))
+                             (and (looking-back ">" 1) (looking-at "<"))
+                             (and (looking-back "(" 1) (looking-at ")"))
+                             (and (looking-back "\\[" 1) (looking-at "\\]")))))
+    (newline)
+    (when break-open-pair
+      (save-excursion
+        (newline)
+        (indent-for-tab-command)))
+    (indent-for-tab-command)))
+
 (provide 'user-utils)
