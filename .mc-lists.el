@@ -4,12 +4,19 @@
 (setq mc/cmds-to-run-for-all
       '(
         TeX-insert-sub-or-superscript
+        evil-escape-emacs-state
+        evil-insert
         evil-insert-state
         evil-lisp-state-sp-forward-barf-sexp
         evil-lisp-state-sp-forward-slurp-sexp
         evil-lisp-state-wrap
         evil-normal-state
+        helm-show-kill-ring
         lisp-state-forward-symbol
+        org-beginning-of-line
+        org-end-of-line
+        org-force-self-insert
+        org-kill-line
         org-metaright
         org-self-insert-command
         org-shiftright
@@ -19,10 +26,13 @@
         paredit-kill
         paredit-newline
         paredit-open-round
+        sp-backward-delete-char
         sp-backward-kill-word
         sp-backward-symbol
+        sp-delete-char
         sp-end-of-sexp
         sp-forward-slurp-sexp
+        sp-kill-hybrid-sexp
         sp-kill-word
         yas-expand
         ))
@@ -30,6 +40,6 @@
 (setq mc/cmds-to-run-once
       '(
         elisp-slime-nav-find-elisp-thing-at-point
-        evil-escape-emacs-state
+        helm-M-x
         multiple-cursors/expand-or-mark-next-symbol
         ))
