@@ -44,3 +44,6 @@
           (org-todo "DONE")
         (org-todo "MIGR")))))
 
+(defun journal/quick-capture-todo ()
+  (interactive)
+  (org-capture nil "t"))

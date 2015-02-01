@@ -12,43 +12,9 @@
 
 ;; add journal funcs
 
-(defun journal/find-bullet-journal ()
-  (concat journal/entries "/" (format-time-string "%Y-%m-%d") ".org"))
-
-(defun journal/find-and-hide-log ()
-  (set-buffer (find-file-noselect (journal/find-bullet-journal)))
-  (goto-char (point-min)))
-
-(defun journal/open-todays-log ()
-  (interactive)
-  (find-file-other-window (journal/find-bullet-journal)))
-
-(defun journal/migrate ()
-  (interactive)
-  (let ((old-todo-state (org-get-todo-state)))
-    (save-excursion
-      (journal/find-and-hide-log)
-      (let ((buffer-has-no-headings
-             (condition-case err
-                 (progn (re-search-forward "^\*")
-                        nil)
-               (error t))))
-
-        (when buffer-has-no-headings
-          (goto-char (point-min))
-          (insert "* Personal\n* Work\n"))))
-
-    (let ((org-refile-targets '((journal/find-bullet-journal :level . 1))))
-      (when (equal old-todo-state "DONE")
-        (org-todo "TODO"))
-      (org-copy)
-      (if (equal old-todo-state "DONE")
-          (org-todo "DONE")
-        (org-todo "MIGR")))))
-
-
 (spacemacs/declare-prefix "," "journal")
 (evil-leader/set-key
   ",," 'journal/open-todays-log
   ",a" 'org-agenda
-  ",c" 'org-capture)
+  ",c" 'org-capture
+  ",t" 'journal/quick-capture-todo)
