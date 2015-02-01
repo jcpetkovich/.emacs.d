@@ -24,10 +24,16 @@ which require an initialization must be listed explicitly in the list.")
 ;; For each package, define a function multiple-cursors/init-<package-multiple-cursors>
 (defun multiple-cursors/init-multiple-cursors ()
   "Initialize multiple cursors"
+  (use-package mc-mark-more
+    :commands (mc/region-strings)
+    :config
+    (require 'multiple-cursors))
+
   (use-package multiple-cursors
     :defer t
     :config
     (progn
+      (require 'mc-mark-more)
       (multiple-cursors/enable-compat))))
 
 (defun multiple-cursors/init-expand-region ()
