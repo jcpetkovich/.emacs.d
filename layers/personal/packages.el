@@ -63,7 +63,6 @@ which require an initialization must be listed explicitly in the list.")
    tags-revert-without-query   t
    tags-table-list             nil
    ediff-window-setup-function 'ediff-setup-windows-plain
-   recentf-max-saved-items     1000
    ido-use-virtual-buffers     t
 
    ;; Backups
@@ -99,6 +98,16 @@ which require an initialization must be listed explicitly in the list.")
     (load-secrets)))
 
 (defun personal/helm-configs ()
+
+  ;; I prefer my own grep wrapper.
+  (defun helm-do-grep-wrapper (arg)
+    (interactive "P")
+    (let ((current-prefix-arg (not arg)))
+      (helm-do-grep)))
+
+  (bind-keys
+   ([remap rgrep] . helm-do-grep-wrapper))
+
   (setq-default helm-split-window-default-side 'other
                 helm-always-two-windows nil)
 
