@@ -239,10 +239,7 @@ an item line."
                  ("C-M-i" . helm-select-action))
 
       (bind-keys
-       ("<f1>"                   . helm-resume)
-       ([remap occur]            . helm-occur)
-       ([remap jump-to-register] . helm-register)
-       ([remap find-tag]         . helm-etags-select))
+       ("<f1>"                   . helm-resume))
 
       (-each all-helm-maps
         (lambda (map)
