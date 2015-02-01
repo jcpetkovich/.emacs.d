@@ -34,6 +34,8 @@ which require an initialization must be listed explicitly in the list.")
     :config
     (progn
       (require 'mc-mark-more)
+      (bind-keys :map mc/keymap
+           ("M-y" . yank-pop))
       (multiple-cursors/enable-compat))))
 
 (defun multiple-cursors/init-expand-region ()
