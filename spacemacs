@@ -40,7 +40,7 @@
  dotspacemacs-maximized-at-startup nil
  dotspacemacs-active-transparency 90
  dotspacemacs-inactive-transparency 90
- dotspacemacs-mode-line-unicode-symbols t
+ dotspacemacs-mode-line-unicode-symbols nil
  dotspacemacs-smooth-scrolling t
  dotspacemacs-smartparens-strict-mode t
  dotspacemacs-persistent-server t
