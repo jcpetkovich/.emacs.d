@@ -19,6 +19,7 @@
   '(
     ;; personals go here
     simple
+    recentf
     hippie-expand
     dired
     wdired
@@ -28,6 +29,13 @@
 (defun personal/init-simple ()
   (use-package simple
     :config (setq-default shell-file-name (executable-find "bash"))))
+
+(defun personal/init-recentf ()
+  (use-package recentf
+    :defer t
+    :config
+    (setq recentf-max-saved-items 1000
+          recentf-auto-cleanup 'mode)))
 
 (defun personal/init-hippie-expand ()
   (use-package hippie-exp
