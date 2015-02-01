@@ -149,6 +149,10 @@ which require an initialization must be listed explicitly in the list.")
       (evil-leader/set-key-for-mode 'latex-mode
         "md" 'personal/tex-delete-env-pair)
 
+      (bind-keys :map LaTeX-mode-map
+                 ("<M-return>" . LaTeX-insert-item))
+
+
       (add-hook 'LaTeX-mode-hook 'reftex-mode)
       (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
       (add-hook 'LaTeX-mode-hook 'orgtbl-mode)
