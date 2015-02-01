@@ -69,21 +69,25 @@ which require an initialization must be listed explicitly in the list.")
     :init
     (progn
 
+      ;; A few possibly unfriendly remaps, so guard with a variable
       (if helm-everything/really-everything
           (bind-keys
-           ([remap ido-find-file] . helm-find-files)
-           ([remap ido-kill-buffer] . kill-buffer)
+           ([remap occur]             . helm-occur)
+           ([remap jump-to-register]  . helm-register)
+           ([remap find-tag]          . helm-etags-select)
+           ([remap ido-find-file]     . helm-find-files)
+           ([remap ido-kill-buffer]   . kill-buffer)
            ([remap ido-switch-buffer] . helm-C-x-b)
-           ([remap rgrep] . helm-do-grep)
-           ("M-x"       . helm-M-x)
-           ("M-y"       . helm-show-kill-ring)
-           ("C-x k"     . kill-buffer)
-           ("C-x C-f"   . helm-find-files)
-           ("C-h r"     . helm-info-emacs)
-           ("C-h d"     . helm-info-at-point)
-           ("C-x C-d"   . helm-browse-project)
-           ("C-h C-f"   . helm-apropos)
-           ("C-h a"     . helm-apropos))))
+           ([remap rgrep]             . helm-do-grep)
+           ("M-x"                     . helm-M-x)
+           ("M-y"                     . helm-show-kill-ring)
+           ("C-x k"                   . kill-buffer)
+           ("C-x C-f"                 . helm-find-files)
+           ("C-h r"                   . helm-info-emacs)
+           ("C-h d"                   . helm-info-at-point)
+           ("C-x C-d"                 . helm-browse-project)
+           ("C-h C-f"                 . helm-apropos)
+           ("C-h a"                   . helm-apropos))))
 
     :config
     (progn
