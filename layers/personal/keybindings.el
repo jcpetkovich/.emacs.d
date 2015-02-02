@@ -26,4 +26,5 @@
 
 (evil-leader/set-key
   "am" 'emms-smart-browse
-  "ase" 'esh)
+  "ase" 'esh
+  "." 'personal/eval-and-replace-sexp)
