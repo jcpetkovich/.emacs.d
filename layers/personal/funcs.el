@@ -105,4 +105,11 @@ Including indent-buffer, which should not be called automatically on save."
         (indent-for-tab-command)))
     (indent-for-tab-command)))
 
+(defun personal/eval-and-replace-sexp ()
+  (interactive)
+  (save-excursion
+    (backward-up-list)
+    (forward-sexp)
+    (eval-and-replace)))
+
 (provide 'user-utils)
