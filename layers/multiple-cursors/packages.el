@@ -25,7 +25,11 @@ which require an initialization must be listed explicitly in the list.")
 (defun multiple-cursors/init-multiple-cursors ()
   "Initialize multiple cursors"
   (use-package mc-mark-more
-    :commands (mc/region-strings)
+    :commands (mc/region-strings
+               mc/mmlte--down
+               mc/mmlte--up
+               mc/mmlte--left
+               mc/mmlte--right)
     :config
     (require 'multiple-cursors))
 

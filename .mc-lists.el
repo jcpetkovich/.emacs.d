@@ -12,14 +12,18 @@
         evil-lisp-state-wrap
         evil-normal-state
         helm-show-kill-ring
+        keyboard-escape-quit
+        kill-region
         lisp-state-forward-symbol
         org-beginning-of-line
+        org-ctrl-c-ctrl-c
         org-end-of-line
         org-force-self-insert
         org-kill-line
         org-metaright
         org-self-insert-command
         org-shiftright
+        orgtbl-self-insert-command
         paredit-close-round
         paredit-forward-delete
         paredit-forward-slurp-sexp
