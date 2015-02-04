@@ -21,14 +21,6 @@ which require an initialization must be listed explicitly in the list.")
 (defvar python-extras-excluded-packages '()
   "List of packages to exclude.")
 
-(defun python-extras/init-anaconda-mode ()
-  (use-package anaconda-mode
-    :defer t
-    :config
-    (progn
-      (spacemacs|evilify anaconda-nav-mode-map)
-      (add-to-list 'evil-emacs-state-modes 'anaconda-nav-mode))))
-
 (defun python-extras/init-virtualenvwrapper ()
   (use-package projectile
     :defer t
