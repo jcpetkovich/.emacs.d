@@ -42,6 +42,7 @@
     :commands (mu4e mu4e-update-index)
     :config
     (progn
+      (spacemacs/activate-evil-leader-for-map 'mu4e-main-mode-map)
       (setq-default mu4e-html2text-command "html2text -nobs -width 1000"
                     mu4e-view-show-images t
                     mu4e-confirm-quit nil
