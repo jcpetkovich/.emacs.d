@@ -24,8 +24,13 @@
         org-self-insert-command
         org-shiftright
         orgtbl-self-insert-command
+        paredit-backward
+        paredit-backward-up
         paredit-close-round
+        paredit-forward
+        paredit-forward-barf-sexp
         paredit-forward-delete
+        paredit-forward-kill-word
         paredit-forward-slurp-sexp
         paredit-kill
         paredit-newline
