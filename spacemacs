@@ -62,6 +62,7 @@
 (defvar user/internal-layers
   '(
     elisp-extras
+    python-extras
     email
     eshell
     (helm-everything :variables
@@ -77,6 +78,7 @@
 (defun user/bootstrap-emacs-config ()
   (shell-command (concat "git clone --recursive " user/spacemacs-repo " " user-emacs-directory))
   (shell-command (concat "ln -sf " user/spacemacs-d-path "spacemacs" " ~/.spacemacs"))
+  (shell-command (concat "ln -sf " user/spacemacs-d-path ".mc-lists.el" " ~/.emacs.d/.mc-lists.el"))
   (message "Spacemacs bootstrapped, restart emacs."))
 
 (defun user/update-layer (repo-path)
