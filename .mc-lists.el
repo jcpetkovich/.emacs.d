@@ -14,6 +14,7 @@
         helm-show-kill-ring
         keyboard-escape-quit
         kill-region
+        kill-sexp
         lisp-state-forward-symbol
         org-beginning-of-line
         org-ctrl-c-ctrl-c
@@ -35,6 +36,7 @@
         paredit-kill
         paredit-newline
         paredit-open-round
+        shrink-whitespace
         sp-backward-delete-char
         sp-backward-kill-word
         sp-backward-symbol
