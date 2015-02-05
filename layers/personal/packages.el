@@ -291,16 +291,12 @@ If no map is found in current source do nothing (keep previous map)."
       (defadvice paredit-close-round (after paredit-close-and-indent activate)
         (personal/cleanup-buffer))
 
-      (eval-after-load 'comment-dwim-2
-        '(progn
-           (--each '(insert visual normal)
-             (evil-declare-key it paredit-mode-map
-               (kbd "M-;") 'comment-dwim-2))))
-      (eval-after-load 'user-utils
-        '(progn
-           (--each '(insert visual normal)
-             (evil-declare-key it paredit-mode-map
-               (kbd "C-w") 'personal/kill-region-or-backward-word)))))))
+      (--each '(insert visual normal)
+        (evil-declare-key it paredit-mode-map
+          (kbd "M-;") 'comment-dwim-2))
+      (--each '(insert visual normal)
+        (evil-declare-key it paredit-mode-map
+          (kbd "C-w") 'personal/kill-region-or-backward-word)))))
 
 (defun personal/init-comment-dwim-2 ()
   (use-package comment-dwim-2
