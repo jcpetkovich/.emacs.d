@@ -33,8 +33,11 @@
       "Path's to linux source used for pattern matching.")
 
     ;; By default, follow bsd style
-    (setq-default c-default-style "bsd"
-                  user-cc/linux-source-locations '("~/src/linux-trees"
+    (setq-default c-default-style '((java-mode . "java")
+                                    (awk-mode . "awk")
+                                    (other . "bsd"))
+
+                  user-cc/linux-source-locations '("~/labs/linux-trees"
                                                    "/usr/src/linux"))
 
     (defun user-cc/c-lineup-arglist-tabs-only (ignored)
