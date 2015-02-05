@@ -63,6 +63,7 @@
   '(
     elisp-extras
     python-extras
+    c-extras
     email
     eshell
     (helm-everything :variables
