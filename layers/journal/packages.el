@@ -56,7 +56,8 @@ which require an initialization must be listed explicitly in the list.")
 
     :config
     (progn
-
+      (evil-leader/set-key-for-mode 'org-mode
+        "mM" 'journal/migrate)
       (add-hook 'remember-mode-hook 'org-remember-apply-template)
 
       (add-to-list 'org-modules 'org-timer)
