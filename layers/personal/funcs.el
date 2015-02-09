@@ -20,6 +20,26 @@ rectangle, otherwise, kill the previous word."
       (call-interactively 'kill-region)
     (backward-kill-word 1)))
 
+(defun personal/copy-line (arg)
+  "Copy to end of line, or as many lines as prefix argument"
+  (interactive "P")
+  (if (null arg)
+      (personal/copy-to-end-of-line)
+    (personal/copy-whole-lines (prefix-numeric-value arg))))
+
+(defun personal/copy-to-end-of-line ()
+  (interactive)
+  (kill-ring-save (point)
+                  (line-end-position))
+  (message "Copied to end of line"))
+
+(defun personal/copy-whole-lines (arg)
+  "Copy lines (as many as prefix argument) in the kill ring"
+  (interactive "p")
+  (kill-ring-save (line-beginning-position)
+                  (line-beginning-position (+ 1 arg)))
+  (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
+
 (defun personal/save-region-or-current-line (arg)
   "If the `region-active-p' returns true, save the current
 region. If `rectangle-mark-mode' is active, save the current
@@ -27,7 +47,7 @@ rectangle, otherwise, save the current line."
   (interactive "P")
   (if (region-active-p)
       (call-interactively 'kill-ring-save)
-    (copy-line arg)))
+    (personal/copy-line arg)))
 
 (defun personal/force-revert ()
   "Force the buffer to reflect the associated file on disk."

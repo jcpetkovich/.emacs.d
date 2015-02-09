@@ -22,7 +22,12 @@
 
 (--each '(insert visual normal)
   (evil-declare-key it paredit-mode-map
-    (kbd "C-w") 'personal/kill-region-or-backward-word))
+    (kbd "C-w") 'personal/kill-region-or-backward-word
+    (kbd "M-w") 'personal/save-region-or-current-line))
+
+(bind-keys
+ ("C-w" . personal/kill-region-or-backward-word)
+ ("M-w" . personal/save-region-or-current-line))
 
 (evil-leader/set-key
   "am" 'emms-smart-browse
