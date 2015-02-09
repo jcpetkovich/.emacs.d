@@ -99,6 +99,9 @@ which require an initialization must be listed explicitly in the list.")
 
 (defun personal/helm-configs ()
 
+  (setq-default helm-split-window-default-side 'other
+                helm-always-two-windows nil)
+
   ;; I prefer my own grep wrapper.
   (defun helm-do-grep-wrapper (arg)
     (interactive "P")
@@ -106,12 +109,17 @@ which require an initialization must be listed explicitly in the list.")
       (helm-do-grep)))
 
   (bind-keys
-   ([remap rgrep] . helm-do-grep-wrapper))
+   ([remap rgrep] . helm-do-grep-wrapper)
+   ("M-o" . helm-cmd-t))
 
-  (setq-default helm-split-window-default-side 'other
-                helm-always-two-windows nil)
-
-  (bind-key "M-o" 'helm-cmd-t)
+  (use-package helm
+    :defer t
+    :config
+    (bind-keys :map helm-map
+               ("<escape>" . spacemacs/helm-navigation-micro-state)
+               ("C-i" . helm-execute-persistent-action)
+               ("<tab>" . helm-execute-persistent-action)
+               ("C-M-i" . helm-select-action)))
 
   (evil-leader/set-key
     "qq" 'spacemacs/save-buffers-kill-emacs
@@ -227,20 +235,12 @@ an item line."
       (require 'helm-files)
       (require 'helm-man)
 
-      (bind-keys :map helm-map
-                 ("C-i" . helm-execute-persistent-action)
-                 ("C-M-i" . helm-select-action))
-
       (defvar all-helm-maps '(helm-map
                               helm-etags-map
                               helm-moccur-map
                               helm-grep-map
                               helm-pdfgrep-map
                               helm-generic-files-map))
-
-      (bind-keys :map helm-map
-                 ("C-i" . helm-execute-persistent-action)
-                 ("C-M-i" . helm-select-action))
 
       (bind-keys
        ("<f1>"                   . helm-resume))
