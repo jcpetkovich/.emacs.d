@@ -37,6 +37,7 @@
  dotspacemacs-guide-key-delay 0.4
  dotspacemacs-fullscreen-at-startup nil
  dotspacemacs-fullscreen-use-non-native nil
+ dotspacemacs-helm-micro-state t
  dotspacemacs-maximized-at-startup nil
  dotspacemacs-active-transparency 90
  dotspacemacs-inactive-transparency 90
