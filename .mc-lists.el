@@ -24,6 +24,7 @@
         org-metaright
         org-self-insert-command
         org-shiftright
+        org-todo
         orgtbl-self-insert-command
         paredit-backward
         paredit-backward-up
