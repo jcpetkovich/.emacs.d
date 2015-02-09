@@ -154,6 +154,8 @@ which require an initialization must be listed explicitly in the list.")
     :config
     (progn
 
+      (setq-default LaTeX-beamer-item-overlay-flag nil)
+
       (evil-leader/set-key-for-mode 'latex-mode
         "md" 'personal/tex-delete-env-pair)
 
@@ -328,6 +330,10 @@ If no map is found in current source do nothing (keep previous map)."
       :config
       (progn
         (bind-key "M-;" 'comment-dwim-2 ess-mode-map)
+
+        ;; No way should tab be stolen by a minor mode like this, and
+        ;; for a crappy indent function.
+        (bind-key "\t" 'yas-expand ess-noweb-minor-mode-map)
 
         (add-hook 'ess-mode-hook 'turn-on-smartparens-strict-mode)
         (add-hook 'inferior-ess-mode-hook 'smartparens-mode)

@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        TeX-insert-backslash
         TeX-insert-sub-or-superscript
         evil-escape-emacs-state
         evil-insert
