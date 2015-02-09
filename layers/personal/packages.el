@@ -19,6 +19,7 @@
     emms
     emr
     ess
+    company-ess
     evil
     evil-leader
     helm
@@ -499,6 +500,12 @@ If no map is found in current source do nothing (keep previous map)."
         (recenter))
       (defadvice magit-goto-previous-sibling-section (after user-magit/center-after-move activate)
         (recenter)))))
+
+(defun personal/init-company-ess ()
+  (use-package company-ess
+    :defer t
+    :init
+    (add-to-list 'company-backends (company-mode/backend-with-yas 'company-ess-backend))))
 
 ;; (eval-after-load 'user-utils
 ;;   '(progn
