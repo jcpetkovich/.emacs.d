@@ -65,6 +65,9 @@
     (progn
 
       (defalias 'esh 'eshell/eshell-here)
+      (defalias 'eshell/e 'find-file)
+      (defun eshell/l ()
+        (eshell/ls "-al"))
 
       (defun eshell/cds ()
         "Change directory to the project's root."
