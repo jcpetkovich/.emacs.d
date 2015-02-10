@@ -465,9 +465,9 @@ If no map is found in current source do nothing (keep previous map)."
 (defun personal/init-emr ()
   (use-package emr
     :commands (emr-initialize emr-show-refactor-menu)
-    :init (evil-leader/set-key "ar" 'emr-show-refactor-menu)
-    :config
-    (add-hook 'prog-mode-hook 'emr-initialize)))
+    :init (progn
+            (add-hook 'prog-mode-hook 'emr-initialize)
+            (evil-leader/set-key "ar" 'emr-show-refactor-menu))))
 
 (defun personal/init-prodigy ()
   (use-package prodigy
