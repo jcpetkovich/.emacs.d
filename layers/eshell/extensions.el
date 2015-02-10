@@ -143,10 +143,6 @@
       (add-to-list 'eshell-command-completions-alist
                    '("tar" "\\(\\.tar|\\.tgz\\|\\.tar\\.gz\\)\\'"))
 
-      ;; Plan 9 shell please.
-      (require 'em-smart)
-      (add-hook 'eshell-mode-hook 'eshell-smart-initialize)
-
       (defface esk-eshell-error-prompt-face
         '((((class color) (background dark)) (:foreground "red" :bold t))
           (((class color) (background light)) (:foreground "red" :bold t)))
