@@ -332,9 +332,7 @@ If no map is found in current source do nothing (keep previous map)."
       (progn
         (bind-key "M-;" 'comment-dwim-2 ess-mode-map)
 
-        ;; No way should tab be stolen by a minor mode like this, and
-        ;; for a crappy indent function.
-        (bind-key "\t" 'yas-expand ess-noweb-minor-mode-map)
+        (bind-key "\t" nil ess-noweb-minor-mode-map)
 
         (add-hook 'ess-mode-hook 'turn-on-smartparens-strict-mode)
         (add-hook 'inferior-ess-mode-hook 'smartparens-mode)
@@ -401,8 +399,6 @@ If no map is found in current source do nothing (keep previous map)."
                     (set (make-local-variable 'whitespace-style)
                          (remove 'empty whitespace-style)))))))
 
-  ;; I use R all the time, load it on boot please
-  ;; (load-ess-on-demand)
   )
 
 (defun personal/init-whitespace-cleanup-mode ()
