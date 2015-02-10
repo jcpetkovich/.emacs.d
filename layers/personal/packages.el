@@ -502,9 +502,3 @@ If no map is found in current source do nothing (keep previous map)."
     :defer t
     :init
     (add-to-list 'company-backends (company-mode/backend-with-yas 'company-ess-backend))))
-
-;; (eval-after-load 'user-utils
-;;   '(progn
-;;      (--each '(insert visual normal)
-;;        (evil-declare-key it paredit-mode-map
-;;          (kbd "C-w") 'personal/kill-region-or-backward-word))))
