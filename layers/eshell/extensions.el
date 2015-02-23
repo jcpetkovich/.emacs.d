@@ -28,8 +28,6 @@
     )
   "List of all extensions to load after the packages.")
 
-
-
 (defun eshell/init-esh-mode ()
   (use-package esh-mode
     :defer t
