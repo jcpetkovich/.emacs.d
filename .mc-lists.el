@@ -21,6 +21,7 @@
         kill-region
         kill-sexp
         lisp-state-forward-symbol
+        magit-unstage-item
         org-beginning-of-line
         org-ctrl-c-ctrl-c
         org-end-of-line
