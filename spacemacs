@@ -63,6 +63,7 @@
 (defvar user/internal-layers
   '(
     elisp-extras
+    rust
     python-extras
     c-extras
     email
