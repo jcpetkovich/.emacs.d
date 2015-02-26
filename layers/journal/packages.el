@@ -48,11 +48,11 @@ which require an initialization must be listed explicitly in the list.")
 
      org-capture-templates
      '(("g" "General Inbox" entry (file+headline my-notes-file "Inbox")
-        "* %?\n  %u\n  %a\n %i")
+        "* %?\n%u\n%a\n%i")
        ("t" "Task" entry (function journal/find-and-hide-log)
-        "* TODO %?\n  %u\n  %a\n %i")
+        "* TODO %?\n%u\n%a\n%i")
        ("n" "Note" entry (function journal/find-and-hide-log)
-        "* %?\n  %u\n  %a\n %i")))
+        "* %?\n%u\n%a\n%i")))
 
     :config
     (progn
