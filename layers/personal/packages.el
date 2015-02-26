@@ -32,6 +32,7 @@
     prodigy
     whitespace-cleanup-mode
     evil-smartparens
+    company-quickhelp
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
@@ -504,8 +505,14 @@ If no map is found in current source do nothing (keep previous map)."
     :init
     (add-to-list 'company-backends (company-mode/backend-with-yas 'company-ess-backend))))
 
-(defun personal/evil-smartparens ()
+(defun personal/init-evil-smartparens ()
   (use-package evil-smartparens
     :defer t
     :init
     (add-hook 'smartparens-enabled-hook 'evil-smartparens-mode)))
+
+(defun personal/init-company-quickhelp ()
+  (use-package company-quickhelp
+    :defer t
+    :config
+    (setq-default company-quickhelp-max-lines 20)))
