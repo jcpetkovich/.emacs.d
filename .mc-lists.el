@@ -5,6 +5,8 @@
       '(
         TeX-insert-backslash
         TeX-insert-sub-or-superscript
+        comment-dwim-2
+        ess-smart-comma
         evil-escape-emacs-state
         evil-insert
         evil-insert-state
@@ -12,6 +14,8 @@
         evil-lisp-state-sp-forward-slurp-sexp
         evil-lisp-state-wrap
         evil-normal-state
+        fill-paragraph
+        forward-sexp
         helm-show-kill-ring
         keyboard-escape-quit
         kill-region
@@ -23,6 +27,7 @@
         org-force-self-insert
         org-kill-line
         org-metaright
+        org-return-indent
         org-self-insert-command
         org-shiftright
         org-todo
@@ -38,6 +43,7 @@
         paredit-kill
         paredit-newline
         paredit-open-round
+        personal/kill-region-or-backward-word
         shrink-whitespace
         sp-backward-delete-char
         sp-backward-kill-word
@@ -52,6 +58,7 @@
 
 (setq mc/cmds-to-run-once
       '(
+        comint-previous-input
         elisp-slime-nav-find-elisp-thing-at-point
         helm-M-x
         multiple-cursors/expand-or-mark-next-symbol
