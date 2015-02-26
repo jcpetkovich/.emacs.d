@@ -399,9 +399,7 @@ If no map is found in current source do nothing (keep previous map)."
         (add-hook 'R-mode-hook
                   (defun personal/R-whitespace-config ()
                     (set (make-local-variable 'whitespace-style)
-                         (remove 'empty whitespace-style)))))))
-
-  )
+                         (remove 'empty whitespace-style))))))))
 
 (defun personal/init-whitespace-cleanup-mode ()
   (use-package whitespace-cleanup-mode
