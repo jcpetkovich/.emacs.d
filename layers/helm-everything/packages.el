@@ -40,12 +40,6 @@ which require an initialization must be listed explicitly in the list.")
     :config
     (helm-descbinds-mode 1)))
 
-(defun helm-everything/init-helm-man ()
-  "Initialize helm-man"
-  (use-package helm-man
-    :commands helm-man
-    :config (setq-default helm-man-or-woman-function 'woman)))
-
 (defun helm-everything/init-helm-cmd-t ()
   "Initialize helm-cmd-t"
   (use-package helm-C-x-b
@@ -118,7 +112,26 @@ which require an initialization must be listed explicitly in the list.")
             helm-apropos-fuzzy-match t
             helm-buffers-fuzzy-matching t
             helm-lisp-fuzzy-completion t
-            helm-recentf-fuzzy-match t))))
+            helm-recentf-fuzzy-match t)))
+
+  (use-package helm-man
+    :defer t
+    :init
+    (progn
+      (defun helm-everything/helm-man-woman (arg)
+        "Preconfigured `helm' for Man and Woman pages.
+With a prefix arg reinitialize the cache."
+        (interactive "P")
+        (require 'helm-man)
+        (require 'helm-swoop)
+        (when arg (setq helm-man-pages nil))
+        (helm :sources 'helm-source-man-pages
+              :buffer "*Helm man woman*"
+              :input (helm-swoop-pre-input-optimize (thing-at-point 'symbol))))
+      (bind-key "K" 'helm-everything/helm-man-woman evil-normal-state-map))
+    :config
+    (progn
+      (setq-default helm-man-or-woman-function 'woman))))
 
 (defun helm-everything/init-helm-gtags ()
   (use-package helm-gtags
