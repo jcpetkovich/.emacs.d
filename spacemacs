@@ -62,6 +62,7 @@
 
 (defvar user/internal-layers
   '(
+    ebuild
     elisp-extras
     rust
     python-extras
