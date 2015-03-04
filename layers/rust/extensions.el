@@ -19,15 +19,12 @@
 (defvar rust-post-extensions
   '(
     ;; post extension rusts go here
+    conf-mode
     )
   "List of all extensions to load after the packages.")
 
-;; For each extension, define a function rust/init-<extension-rust>
-;;
-;; (defun rust/init-my-extension ()
-;;   "Initialize my extension"
-;;   )
-;;
-;; Often the body of an initialize function uses `use-package'
-;; For more info on `use-package', see readme:
-;; https://github.com/jwiegley/use-package
+(defun rust/init-conf-mode ()
+  "Initialize my extension"
+  (use-package conf-mode
+    :defer t
+    :mode ("\\.toml$" . conf-mode)))
