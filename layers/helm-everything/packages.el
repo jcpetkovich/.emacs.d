@@ -31,7 +31,9 @@ which require an initialization must be listed explicitly in the list.")
 (defun helm-everything/init-helm-swoop ()
   "Initialize helm-swoop"
   (use-package helm-swoop
-    :defer t))
+    :defer t
+    :config
+    (setq-default helm-swoop-speed-or-color t)))
 
 (defun helm-everything/init-helm-descbinds ()
   "Initialize helm-descbinds"
