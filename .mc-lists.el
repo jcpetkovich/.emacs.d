@@ -4,6 +4,7 @@
 (setq mc/cmds-to-run-for-all
       '(
         LaTeX-insert-left-brace
+        TeX-complete-symbol
         TeX-insert-backslash
         TeX-insert-sub-or-superscript
         comment-dwim-2
