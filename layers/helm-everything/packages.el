@@ -103,7 +103,7 @@ which require an initialization must be listed explicitly in the list.")
             helm-input-idle-delay 0.01
             helm-m-occur-idle-delay 0.01
             helm-exit-idle-delay 0.1
-            helm-candidate-number-limit 200
+            helm-candidate-number-limit 20
             helm-ff-search-library-in-sexp t
             helm-ff-file-name-history-use-recentf t
             helm-home-url "https://www.google.ca"
