@@ -33,6 +33,7 @@
     whitespace-cleanup-mode
     evil-smartparens
     company-quickhelp
+    yasnippet
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
@@ -507,10 +508,25 @@ If no map is found in current source do nothing (keep previous map)."
   (use-package evil-smartparens
     :defer t
     :init
-    (add-hook 'smartparens-enabled-hook 'evil-smartparens-mode)))
+    (progn
+      (add-hook 'LaTeX-mode-hook (defun personal/evil-smartparens-disable ()
+                                   (evil-smartparens-mode -1)))
+      (add-hook 'smartparens-enabled-hook 'evil-smartparens-mode))))
 
 (defun personal/init-company-quickhelp ()
   (use-package company-quickhelp
     :defer t
     :config
     (setq-default company-quickhelp-max-lines 20)))
+
+(defun personal/init-yasnippet ()
+  (use-package yasnippet
+    :defer t
+    :init
+    (progn
+      (defvar personal/yas-initialized nil)
+      (defun personal/add-my-snippets ()
+        (when (not personal/yas-initialized)
+          (add-to-list 'yas-snippet-dirs (concat user/spacemacs-d-path "snippets"))))
+      (defadvice spacemacs/load-yasnippet (after personal/use-my-snippets activate)
+        (personal/add-my-snippets)))))
