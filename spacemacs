@@ -18,7 +18,7 @@
                                      erlang-elixir
                                      ess
                                      fasd
-                                     go
+                                     ;; go
                                      html
                                      javascript
                                      pcre2el
@@ -64,7 +64,8 @@
   '(
     ebuild
     elisp-extras
-    rust
+    (rust :variables
+          rust/lang-src-path "~/labs/rust")
     python-extras
     c-extras
     email

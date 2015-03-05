@@ -23,8 +23,30 @@
     )
   "List of all extensions to load after the packages.")
 
+;; Only load company-ess if company-mode is enabled
+(when (configuration-layer/layer-declaredp 'company-mode)
+  (add-to-list 'rust-post-extensions 'racer))
+
 (defun rust/init-conf-mode ()
-  "Initialize my extension"
+  "Rust likes toml, make sure it's treated like a config file."
   (use-package conf-mode
     :defer t
     :mode ("\\.toml$" . conf-mode)))
+
+(defun rust/init-racer ()
+  "Initialize racer if we're using company mode"
+  (let* ((rust-layer-path (concat user/spacemacs-d-path "layers/rust/"))
+         (racer-path      (concat rust-layer-path "extensions/racer/"))
+         (racer-elisp-dir (concat racer-path "editors/"))
+         (racer-cmd-path  (concat racer-path "target/release/racer")))
+    (if (file-exists-p racer-cmd-path)
+        (use-package racer
+          :defer t
+          :init
+          (progn
+            (when rust/lang-src-path
+              (setq racer-rust-src-path (expand-file-name (concat rust/lang-src-path "/src"))))
+            (setq racer-cmd racer-cmd-path)
+            (add-to-list 'load-path racer-elisp-dir)
+            (eval-after-load "rust-mode" '(require 'racer))))
+      (message "Warning: compile racer with cargo if you wish to use it with rust code."))))
