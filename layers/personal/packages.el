@@ -172,7 +172,7 @@ which require an initialization must be listed explicitly in the list.")
       (add-hook 'LaTeX-mode-hook 'orgtbl-mode)
       (add-hook 'LaTeX-mode-hook 'turn-on-smartparens-mode)
 
-      (push '("zathura" "zathura -s -x \"emacsclient --no-wait +%%{line} %%{input}\" %s.pdf")
+      (push '("zathura" "zathura -x \"emacsclient --no-wait +%%{line} %%{input}\" %s.pdf")
             TeX-view-program-list)
       (push '(output-pdf "zathura")
             TeX-view-program-selection)
