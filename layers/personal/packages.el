@@ -128,6 +128,7 @@ which require an initialization must be listed explicitly in the list.")
   (evil-leader/set-key
     "qq" 'spacemacs/save-buffers-kill-emacs
     "o"  'helm-C-x-b
+    "O"  'helm-projectile-find-file
     "/"  'helm-cmd-t-grep))
 
 (defun personal/keybinding-configs ()
