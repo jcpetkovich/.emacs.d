@@ -8,6 +8,7 @@
         TeX-insert-backslash
         TeX-insert-sub-or-superscript
         comment-dwim-2
+        electric-newline-and-maybe-indent
         ess-smart-comma
         evil-escape-emacs-state
         evil-insert
