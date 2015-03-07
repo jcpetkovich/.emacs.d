@@ -63,6 +63,7 @@
 
 (defvar user/internal-layers
   '(
+    blog
     ebuild
     elisp-extras
     (rust :variables
