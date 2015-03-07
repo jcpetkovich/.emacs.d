@@ -7,7 +7,10 @@
         TeX-complete-symbol
         TeX-insert-backslash
         TeX-insert-sub-or-superscript
+        backward-sexp
+        backward-up-list
         comment-dwim-2
+        down-list
         electric-newline-and-maybe-indent
         ess-smart-comma
         evil-escape-emacs-state
@@ -35,6 +38,8 @@
         org-self-insert-command
         org-shiftright
         org-todo
+        org-yank
+        orgtbl-hijacker-command-100
         orgtbl-self-insert-command
         paredit-backward
         paredit-backward-up
