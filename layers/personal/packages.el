@@ -339,7 +339,7 @@ If no map is found in current source do nothing (keep previous map)."
         (bind-key "\t" nil ess-noweb-minor-mode-map)
 
         (add-hook 'ess-mode-hook 'turn-on-smartparens-strict-mode)
-        (add-hook 'inferior-ess-mode-hook 'smartparens-mode)
+        (add-hook 'inferior-ess-mode-hook 'turn-on-smartparens-strict-mode)
 
         (evil-leader/set-key-for-mode 'latex-mode "mk" 'ess-swv-knit)
         (evil-leader/set-key-for-mode 'ess-mode "mk" 'ess-swv-knit
@@ -362,16 +362,6 @@ If no map is found in current source do nothing (keep previous map)."
                                     (ess-fl-keyword:delimiters)
                                     (ess-fl-keyword:= . t)
                                     (ess-R-fl-keyword:F&T . t))
-         ess-default-style 'OWN
-         ess-own-style-list '((ess-indent-level . 4)
-                              (ess-continued-statement-offset . 4)
-                              (ess-brace-offset . 0)
-                              (ess-expression-offset . 4)
-                              (ess-else-offset . 0)
-                              (ess-brace-imaginary-offset . 0)
-                              (ess-continued-brace-offset . 0)
-                              (ess-arg-function-offset . 2)
-                              (ess-close-brace-offset . 0))
 
          inferior-R-font-lock-keywords '((ess-S-fl-keyword:prompt . t)
                                          (ess-R-fl-keyword:messages . t)
