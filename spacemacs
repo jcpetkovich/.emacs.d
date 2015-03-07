@@ -10,6 +10,7 @@
  dotspacemacs-configuration-layers '(
                                      (git :variables
                                           git-magit-status-fullscreen t)
+                                     ;; go
                                      auctex
                                      c-c++
                                      clojure
@@ -18,9 +19,9 @@
                                      erlang-elixir
                                      ess
                                      fasd
-                                     ;; go
                                      html
                                      javascript
+                                     markdown
                                      pcre2el
                                      python
                                      restclient
