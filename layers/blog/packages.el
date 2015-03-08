@@ -30,9 +30,9 @@ which require an initialization must be listed explicitly in the list.")
       (defun blog/deploy ()
         (interactive)
         (op/git-change-branch op/repository-directory op/repository-html-branch)
-        (shell-command (concat "rsync -avz --delete-after "
-                               op/repository-directory
-                               " root@ptk.io:/var/www/localhost/htdocs") t nil)))
+        (eshell-command (concat "rsync -avz --delete-after "
+                                op/repository-directory
+                                " root@ptk.io:/var/www/localhost/htdocs") nil)))
     :config
     (progn
       (setq op/repository-directory (expand-file-name "~/projects/blog/"))
