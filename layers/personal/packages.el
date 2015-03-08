@@ -263,21 +263,22 @@ an item line."
       ;; =============================================================
       ;; Hack to fix rare error from helm--maybe-update-keymap
       ;; =============================================================
-      (defun helm--maybe-update-keymap ()
-        "Handle differents keymaps in multiples sources.
+      ;; (defun helm--maybe-update-keymap ()
+;;         "Handle differents keymaps in multiples sources.
 
-It will override `helm-map' with the local map of current source.
-If no map is found in current source do nothing (keep previous map)."
-        (condition-case err
-            (progn
-              (with-helm-buffer
-                (helm-aif (assoc-default 'keymap (helm-get-current-source))
-                    ;; Fix #466; we use here set-transient-map
-                    ;; to not overhide other minor-mode-map's.
-                    (if (fboundp 'set-transient-map)
-                        (set-transient-map it)
-                      (set-temporary-overlay-map it)))))
-          (error))))))
+;; It will override `helm-map' with the local map of current source.
+;; If no map is found in current source do nothing (keep previous map)."
+;;         (condition-case err
+;;             (progn
+;;               (with-helm-buffer
+;;                 (helm-aif (assoc-default 'keymap (helm-get-current-source))
+;;                     ;; Fix #466; we use here set-transient-map
+;;                     ;; to not overhide other minor-mode-map's.
+;;                     (if (fboundp 'set-transient-map)
+;;                         (set-transient-map it)
+;;                       (set-temporary-overlay-map it)))))
+;;           (error)))
+      )))
 
 (defun personal/init-evil ()
   "Initialize my package"
