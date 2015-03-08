@@ -28,17 +28,34 @@ which require an initialization must be listed explicitly in the list.")
     :init
     (progn
       (defun blog/deploy ()
+        (interactive)
         (op/git-change-branch op/repository-directory op/repository-html-branch)
         (shell-command (concat "rsync -avz --delete-after "
-                        op/repository-directory
-                        " root@ptk.io:/var/www/localhost/htdocs") t nil)))
+                               op/repository-directory
+                               " root@ptk.io:/var/www/localhost/htdocs") t nil)))
     :config
     (progn
       (setq op/repository-directory (expand-file-name "~/projects/blog/"))
       (setq op/site-domain "http://ptk.io/")
-      ;; (setq op/personal-disqus-shortname "your_disqus_shortname")
-      ;; (setq op/personal-duoshuo-shortname "your_duoshuo_shortname")
-      )))
+      (setq op/personal-github-link "https://github.com/jcpetkovich")
+      (setq op/site-main-title "JC's Blog")
+      (setq op/site-sub-title "Musings on mostly emacs.")
+
+      (add-to-list 'op/category-config-alist
+                   '("cv"
+                     :show-meta nil
+                     :show-comment nil
+                     :uri-generator op/generate-uri
+                     :uri-template "/cv/"
+                     :sort-by :date
+                     :category-index nil)))
+
+    (defun op/verify-git-repository (repo-dir)
+      "This function will verify whether REPO-DIR is a valid git repository.
+TODO: may add branch/commit verification later."
+      (unless (and (file-directory-p repo-dir)
+                   (file-exists-p (expand-file-name ".git" repo-dir)))
+        (error "Fatal: `%s' is not a valid git repository." repo-dir)))))
 
 (defun blog/init-simple-httpd ()
   (use-package simple-httpd
