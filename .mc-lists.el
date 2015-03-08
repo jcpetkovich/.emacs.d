@@ -12,6 +12,7 @@
         comment-dwim-2
         down-list
         electric-newline-and-maybe-indent
+        end-of-defun
         ess-smart-comma
         evil-escape-emacs-state
         evil-insert
@@ -32,7 +33,9 @@
         org-ctrl-c-ctrl-c
         org-end-of-line
         org-force-self-insert
+        org-insert-heading
         org-kill-line
+        org-meta-return
         org-metaright
         org-return-indent
         org-self-insert-command
