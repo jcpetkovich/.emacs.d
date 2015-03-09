@@ -20,7 +20,7 @@
  ("<M-return>" . personal/new-line-dwim)
  ("M-RET" . personal/new-line-dwim))
 
-(--each '(insert visual normal)
+(--each '(insert visual)
   (evil-declare-key it paredit-mode-map
     (kbd "C-w") 'personal/kill-region-or-backward-word
     (kbd "M-w") 'personal/save-region-or-current-line))
