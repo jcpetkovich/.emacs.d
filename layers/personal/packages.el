@@ -264,20 +264,20 @@ an item line."
       ;; Hack to fix rare error from helm--maybe-update-keymap
       ;; =============================================================
       ;; (defun helm--maybe-update-keymap ()
-;;         "Handle differents keymaps in multiples sources.
+      ;;         "Handle differents keymaps in multiples sources.
 
-;; It will override `helm-map' with the local map of current source.
-;; If no map is found in current source do nothing (keep previous map)."
-;;         (condition-case err
-;;             (progn
-;;               (with-helm-buffer
-;;                 (helm-aif (assoc-default 'keymap (helm-get-current-source))
-;;                     ;; Fix #466; we use here set-transient-map
-;;                     ;; to not overhide other minor-mode-map's.
-;;                     (if (fboundp 'set-transient-map)
-;;                         (set-transient-map it)
-;;                       (set-temporary-overlay-map it)))))
-;;           (error)))
+      ;; It will override `helm-map' with the local map of current source.
+      ;; If no map is found in current source do nothing (keep previous map)."
+      ;;         (condition-case err
+      ;;             (progn
+      ;;               (with-helm-buffer
+      ;;                 (helm-aif (assoc-default 'keymap (helm-get-current-source))
+      ;;                     ;; Fix #466; we use here set-transient-map
+      ;;                     ;; to not overhide other minor-mode-map's.
+      ;;                     (if (fboundp 'set-transient-map)
+      ;;                         (set-transient-map it)
+      ;;                       (set-temporary-overlay-map it)))))
+      ;;           (error)))
       )))
 
 (defun personal/init-evil ()
@@ -340,15 +340,12 @@ an item line."
         (bind-key "\t" nil ess-noweb-minor-mode-map)
 
         (add-hook 'ess-mode-hook 'turn-on-smartparens-strict-mode)
-        (add-hook 'inferior-ess-mode-hook 'turn-on-smartparens-strict-mode)
+        (add-hook 'inferior-ess-mode-hook (defun personal/force-smartparens ()
+                                            (smartparens-strict-mode 1)))
 
         (evil-leader/set-key-for-mode 'latex-mode "mk" 'ess-swv-knit)
-        (evil-leader/set-key-for-mode 'ess-mode "mk" 'ess-swv-knit
-          "mcn" 'ess-noweb-next-chunk
-          "mcN" 'ess-noweb-previous-chunk
-          "mcc" 'ess-eval-chunk
-          "mcC" 'ess-eval-chunk-and-go
-          "mcd" 'ess-eval-chunk-and-step)
+        (evil-leader/set-key-for-mode 'ess-mode
+          "mk" 'ess-swv-knit)
 
         (setq-default
          ess-pdf-viewer-pref "zathura"
