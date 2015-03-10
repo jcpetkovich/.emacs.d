@@ -47,6 +47,7 @@
  dotspacemacs-smartparens-strict-mode t
  dotspacemacs-persistent-server t
  dotspacemacs-default-package-repository nil
+ dotspacemacs-enable-paste-micro-state t
  dotspacemacs-default-font '("Sauce Code Powerline" :size 14 :weight normal :width normal :powerline-offset 2))
 
 ;; Initialization Hooks
