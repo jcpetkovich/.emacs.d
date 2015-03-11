@@ -32,7 +32,37 @@ which require an initialization must be listed explicitly in the list.")
         (op/git-change-branch op/repository-directory op/repository-html-branch)
         (eshell-command (concat "rsync -avz --delete-after "
                                 op/repository-directory
-                                " root@ptk.io:/var/www/localhost/htdocs") nil)))
+                                " root@ptk.io:/var/www/localhost/htdocs") nil))
+
+      (defun op/render-content (&optional template param-table)
+        "My patched version of op/render-content to use org as a backend for css."
+        (mustache-render
+         (op/get-cache-create
+          (if template
+              (intern (replace-regexp-in-string "\\.mustache$" "-template" template))
+            :post-template)
+          (message (concat "Read " (or template "post.mustache") " from file"))
+          (file-to-string (concat op/template-directory
+                                  (or template "post.mustache"))))
+         (or param-table
+             (ht ("title" (or (op/read-org-option "TITLE") "Untitled"))
+                 ("content" (org-export-as 'html nil nil nil nil))))))
+
+      (defvar blog/org-inline-css-hook-called nil)
+
+      (defun blog/org-inline-css-hook (exporter)
+        "Insert custom inline css to automatically set the
+background of code to whatever theme I'm using's background"
+        (when (and (not blog/org-inline-css-hook-called) (eq exporter 'html))
+              (let* ((my-pre-bg (face-background 'default))
+                     (my-pre-fg (face-foreground 'default)))
+                (setq blog/org-inline-css-hook-called t)
+                (setq
+                 org-html-head-extra
+                 (concat
+                  org-html-head-extra
+                  (format "<style type=\"text/css\">\n pre.src {background-color: %s; color: %s;}</style>\n"
+                          my-pre-bg my-pre-fg)))))))
     :config
     (progn
       (setq op/repository-directory (expand-file-name "~/projects/blog/"))
