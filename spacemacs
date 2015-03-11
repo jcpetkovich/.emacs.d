@@ -101,6 +101,7 @@
   ;; Get rid of these no matter what, and do it early
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
+  (setq load-prefer-newer t)
 
   ;; Initialize and/or update external layers
   (mapc (lambda (layer)
