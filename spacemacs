@@ -26,6 +26,7 @@
                                      python
                                      restclient
                                      ruby
+                                     haskell
                                      )
  dotspacemacs-excluded-packages '())
 
