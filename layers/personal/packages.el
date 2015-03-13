@@ -391,7 +391,9 @@ an item line."
         (add-hook 'R-mode-hook
                   (defun personal/R-whitespace-config ()
                     (set (make-local-variable 'whitespace-style)
-                         (remove 'empty whitespace-style))))))))
+                         (remove 'empty whitespace-style))))))
+    (use-package ess-bugs-d)))
+
 
 (defun personal/init-whitespace-cleanup-mode ()
   (use-package whitespace-cleanup-mode
