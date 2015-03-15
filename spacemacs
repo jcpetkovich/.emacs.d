@@ -17,7 +17,8 @@
                                      colors
                                      company-mode
                                      erlang-elixir
-                                     ess
+                                     (ess :variables
+                                          ess-enable-smart-equals nil)
                                      fasd
                                      html
                                      javascript
