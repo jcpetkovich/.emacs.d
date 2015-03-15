@@ -23,6 +23,7 @@
         evil-normal-state
         fill-paragraph
         forward-sexp
+        haskell-indentation-delete-backward-char
         helm-show-kill-ring
         keyboard-escape-quit
         kill-region
@@ -71,6 +72,7 @@
 (setq mc/cmds-to-run-once
       '(
         comint-previous-input
+        describe-key
         elisp-slime-nav-find-elisp-thing-at-point
         helm-M-x
         multiple-cursors/expand-or-mark-next-symbol
