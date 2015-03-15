@@ -24,7 +24,7 @@ which require an initialization must be listed explicitly in the list.")
 (defun blog/init-org-page ()
   "Initialize my package"
   (use-package org-page
-    :commands op/do-publication
+    :commands (op/do-publication op/new-post)
     :init
     (progn
       (defun blog/deploy ()
