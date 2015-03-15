@@ -171,38 +171,38 @@ Including indent-buffer, which should not be called automatically on save."
      ((looking-back ")\\|}\\|\\]") (backward-list))
      (t (backward-char)))))
 
-(defun browse-url-firefox (url &optional new-window)
-  "My patched version of browse url firefox"
-  (interactive (browse-url-interactive-arg "URL: "))
-  (if (equalp emacs-version "24.4.1")
-      (progn
-        (setq url (browse-url-encode-url url))
-        (let* ((process-environment (browse-url-process-environment))
-               (use-remote nil)
-               (process
-                (apply 'start-process
-                       (concat "firefox " url) nil
-                       browse-url-firefox-program
-                       (append
-                        browse-url-firefox-arguments
-                        (if use-remote
-                            (list "-remote"
-                                  (concat
-                                   "openURL("
-                                   url
-                                   (if (browse-url-maybe-new-window new-window)
-                                       (if browse-url-firefox-new-window-is-tab
-                                           ",new-tab"
-                                         ",new-window"))
-                                   ")"))
-                          (list url))))))
-          ;; If we use -remote, the process exits with status code 2 if
-          ;; Firefox is not already running.  The sentinel runs firefox
-          ;; directly if that happens.
-          (when use-remote
-            (set-process-sentinel process
-                                  `(lambda (process change)
-                                     (browse-url-firefox-sentinel process ,url)))))))
-  (message "New emacs version, check if this is fixed."))
+;; (defun browse-url-firefox (url &optional new-window)
+;;   "My patched version of browse url firefox"
+;;   (interactive (browse-url-interactive-arg "URL: "))
+;;   (if (equalp emacs-version "24.4.1")
+;;       (progn
+;;         (setq url (browse-url-encode-url url))
+;;         (let* ((process-environment (browse-url-process-environment))
+;;                (use-remote nil)
+;;                (process
+;;                 (apply 'start-process
+;;                        (concat "firefox " url) nil
+;;                        browse-url-firefox-program
+;;                        (append
+;;                         browse-url-firefox-arguments
+;;                         (if use-remote
+;;                             (list "-remote"
+;;                                   (concat
+;;                                    "openURL("
+;;                                    url
+;;                                    (if (browse-url-maybe-new-window new-window)
+;;                                        (if browse-url-firefox-new-window-is-tab
+;;                                            ",new-tab"
+;;                                          ",new-window"))
+;;                                    ")"))
+;;                           (list url))))))
+;;           ;; If we use -remote, the process exits with status code 2 if
+;;           ;; Firefox is not already running.  The sentinel runs firefox
+;;           ;; directly if that happens.
+;;           (when use-remote
+;;             (set-process-sentinel process
+;;                                   `(lambda (process change)
+;;                                      (browse-url-firefox-sentinel process ,url)))))))
+;;   (message "New emacs version, check if this is fixed."))
 
 (provide 'user-utils)
