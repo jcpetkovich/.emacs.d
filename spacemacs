@@ -27,7 +27,8 @@
                                      python
                                      restclient
                                      ruby
-                                     haskell
+                                     (haskell :variables
+                                              haskell-enable-hindent-support t)
                                      )
  dotspacemacs-excluded-packages '())
 
