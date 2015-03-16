@@ -26,51 +26,32 @@ which require an initialization must be listed explicitly in the list.")
   (use-package rcirc
     :commands rcirc
     :defer t
-    :config
+    :init
     (progn
-      (require 's)
-      (if (or (file-exists-p "~/.authinfo.gpg")
-              (file-exists-p "~/.authinfo"))
+      (if (file-exists-p "~/.authinfo.gpg")
+
           (progn
             (setq-default
              irc-user-name (plist-get (car (auth-source-search :port '("nickserv"))) :user)
-             irc-simple-pass (funcall (plist-get (car (auth-source-search :port '("pass"))) :secret))
              rcirc-fill-column 'frame-width
 
              rcirc-server-alist
-             `(("irc.mozilla.org"
-                :channels ("#rust")
-                :nick ,irc-user-name)
-               ("eyolfson.ca"
-                :nick "jcp"
+             `(("eyolfson.ca"
                 :port 6697
                 :encryption tls
-                :password ,irc-simple-pass)
+                :auth "jcp")
                ("localhost"))
 
              ;; Configure plugins
              rcirc-notify-timeout 0
-             rcirc-notify-check-frame t)
+             rcirc-notify-check-frame t
 
-            ;; Configure
-            rcirc-buffer-maximum-lines 2048)
-        (message "Warning: no ~/.authinfo type file found"))
-
-      (defadvice rcirc (before rcirc-read-from-authinfo activate)
-        "Allow rcirc to read authinfo from ~/.authinfo.gpg via the auth-source API.
-This doesn't support the chanserv auth method"
-        (unless arg
-          (dolist (p (auth-source-search :port '("nickserv" "bitlbee" "quakenet")
-                                         :require '(:port :user)))
-            (let ((secret (plist-get p :secret))
-                  (method (intern (plist-get p :port))))
-              (add-to-list 'rcirc-authinfo
-                           (list (plist-get p :host)
-                                 method
-                                 (plist-get p :user)
-                                 (if (functionp secret)
-                                     (funcall secret)
-                                   secret)))))))
+             ;; Configure
+             rcirc-buffer-maximum-lines 2048))
+        (message "Warning: no ~/.authinfo type file found")))
+    :config
+    (progn
+      (require 's)
 
       (defun-rcirc-command reconnect (arg)
         "Reconnect the server process."
