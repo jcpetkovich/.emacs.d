@@ -10,6 +10,13 @@
  dotspacemacs-configuration-layers '(
                                      (git :variables
                                           git-magit-status-fullscreen t)
+                                     (ess :variables
+                                          ess-enable-smart-equals nil)
+                                     (haskell :variables
+                                              haskell-enable-hindent-support t)
+                                     (rcirc :variables
+                                            rcirc-enable-authinfo-support t
+                                            rcirc-enable-znc-support t)
                                      ;; go
                                      auctex
                                      c-c++
@@ -17,8 +24,6 @@
                                      colors
                                      company-mode
                                      erlang-elixir
-                                     (ess :variables
-                                          ess-enable-smart-equals nil)
                                      fasd
                                      html
                                      javascript
@@ -27,8 +32,6 @@
                                      python
                                      restclient
                                      ruby
-                                     (haskell :variables
-                                              haskell-enable-hindent-support t)
                                      )
  dotspacemacs-excluded-packages '())
 

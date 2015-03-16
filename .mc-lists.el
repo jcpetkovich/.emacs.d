@@ -9,6 +9,7 @@
         TeX-insert-sub-or-superscript
         backward-sexp
         backward-up-list
+        beginning-of-defun
         comment-dwim-2
         down-list
         electric-newline-and-maybe-indent
@@ -78,5 +79,6 @@
         elisp-slime-nav-find-elisp-thing-at-point
         helm-M-x
         multiple-cursors/expand-or-mark-next-symbol
+        personal/move-cursor-previous-pane
         undefined
         ))
