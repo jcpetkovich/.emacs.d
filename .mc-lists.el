@@ -12,6 +12,7 @@
         comment-dwim-2
         down-list
         electric-newline-and-maybe-indent
+        end-of-buffer
         end-of-defun
         ess-smart-comma
         evil-escape-emacs-state
@@ -56,6 +57,7 @@
         paredit-kill
         paredit-newline
         paredit-open-round
+        personal/eval-and-replace-sexp
         personal/kill-region-or-backward-word
         shrink-whitespace
         sp-backward-delete-char
