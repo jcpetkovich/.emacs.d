@@ -78,4 +78,5 @@
         elisp-slime-nav-find-elisp-thing-at-point
         helm-M-x
         multiple-cursors/expand-or-mark-next-symbol
+        undefined
         ))
