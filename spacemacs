@@ -33,7 +33,7 @@
  dotspacemacs-excluded-packages '())
 
 (setq-default
- dotspacemacs-startup-banner 'random
+ dotspacemacs-startup-banner 'official
  dotspacemacs-themes '(moe-dark moe-light)
  dotspacemacs-leader-key "SPC"
  dotspacemacs-major-mode-leader-key ","
