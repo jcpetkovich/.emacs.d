@@ -31,6 +31,7 @@
         kill-region
         kill-sexp
         lisp-state-forward-symbol
+        lisp-state-toggle-lisp-state
         magit-unstage-item
         org-beginning-of-line
         org-ctrl-c-ctrl-c
@@ -60,6 +61,7 @@
         paredit-open-round
         personal/eval-and-replace-sexp
         personal/kill-region-or-backward-word
+        python-extras/smart-delete
         shrink-whitespace
         sp-backward-delete-char
         sp-backward-kill-word
