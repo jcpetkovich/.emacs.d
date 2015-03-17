@@ -29,6 +29,7 @@ which require an initialization must be listed explicitly in the list.")
     :init
     (progn
       (add-to-list 'evil-normal-state-modes 'rcirc-mode)
+      (defvar rcirc-authinfo nil)
       (if (file-exists-p "~/.authinfo.gpg")
 
           (progn
