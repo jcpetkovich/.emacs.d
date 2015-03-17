@@ -19,8 +19,24 @@
 (defvar python-extras-post-extensions
   '(
     ;; post extension python-extrass go here
+    python
     )
   "List of all extensions to load after the packages.")
+
+(defun python-extras/init-python ()
+  (use-package python
+    :config
+    (progn
+      (defun python-extras/smart-delete ()
+        (interactive)
+        (let ((valid-pairs (sp--get-pair-list)))
+          (if (--any-p
+               (sp--looking-back (sp--strict-regexp-quote (cdr it)))
+               valid-pairs)
+              (sp-backward-delete-char)
+            (call-interactively 'python-indent-dedent-line-backspace))))
+
+      (bind-key "<backspace>" 'python-extras/smart-delete python-mode-map))))
 
 ;; For each extension, define a function python-extras/init-<extension-python-extras>
 ;;
