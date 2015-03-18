@@ -15,7 +15,6 @@
                                      (haskell :variables
                                               haskell-enable-hindent-support t)
                                      (rcirc :variables
-                                            rcirc-enable-authinfo-support t
                                             rcirc-enable-znc-support t)
                                      ;; go
                                      auctex
