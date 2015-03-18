@@ -61,6 +61,7 @@
         paredit-open-round
         personal/eval-and-replace-sexp
         personal/kill-region-or-backward-word
+        personal/new-line-dwim
         python-extras/smart-delete
         shrink-whitespace
         sp-backward-delete-char
