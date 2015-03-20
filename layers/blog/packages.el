@@ -83,7 +83,7 @@ background of code to whatever theme I'm using's background"
                                   (or template "post.mustache"))))
          (or param-table
              (ht ("title" (or (op/read-org-option "TITLE") "Untitled"))
-                 ("content" (org-export-as 'html nil nil nil nil))))))
+                 ("content" (org-export-as 'html nil nil t nil))))))
 
       (defadvice op/do-publication (before blog/ensure-lang-syntax-loaded activate)
         ;; Trigger load of language configurations
