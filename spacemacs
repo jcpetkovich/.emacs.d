@@ -131,7 +131,12 @@
 (defun dotspacemacs/config ()
   "This is were you can ultimately override default Spacemacs configuration.
 This function is called at the very end of Spacemacs initialization."
-  (vi-tilde-fringe-mode 1))
+  (vi-tilde-fringe-mode 1)
+
+  ;; Temporary Work around for a bug.
+  (if (not (equalp spacemacs-version "0.100.1" ))
+      (error "Remove workaround")
+    (package-initialize)))
 
 ;; Bootstrap Spacemacs
 ;; -------------------
