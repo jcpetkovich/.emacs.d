@@ -80,6 +80,7 @@
         comint-previous-input
         describe-key
         elisp-slime-nav-find-elisp-thing-at-point
+        ess-use-this-dir
         helm-M-x
         multiple-cursors/expand-or-mark-next-symbol
         personal/move-cursor-previous-pane
