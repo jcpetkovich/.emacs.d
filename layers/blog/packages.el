@@ -55,7 +55,7 @@ background of code to whatever theme I'm using's background"
       (setq op/site-domain "http://ptk.io/")
       (setq op/personal-github-link "https://github.com/jcpetkovich")
       (setq op/site-main-title "JC's Blog")
-      (setq op/site-sub-title "Musings on mostly emacs.")
+      (setq op/site-sub-title "Musings on (mostly) emacs.")
       (setq op/theme 'mytheme)
       (setq op/theme-root-directory (concat op/repository-directory "themes/"))
 
