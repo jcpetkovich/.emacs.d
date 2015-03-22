@@ -491,12 +491,6 @@ an item line."
       (defadvice magit-goto-previous-sibling-section (after user-magit/center-after-move activate)
         (recenter)))))
 
-(defun personal/init-company-ess ()
-  (use-package company-ess
-    :defer t
-    :init
-    (add-to-list 'company-backends (company-mode/backend-with-yas 'company-ess-backend))))
-
 (defun personal/init-evil-smartparens ()
   (use-package evil-smartparens
     :defer t
