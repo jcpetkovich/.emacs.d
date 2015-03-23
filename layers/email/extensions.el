@@ -42,7 +42,7 @@
     :commands (mu4e mu4e-update-index)
     :config
     (progn
-      (spacemacs/activate-evil-leader-for-map 'mu4e-main-mode-map)
+      (evilify mu4e-main-mode mu4e-main-mode-map)
       (setq-default mu4e-html2text-command "html2text -nobs -width 1000"
                     mu4e-view-show-images t
                     mu4e-confirm-quit nil
@@ -83,8 +83,6 @@
       (-each '(mu4e-view-mode mu4e-headers-mode)
         (lambda (mode)
           (add-to-list 'evil-motion-state-modes mode)))
-
-      (add-to-list 'evil-emacs-state-modes 'mu4e-main-mode)
 
       (--each '(motion normal insert visual operator)
         (evil-declare-key it mu4e-headers-mode-map
