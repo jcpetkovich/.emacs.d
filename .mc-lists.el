@@ -15,6 +15,7 @@
         electric-newline-and-maybe-indent
         end-of-buffer
         end-of-defun
+        ess-smart-S-assign
         ess-smart-comma
         evil-escape-emacs-state
         evil-insert
