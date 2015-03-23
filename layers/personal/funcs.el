@@ -132,6 +132,13 @@ Including indent-buffer, which should not be called automatically on save."
     (forward-sexp)
     (eval-and-replace)))
 
+(defun personal/eval-print-last-sexp ()
+  (interactive)
+  (save-excursion
+    (backward-up-list)
+    (forward-sexp)
+    (eval-print-last-sexp)))
+
 (defun personal/transpose-params ()
   "Presumes that params are in the form (p, p, p) or {p, p, p} or [p, p, p]"
   (interactive)
