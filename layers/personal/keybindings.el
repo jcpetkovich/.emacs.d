@@ -33,4 +33,5 @@
   "am" 'emms-smart-browse
   "ase" 'esh
   "." 'personal/eval-and-replace-sexp
+  "RET" 'personal/eval-print-last-sexp
   "xta" 'personal/transpose-params)
