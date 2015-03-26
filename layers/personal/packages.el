@@ -324,6 +324,8 @@ an item line."
   (defadvice load-ess-on-demand (after personal-ess-settings activate)
     (use-package ess-noweb
       :defer t
+      ;; Helm fights with noweb, need this buffer to stop spurious errors
+      :init (generate-new-buffer "*helm*")
       :config
       (progn
         (defun ess-noweb-post-command-function ()
