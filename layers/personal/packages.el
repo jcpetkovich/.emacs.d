@@ -31,7 +31,6 @@
     parenface
     prodigy
     whitespace-cleanup-mode
-    evil-smartparens
     company-quickhelp
     yasnippet
     )
@@ -490,15 +489,6 @@ an item line."
         (recenter))
       (defadvice magit-goto-previous-sibling-section (after user-magit/center-after-move activate)
         (recenter)))))
-
-(defun personal/init-evil-smartparens ()
-  (use-package evil-smartparens
-    :defer t
-    :init
-    (progn
-      (add-hook 'LaTeX-mode-hook (defun personal/evil-smartparens-disable ()
-                                   (evil-smartparens-mode -1)))
-      (add-hook 'smartparens-enabled-hook 'evil-smartparens-mode))))
 
 (defun personal/init-company-quickhelp ()
   (use-package company-quickhelp
