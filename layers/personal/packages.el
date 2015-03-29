@@ -40,10 +40,6 @@ which require an initialization must be listed explicitly in the list.")
 (defvar personal-excluded-packages '()
   "List of packages to exclude.")
 
-(defvar it nil
-  "Variable used in several anaphoric macros, sometimes I get
-  errors about it not existing.")
-
 (defun personal/appearance-configs ()
   (setq-default
    mouse-wheel-scroll-amount '(1)
@@ -92,8 +88,7 @@ which require an initialization must be listed explicitly in the list.")
         (kbd "M-k") 'personal/move-cursor-previous-pane
         (kbd "M-j") 'personal/move-cursor-next-pane))))
 
-(defun personal/spacemacs-configs ()
-  (evil-leader/set-leader "SPC" "C-S-"))
+(defun personal/spacemacs-configs ())
 
 (defun load-secrets ()
   (load (concat user/spacemacs-d-path "secrets.el.gpg")))
