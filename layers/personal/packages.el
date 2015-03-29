@@ -40,6 +40,10 @@ which require an initialization must be listed explicitly in the list.")
 (defvar personal-excluded-packages '()
   "List of packages to exclude.")
 
+(defvar it nil
+  "Variable used in several anaphoric macros, sometimes I get
+  errors about it not existing.")
+
 (defun personal/appearance-configs ()
   (setq-default
    mouse-wheel-scroll-amount '(1)
