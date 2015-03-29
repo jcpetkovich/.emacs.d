@@ -80,7 +80,7 @@
     eshell
     (helm-everything :variables
                      helm-everything/really-everything t)
-    irc
+    irc-config
     journal
     multiple-cursors
     personal
