@@ -35,12 +35,16 @@
  dotspacemacs-excluded-packages '())
 
 (setq-default
+ dotspacemacs-editing-style 'vim
  dotspacemacs-startup-banner 'official
  dotspacemacs-themes '(moe-dark moe-light)
  dotspacemacs-leader-key "SPC"
+ dotspacemacs-emacs-leader-key "M-m"
  dotspacemacs-major-mode-leader-key ","
+ dotspacemacs-major-mode-emacs-leader-key "C-M-m"
  dotspacemacs-command-key ":"
  dotspacemacs-guide-key-delay 0.4
+ dotspacemacs-loading-progress-bar t
  dotspacemacs-fullscreen-at-startup nil
  dotspacemacs-fullscreen-use-non-native nil
  dotspacemacs-helm-micro-state t
