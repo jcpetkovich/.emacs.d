@@ -1,60 +1,6 @@
-[submodule "site-lisp/auto-complete"]
-	path = site-lisp/auto-complete
-	url = https://github.com/auto-complete/auto-complete.git
-[submodule "site-lisp/jade-mode"]
-	path = site-lisp/jade-mode
-	url = https://github.com/brianc/jade-mode.git
-[submodule "site-lisp/dash"]
-	path = site-lisp/dash
-	url = https://github.com/magnars/dash.el.git
-[submodule "site-lisp/s"]
-	path = site-lisp/s
-	url = https://github.com/magnars/s.el.git
-[submodule "site-lisp/multiple-cursors"]
-	path = site-lisp/multiple-cursors
-	url = https://github.com/magnars/multiple-cursors.el.git
-[submodule "site-lisp/flymake-python-pyflakes"]
-	path = site-lisp/flymake-python-pyflakes
-	url = https://github.com/purcell/flymake-python-pyflakes.git
-[submodule "site-lisp/flymake-easy"]
-	path = site-lisp/flymake-easy
-	url = https://github.com/purcell/flymake-easy.git
-[submodule "site-lisp/flymake-cursor"]
-	path = site-lisp/flymake-cursor
-	url = https://github.com/illusori/emacs-flymake-cursor.git
-[submodule "site-lisp/flymake-ruby"]
-	path = site-lisp/flymake-ruby
-	url = https://github.com/purcell/flymake-ruby.git
-[submodule "site-lisp/emacs-powerline"]
-	path = site-lisp/emacs-powerline
-	url = https://github.com/jonathanchu/emacs-powerline.git
-[submodule "site-lisp/yasnippet"]
-	path = site-lisp/yasnippet
-	url = https://github.com/capitaomorte/yasnippet.git
-[submodule "site-lisp/buster-snippets"]
-	path = site-lisp/buster-snippets
-	url = https://github.com/magnars/buster-snippets.el.git
-[submodule "site-lisp/browse-kill-ring"]
-	path = site-lisp/browse-kill-ring
-	url = https://github.com/T-J-Teru/browse-kill-ring.git
-[submodule "site-lisp/magit"]
-	path = site-lisp/magit
-	url = https://github.com/magit/magit.git
-[submodule "site-lisp/ace-jump-mode"]
-	path = site-lisp/ace-jump-mode
-	url = https://github.com/winterTTr/ace-jump-mode.git
-[submodule "site-lisp/expand-region"]
-	path = site-lisp/expand-region
-	url = https://github.com/magnars/expand-region.el.git
-[submodule "site-lisp/undo-tree"]
-	path = site-lisp/undo-tree
-	url = git://github.com/emacsmirror/undo-tree.git
 [submodule "site-lisp/tern"]
 	path = site-lisp/tern
 	url = https://github.com/marijnh/tern.git
-[submodule "site-lisp/smart-forward"]
-	path = site-lisp/smart-forward
-	url = https://github.com/magnars/smart-forward.el.git
 [submodule "site-lisp/emacs-color-theme-solarized"]
 	path = site-lisp/emacs-color-theme-solarized
 	url = https://github.com/mwolson/emacs-color-theme-solarized.git
@@ -63,4 +9,7 @@
 	url = https://github.com/emacs-helm/helm-mu.git
 [submodule "site-lisp/racer"]
 	path = site-lisp/racer
+	url = https://github.com/phildawes/racer.git
+[submodule "layers/rust/extensions/racer"]
+	path = layers/rust/extensions/racer
 	url = https://github.com/phildawes/racer.git

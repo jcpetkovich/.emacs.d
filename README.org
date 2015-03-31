@@ -1,0 +1,109 @@
+* My Emacs Config
+
+  This is my emacs configuration.
+
+  If you're interested in using it, please first consider using it as
+  a source of inspiration first. Check out =spacemacs= and
+  =layers/personal= for the most interesting and unusual bits.
+
+* Installing
+
+  Setting up this config for your own use is fairly simple:
+
+#+BEGIN_SRC sh
+    cd $HOME
+    git clone https://github.com/jcpetkovich/.emacs.d.git ~/.spacemacs.d
+    emacs --batch -l ~/.spacemacs.d/spacemacs
+#+END_SRC
+
+=spacemacs= is both the config and a script for bootstrapping both
+=~/.emacs.d/= with [[https://github.com/syl20bnr/spacemacs][spacemacs]], and for any external spacemacs layers
+used.
+
+Some other dependencies you may want to install:
+
+- `slime` (through [quicklisp](http://www.quicklisp.org/beta/))
+- `mu4e` (through your package manager)
+- `ghc-mod` (through your package manager, or [cabal](http://www.haskell.org/cabal/))
+- `jedi` (through your package manager, [pip](https://pypi.python.org/pypi/pip) or similar)
+
+If you don't want the functionality of these particluar packages, you
+may ignore them, as the configuration should run without them.
+
+* Significant Keybindings
+
+The defaults for emacs/evil are used wherever possible, the following
+sections document significant alterations or interesting pieces not
+included in emacs by default.
+
+For more general help, To show every custom custom binding just run
+`M-x describe-personal-keybindings`. To see an interactive and
+searchable list of any active keybindings in the current buffer, run
+`C-h b`.
+
+To understand these keybindings you must understand the emacs
+[keybinding notation](http://www.emacswiki.org/emacs/EmacsKeyNotation).
+
+*** General Editing
+| Keybinding | Description                    |
+|------------+--------------------------------|
+| ~M-RET~    | DWIM newline                   |
+| ~C-'~      | Expand Region                  |
+| ~C-"~      | Contract Region                |
+| ~M-n~      | Grow whitespace around point   |
+| ~M-N~      | Shrink whitespace around point |
+| ~M-\~      | Shrink whitespace DWIM         |
+| ~M-/~      | Hippie Expand                  |
+| ~M-?~      | Hippie Expand Line             |
+
+*** Multiple Cursors
+| Keybinding | Description                                         |
+|------------+-----------------------------------------------------|
+| `M-m`      | Mark symbol or next like it (Like `C-d` in sublime) |
+| `M-M`      | Mark word or next like it                           |
+| `C-S-n`    | Mark next like this                                 |
+| `C-S-p`    | Mark previous like this                             |
+| `M-'`      | Mark all DWIM                                       |
+
+*** Buffer Splitting and Moving
+| Keybinding | Description                            |
+|------------+----------------------------------------|
+| `M-!`      | Delete current window (not buffer)     |
+| `M-1`      | Delete all other windows (not buffers) |
+| `M-2`      | Split window vertically                |
+| `M-@`      | Split window horizontally              |
+| `M-j`      | Move focus to next window              |
+| `M-k`      | Move focus to previous window          |
+
+*** File opening, Searching and Navigation
+| Keybinding | Description                     |
+|------------+---------------------------------|
+| `M-o`      | Open a file in project          |
+| `M-i`      | Fuzzy search current buffer     |
+| `C-x M-i`  | Fuzzy search all buffers        |
+| `M-l`      | Fuzzy search current project    |
+| `M-v`      | Search buffer by semantic units |
+
+*** Capitalization `M-c <key>`
+| Keybinding | Description            |
+|------------+------------------------|
+| `-`        | Turn word to snakecase |
+| `m`        | Camel Case word        |
+| `c`        | Capitalize word        |
+| `l`        | Downcase word          |
+| `u`        | Upcase word            |
+
+*** Transposition `M-t <key>`
+| Keybinding | Description         |
+|------------+---------------------|
+| `l`        | Transpose line      |
+| `p`        | Transpose parameter |
+| `s`        | Transpose sexpr     |
+| `w`        | Transpose word      |
+
+*** Spacemacs
+
+| Keybinding | Description           |
+|------------+-----------------------|
+| `SPC`      | Leader Key (in evil)  |
+| `M-m`      | Leader Key (anywhere) |
