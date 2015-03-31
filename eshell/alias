@@ -1,3 +1,0 @@
-alias e find-file $1
-alias l ls -al
-alias x extract
