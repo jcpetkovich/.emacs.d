@@ -4,7 +4,7 @@
 
   If you're interested in using it, please first consider using it as
   a source of inspiration first. Check out =spacemacs= and
-  =layers/keybindings= for the most interesting and unusual bits.
+  =layers/personal= for the most interesting and unusual bits.
 
 * Installing
 
@@ -106,4 +106,4 @@ To understand these keybindings you must understand the emacs
 | Keybinding | Description           |
 |------------+-----------------------|
 | `SPC`      | Leader Key (in evil)  |
-| `C-S-SPC`  | Leader Key (anywhere) |
+| `M-m`      | Leader Key (anywhere) |
