@@ -52,6 +52,7 @@
         paredit-backward
         paredit-backward-up
         paredit-close-round
+        paredit-doublequote
         paredit-forward
         paredit-forward-barf-sexp
         paredit-forward-delete
@@ -64,6 +65,7 @@
         personal/kill-region-or-backward-word
         personal/new-line-dwim
         python-extras/smart-delete
+        sh-assignment
         shrink-whitespace
         sp-backward-delete-char
         sp-backward-kill-word
