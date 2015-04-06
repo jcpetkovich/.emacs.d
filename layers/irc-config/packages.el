@@ -32,6 +32,7 @@ which require an initialization must be listed explicitly in the list.")
       (if (file-exists-p "~/.authinfo.gpg")
 
           (progn
+            (require 'auth-source)
             (setq-default
              irc-user-name (plist-get (car (auth-source-search :port '("nickserv"))) :user)
              rcirc-fill-column 'frame-width
