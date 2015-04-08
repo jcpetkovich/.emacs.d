@@ -154,6 +154,13 @@ which require an initialization must be listed explicitly in the list.")
   (personal/keybinding-configs))
 
 (defun personal/init-auctex ()
+
+  (use-package latex
+    :defer t
+    :config
+    (bind-keys :map LaTeX-mode-map
+               ("<M-return>" . LaTeX-insert-item)))
+
   (use-package tex
     :defer t
     :config
@@ -163,9 +170,6 @@ which require an initialization must be listed explicitly in the list.")
 
       (evil-leader/set-key-for-mode 'latex-mode
         "md" 'personal/tex-delete-env-pair)
-
-      (bind-keys :map LaTeX-mode-map
-                 ("<M-return>" . LaTeX-insert-item))
 
 
       (add-hook 'LaTeX-mode-hook 'reftex-mode)
