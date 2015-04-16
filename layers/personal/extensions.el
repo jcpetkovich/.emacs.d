@@ -23,6 +23,7 @@
     hippie-expand
     dired
     wdired
+    doc-view
     )
   "List of all extensions to load after the packages.")
 
@@ -123,3 +124,9 @@
 
       (evil-declare-key 'normal dired-mode-map
         (kbd "n") 'evil-search-next))))
+
+(defun personal/init-doc-view ()
+  (use-package doc-view
+    :defer t
+    :config
+    (setq-default doc-view-continuous t)))
