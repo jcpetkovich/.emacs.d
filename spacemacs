@@ -67,7 +67,8 @@
                                                 haskell-enable-hindent-support t)
                                        (rcirc :variables
                                               rcirc-enable-znc-support t)
-                                       ;; go
+                                       org
+                                       syntax-checking
                                        auctex
                                        auto-completion
                                        c-c++
@@ -75,6 +76,7 @@
                                        colors
                                        erlang-elixir
                                        fasd
+                                       go
                                        html
                                        javascript
                                        markdown
@@ -84,7 +86,9 @@
                                        ruby
                                        shell-scripts
                                        )
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(
+                                    evil-escape
+                                    )
    dotspacemacs-delete-orphan-packages t)
 
   ;; Initialize and/or update external layers
