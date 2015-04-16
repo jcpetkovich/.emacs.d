@@ -18,7 +18,10 @@
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
 
-(defvar multiple-cursors-excluded-packages '()
+(defvar multiple-cursors-excluded-packages
+  '(
+    evil-escape
+    )
   "List of packages to exclude.")
 
 ;; For each package, define a function multiple-cursors/init-<package-multiple-cursors>
