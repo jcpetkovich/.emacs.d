@@ -39,7 +39,7 @@ which require an initialization must be listed explicitly in the list.")
 
                     (venv-initialize-interactive-shells)
                     (venv-initialize-eshell)
-                    (setq-default venv-location '("~/.virtualenvs/")))
+                    (setq-default venv-location "~/.virtualenvs/"))
 
                   (when buffer-file-name  ; Check that the buffer has a file
                     (when (projectile-project-p)
@@ -56,7 +56,7 @@ which require an initialization must be listed explicitly in the list.")
                              (current-venv
                               (--filter (s-match (s-chop-suffix "dev-python" it) buffer-file-name)
                                         default-venv-directories)))
-                        (set (make-local-variable 'venv-location) (-concat venv-location current-venv))))))))))
+                        (set (make-local-variable 'venv-location) current-venv)))))))))
 
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
