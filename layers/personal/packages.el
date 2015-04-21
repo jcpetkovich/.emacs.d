@@ -58,7 +58,6 @@ which require an initialization must be listed explicitly in the list.")
 (defun personal/editing-configs ()
   (setq-default
    ;; Editing
-   major-mode                  'org-mode
    indent-tabs-mode            nil
    sentence-end-double-space   nil
    uniquify-buffer-name-style  'post-forward
