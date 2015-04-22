@@ -1,4 +1,4 @@
-;;; packages.el --- NAME Layer packages File for Spacemacs
+;;; packages.el --- email-config Layer packages File for Spacemacs
 ;;
 ;; Copyright (c) 2012-2014 Sylvain Benner
 ;; Copyright (c) 2014-2015 Sylvain Benner & Contributors
@@ -10,19 +10,19 @@
 ;;
 ;;; License: GPLv3
 
-(defvar NAME-packages
+(defvar email-config-packages
   '(
     ;; package names go here
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
 
-(defvar NAME-excluded-packages '()
+(defvar email-config-excluded-packages '()
   "List of packages to exclude.")
 
-;; For each package, define a function NAME/init-<package-name>
+;; For each package, define a function email-config/init-<package-name>
 ;;
-;; (defun NAME/init-my-package ()
+;; (defun email-config/init-my-package ()
 ;;   "Initialize my package"
 ;;   )
 ;;

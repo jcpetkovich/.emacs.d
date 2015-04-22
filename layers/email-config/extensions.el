@@ -1,4 +1,4 @@
-;;; extensions.el --- email Layer extensions File for Spacemacs
+;;; extensions.el --- email-config Layer extensions File for Spacemacs
 ;;
 ;; Copyright (c) 2012-2014 Sylvain Benner
 ;; Copyright (c) 2014-2015 Sylvain Benner & Contributors
@@ -10,21 +10,21 @@
 ;;
 ;;; License: GPLv3
 
-(defvar email-pre-extensions
+(defvar email-config-pre-extensions
   '(
-    ;; pre extension emails go here
+    ;; pre extension email-configs go here
     )
   "List of all extensions to load before the packages.")
 
-(defvar email-post-extensions
+(defvar email-config-post-extensions
   '(
-    ;; post extension emails go here
+    ;; post extension email-configs go here
     mu4e
     )
   "List of all extensions to load after the packages.")
 
 
-(defun email/init-mu4e ()
+(defun email-config/init-mu4e ()
   (setq gnutls-min-prime-bits 2048)
 
   (setq-default send-mail-function 'smtpmail-send-it
@@ -75,10 +75,10 @@
       (when (fboundp 'imagemagick-register-types)
         (imagemagick-register-types))
 
-      (defun email/use-flyspell ()
+      (defun email-config/use-flyspell ()
         (flyspell-mode 1))
 
-      (add-hook 'mu4e-compose-mode-hook 'email/use-flyspell)
+      (add-hook 'mu4e-compose-mode-hook 'email-config/use-flyspell)
 
       (-each '(mu4e-view-mode mu4e-headers-mode)
         (lambda (mode)
@@ -104,13 +104,3 @@
           (kbd "C-c C-s") 'message-dont-send))))
 
 )
-
-;; For each extension, define a function email/init-<extension-email>
-;;
-;; (defun email/init-my-extension ()
-;;   "Initialize my extension"
-;;   )
-;;
-;; Often the body of an initialize function uses `use-package'
-;; For more info on `use-package', see readme:
-;; https://github.com/jwiegley/use-package

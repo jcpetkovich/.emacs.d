@@ -1,4 +1,4 @@
-;;; extensions.el --- email Layer keybindings File for Spacemacs
+;;; extensions.el --- email-config Layer keybindings File for Spacemacs
 ;;
 ;; Copyright (c) 2012-2014 Sylvain Benner
 ;; Copyright (c) 2014-2015 Sylvain Benner & Contributors
