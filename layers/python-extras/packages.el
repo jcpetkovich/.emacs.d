@@ -31,7 +31,9 @@ which require an initialization must be listed explicitly in the list.")
       (defvar python-extras/enabled nil)
 
       (evil-leader/set-key-for-mode 'python-mode
-        "mV" 'venv-workon)
+        "mV" 'venv-workon
+        "mga" 'anaconda-mode-goto-assignments)
+
       (add-hook 'python-mode-hook
                 (defun python-extras/find-virtualenv ()
                   (when (not python-extras/enabled)
