@@ -43,7 +43,7 @@
           rust/lang-src-path "~/labs/rust")
     python-extras
     c-extras
-    email
+    email-config
     eshell
     (helm-everything :variables
                      helm-everything/really-everything t)
