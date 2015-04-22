@@ -81,6 +81,7 @@
                                        markdown
                                        org
                                        pcre2el
+                                       prodigy
                                        python
                                        restclient
                                        ruby
@@ -149,7 +150,9 @@
    dotspacemacs-mode-line-unicode-symbols nil
    dotspacemacs-smooth-scrolling t
    dotspacemacs-smartparens-strict-mode t
+   dotspacemacs-highlight-delimiters 'all
    dotspacemacs-persistent-server t
+   dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
    dotspacemacs-default-package-repository nil
    ))
 

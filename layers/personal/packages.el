@@ -468,7 +468,6 @@ an item line."
 
 (defun personal/init-prodigy ()
   (use-package prodigy
-    :init (evil-leader/set-key "aS" 'prodigy)
     :commands prodigy
     :config
     (progn
