@@ -140,17 +140,17 @@ With a prefix arg reinitialize the cache."
     :defer t
     :init
     (progn
-      (--each '(normal insert)
-        (evil-declare-key it helm-gtags-mode-map
-          (kbd "M-.") 'helm-gtags-dwim
-          (kbd "M-,") 'helm-gtags-pop-stack))
+      (defvar helm-everything/additional-gtags-modes
+        '(coffee-mode-hook
+          cperl-mode-hook
+          sh-mode-hook))
+      (--each helm-everything/additional-gtags-modes
+          (add-hook it 'helm-gtags-mode)))
 
-      (--each '(c-mode-hook
-                c++-mode-hook
-                coffee-mode-hook
-                cperl-mode-hook
-                sh-mode-hook)
-        (add-hook it 'helm-gtags-mode)))))
+
+    :config
+    (--each helm-everything/additional-gtags-modes
+      (spacemacs/gtags-define-keys-for-mode it))))
 
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:

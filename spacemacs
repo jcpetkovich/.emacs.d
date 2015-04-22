@@ -67,8 +67,6 @@
                                                 haskell-enable-hindent-support t)
                                        (rcirc :variables
                                               rcirc-enable-znc-support t)
-                                       org
-                                       syntax-checking
                                        auctex
                                        auto-completion
                                        c-c++
@@ -77,14 +75,17 @@
                                        erlang-elixir
                                        fasd
                                        go
+                                       gtags
                                        html
                                        javascript
                                        markdown
+                                       org
                                        pcre2el
                                        python
                                        restclient
                                        ruby
                                        shell-scripts
+                                       syntax-checking
                                        )
    dotspacemacs-excluded-packages '(
                                     evil-escape
