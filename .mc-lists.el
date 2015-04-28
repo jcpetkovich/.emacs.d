@@ -10,6 +10,7 @@
         backward-sexp
         backward-up-list
         beginning-of-defun
+        comint-bol
         comment-dwim-2
         down-list
         electric-newline-and-maybe-indent
