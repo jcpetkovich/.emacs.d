@@ -150,7 +150,7 @@ With a prefix arg reinitialize the cache."
 
     :config
     (--each helm-everything/additional-gtags-modes
-      (spacemacs/gtags-define-keys-for-mode it))))
+      (spacemacs/helm-gtags-define-keys-for-mode it))))
 
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
