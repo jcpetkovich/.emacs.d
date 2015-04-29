@@ -20,6 +20,7 @@
   '(
     ;; post extension ebuilds go here
     sh-script
+    conf-mode
     )
   "List of all extensions to load after the packages.")
 
@@ -30,6 +31,10 @@
     (add-hook 'sh-mode-hook (lambda ()
                               (when (string-match "\\.ebuild$" (buffer-file-name))
                                 (sh-set-shell "bash"))))))
+
+(defun ebuild/init-conf-mode ()
+  (use-package conf-mode
+    :mode ("\\.\\(keywords\\|accept_keywords\\|use\\)$" . conf-mode)))
 
 ;; For each extension, define a function ebuild/init-<extension-ebuild>
 ;;
