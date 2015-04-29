@@ -322,6 +322,19 @@ an item line."
     :config
     (dash-enable-font-lock)))
 
+(spacemacs|defvar-company-backends inferior-ess-mode)
+(when (configuration-layer/layer-usedp 'auto-completion)
+  (defun ess/post-init-company ()
+    (spacemacs|add-company-hook inferior-ess-mode))
+
+  (defun ess/init-company-ess ()
+    (use-package company-ess
+      :if (configuration-layer/package-usedp 'company)
+      :defer t
+      :init
+      (push '(company-ess-backend :with company-yasnippet)
+            company-backends-inferior-ess-mode))))
+
 (defun personal/init-ess ()
   (defadvice load-ess-on-demand (after personal-ess-settings activate)
     (use-package ess-noweb
