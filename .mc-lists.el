@@ -18,13 +18,16 @@
         end-of-defun
         ess-smart-S-assign
         ess-smart-comma
+        evil-backward-char
         evil-escape-emacs-state
+        evil-forward-char
         evil-insert
         evil-insert-state
         evil-lisp-state-sp-forward-barf-sexp
         evil-lisp-state-sp-forward-slurp-sexp
         evil-lisp-state-wrap
         evil-normal-state
+        evil-substitute
         fill-paragraph
         forward-sexp
         haskell-indentation-delete-backward-char
