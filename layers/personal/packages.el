@@ -324,10 +324,10 @@ an item line."
 
 (spacemacs|defvar-company-backends inferior-ess-mode)
 (when (configuration-layer/layer-usedp 'auto-completion)
-  (defun ess/post-init-company ()
+  (defun personal/post-init-company ()
     (spacemacs|add-company-hook inferior-ess-mode))
 
-  (defun ess/init-company-ess ()
+  (defun personal/init-company-ess ()
     (use-package company-ess
       :if (configuration-layer/package-usedp 'company)
       :defer t
