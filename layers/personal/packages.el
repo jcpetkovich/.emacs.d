@@ -336,6 +336,7 @@ an item line."
             company-backends-inferior-ess-mode))))
 
 (defun personal/init-ess ()
+  (add-hook 'Rnw-mode-hook 'spacemacs/load-yasnippet)
   (defadvice load-ess-on-demand (after personal-ess-settings activate)
     (use-package ess-noweb
       :defer t
