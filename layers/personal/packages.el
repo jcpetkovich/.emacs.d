@@ -513,6 +513,16 @@ an item line."
     :config
     (setq-default company-quickhelp-max-lines 20)))
 
+;; Better yasnippet
+;; Plans:
+;; f  - function
+;; m  - method
+;; t  - test
+;; tc - testclass
+;; c  - class/type
+;; l  - forloop
+;; i  - if
+;; e  - exception
 (defun personal/init-yasnippet ()
   (use-package yasnippet
     :defer t
