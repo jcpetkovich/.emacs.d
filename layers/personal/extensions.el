@@ -54,19 +54,7 @@
 
     :config
     (progn
-      (setq-default hippie-expand-dabbrev-skip-space t
-                    hippie-expand-try-functions-list
-                    '(try-expand-dabbrev
-                      try-expand-dabbrev-all-buffers
-                      try-expand-dabbrev-from-kill
-                      try-complete-file-name-partially
-                      try-complete-file-name
-                      try-expand-all-abbrevs
-                      try-complete-lisp-symbol-partially
-                      try-complete-lisp-symbol
-                      try-expand-whole-kill
-                      try-expand-line))
-
+      (setq-default hippie-expand-dabbrev-skip-space t)
       (defadvice he-substitute-string (after completion/he-paredit-fix activate)
         "remove extra paren when expanding line in paredit"
         (if (and paredit-mode (equal (substring str -1) ")"))
