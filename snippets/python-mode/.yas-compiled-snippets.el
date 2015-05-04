@@ -1,5 +1,5 @@
 ;;; Compiled snippets and support files for `python-mode'
-;;; .yas-setup.el support file if any:
+;;; contents of the .yas-setup.el support file:
 ;;;
 (defun python-split-args (arg-string)
   "Split a python argument string into ((name, default)..) tuples"
@@ -226,4 +226,4 @@
                         nil nil nil nil)))
 
 
-;;; Do not edit! File generated at Tue Jan  6 14:58:43 2015
+;;; Do not edit! File generated at Mon May  4 13:32:55 2015
