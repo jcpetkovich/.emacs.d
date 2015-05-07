@@ -175,6 +175,7 @@ which require an initialization must be listed explicitly in the list.")
       (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
       (add-hook 'LaTeX-mode-hook 'orgtbl-mode)
       (add-hook 'LaTeX-mode-hook 'turn-on-smartparens-mode)
+      (setq LaTeX-mode-hook (append LaTeX-mode-hook '(personal/tex-noweb-noflycheck)))
 
       (push '("zathura" "zathura -x \"emacsclient --no-wait +%%{line} %%{input}\" %s.pdf")
             TeX-view-program-list)
