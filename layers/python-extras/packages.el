@@ -21,6 +21,12 @@ which require an initialization must be listed explicitly in the list.")
 (defvar python-extras-excluded-packages '()
   "List of packages to exclude.")
 
+(when (configuration-layer/layer-usedp 'syntax-checking)
+  (defun python-extras/init-flycheck-python ()
+    (use-package flycheck
+      :defer t
+      :init (add-hook 'python-mode-hook 'flycheck-mode))))
+
 (defun python-extras/init-virtualenvwrapper ()
   (use-package projectile
     :defer t
