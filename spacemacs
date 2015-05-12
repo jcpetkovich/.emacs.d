@@ -86,7 +86,9 @@
                                        python
                                        restclient
                                        ruby
+                                       semantic
                                        shell-scripts
+                                       sql
                                        syntax-checking
                                        )
    dotspacemacs-excluded-packages '(
