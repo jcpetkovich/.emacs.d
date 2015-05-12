@@ -72,6 +72,7 @@
                                        c-c++
                                        clojure
                                        colors
+                                       emacs-lisp
                                        erlang-elixir
                                        fasd
                                        go
