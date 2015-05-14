@@ -86,7 +86,8 @@
                                        python
                                        restclient
                                        ruby
-                                       semantic
+                                       ;; buggy for now
+                                       ;; semantic
                                        shell-scripts
                                        sql
                                        syntax-checking
