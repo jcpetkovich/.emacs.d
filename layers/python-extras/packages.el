@@ -14,6 +14,7 @@
   '(
     virtualenvwrapper
     anaconda-mode
+    flycheck
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
@@ -22,10 +23,11 @@ which require an initialization must be listed explicitly in the list.")
   "List of packages to exclude.")
 
 (when (configuration-layer/layer-usedp 'syntax-checking)
-  (defun python-extras/init-flycheck-python ()
+  (defun python-extras/init-flycheck ()
     (use-package flycheck
       :defer t
-      :init (add-hook 'python-mode-hook 'flycheck-mode))))
+      :init (add-hook 'python-mode-hook (defun python-extras/enable-flycheck ()
+                                          (flycheck-mode 1))))))
 
 (defun python-extras/init-virtualenvwrapper ()
   (use-package projectile
