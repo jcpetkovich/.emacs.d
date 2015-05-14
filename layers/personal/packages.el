@@ -529,6 +529,10 @@ an item line."
     :defer t
     :init
     (progn
+
+      (add-to-list 'yas-before-expand-snippet-hook 'spacemacs/toggle-smartparens)
+      (add-to-list 'yas-after-exit-snippet-hook 'spacemacs/toggle-smartparens)
+
       (defvar personal/yas-initialized nil)
       (defun personal/add-my-snippets ()
         (when (not personal/yas-initialized)
