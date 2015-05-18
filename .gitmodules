@@ -11,5 +11,5 @@
 	path = site-lisp/racer
 	url = https://github.com/phildawes/racer.git
 [submodule "layers/rust/extensions/racer"]
-	path = layers/rust/extensions/racer
+	path = layers/rust-extras/extensions/racer
 	url = https://github.com/phildawes/racer.git
