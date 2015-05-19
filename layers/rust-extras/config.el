@@ -1,4 +1,4 @@
-;;; config.el --- rust Layer configuration File
+;;; config.el --- rust-extras Layer configuration File
 ;;
 ;; Copyright (c) 2012-2014 Sylvain Benner
 ;; Copyright (c) 2014-2015 Jean-Christophe Petkovich & Contributors
@@ -10,5 +10,5 @@
 ;;
 ;;; License: GPLv3
 
-(defvar rust/lang-src-path nil
+(defvar rust-extras/lang-src-path nil
   "Path to the rust source code.")
