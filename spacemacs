@@ -48,6 +48,7 @@
     (helm-everything :variables
                      helm-everything/really-everything t)
     irc-config
+    rust-extras
     journal
     multiple-cursors
     personal
