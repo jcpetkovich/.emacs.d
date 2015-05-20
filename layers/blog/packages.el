@@ -58,6 +58,7 @@ background of code to whatever theme I'm using's background"
       (setq op/site-sub-title "Musings on (mostly) emacs.")
       (setq op/theme 'mytheme)
       (setq op/theme-root-directory (concat op/repository-directory "themes/"))
+      (setq op/template-directory (concat op/theme-root-directory (symbol-name op/theme) "/templates/"))
 
       ;; Add hook to grab background color for org css output
       (add-hook 'org-export-before-processing-hook 'blog/org-inline-css-hook)
