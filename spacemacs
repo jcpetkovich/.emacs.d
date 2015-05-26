@@ -68,6 +68,8 @@
                                                 haskell-enable-hindent-support t)
                                        (rcirc :variables
                                               rcirc-enable-znc-support t)
+                                       ;; buggy for now
+                                       ;; semantic
                                        auctex
                                        auto-completion
                                        c-c++
@@ -87,11 +89,11 @@
                                        python
                                        restclient
                                        ruby
-                                       ;; buggy for now
-                                       ;; semantic
                                        shell-scripts
+                                       slime
                                        sql
                                        syntax-checking
+                                       shell
                                        )
    dotspacemacs-excluded-packages '(
                                     evil-escape
