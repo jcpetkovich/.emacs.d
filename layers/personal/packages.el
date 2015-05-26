@@ -50,10 +50,7 @@ which require an initialization must be listed explicitly in the list.")
 
    frame-title-format
    (list
-    '(:eval (if buffer-file-name (buffer-file-name) (buffer-name)))))
-
-  ;; (window-numbering-mode -1)
-  (golden-ratio-mode 1))
+    '(:eval (if buffer-file-name (buffer-file-name) (buffer-name))))))
 
 (defun personal/editing-configs ()
   (setq-default
@@ -99,9 +96,6 @@ which require an initialization must be listed explicitly in the list.")
     (load-secrets)))
 
 (defun personal/helm-configs ()
-
-  (setq-default helm-split-window-default-side 'other
-                helm-always-two-windows nil)
 
   ;; I prefer my own grep wrapper.
   (defun helm-do-grep-wrapper (arg)
