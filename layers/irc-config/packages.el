@@ -35,6 +35,7 @@ which require an initialization must be listed explicitly in the list.")
             (require 'auth-source)
             (setq-default
              irc-user-name (plist-get (car (auth-source-search :port '("nickserv"))) :user)
+             baconbunny-password (funcall (plist-get (car (auth-source-search :port "irc" :host "irc.baconbunny.com")) :secret))
              rcirc-fill-column 'frame-width
 
              rcirc-server-alist
@@ -42,6 +43,10 @@ which require an initialization must be listed explicitly in the list.")
                 :port 6697
                 :encryption tls
                 :auth "jcp")
+               ("irc.baconbunny.com"
+                :nick "jcp"
+                :channels ("#gentoo")
+                :password ,baconbunny-password)
                ("localhost"))
 
              ;; Configure plugins
