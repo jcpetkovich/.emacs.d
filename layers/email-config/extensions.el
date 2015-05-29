@@ -43,6 +43,7 @@
     :config
     (progn
       (evilify mu4e-main-mode mu4e-main-mode-map)
+      (bind-key "C-w C-o" 'delete-other-windows mu4e-main-mode-map)
       (setq-default mu4e-html2text-command "html2text -nobs -width 1000"
                     mu4e-view-show-images t
                     mu4e-confirm-quit nil
