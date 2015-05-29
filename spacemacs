@@ -68,6 +68,8 @@
                                                 haskell-enable-hindent-support t)
                                        (rcirc :variables
                                               rcirc-enable-znc-support t)
+                                       (shell :variables
+                                              shell-default-shell eshell)
                                        ;; buggy for now
                                        ;; semantic
                                        auctex
@@ -93,7 +95,6 @@
                                        slime
                                        sql
                                        syntax-checking
-                                       shell
                                        )
    dotspacemacs-excluded-packages '(
                                     evil-escape
