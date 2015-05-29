@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: class
+# key: c
+# group: definitions
+# --
+class ${1:Class}(${2:object}):
+    $0

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: test class
+# key: tc
+# group: definitions
+# --
+class Test${1:Class}(${2:unittest.TestCase}):
+    $0

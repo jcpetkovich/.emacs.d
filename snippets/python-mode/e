@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: trycatch
+# key: e
+# group: definitions
+# --
+try:
+    $1
+except$2:
+    $0

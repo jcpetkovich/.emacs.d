@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: test
+# key: t
+# group: definitions
+# --
+def test_${1:}(self$2):
+    $0

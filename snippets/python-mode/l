@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: forloop
+# key: l
+# group: definitions
+# --
+for ${1:x} in ${2:l}:
+    $0
