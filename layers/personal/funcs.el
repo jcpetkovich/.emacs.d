@@ -182,4 +182,13 @@ Including indent-buffer, which should not be called automatically on save."
   (when ess-noweb-mode
     (flycheck-mode -1)))
 
-(provide 'user-utils)
+(defvar personal/previous-smartparen-state nil)
+(defun personal/turn-off-smartparens (&optional ignore)
+  (when smartparens-mode
+    (setq personal/previous-smartparen-state t)
+    (smartparens-mode -1)))
+
+(defun personal/turn-on-smartparens (&optional ignore)
+  (when personal/previous-smartparen-state
+    (setq personal/previous-smartparen-state nil)
+    (smartparens-mode 1)))
