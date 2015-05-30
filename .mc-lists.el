@@ -30,6 +30,7 @@
         evil-substitute
         fill-paragraph
         forward-sexp
+        go-mode-insert-and-indent
         haskell-indentation-delete-backward-char
         helm-show-kill-ring
         keyboard-escape-quit
@@ -40,6 +41,7 @@
         magit-unstage-item
         org-beginning-of-line
         org-ctrl-c-ctrl-c
+        org-cycle
         org-end-of-line
         org-force-self-insert
         org-insert-heading
