@@ -417,19 +417,22 @@ an item line."
 (defun personal/init-parenface ()
   (use-package parenface))
 
-
 (defun personal/init-company ()
   (use-package company
     :defer t
     :config
-    (bind-keys :map company-active-map
-               ("C-n" . company-select-next)
-               ("C-p" . company-select-previous)
-               ("C-h" . help-command)
-               ("C-w" . personal/kill-region-or-backward-word)
-               ("C-l" . company-show-location)
-               ("M-1" . nil)
-               ("M-2" . nil))))
+    (progn
+      (bind-keys :map company-active-map
+                 ("C-n" . company-select-next)
+                 ("C-p" . company-select-previous)
+                 ("C-h" . help-command)
+                 ("C-w" . personal/kill-region-or-backward-word)
+                 ("C-l" . company-show-location)
+                 ("M-1" . nil)
+                 ("M-2" . nil))
+      (add-hook 'company-template-insert-hook 'personal/turn-off-smartparens)
+      (add-hook 'company-completion-cancelled-hook 'personal/turn-on-smartparens)
+      (add-hook 'company-completion-finished-hook 'personal/turn-on-smartparens))))
 
 (defun personal/init-dired-rainbow ()
   (use-package dired-rainbow
@@ -529,5 +532,5 @@ an item line."
         (personal/add-my-snippets)))
     :config
     (progn
-      (add-to-list 'yas-before-expand-snippet-hook 'spacemacs/toggle-smartparens)
-      (add-to-list 'yas-after-exit-snippet-hook 'spacemacs/toggle-smartparens))))
+      (add-to-list 'yas-before-expand-snippet-hook 'personal/turn-off-smartparens)
+      (add-to-list 'yas-after-exit-snippet-hook 'personal/turn-on-smartparens))))
