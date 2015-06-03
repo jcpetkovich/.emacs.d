@@ -69,7 +69,7 @@
                                        (rcirc :variables
                                               rcirc-enable-znc-support t)
                                        (shell :variables
-                                              shell-default-shell eshell)
+                                              shell-default-shell 'eshell)
                                        ;; buggy for now
                                        ;; semantic
                                        auctex
