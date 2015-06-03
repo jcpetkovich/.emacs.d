@@ -34,4 +34,7 @@
   "ase" 'esh
   "." 'personal/eval-and-replace-sexp
   "RET" 'personal/eval-print-last-sexp
-  "xta" 'personal/transpose-params)
+  "xta" 'personal/transpose-params
+  "xts" 'transpose-sexps
+  "xt." 'transpose-sentences
+  "xtp" 'transpose-paragraphs)
