@@ -28,8 +28,8 @@
   (use-package sh-script
     :mode ("\\.\\(ebuild\\|eclass\\)$" . sh-mode)
     :config
-    (add-hook 'sh-mode-hook (lambda ()
-                              (when (string-match "\\.ebuild$" (buffer-file-name))
+    (add-hook 'sh-mode-hook (defun ebuild/set-bash ()
+                              (when (string-match "\\.ebuild$" (or (buffer-file-name) ""))
                                 (sh-set-shell "bash"))))))
 
 (defun ebuild/init-conf-mode ()
