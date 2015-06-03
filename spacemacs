@@ -147,6 +147,7 @@
    dotspacemacs-major-mode-leader-key ","
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    dotspacemacs-command-key ":"
+   dotspacemacs-use-ido nil
    dotspacemacs-enable-paste-micro-state t
    dotspacemacs-guide-key-delay 0.4
    dotspacemacs-loading-progress-bar t
