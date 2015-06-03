@@ -356,6 +356,7 @@ an item line."
           "mk" 'ess-swv-knit)
 
         (setq-default
+         ess-offset-continued 0
          ess-pdf-viewer-pref "zathura"
          ess-R-font-lock-keywords '((ess-R-fl-keyword:modifiers . t)
                                     (ess-R-fl-keyword:fun-defs . t)
