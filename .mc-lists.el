@@ -33,6 +33,7 @@
         go-mode-insert-and-indent
         haskell-indentation-delete-backward-char
         helm-show-kill-ring
+        indent-for-tab-command
         keyboard-escape-quit
         kill-region
         kill-sexp
@@ -47,6 +48,7 @@
         org-insert-heading
         org-kill-line
         org-meta-return
+        org-metaleft
         org-metaright
         org-return-indent
         org-self-insert-command
