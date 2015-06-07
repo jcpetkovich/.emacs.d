@@ -14,12 +14,13 @@
     auctex
     comment-dwim-2
     company
+    company-ess
+    company-quickhelp
     dash
     dired-rainbow
     emms
     emr
     ess
-    company-ess
     evil
     evil-leader
     helm
@@ -30,8 +31,8 @@
     paredit
     parenface
     prodigy
+    shrink-whitespace
     whitespace-cleanup-mode
-    company-quickhelp
     yasnippet
     )
   "List of all packages to install and/or initialize. Built-in packages
@@ -534,3 +535,8 @@ an item line."
     (progn
       (add-to-list 'yas-before-expand-snippet-hook 'personal/turn-off-smartparens)
       (add-to-list 'yas-after-exit-snippet-hook 'personal/turn-on-smartparens))))
+
+(defun personal/init-shrink-whitespace ()
+  (use-package shrink-whitespace
+    :defer t
+    :bind ("M-\\" . shrink-whitespace)))
