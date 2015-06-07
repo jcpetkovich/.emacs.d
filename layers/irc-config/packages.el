@@ -39,15 +39,15 @@ which require an initialization must be listed explicitly in the list.")
              rcirc-fill-column 'frame-width
 
              rcirc-server-alist
-             `(("eyolfson.ca"
+             `(("localhost")
+               ("eyolfson.ca"
                 :port 6697
                 :encryption tls
                 :auth "jcp")
                ("irc.baconbunny.com"
                 :nick "jcp"
                 :channels ("#gentoo")
-                :password ,baconbunny-password)
-               ("localhost"))
+                :password ,baconbunny-password))
 
              ;; Configure plugins
              rcirc-notify-timeout 0
