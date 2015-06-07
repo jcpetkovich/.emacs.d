@@ -52,7 +52,6 @@
     journal
     multiple-cursors
     personal
-    shrink-whitespace
     theme
     ))
 
@@ -72,7 +71,7 @@
                                               shell-default-shell 'eshell)
                                        ;; buggy for now
                                        ;; semantic
-                                       auctex
+                                       latex
                                        auto-completion
                                        c-c++
                                        clojure
