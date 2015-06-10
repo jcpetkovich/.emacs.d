@@ -73,7 +73,8 @@
                                        ;; semantic
                                        latex
                                        auto-completion
-                                       c-c++
+                                       (c-c++ :variables
+                                              c-c++-enable-clang-support t)
                                        clojure
                                        colors
                                        emacs-lisp
