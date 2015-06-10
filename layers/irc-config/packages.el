@@ -35,7 +35,6 @@ which require an initialization must be listed explicitly in the list.")
             (require 'auth-source)
             (setq-default
              irc-user-name (plist-get (car (auth-source-search :port '("nickserv"))) :user)
-             baconbunny-password (funcall (plist-get (car (auth-source-search :port "irc" :host "irc.baconbunny.com")) :secret))
              rcirc-fill-column 'frame-width
 
              rcirc-server-alist
@@ -44,10 +43,21 @@ which require an initialization must be listed explicitly in the list.")
                 :port 6697
                 :encryption tls
                 :auth "jcp")
-               ("irc.baconbunny.com"
-                :nick "jcp"
-                :channels ("#gentoo")
-                :password ,baconbunny-password))
+               ("ptk.io"
+                :host "ptk.io"
+                :auth "jcp"
+                :port 6667))
+
+             rcirc-home-server-alist
+             `(("localhost")
+               ("eyolfson.ca"
+                :port 6697
+                :encryption tls
+                :auth "jcp")
+               ("192.168.2.16"
+                :host "192.168.2.16"
+                :port 6667
+                :auth "jcp"))
 
              ;; Configure plugins
              rcirc-notify-timeout 0
