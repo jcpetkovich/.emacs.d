@@ -23,6 +23,7 @@
     ess
     evil
     evil-leader
+    go-mode
     helm
     helm-swoop
     magit
@@ -540,3 +541,10 @@ an item line."
   (use-package shrink-whitespace
     :defer t
     :bind ("M-\\" . shrink-whitespace)))
+
+(defun personal/init-go-mode ()
+  (use-package go-mode
+    :defer t
+    :init
+    (add-hook 'go-mode-hook (defun personal/go-mode-tab-width ()
+                              (setq tab-width 8)))))
