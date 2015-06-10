@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        LaTeX-babel-insert-hyphen
         LaTeX-insert-left-brace
         TeX-complete-symbol
         TeX-insert-backslash
@@ -40,6 +41,7 @@
         lisp-state-forward-symbol
         lisp-state-toggle-lisp-state
         magit-unstage-item
+        message-beginning-of-line
         org-beginning-of-line
         org-ctrl-c-ctrl-c
         org-cycle
