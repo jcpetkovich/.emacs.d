@@ -78,7 +78,7 @@
                                        clojure
                                        colors
                                        emacs-lisp
-                                       erlang-elixir
+                                       elixir
                                        fasd
                                        go
                                        rust

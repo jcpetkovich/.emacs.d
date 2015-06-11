@@ -32,7 +32,7 @@
     "Initialize racer if we're using company mode"
     (let* ((rust-layer-path (concat user/spacemacs-d-path "layers/rust-extras/"))
            (racer-path      (concat rust-layer-path "extensions/racer/"))
-           (racer-elisp-dir (concat racer-path "editors/"))
+           (racer-elisp-dir (concat racer-path "editors/emacs/"))
            (racer-cmd-path  (concat racer-path "target/release/racer")))
       (if (file-exists-p racer-cmd-path)
           (use-package racer
