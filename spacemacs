@@ -81,6 +81,7 @@
                                        erlang-elixir
                                        fasd
                                        go
+                                       rust
                                        gtags
                                        html
                                        javascript
