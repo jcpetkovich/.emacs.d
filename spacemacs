@@ -48,7 +48,8 @@
     (helm-everything :variables
                      helm-everything/really-everything t)
     irc-config
-    rust-extras
+    (rust-extras :variables
+                 rust-extras/lang-src-path "~/labs/rust/")
     journal
     multiple-cursors
     personal
