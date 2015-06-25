@@ -97,6 +97,7 @@
                                        slime
                                        sql
                                        syntax-checking
+                                       version-control
                                        )
    dotspacemacs-excluded-packages '(
                                     evil-escape
