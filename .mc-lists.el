@@ -20,6 +20,7 @@
         ess-smart-S-assign
         ess-smart-comma
         evil-backward-char
+        evil-delete-backward-char-and-join
         evil-escape-emacs-state
         evil-forward-char
         evil-insert
@@ -39,6 +40,7 @@
         kill-region
         kill-sexp
         lisp-state-forward-symbol
+        lisp-state-insert-sexp-before
         lisp-state-toggle-lisp-state
         magit-unstage-item
         message-beginning-of-line
@@ -82,6 +84,7 @@
         sp-backward-symbol
         sp-delete-char
         sp-end-of-sexp
+        sp-forward-barf-sexp
         sp-forward-slurp-sexp
         sp-kill-hybrid-sexp
         sp-kill-word
