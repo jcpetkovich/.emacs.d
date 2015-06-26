@@ -26,24 +26,6 @@
 (defun c-extras/init-cc-mode ()
   (use-package cc-mode
     :commands (c-mode c++-mode)
-    :init (progn
-            (defun c-extras/default-language-standard (value)
-              "C language standard to use for syntax checking through flycheck."
-              (setf flycheck-gcc-language-standard value
-                    flycheck-clang-language-standard value))
-            (c-extras/default-language-standard "c99")
-
-            (defun c-extras/default-include-path (value)
-              "C language default include path for flycheck."
-              (setf flycheck-gcc-include-path value
-                    flycheck-clang-include-path (-concat '("/usr/lib/clang/3.6.1/include") value)))
-            (c-extras/default-include-path '("/usr/include" "/usr/include/linux"))
-
-            (defun c-extras/default-includes (value)
-              "C language default includes for flycheck."
-              (setf flycheck-gcc-includes value
-                    flycheck-clang-includes value))
-            (c-extras/default-includes nil))
     :config
     (progn
       (add-hook 'c-mode-hook (defun user-utils/turn-off-abbrev-mode ()
