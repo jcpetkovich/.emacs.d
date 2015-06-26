@@ -17,8 +17,10 @@
         electric-newline-and-maybe-indent
         end-of-buffer
         end-of-defun
+        ess-noweb-indent-line
         ess-smart-S-assign
         ess-smart-comma
+        ess-yank
         evil-backward-char
         evil-delete-backward-char-and-join
         evil-escape-emacs-state
@@ -76,6 +78,7 @@
         personal/eval-and-replace-sexp
         personal/kill-region-or-backward-word
         personal/new-line-dwim
+        personal/save-region-or-current-line
         python-extras/smart-delete
         sh-assignment
         shrink-whitespace
