@@ -452,7 +452,10 @@ an item line."
   (use-package helm-swoop
     :commands (helm-swoop helm-multi-swoop)
     :init
-    (setq helm-swoop-pre-input-function (lambda () ""))))
+    (setq helm-swoop-pre-input-function (lambda () ""))
+    :config
+    (bind-keys :map helm-swoop-map
+               ("C-w" . backward-kill-word))))
 
 (defun personal/init-emms ()
   (use-package emms
