@@ -37,6 +37,7 @@
       ;; By default, follow bsd style
       (setq-default c-default-style '((java-mode . "java")
                                       (awk-mode . "awk")
+                                      (c++-mode . "google")
                                       (other . "bsd"))
 
                     c-extras/linux-source-locations '("~/labs/linux-trees"
@@ -79,4 +80,5 @@ for the Linux Kernel style guidelines."
 
     (add-hook 'c++-mode-hook
               (lambda ()
-                (setq indent-tabs-mode t)))))
+                (set (make-local-variable 'tab-width) 2)
+                (set (make-local-variable 'indent-tabs-mode) nil)))))
