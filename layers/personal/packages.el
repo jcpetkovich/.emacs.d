@@ -14,7 +14,6 @@
     auctex
     comment-dwim-2
     company
-    company-ess
     company-quickhelp
     dash
     dired-rainbow
