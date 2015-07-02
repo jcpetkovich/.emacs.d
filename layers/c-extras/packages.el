@@ -14,6 +14,9 @@
   '(
     company
     smart-tabs-mode
+    clang-format
+    google-c-style
+    ycmd
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
@@ -29,8 +32,7 @@ which require an initialization must be listed explicitly in the list.")
                       "Slow down company mode in c-mode like
                       things, it's way too aggressive."
                       (--each '(indentation space-after-tab)
-                        (set (make-local-variable 'whitespace-style) (remove it whitespace-style)))
-                      (set (make-local-variable 'company-idle-delay) 1)))))
+                        (set (make-local-variable 'whitespace-style) (remove it whitespace-style)))))))
 
 (defun c-extras/init-smart-tabs-mode ()
   (use-package smart-tabs-mode
@@ -41,4 +43,26 @@ which require an initialization must be listed explicitly in the list.")
                 (defun c-extras/enable-smart-tabs-mode ()
                   (when (not c-extras/smart-tabs-enabled)
                     (setq c-extras/smart-tabs-enabled t)
-                    (smart-tabs-insinuate 'c 'c++)))))))
+                    (smart-tabs-insinuate 'c)))))))
+
+(defun c-extras/init-ycmd ()
+  (use-package ycmd
+    :defer t
+    :init (setq-default ycmd-server-command '("python" "/home/jcp/labs/ycmd/ycmd/"))))
+
+(defun c-extras/init-clang-format ()
+  (use-package clang-format
+    :defer t
+    :commands clang-format-buffer
+    :init
+    (progn
+      (defun clang-format-before-save ()
+        (interactive)
+        (when (eq major-mode 'c++-mode) (clang-format-buffer)))
+      (add-hook 'before-save-hook 'clang-format-before-save))))
+
+(defun c-extras/init-google-c-style ()
+  (use-package google-c-style
+    :defer t
+    :init
+    (c-add-style "Google" google-c-style)))
