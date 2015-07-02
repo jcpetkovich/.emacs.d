@@ -98,6 +98,7 @@
                                        sql
                                        syntax-checking
                                        version-control
+                                       ycmd
                                        )
    dotspacemacs-excluded-packages '(
                                     evil-escape
