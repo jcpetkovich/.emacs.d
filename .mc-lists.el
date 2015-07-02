@@ -11,6 +11,7 @@
         backward-sexp
         backward-up-list
         beginning-of-defun
+        c-electric-colon
         comint-bol
         comment-dwim-2
         down-list
