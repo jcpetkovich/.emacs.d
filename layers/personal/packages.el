@@ -106,7 +106,7 @@ which require an initialization must be listed explicitly in the list.")
 
   (bind-keys
    ([remap rgrep] . helm-do-grep-wrapper)
-   ("M-o" . helm-cmd-t))
+   ("M-o" . helm-projectile-find-file))
 
   (use-package helm
     :defer t
