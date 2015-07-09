@@ -104,9 +104,17 @@ which require an initialization must be listed explicitly in the list.")
     (let ((current-prefix-arg (not arg)))
       (helm-do-grep)))
 
+  (setq helm-locate-command "locate %s -e -A --regex %s")
+
   (bind-keys
    ([remap rgrep] . helm-do-grep-wrapper)
    ("M-o" . helm-projectile-find-file))
+
+  (bind-key "C-p" 'helm-projectile-find-file)
+  (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile-find-file)
+  (define-key evil-motion-state-map (kbd "C-p") 'helm-projectile-find-file)
+  (define-key evil-visual-state-map (kbd "C-p") 'helm-projectile-find-file)
+  (define-key evil-insert-state-map (kbd "C-p") 'helm-projectile-find-file)
 
   (use-package helm
     :defer t
