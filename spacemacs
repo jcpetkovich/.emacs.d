@@ -78,11 +78,11 @@
                                               c-c++-enable-clang-support t)
                                        clojure
                                        colors
-                                       emacs-lisp
+                                       ;; django
                                        elixir
+                                       emacs-lisp
                                        fasd
                                        go
-                                       rust
                                        gtags
                                        html
                                        javascript
@@ -93,6 +93,7 @@
                                        python
                                        restclient
                                        ruby
+                                       rust
                                        shell-scripts
                                        slime
                                        sql
