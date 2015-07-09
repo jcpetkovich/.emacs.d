@@ -439,9 +439,11 @@ an item line."
                  ("C-l" . company-show-location)
                  ("M-1" . nil)
                  ("M-2" . nil))
-      (add-hook 'company-template-insert-hook 'personal/turn-off-smartparens)
-      (add-hook 'company-completion-cancelled-hook 'personal/turn-on-smartparens)
-      (add-hook 'company-completion-finished-hook 'personal/turn-on-smartparens))))
+
+      ;; (add-hook 'company-template-insert-hook 'personal/turn-off-smartparens)
+      ;; (add-hook 'company-completion-cancelled-hook 'personal/turn-on-smartparens)
+      ;; (add-hook 'company-completion-finished-hook 'personal/turn-on-smartparens)
+      )))
 
 (defun personal/init-dired-rainbow ()
   (use-package dired-rainbow
