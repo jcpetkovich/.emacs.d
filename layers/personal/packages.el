@@ -541,11 +541,7 @@ an item line."
           (add-to-list 'yas-snippet-dirs (concat user/spacemacs-d-path "snippets"))
           (yas-reload-all)))
       (defadvice spacemacs/load-yasnippet (after personal/use-my-snippets activate)
-        (personal/add-my-snippets)))
-    :config
-    (progn
-      (add-to-list 'yas-before-expand-snippet-hook 'personal/turn-off-smartparens)
-      (add-to-list 'yas-after-exit-snippet-hook 'personal/turn-on-smartparens))))
+        (personal/add-my-snippets)))))
 
 (defun personal/init-shrink-whitespace ()
   (use-package shrink-whitespace
