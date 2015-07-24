@@ -18,11 +18,13 @@
         electric-newline-and-maybe-indent
         end-of-buffer
         end-of-defun
+        ess-indent-or-complete
         ess-noweb-indent-line
         ess-smart-S-assign
         ess-smart-comma
         ess-yank
         evil-backward-char
+        evil-backward-word-begin
         evil-delete-backward-char-and-join
         evil-escape-emacs-state
         evil-forward-char
@@ -36,6 +38,7 @@
         fill-paragraph
         forward-sexp
         go-mode-insert-and-indent
+        handle-switch-frame
         haskell-indentation-delete-backward-char
         helm-show-kill-ring
         indent-for-tab-command
@@ -47,6 +50,7 @@
         lisp-state-toggle-lisp-state
         magit-unstage-item
         message-beginning-of-line
+        message-tab
         org-beginning-of-line
         org-ctrl-c-ctrl-c
         org-cycle
