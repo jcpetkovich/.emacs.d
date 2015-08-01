@@ -132,8 +132,6 @@ which require an initialization must be listed explicitly in the list.")
 
 (defun personal/keybinding-configs ()
 
-  (add-to-list 'guide-key/guide-key-sequence "C-w")
-
   (defun annoying ()
     (interactive)
     (message "Try something else"))
