@@ -139,7 +139,7 @@
    dotspacemacs-verbose-loading nil
    dotspacemacs-startup-banner 'official
    dotspacemacs-startup-lists '(recents projects)
-   dotspacemacs-themes '(moe-dark moe-light)
+   dotspacemacs-themes '(moe-dark moe-light spacemacs-dark)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Sauce Code Powerline"
                                :size 14
