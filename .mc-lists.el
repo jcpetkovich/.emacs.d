@@ -106,6 +106,7 @@
         elisp-slime-nav-find-elisp-thing-at-point
         ess-use-this-dir
         helm-M-x
+        helm-projectile-find-file
         multiple-cursors/expand-or-mark-next-symbol
         personal/move-cursor-previous-pane
         undefined

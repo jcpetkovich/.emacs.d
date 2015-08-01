@@ -13,7 +13,7 @@
 #+BEGIN_SRC sh
     cd $HOME
     git clone https://github.com/jcpetkovich/.emacs.d.git ~/.spacemacs.d
-    emacs --batch -l ~/.spacemacs.d/spacemacs
+    emacs --batch -l ~/.spacemacs.d/init.el
 #+END_SRC
 
 =spacemacs= is both the config and a script for bootstrapping both
