@@ -181,6 +181,9 @@ which require an initialization must be listed explicitly in the list.")
       (push '(output-pdf "zathura")
             TeX-view-program-selection)
 
+      (add-hook 'bibtex-mode-hook (defun personal/disable-smartparens-show ()
+                                    (show-smartparens-mode -1)))
+
       (defun personal/tex-check-item-entry ()
         "This function is meant to be used as advice for the
 `LaTeX-insert-item' function. The purpose behind this is to delete
