@@ -88,7 +88,7 @@ which require an initialization must be listed explicitly in the list.")
 (defun personal/spacemacs-configs ())
 
 (defun load-secrets ()
-  (load (concat user/spacemacs-d-path "secrets.el.gpg")))
+  (load (concat dotspacemacs-directory "secrets.el.gpg")))
 
 (defun personal/init-paradox ()
   (use-package paradox
@@ -540,7 +540,7 @@ an item line."
       (defun personal/add-my-snippets ()
         (when (not personal/yas-initialized)
           (setq personal/yas-initialized t)
-          (add-to-list 'yas-snippet-dirs (concat user/spacemacs-d-path "snippets"))
+          (add-to-list 'yas-snippet-dirs (concat dotspacemacs-directory "snippets"))
           (yas-reload-all)))
       (defadvice spacemacs/load-yasnippet (after personal/use-my-snippets activate)
         (personal/add-my-snippets)))))

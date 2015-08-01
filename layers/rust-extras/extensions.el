@@ -30,7 +30,7 @@
 
   (defun rust-extras/init-racer ()
     "Initialize racer if we're using company mode"
-    (let* ((rust-layer-path (concat user/spacemacs-d-path "layers/rust-extras/"))
+    (let* ((rust-layer-path (concat dotspacemacs-directory "layers/rust-extras/"))
            (racer-path      (concat rust-layer-path "extensions/racer/"))
            (racer-elisp-dir (concat racer-path "editors/emacs/"))
            (racer-cmd-path  (concat racer-path "target/release/racer")))

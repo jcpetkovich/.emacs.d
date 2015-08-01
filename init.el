@@ -1,14 +1,13 @@
 ;; -*- mode: emacs-lisp -*-
 
 (defconst user/spacemacs-repo "https://github.com/syl20bnr/spacemacs")
-(defconst user/spacemacs-d-path "~/.spacemacs.d/")
+(defconst dotspacemacs-directory (expand-file-name "~/.spacemacs.d/"))
 
 ;; Bootstrap Spacemacs
 ;; -------------------
 (defun user/bootstrap-emacs-config ()
   (shell-command (concat "git clone --recursive " user/spacemacs-repo " " user-emacs-directory))
-  (shell-command (concat "ln -sf " user/spacemacs-d-path "spacemacs" " ~/.spacemacs"))
-  (shell-command (concat "ln -sf " user/spacemacs-d-path ".mc-lists.el" " ~/.emacs.d/.mc-lists.el"))
+  (shell-command (concat "ln -sf " dotspacemacs-directory ".mc-lists.el" " ~/.emacs.d/.mc-lists.el"))
   (message "Spacemacs bootstrapped, restart emacs."))
 
 (if (not (file-exists-p (concat user-emacs-directory "spacemacs")))
