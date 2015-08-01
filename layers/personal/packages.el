@@ -110,7 +110,6 @@ which require an initialization must be listed explicitly in the list.")
    ([remap rgrep] . helm-do-grep-wrapper)
    ("M-o" . helm-projectile-find-file))
 
-  (bind-key "C-p" 'helm-projectile-find-file)
   (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile-find-file)
   (define-key evil-motion-state-map (kbd "C-p") 'helm-projectile-find-file)
   (define-key evil-visual-state-map (kbd "C-p") 'helm-projectile-find-file)
