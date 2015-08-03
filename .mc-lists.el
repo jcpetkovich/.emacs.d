@@ -49,6 +49,7 @@
         lisp-state-insert-sexp-before
         lisp-state-toggle-lisp-state
         magit-unstage-item
+        markdown-exdent-or-delete
         message-beginning-of-line
         message-tab
         org-beginning-of-line
