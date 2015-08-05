@@ -32,7 +32,7 @@
                 smtpmail-starttls-credentials
                 '(("smtp.gmail.com" 587 nil nil))
                 smtpmail-auth-credentials
-                (expand-file-name "~/.authinfo")
+                (expand-file-name "~/.authinfo.gpg")
                 smtpmail-default-smtp-server "smtp.gmail.com"
                 smtpmail-smtp-server "smtp.gmail.com"
                 smtpmail-smtp-service 587
