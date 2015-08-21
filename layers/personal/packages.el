@@ -9,7 +9,7 @@
 ;;
 ;;; License: GPLv3
 
-(defvar personal-packages
+(setq personal-packages
   '(
     auctex
     comment-dwim-2
@@ -35,11 +35,9 @@
     whitespace-cleanup-mode
     yasnippet
     )
-  "List of all packages to install and/or initialize. Built-in packages
-which require an initialization must be listed explicitly in the list.")
+)
 
-(defvar personal-excluded-packages '()
-  "List of packages to exclude.")
+(setq personal-excluded-packages '())
 
 (defun personal/appearance-configs ()
   (setq-default
