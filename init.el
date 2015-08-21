@@ -38,8 +38,8 @@
     blog
     ebuild
     elisp-extras
-    (rust :variables
-          rust/lang-src-path "~/labs/rust")
+    (rust-extras :variables
+                 rust/lang-src-path "~/labs/rust")
     python-extras
     c-extras
     email-config
@@ -87,14 +87,13 @@
                                        javascript
                                        markdown
                                        org
-                                       pcre2el
                                        prodigy
                                        python
                                        restclient
                                        ruby
                                        rust
                                        shell-scripts
-                                       slime
+                                       common-lisp
                                        sql
                                        syntax-checking
                                        version-control
