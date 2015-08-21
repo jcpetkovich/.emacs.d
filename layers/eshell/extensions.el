@@ -56,7 +56,7 @@
   (use-package em-cmpl
     :defer t))
 
-(defun eshell/init-eshell ()
+(defun eshell/post-init-eshell ()
   (use-package eshell
     :defer t
     :init

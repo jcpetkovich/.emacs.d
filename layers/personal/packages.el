@@ -90,7 +90,7 @@ which require an initialization must be listed explicitly in the list.")
 (defun load-secrets ()
   (load (concat dotspacemacs-directory "secrets.el.gpg")))
 
-(defun personal/init-paradox ()
+(defun personal/post-init-paradox ()
   (use-package paradox
     :defer t
     :config
@@ -152,7 +152,7 @@ which require an initialization must be listed explicitly in the list.")
   (personal/org-mode-configs)
   (personal/keybinding-configs))
 
-(defun personal/init-auctex ()
+(defun personal/post-init-auctex ()
 
   (use-package latex
     :defer t
@@ -224,7 +224,7 @@ an item line."
           (beginning-of-line)
           (kill-line))))))
 
-(defun personal/init-multiple-cursors ()
+(defun personal/post-init-multiple-cursors ()
   (use-package multiple-cursors
     :defer t
     :init
@@ -237,7 +237,7 @@ an item line."
      ("C-S-f" . mc/mmlte--right)
      ("C-S-b" . mc/mmlte--left))))
 
-(defun personal/init-helm ()
+(defun personal/post-init-helm ()
   (use-package helm
     :defer t
     :config
@@ -286,7 +286,7 @@ an item line."
       ;;           (error)))
       )))
 
-(defun personal/init-evil ()
+(defun personal/pre-init-evil ()
   "Initialize my package"
   (use-package evil
     :init
@@ -295,7 +295,7 @@ an item line."
                     evil-cross-lines t
                     evil-esc-delay 0))))
 
-(defun personal/init-paredit ()
+(defun personal/post-init-paredit ()
   (use-package paredit
     :defer t
     :config
@@ -333,7 +333,7 @@ an item line."
     (push 'company-R-objects company-backends-inferior-ess-mode)
     (push 'company-R-args company-backends-inferior-ess-mode)))
 
-(defun personal/init-ess ()
+(defun personal/post-init-ess ()
   (add-hook 'Rnw-mode-hook 'spacemacs/load-yasnippet)
   (defadvice load-ess-on-demand (after personal-ess-settings activate)
     (use-package ess-noweb
@@ -426,7 +426,7 @@ an item line."
 (defun personal/init-parenface ()
   (use-package parenface))
 
-(defun personal/init-company ()
+(defun personal/post-init-company ()
   (use-package company
     :defer t
     :config
@@ -458,7 +458,7 @@ an item line."
       (dired-rainbow-define log (:inherit default
                                           :italic t) ".*\\.log"))))
 
-(defun personal/init-helm-swoop ()
+(defun personal/post-init-helm-swoop ()
   (use-package helm-swoop
     :commands (helm-swoop helm-multi-swoop)
     :init
@@ -487,7 +487,7 @@ an item line."
             (add-hook 'prog-mode-hook 'emr-initialize)
             (evil-leader/set-key "ar" 'emr-show-refactor-menu))))
 
-(defun personal/init-prodigy ()
+(defun personal/post-init-prodigy ()
   (use-package prodigy
     :commands prodigy
     :config
@@ -502,7 +502,7 @@ an item line."
         :stop-signal 'int
         :kill-process-buffer-on-stop t))))
 
-(defun personal/init-magit ()
+(defun personal/post-init-magit ()
   (use-package magit
     :defer t
     :config
@@ -514,7 +514,7 @@ an item line."
       (defadvice magit-goto-previous-sibling-section (after user-magit/center-after-move activate)
         (recenter)))))
 
-(defun personal/init-company-quickhelp ()
+(defun personal/post-init-company-quickhelp ()
   (use-package company-quickhelp
     :defer t
     :config
@@ -530,7 +530,7 @@ an item line."
 ;; l  - forloop
 ;; i  - if
 ;; e  - exception
-(defun personal/init-yasnippet ()
+(defun personal/post-init-yasnippet ()
   (use-package yasnippet
     :defer t
     :init
@@ -550,7 +550,7 @@ an item line."
     :defer t
     :bind ("M-\\" . shrink-whitespace)))
 
-(defun personal/init-go-mode ()
+(defun personal/post-init-go-mode ()
   (use-package go-mode
     :defer t
     :init

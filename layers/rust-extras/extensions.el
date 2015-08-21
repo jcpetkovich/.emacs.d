@@ -28,7 +28,7 @@
   (defun rust-extras/post-init-company ()
     (spacemacs|enable-company rust-mode))
 
-  (defun rust-extras/init-racer ()
+  (defun rust-extras/post-init-racer ()
     "Initialize racer if we're using company mode"
     (let* ((rust-layer-path (concat dotspacemacs-directory "layers/rust-extras/"))
            (racer-path      (concat rust-layer-path "extensions/racer/"))

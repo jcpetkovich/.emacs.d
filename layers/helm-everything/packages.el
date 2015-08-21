@@ -28,14 +28,14 @@ which require an initialization must be listed explicitly in the list.")
 
 ;; For each package, define a function helm-everything/init-<package-helm-everything>
 
-(defun helm-everything/init-helm-swoop ()
+(defun helm-everything/post-init-helm-swoop ()
   "Initialize helm-swoop"
   (use-package helm-swoop
     :defer t
     :config
     (setq-default helm-swoop-speed-or-color t)))
 
-(defun helm-everything/init-helm-descbinds ()
+(defun helm-everything/post-init-helm-descbinds ()
   "Initialize helm-descbinds"
   (use-package helm-descbinds
     :defer t
@@ -58,7 +58,7 @@ which require an initialization must be listed explicitly in the list.")
         (setq helm-source-buffers-list
               (helm-make-source "Buffers" 'helm-source-buffers))))))
 
-(defun helm-everything/init-helm ()
+(defun helm-everything/post-init-helm ()
   "Initialize helm"
   (use-package helm
     :defer t
@@ -135,7 +135,7 @@ With a prefix arg reinitialize the cache."
     (progn
       (setq-default helm-man-or-woman-function 'woman))))
 
-(defun helm-everything/init-helm-gtags ()
+(defun helm-everything/post-init-helm-gtags ()
   (use-package helm-gtags
     :defer t
     :init

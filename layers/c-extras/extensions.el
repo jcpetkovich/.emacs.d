@@ -23,7 +23,7 @@
     )
   "List of all extensions to load after the packages.")
 
-(defun c-extras/init-cc-mode ()
+(defun c-extras/post-init-cc-mode ()
   (use-package cc-mode
     :commands (c-mode c++-mode)
     :config

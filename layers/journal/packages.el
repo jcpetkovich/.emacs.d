@@ -20,7 +20,7 @@ which require an initialization must be listed explicitly in the list.")
 (defvar journal-excluded-packages '()
   "List of packages to exclude.")
 
-(defun journal/init-org ()
+(defun journal/post-init-org ()
   (use-package org
     :commands (org-mode)
     :init

@@ -24,7 +24,7 @@ which require an initialization must be listed explicitly in the list.")
 (defvar c-extras-excluded-packages '()
   "List of packages to exclude.")
 
-(defun c-extras/init-company ()
+(defun c-extras/post-init-company ()
   (use-package company
     :defer t
     :init (add-hook 'c-mode-common-hook
@@ -45,12 +45,12 @@ which require an initialization must be listed explicitly in the list.")
                     (setq c-extras/smart-tabs-enabled t)
                     (smart-tabs-insinuate 'c)))))))
 
-(defun c-extras/init-ycmd ()
+(defun c-extras/post-init-ycmd ()
   (use-package ycmd
     :defer t
     :init (setq-default ycmd-server-command '("python" "/home/jcp/labs/ycmd/ycmd/"))))
 
-(defun c-extras/init-clang-format ()
+(defun c-extras/post-init-clang-format ()
   (use-package clang-format
     :defer t
     :commands clang-format-buffer

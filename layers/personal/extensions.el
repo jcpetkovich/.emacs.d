@@ -31,7 +31,7 @@
   (use-package simple
     :config (setq-default shell-file-name (executable-find "bash"))))
 
-(defun personal/init-recentf ()
+(defun personal/post-init-recentf ()
   (use-package recentf
     :defer t
     :config
@@ -113,7 +113,7 @@
       (evil-declare-key 'normal dired-mode-map
         (kbd "n") 'evil-search-next))))
 
-(defun personal/init-doc-view ()
+(defun personal/post-init-doc-view ()
   (use-package doc-view
     :defer t
     :config

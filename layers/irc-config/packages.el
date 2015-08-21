@@ -22,7 +22,7 @@ which require an initialization must be listed explicitly in the list.")
 (defvar irc-config-excluded-packages '()
   "List of packages to exclude.")
 
-(defun irc-config/init-rcirc ()
+(defun irc-config/post-init-rcirc ()
   (use-package rcirc
     :commands rcirc
     :defer t
@@ -133,12 +133,12 @@ which require an initialization must be listed explicitly in the list.")
       (require 'rcirc-notify))))
 
 
-(defun irc-config/init-rcirc-notify ()
+(defun irc-config/post-init-rcirc-notify ()
   (use-package rcirc-notify
     :defer t
     :config (rcirc-notify-add-hooks)))
 
-(defun irc-config/init-rcirc-color ()
+(defun irc-config/post-init-rcirc-color ()
   (use-package rcirc-color
     :defer t
     :config

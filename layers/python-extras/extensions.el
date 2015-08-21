@@ -23,7 +23,7 @@
     )
   "List of all extensions to load after the packages.")
 
-(defun python-extras/init-python ()
+(defun python-extras/post-init-python ()
   (use-package python
     :config
     (progn
