@@ -7,6 +7,7 @@
         LaTeX-insert-left-brace
         TeX-complete-symbol
         TeX-insert-backslash
+        TeX-insert-dollar
         TeX-insert-sub-or-superscript
         backward-sexp
         backward-up-list
@@ -86,6 +87,7 @@
         personal/new-line-dwim
         personal/save-region-or-current-line
         python-extras/smart-delete
+        reindent-then-newline-and-indent
         sh-assignment
         shrink-whitespace
         sp-backward-delete-char
