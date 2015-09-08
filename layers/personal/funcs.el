@@ -130,7 +130,7 @@ Including indent-buffer, which should not be called automatically on save."
   (save-excursion
     (backward-up-list)
     (forward-sexp)
-    (eval-and-replace)))
+    (spacemacs/eval-and-replace)))
 
 (defun personal/eval-print-last-sexp ()
   (interactive)
