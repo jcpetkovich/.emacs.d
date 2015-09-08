@@ -42,7 +42,10 @@
     :commands (mu4e mu4e-update-index)
     :config
     (progn
+
+      (spacemacs|evilify-map mu4e-main-mode-map :mode mu4e-main-mode)
       (evilify mu4e-main-mode mu4e-main-mode-map)
+
       (bind-key "C-w C-o" 'delete-other-windows mu4e-main-mode-map)
       (setq-default mu4e-html2text-command "html2text -nobs -width 1000"
                     mu4e-view-show-images t

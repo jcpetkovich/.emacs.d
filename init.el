@@ -1,5 +1,4 @@
 ;; -*- mode: emacs-lisp -*-
-
 (defconst user/spacemacs-repo "https://github.com/syl20bnr/spacemacs")
 (defconst dotspacemacs-directory (expand-file-name "~/.spacemacs.d/"))
 
