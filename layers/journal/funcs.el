@@ -21,6 +21,14 @@
   (interactive)
   (find-file-other-window (journal/find-bullet-journal)))
 
+(defun journal/quick-view-commonplace ()
+  (interactive)
+  (view-file my-notes-file))
+
+(defun journal/view-commonplace ()
+  (interactive)
+  (find-file-other-window my-notes-file))
+
 (defun journal/migrate ()
   (interactive)
   (let ((old-todo-state (org-get-todo-state)))
