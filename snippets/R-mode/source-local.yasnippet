@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: srcl
+# key: srcl
+# --
+source_local <- function(fname){
+    argv <- commandArgs(trailingOnly = FALSE)
+    base_dir <- dirname(substring(argv[grep("--file=", argv)], 8))
+    if (length(base_dir)) { source(paste(base_dir, fname, sep="/")) }
+    else {cat("ERROR: Could not source, running in a repl.\n")}
+}
