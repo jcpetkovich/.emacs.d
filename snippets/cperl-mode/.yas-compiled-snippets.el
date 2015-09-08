@@ -2,8 +2,8 @@
 ;;; Snippet definitions:
 ;;;
 (yas-define-snippets 'cperl-mode
-                     '(("arg" "my ($1) = @_;" "my () = @_;" nil nil nil nil nil nil)
-                       ("for" "for my \\$${1:item} (@${2:list}) {\n    $0\n}" "for my $item () {" nil nil nil nil nil nil)))
+                     '(("for" "for my \\$${1:item} (@${2:list}) {\n    $0\n}" "for my $item () {" nil nil nil nil nil nil)
+                       ("arg" "my ($1) = @_;" "my () = @_;" nil nil nil nil nil nil)))
 
 
-;;; Do not edit! File generated at Fri May 29 16:55:12 2015
+;;; Do not edit! File generated at Tue Sep  1 10:57:44 2015

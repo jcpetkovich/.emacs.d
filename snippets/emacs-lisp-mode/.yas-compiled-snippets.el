@@ -2,11 +2,11 @@
 ;;; Snippet definitions:
 ;;;
 (yas-define-snippets 'emacs-lisp-mode
-                     '(("auto" ";;;###autoload" "autoload" nil nil nil nil nil nil)
-                       ("ends" ";;; `(buffer-file-name-body)`.el ends here$0" "ends" nil nil nil nil nil nil)
-                       ("head" ";; =============================================================\n;; $1\n;; =============================================================\n$0" "comment header" nil nil nil nil nil nil)
+                     '(("req" "(require '$0)" "req" nil nil nil nil nil nil)
                        ("pro" "(provide '`(buffer-file-name-body)`)$0" "provide" nil nil nil nil nil nil)
-                       ("req" "(require '$0)" "req" nil nil nil nil nil nil)))
+                       ("head" ";; =============================================================\n;; $1\n;; =============================================================\n$0" "comment header" nil nil nil nil nil nil)
+                       ("ends" ";;; `(buffer-file-name-body)`.el ends here$0" "ends" nil nil nil nil nil nil)
+                       ("auto" ";;;###autoload" "autoload" nil nil nil nil nil nil)))
 
 
-;;; Do not edit! File generated at Fri May 29 16:55:12 2015
+;;; Do not edit! File generated at Tue Sep  1 10:57:44 2015
