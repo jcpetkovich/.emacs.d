@@ -14,7 +14,9 @@
 
 (spacemacs/declare-prefix "," "journal")
 (evil-leader/set-key
-  ",," 'journal/open-todays-log
+  ",," 'journal/view-commonplace
   ",a" 'org-agenda
   ",c" 'org-capture
-  ",t" 'journal/quick-capture-todo)
+  ",t" 'journal/quick-capture-todo
+  ",q" 'journal/quick-view-commonplace
+  ",t" 'journal/open-todays-log)
