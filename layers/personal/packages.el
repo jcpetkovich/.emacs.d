@@ -10,32 +10,32 @@
 ;;; License: GPLv3
 
 (setq personal-packages
-  '(
-    auctex
-    comment-dwim-2
-    company
-    company-quickhelp
-    dash
-    dired-rainbow
-    emms
-    emr
-    ess
-    evil
-    evil-leader
-    go-mode
-    helm
-    helm-swoop
-    magit
-    multiple-cursors
-    paradox
-    paredit
-    parenface
-    prodigy
-    shrink-whitespace
-    whitespace-cleanup-mode
-    yasnippet
-    )
-)
+      '(
+        auctex
+        comment-dwim-2
+        company
+        company-quickhelp
+        dash
+        dired-rainbow
+        emms
+        emr
+        ess
+        evil
+        evil-leader
+        go-mode
+        helm
+        helm-swoop
+        magit
+        multiple-cursors
+        paradox
+        paredit
+        parenface
+        prodigy
+        shrink-whitespace
+        whitespace-cleanup-mode
+        yasnippet
+        )
+      )
 
 (setq personal-excluded-packages '())
 
@@ -308,6 +308,7 @@ an item line."
           (kbd "M-;") 'comment-dwim-2))
       (--each '(insert visual)
         (evil-declare-key it paredit-mode-map
+          (kbd "M-w") 'personal/save-region-or-current-line
           (kbd "C-w") 'personal/kill-region-or-backward-word)))))
 
 (defun personal/init-comment-dwim-2 ()
@@ -324,12 +325,6 @@ an item line."
     (dash-enable-font-lock)))
 
 (spacemacs|defvar-company-backends inferior-ess-mode)
-
-(when (configuration-layer/layer-usedp 'auto-completion)
-  (defun personal/post-init-company ()
-    (spacemacs|add-company-hook inferior-ess-mode)
-    (push 'company-R-objects company-backends-inferior-ess-mode)
-    (push 'company-R-args company-backends-inferior-ess-mode)))
 
 (defun personal/post-init-ess ()
   (add-hook 'Rnw-mode-hook 'spacemacs/load-yasnippet)
@@ -441,7 +436,9 @@ an item line."
       ;; (add-hook 'company-template-insert-hook 'personal/turn-off-smartparens)
       ;; (add-hook 'company-completion-cancelled-hook 'personal/turn-on-smartparens)
       ;; (add-hook 'company-completion-finished-hook 'personal/turn-on-smartparens)
-      )))
+
+      (spacemacs|add-company-hook inferior-ess-mode)
+      (push '(company-R-args company-R-objects) company-backends-inferior-ess-mode))))
 
 (defun personal/init-dired-rainbow ()
   (use-package dired-rainbow
