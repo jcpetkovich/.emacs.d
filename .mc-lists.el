@@ -19,7 +19,9 @@
         electric-newline-and-maybe-indent
         end-of-buffer
         end-of-defun
+        ess-electric-brace
         ess-indent-or-complete
+        ess-noweb-electric-@
         ess-noweb-indent-line
         ess-smart-S-assign
         ess-smart-comma
