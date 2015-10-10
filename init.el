@@ -56,6 +56,7 @@
 
 (defun dotspacemacs/layers ()
   (setq-default
+   dotspacemacs-distribution 'spacemacs
    dotspacemacs-configuration-layer-path '("~/.spacemacs.d/layers/")
    dotspacemacs-configuration-layers '(
                                        (git :variables
@@ -68,22 +69,25 @@
                                               rcirc-enable-znc-support t)
                                        (shell :variables
                                               shell-default-shell 'eshell)
-                                       ;; buggy for now
-                                       ;; semantic
-                                       latex
-                                       auto-completion
                                        (c-c++ :variables
                                               c-c++-enable-clang-support t)
+                                       ;; buggy for now
+                                       ;; semantic
+                                       ;; django
+                                       auto-completion
                                        clojure
                                        colors
-                                       ;; django
+                                       common-lisp
+                                       cscope
                                        elixir
                                        emacs-lisp
                                        fasd
+                                       finance
                                        go
                                        gtags
                                        html
                                        javascript
+                                       latex
                                        markdown
                                        org
                                        prodigy
@@ -92,7 +96,7 @@
                                        ruby
                                        rust
                                        shell-scripts
-                                       common-lisp
+                                       spell-checking
                                        sql
                                        syntax-checking
                                        version-control
@@ -149,9 +153,14 @@
    dotspacemacs-major-mode-leader-key ","
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    dotspacemacs-command-key ":"
+   dotspacemacs-auto-save-file-location 'cache
    dotspacemacs-use-ido nil
+   dotspacemacs-helm-resize nil
+   dotspacemacs-helm-no-header nil
+   dotspacemacs-helm-position 'bottom
    dotspacemacs-enable-paste-micro-state nil
-   dotspacemacs-guide-key-delay 0.4
+   dotspacemacs-which-key-delay 0.4
+   dotspacemacs-which-key-position 'bottom
    dotspacemacs-loading-progress-bar t
    dotspacemacs-fullscreen-at-startup nil
    dotspacemacs-fullscreen-use-non-native nil
