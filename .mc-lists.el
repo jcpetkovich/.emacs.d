@@ -13,6 +13,10 @@
         backward-up-list
         beginning-of-defun
         c-electric-colon
+        c-electric-lt-gt
+        c-electric-paren
+        c-electric-semi&comma
+        c-indent-line-or-region
         comint-bol
         comment-dwim-2
         down-list
@@ -72,6 +76,7 @@
         org-yank
         orgtbl-hijacker-command-100
         orgtbl-self-insert-command
+        paredit-backslash
         paredit-backward
         paredit-backward-up
         paredit-close-round
