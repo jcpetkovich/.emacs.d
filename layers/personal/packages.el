@@ -123,10 +123,7 @@
                ("C-M-i" . helm-select-action)))
 
   (evil-leader/set-key
-    "qq" 'spacemacs/save-buffers-kill-emacs
-    "o"  'helm-C-x-b
-    "O"  'helm-projectile-find-file
-    "/"  'helm-cmd-t-grep))
+    "o"  'helm-C-x-b))
 
 (defun personal/keybinding-configs ()
 
@@ -141,7 +138,7 @@
    ("C-x C-s" . annoying)
    ("C-x k" . annoying)))
 
-(defadvice dotspacemacs/config (before personal-vars activate)
+(defadvice dotspacemacs/user-config (before personal-vars activate)
   "Overriding spacemacs and other layer defaults."
   (personal/appearance-configs)
   (personal/editing-configs)
@@ -171,7 +168,6 @@
 
       (add-hook 'LaTeX-mode-hook 'reftex-mode)
       (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
-      (add-hook 'LaTeX-mode-hook 'turn-on-smartparens-mode)
       (setq LaTeX-mode-hook (append LaTeX-mode-hook '(personal/tex-noweb-noflycheck)))
 
       (push '("zathura" "zathura -x \"emacsclient --no-wait +%%{line} %%{input}\" %s.pdf")
@@ -328,7 +324,8 @@ an item line."
 
 (defun personal/post-init-ess ()
   (add-hook 'Rnw-mode-hook 'spacemacs/load-yasnippet)
-  (defadvice load-ess-on-demand (after personal-ess-settings activate)
+  (add-hook 'ess-mode-hook 'spacemacs/load-yasnippet)
+  (with-eval-after-load 'ess-site
     (use-package ess-noweb
       :defer t
       ;; Helm fights with noweb, need this buffer to stop spurious errors

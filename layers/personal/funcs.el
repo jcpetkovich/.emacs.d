@@ -167,16 +167,22 @@ Including indent-buffer, which should not be called automatically on save."
 (defun personal/move-forward-out-of-param ()
   (while (not (looking-at ")\\|, \\| ?}\\| ?\\]"))
     (cond
-     ((personal/point-is-in-string-p) (move-point-forward-out-of-string))
+     ((personal/point-is-in-string-p) (personal/move-point-forward-out-of-string))
      ((looking-at "(\\|{\\|\\[") (forward-list))
      (t (forward-char)))))
 
 (defun personal/move-backward-out-of-param ()
   (while (not (looking-back "(\\|, \\|{ ?\\|\\[ ?"))
     (cond
-     ((personal/point-is-in-string-p) (move-point-backward-out-of-string))
+     ((personal/point-is-in-string-p) (personal/move-point-backward-out-of-string))
      ((looking-back ")\\|}\\|\\]") (backward-list))
      (t (backward-char)))))
+
+(defun personal/move-point-forward-out-of-string ()
+  (while (personal/point-is-in-string-p) (forward-char)))
+
+(defun personal/move-point-backward-out-of-string ()
+  (while (personal/point-is-in-string-p) (backward-char)))
 
 (defun personal/tex-noweb-noflycheck ()
   (when ess-noweb-mode

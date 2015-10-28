@@ -95,6 +95,7 @@
                                        restclient
                                        ruby
                                        rust
+                                       scheme
                                        shell-scripts
                                        spell-checking
                                        sql
@@ -176,7 +177,7 @@
    dotspacemacs-default-package-repository nil
    ))
 
-(defun dotspacemacs/config ()
+(defun dotspacemacs/user-config ()
   "This is were you can ultimately override default Spacemacs configuration.
 This function is called at the very end of Spacemacs initialization."
   (vi-tilde-fringe-mode 1))

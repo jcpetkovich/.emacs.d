@@ -93,6 +93,7 @@
         personal/kill-region-or-backward-word
         personal/new-line-dwim
         personal/save-region-or-current-line
+        personal/transpose-params
         python-extras/smart-delete
         reindent-then-newline-and-indent
         sh-assignment
@@ -119,5 +120,6 @@
         helm-projectile-find-file
         multiple-cursors/expand-or-mark-next-symbol
         personal/move-cursor-previous-pane
+        toggle-input-method
         undefined
         ))
