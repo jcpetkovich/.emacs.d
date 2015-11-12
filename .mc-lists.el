@@ -33,15 +33,21 @@
         evil-backward-char
         evil-backward-word-begin
         evil-delete-backward-char-and-join
+        evil-emacs-state
         evil-escape-emacs-state
         evil-forward-char
         evil-insert
+        evil-insert-digraph
         evil-insert-state
+        evil-lisp-state-sp-backward-sexp
+        evil-lisp-state-sp-backward-up-sexp
         evil-lisp-state-sp-forward-barf-sexp
+        evil-lisp-state-sp-forward-sexp
         evil-lisp-state-sp-forward-slurp-sexp
         evil-lisp-state-wrap
         evil-normal-state
         evil-substitute
+        evil-visual-char
         fill-paragraph
         forward-sexp
         go-mode-insert-and-indent
@@ -100,10 +106,12 @@
         shrink-whitespace
         sp-backward-delete-char
         sp-backward-kill-word
+        sp-backward-sexp
         sp-backward-symbol
         sp-delete-char
         sp-end-of-sexp
         sp-forward-barf-sexp
+        sp-forward-sexp
         sp-forward-slurp-sexp
         sp-kill-hybrid-sexp
         sp-kill-word
