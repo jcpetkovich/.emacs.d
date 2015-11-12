@@ -549,3 +549,11 @@ an item line."
     :init
     (add-hook 'go-mode-hook (defun personal/go-mode-tab-width ()
                               (setq tab-width 8)))))
+
+(defun personal/post-init-browse-url ()
+  (use-package browse-url
+    :defer t
+    :init
+    (setq gnus-button-url 'browse-url-generic
+          browse-url-generic-program "qutebrowser"
+          browse-url-browser-function gnus-button-url)))

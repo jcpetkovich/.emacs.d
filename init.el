@@ -204,11 +204,17 @@ This function is called at the very end of Spacemacs initialization."
     ("2f48d3e78a730496187bad754d1ba308f4124463cfd130ad315395c9de116e00" default)))
  '(evil-want-C-i-jump nil)
  '(paradox-automatically-star nil)
- '(ring-bell-function (quote ignore) t))
+ '(ring-bell-function (quote ignore) t)
+ '(safe-local-variable-values
+   (quote
+    ((flycheck-clang-include-path "/usr/include/glib-2.0/" "/usr/lib64/glib-2.0/include/")
+     (flycheck-clang-language-standard . "c99")
+     (flycheck-gcc-include-path "/usr/include/glib-2.0/" "/usr/lib64/glib-2.0/include/")
+     (flycheck-gcc-language-standard . "c99")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+ '(company-tooltip-common ((((class color) (min-colors 89)) (:background "#6c6c6c" :foreground "#afd7ff"))))
+ '(company-tooltip-common-selection ((((class color) (min-colors 89)) (:background "#005f87" :foreground "#afd7ff" :bold t)))))
