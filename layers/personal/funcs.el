@@ -187,3 +187,11 @@ Including indent-buffer, which should not be called automatically on save."
 (defun personal/tex-noweb-noflycheck ()
   (when ess-noweb-mode
     (flycheck-mode -1)))
+
+(defun personal/disable-slow-packages ()
+  (interactive)
+  (global-hl-line-mode -1)
+  (global-aggressive-indent-mode -1)
+  ;; (spacemacs/toggle-auto-completion-off)
+  ;; (spacemacs/toggle-syntax-checking)
+  )
