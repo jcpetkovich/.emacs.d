@@ -12,11 +12,13 @@
 (setq personal-packages
       '(
         auctex
+        browse-url
         comment-dwim-2
         company
         company-quickhelp
         dash
         dired-rainbow
+        ein
         emms
         emr
         ess
@@ -146,6 +148,10 @@
   (personal/helm-configs)
   (personal/org-mode-configs)
   (personal/keybinding-configs))
+
+(defun personal/init-ein ()
+  (use-package ein
+    :defer t))
 
 (defun personal/post-init-auctex ()
 
@@ -348,7 +354,8 @@ an item line."
 
         (add-hook 'ess-mode-hook 'turn-on-smartparens-strict-mode)
         (add-hook 'inferior-ess-mode-hook (defun personal/force-smartparens ()
-                                            (smartparens-strict-mode 1)))
+                                            (smartparens-strict-mode -1)
+                                            (smartparens-mode -1)))
 
         (evil-leader/set-key-for-mode 'latex-mode "mk" 'ess-swv-knit)
         (evil-leader/set-key-for-mode 'ess-mode
@@ -550,7 +557,7 @@ an item line."
     (add-hook 'go-mode-hook (defun personal/go-mode-tab-width ()
                               (setq tab-width 8)))))
 
-(defun personal/post-init-browse-url ()
+(defun personal/init-browse-url ()
   (use-package browse-url
     :defer t
     :init

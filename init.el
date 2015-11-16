@@ -79,6 +79,7 @@
                                        colors
                                        common-lisp
                                        cscope
+                                       dockerfile
                                        elixir
                                        emacs-lisp
                                        fasd

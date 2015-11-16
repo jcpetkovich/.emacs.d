@@ -48,7 +48,7 @@ which require an initialization must be listed explicitly in the list.")
 (defun c-extras/post-init-ycmd ()
   (use-package ycmd
     :defer t
-    :init (setq-default ycmd-server-command '("python" "/home/jcp/labs/ycmd/ycmd/"))))
+    :init (setq-default ycmd-server-command '("python2" "/home/jcp/labs/ycmd/ycmd/"))))
 
 (defun c-extras/post-init-clang-format ()
   (use-package clang-format
