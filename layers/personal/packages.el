@@ -12,6 +12,7 @@
 (setq personal-packages
       '(
         auctex
+        autopair
         browse-url
         comment-dwim-2
         company
@@ -148,6 +149,10 @@
   (personal/helm-configs)
   (personal/org-mode-configs)
   (personal/keybinding-configs))
+
+(defun personal/init-autopair ()
+  (use-package autopair
+    :defer t))
 
 (defun personal/init-ein ()
   (use-package ein
@@ -354,6 +359,7 @@ an item line."
 
         (add-hook 'ess-mode-hook 'turn-on-smartparens-strict-mode)
         (add-hook 'inferior-ess-mode-hook (defun personal/force-smartparens ()
+                                            (autopair-mode 1)
                                             (smartparens-strict-mode -1)
                                             (smartparens-mode -1)))
 
