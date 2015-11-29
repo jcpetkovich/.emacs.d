@@ -43,8 +43,8 @@
     :config
     (progn
 
-      (spacemacs|evilify-map mu4e-main-mode-map :mode mu4e-main-mode)
-      (evilify mu4e-main-mode mu4e-main-mode-map)
+      (evilified-state-evilify-map mu4e-main-mode-map :mode mu4e-main-mode)
+      (evilified-state-evilify mu4e-main-mode mu4e-main-mode-map)
 
       (bind-key "C-w C-o" 'delete-other-windows mu4e-main-mode-map)
       (setq-default mu4e-html2text-command "html2text -nobs -width 1000"

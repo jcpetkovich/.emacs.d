@@ -24,7 +24,7 @@
     )
   "List of all extensions to load after the packages.")
 
-(defun ebuild/init-sh-script ()
+(defun ebuild/post-init-sh-script ()
   (use-package sh-script
     :mode ("\\.\\(ebuild\\|eclass\\)$" . sh-mode)
     :config
