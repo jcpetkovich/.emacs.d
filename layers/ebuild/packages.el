@@ -13,12 +13,26 @@
 (defvar ebuild-packages
   '(
     ;; package ebuilds go here
+    (conf-mode :location built-in)
+    (sh-script :location built-in)
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
 
 (defvar ebuild-excluded-packages '()
   "List of packages to exclude.")
+
+(defun ebuild/post-init-sh-script ()
+  (use-package sh-script
+    :mode ("\\.\\(ebuild\\|eclass\\)$" . sh-mode)
+    :config
+    (add-hook 'sh-mode-hook (defun ebuild/set-bash ()
+                              (when (string-match "\\.ebuild$" (or (buffer-file-name) ""))
+                                (sh-set-shell "bash"))))))
+
+(defun ebuild/init-conf-mode ()
+  (use-package conf-mode
+    :mode ("\\.\\(keywords\\|accept_keywords\\|use\\)$" . conf-mode)))
 
 ;; For each package, define a function ebuild/init-<package-ebuild>
 ;;
