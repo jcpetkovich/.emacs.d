@@ -93,6 +93,7 @@
                                        org
                                        prodigy
                                        python
+                                       ipython-notebook
                                        restclient
                                        ruby
                                        rust
