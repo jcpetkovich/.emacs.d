@@ -19,7 +19,6 @@
         company-quickhelp
         dash
         dired-rainbow
-        ein
         emms
         emr
         ess
@@ -152,10 +151,6 @@
 
 (defun personal/init-autopair ()
   (use-package autopair
-    :defer t))
-
-(defun personal/init-ein ()
-  (use-package ein
     :defer t))
 
 (defun personal/post-init-auctex ()
@@ -358,6 +353,8 @@ an item line."
         (bind-key "\t" nil ess-noweb-minor-mode-map)
 
         (add-hook 'ess-mode-hook 'turn-on-smartparens-strict-mode)
+        (add-hook 'inferior-ess-mode-hook (defun personal/disable-comint-readonly ()
+                                            (setq comint-prompt-read-only nil)))
         (add-hook 'inferior-ess-mode-hook (defun personal/force-smartparens ()
                                             (autopair-mode 1)
                                             (smartparens-strict-mode -1)
