@@ -39,10 +39,10 @@ which require an initialization must be listed explicitly in the list.")
 
              rcirc-server-alist
              `(("localhost")
-               ("eyolfson.ca"
-                :port 6697
-                :encryption tls
-                :auth "jcp")
+               ;; ("eyolfson.ca"
+               ;;  :port 6697
+               ;;  :encryption tls
+               ;;  :auth "jcp")
                ("ptk.io"
                 :host "ptk.io"
                 :auth "jcp"
