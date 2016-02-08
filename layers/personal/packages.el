@@ -31,7 +31,7 @@
         multiple-cursors
         paradox
         paredit
-        parenface
+        paren-face
         prodigy
         shrink-whitespace
         whitespace-cleanup-mode
@@ -425,7 +425,7 @@ an item line."
       (add-hook 'makefile-mode-hook (lambda () (whitespace-cleanup-mode -1))))))
 
 (defun personal/init-parenface ()
-  (use-package parenface))
+  (use-package paren-face))
 
 (defun personal/post-init-company ()
   (use-package company
