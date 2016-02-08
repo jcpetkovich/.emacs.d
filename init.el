@@ -88,13 +88,14 @@
                                        go
                                        gtags
                                        html
+                                       ipython-notebook
                                        javascript
                                        latex
                                        markdown
+                                       octave
                                        org
                                        prodigy
                                        python
-                                       ipython-notebook
                                        restclient
                                        ruby
                                        rust
@@ -103,7 +104,9 @@
                                        spell-checking
                                        sql
                                        syntax-checking
+                                       spacemacs-layers
                                        version-control
+                                       yaml
                                        ycmd
                                        )
    dotspacemacs-excluded-packages '(
@@ -141,11 +144,16 @@
   (setq load-prefer-newer t)
 
   (setq-default
+   dotspacemacs-elpa-https t
+   dotspacemacs-elpa-timeout 5
+   dotspacemacs-check-for-update t
    dotspacemacs-editing-style 'vim
    dotspacemacs-verbose-loading nil
    dotspacemacs-startup-banner 'official
    dotspacemacs-startup-lists '(recents projects)
-   dotspacemacs-themes '(moe-dark moe-light spacemacs-dark)
+   dotspacemacs-startup-recent-list-size 10
+   dotspacemacs-scratch-mode 'text-mode
+   dotspacemacs-themes '(spacemacs-dark spacemacs-light moe-dark moe-light)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Sauce Code Powerline"
                                :size 14
@@ -156,8 +164,15 @@
    dotspacemacs-emacs-leader-key "M-m"
    dotspacemacs-major-mode-leader-key ","
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
-   dotspacemacs-command-key ":"
+   dotspacemacs-command-key "SPC"
+   dotspacemacs-distinguish-gui-tab nil
+   dotspacemacs-remap-Y-to-y$ t
+   dotspacemacs-ex-substitute-global nil
+   dotspacemacs-default-layout-name "Default"
+   dotspacemacs-display-default-layout nil
+   dotspacemacs-auto-resume-layouts nil
    dotspacemacs-auto-save-file-location 'cache
+   dotspacemacs-max-rollback-slots 5
    dotspacemacs-use-ido nil
    dotspacemacs-helm-resize nil
    dotspacemacs-helm-no-header nil
@@ -173,11 +188,13 @@
    dotspacemacs-inactive-transparency 90
    dotspacemacs-mode-line-unicode-symbols nil
    dotspacemacs-smooth-scrolling t
+   dotspacemacs-line-numbers nil
    dotspacemacs-smartparens-strict-mode t
    dotspacemacs-highlight-delimiters 'all
    dotspacemacs-persistent-server t
    dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
    dotspacemacs-default-package-repository nil
+   dotspacemacs-whitespace-cleanup nil
    ))
 
 (defun dotspacemacs/user-config ()
