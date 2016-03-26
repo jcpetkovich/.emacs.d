@@ -231,7 +231,8 @@ This function is called at the very end of Spacemacs initialization."
     ((flycheck-clang-include-path "/usr/include/glib-2.0/" "/usr/lib64/glib-2.0/include/")
      (flycheck-clang-language-standard . "c99")
      (flycheck-gcc-include-path "/usr/include/glib-2.0/" "/usr/lib64/glib-2.0/include/")
-     (flycheck-gcc-language-standard . "c99")))))
+     (flycheck-gcc-language-standard . "c99"))))
+ '(shell-file-name "/bin/bash"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
