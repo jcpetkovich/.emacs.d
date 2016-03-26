@@ -377,7 +377,8 @@ an item line."
                                     (ess-fl-keyword:operators . t)
                                     (ess-fl-keyword:delimiters)
                                     (ess-fl-keyword:= . t)
-                                    (ess-R-fl-keyword:F&T . t))
+                                    (ess-R-fl-keyword:F&T . t)
+                                    (ess-R-fl-keyword:%op% . t))
 
          inferior-R-font-lock-keywords '((ess-S-fl-keyword:prompt . t)
                                          (ess-R-fl-keyword:messages . t)
