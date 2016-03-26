@@ -40,6 +40,7 @@
     (rust-extras :variables
                  rust/lang-src-path "~/labs/rust")
     python-extras
+    ein-extras
     c-extras
     mu4e
     email-config
