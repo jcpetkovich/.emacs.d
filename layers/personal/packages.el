@@ -353,6 +353,13 @@ an item line."
         (bind-key "\t" nil ess-noweb-minor-mode-map)
 
         (add-hook 'ess-mode-hook 'turn-on-smartparens-strict-mode)
+
+        (defun personal/disable-highlight-numbers ()
+          (highlight-numbers-mode -1))
+
+        (setq ess-mode-hook (append ess-mode-hook '(personal/disable-highlight-numbers)))
+        (setq inferior-ess-mode-hook (append inferior-ess-mode-hook '(personal/disable-highlight-numbers)))
+
         (add-hook 'inferior-ess-mode-hook (defun personal/disable-comint-readonly ()
                                             (setq comint-prompt-read-only nil)))
         (add-hook 'inferior-ess-mode-hook (defun personal/force-smartparens ()
