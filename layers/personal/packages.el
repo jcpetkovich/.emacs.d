@@ -98,16 +98,9 @@
 
 (defun personal/helm-configs ()
 
-  ;; I prefer my own grep wrapper.
-  (defun helm-do-grep-wrapper (arg)
-    (interactive "P")
-    (let ((current-prefix-arg (not arg)))
-      (helm-do-grep)))
-
   (setq helm-locate-command "locate %s -e -A --regex %s")
 
   (bind-keys
-   ([remap rgrep] . helm-do-grep-wrapper)
    ("M-o" . helm-projectile-find-file))
 
   (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile-find-file)
