@@ -161,8 +161,8 @@
 
       (setq-default LaTeX-beamer-item-overlay-flag nil)
 
-      (evil-leader/set-key-for-mode 'latex-mode
-        "md" 'personal/tex-delete-env-pair)
+      (spacemacs/set-leader-keys-for-major-mode 'latex-mode
+        "d" 'personal/tex-delete-env-pair)
 
 
       (add-hook 'LaTeX-mode-hook 'reftex-mode)
@@ -280,13 +280,10 @@ an item line."
       )))
 
 (defun personal/pre-init-evil ()
-  "Initialize my package"
-  (use-package evil
-    :init
-    (progn
-      (setq-default evil-symbol-word-search t
-                    evil-cross-lines t
-                    evil-esc-delay 0))))
+  "Set evil vars before evil loads."
+  (setq-default evil-symbol-word-search t
+                evil-cross-lines t
+                evil-esc-delay 0))
 
 (defun personal/post-init-paredit ()
   (use-package paredit
@@ -313,11 +310,9 @@ an item line."
     (progn
       (bind-key "M-;" 'comment-dwim-2))))
 
-(defun personal/init-dash ()
-  (use-package dash
-    :defer t
-    :config
-    (dash-enable-font-lock)))
+(defun personal/post-init-dash ()
+  "Initialize dash config during bootstrap."
+  (dash-enable-font-lock))
 
 (spacemacs|defvar-company-backends inferior-ess-mode)
 
@@ -360,9 +355,10 @@ an item line."
                                             (smartparens-strict-mode -1)
                                             (smartparens-mode -1)))
 
-        (evil-leader/set-key-for-mode 'latex-mode "mk" 'ess-swv-knit)
-        (evil-leader/set-key-for-mode 'ess-mode
-          "mk" 'ess-swv-knit)
+        (spacemacs/set-leader-keys-for-major-mode 'latex-mode
+						  "k" 'ess-swv-knit)
+        (spacemacs/set-leader-keys-for-major-mode 'ess-mode
+          "k" 'ess-swv-knit)
 
         (setq-default
          ess-offset-continued 0
