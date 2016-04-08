@@ -33,6 +33,12 @@
   '(ein
     jedi))
 
+(defun ein-extras/open-current ()
+  (interactive)
+  (ein:notebook-open 8888 (file-relative-name
+                           buffer-file-name
+                           user-home-directory)))
+
 (defun ein-extras/post-init-ein ()
   (use-package ein
     :bind (:map ein:notebook-multilang-mode-map
