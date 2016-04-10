@@ -41,6 +41,12 @@
 
 (setq personal-excluded-packages '())
 
+;; use-package hooks
+(spacemacs|use-package-add-hook smartparens
+        :post-config
+        (progn
+          (show-smartparens-global-mode -1)))
+
 (defun personal/appearance-configs ()
   (setq-default
    mouse-wheel-scroll-amount '(1)
