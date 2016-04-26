@@ -63,6 +63,7 @@
    dotspacemacs-ask-for-lazy-installation t
    dotspacemacs-configuration-layer-path '("~/.spacemacs.d/layers/")
    dotspacemacs-configuration-layers '(
+                                       csv
                                        (git :variables
                                             git-magit-status-fullscreen t)
                                        (ess :variables
