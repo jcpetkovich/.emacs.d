@@ -160,8 +160,7 @@
    dotspacemacs-scratch-mode 'text-mode
    dotspacemacs-themes '(spacemacs-dark spacemacs-light moe-dark moe-light)
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Sauce Code Powerline"
-                               :size 14
+   dotspacemacs-default-font '("Sauce Code Powerline 6"
                                :weight normal
                                :width normal
                                :powerline-offset 2)
