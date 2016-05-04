@@ -27,7 +27,7 @@ which require an initialization must be listed explicitly in the list.")
     (setq-default
      org-directory           "~/journal"
      journal/entries        (concat org-directory "/entries")
-     org-agenda-files        (list org-directory journal/entries)
+     org-agenda-files        (list org-directory)
      org-archive-location    (concat org-directory "/archive.org::* Finished Tasks")
      org-mobile-directory    (concat org-directory "/webdav")
 

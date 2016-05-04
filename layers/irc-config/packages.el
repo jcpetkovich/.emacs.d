@@ -32,6 +32,15 @@ which require an initialization must be listed explicitly in the list.")
          (password (funcall (plist-get (car (auth-source-search :host "embeddedsoftwaregroup.irc.slack.com"
                                                                 :port "irc")) :secret)))
          (encryption 'tls))
+    (rcirc-connect host port nick user-name full-name '() password encryption))
+  (let* ((host "acertateam.irc.slack.com")
+         (port 6697)
+         (user-name "jcp")
+         (nick "jcp")
+         (full-name "Jean-Christophe Petkovich")
+         (password (funcall (plist-get (car (auth-source-search :host "acertateam.irc.slack.com"
+                                                                :port "irc")) :secret)))
+         (encryption 'tls))
     (rcirc-connect host port nick user-name full-name '() password encryption)))
 
 (defun irc-config/post-init-rcirc ()

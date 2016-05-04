@@ -47,7 +47,8 @@
     :config
     (progn
       (add-hook 'ein:notebook-multilang-mode-hook
-                'smartparens-strict-mode))))
+                'smartparens-strict-mode)
+      (setq-default ein:worksheet-enable-undo 'full))))
 
 (when (configuration-layer/layer-usedp 'auto-completion)
   (defun ein-extras/init-jedi ()

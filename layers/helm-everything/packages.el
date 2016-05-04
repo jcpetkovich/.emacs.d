@@ -19,6 +19,7 @@
     helm-swoop
     helm-gtags
     wgrep-helm
+    session
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
@@ -92,6 +93,7 @@ which require an initialization must be listed explicitly in the list.")
       (require 'helm-grep)
       (require 'helm-files)
       (require 'helm-man)
+      (require 'session)
 
       (helm-mode 1)
       (helm-adaptive-mode 1)
@@ -133,6 +135,10 @@ With a prefix arg reinitialize the cache."
     :config
     (progn
       (setq-default helm-man-or-woman-function 'woman))))
+
+(defun helm-everything/init-session ()
+  (use-package session
+    :defer t))
 
 (defun helm-everything/post-init-helm-gtags ()
   (use-package helm-gtags
