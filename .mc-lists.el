@@ -16,6 +16,7 @@
         c-electric-lt-gt
         c-electric-paren
         c-electric-semi&comma
+        c-electric-slash
         c-indent-line-or-region
         comint-bol
         comment-dwim-2

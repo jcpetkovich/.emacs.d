@@ -28,6 +28,7 @@
         helm
         helm-swoop
         magit
+        markdown-mode
         multiple-cursors
         paradox
         paredit
@@ -43,9 +44,9 @@
 
 ;; use-package hooks
 (spacemacs|use-package-add-hook smartparens
-        :post-config
-        (progn
-          (show-smartparens-global-mode -1)))
+  :post-config
+  (progn
+    (show-smartparens-global-mode -1)))
 
 (defun personal/appearance-configs ()
   (setq-default
@@ -223,6 +224,13 @@ an item line."
           (beginning-of-line)
           (kill-line))))))
 
+(defun personal/post-init-markdown-mode ()
+  (use-package markdown-mode
+    :defer
+    :bind (:map markdown-mode-map
+                (kbd "M-k") 'personal/move-cursor-previous-pane
+                (kbd "M-j") 'personal/move-cursor-next-pane)))
+
 (defun personal/post-init-multiple-cursors ()
   (use-package multiple-cursors
     :defer t
@@ -362,7 +370,7 @@ an item line."
                                             (smartparens-mode -1)))
 
         (spacemacs/set-leader-keys-for-major-mode 'latex-mode
-						  "k" 'ess-swv-knit)
+          "k" 'ess-swv-knit)
         (spacemacs/set-leader-keys-for-major-mode 'ess-mode
           "k" 'ess-swv-knit)
 
