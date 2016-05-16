@@ -228,8 +228,8 @@ an item line."
   (use-package markdown-mode
     :defer
     :bind (:map markdown-mode-map
-                (kbd "M-k") 'personal/move-cursor-previous-pane
-                (kbd "M-j") 'personal/move-cursor-next-pane)))
+                ("M-k" . 'personal/move-cursor-previous-pane)
+                ("M-j" . 'personal/move-cursor-next-pane))))
 
 (defun personal/post-init-multiple-cursors ()
   (use-package multiple-cursors

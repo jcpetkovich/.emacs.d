@@ -40,6 +40,7 @@
         evil-insert
         evil-insert-digraph
         evil-insert-state
+        evil-lisp-state-evil-insert-state
         evil-lisp-state-sp-backward-sexp
         evil-lisp-state-sp-backward-up-sexp
         evil-lisp-state-sp-forward-barf-sexp
