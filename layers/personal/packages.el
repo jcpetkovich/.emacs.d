@@ -150,7 +150,7 @@
   (personal/keybinding-configs))
 
 (defun personal/init-autopair ()
-  (use-package autopair
+ (use-package autopair
     :defer t))
 
 (defun personal/post-init-auctex ()
@@ -228,8 +228,8 @@ an item line."
   (use-package markdown-mode
     :defer
     :bind (:map markdown-mode-map
-                ("M-k" . 'personal/move-cursor-previous-pane)
-                ("M-j" . 'personal/move-cursor-next-pane))))
+                ("M-k" . personal/move-cursor-previous-pane)
+                ("M-j" . personal/move-cursor-next-pane))))
 
 (defun personal/post-init-multiple-cursors ()
   (use-package multiple-cursors
