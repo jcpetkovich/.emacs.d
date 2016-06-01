@@ -10,16 +10,16 @@
 ;;
 ;;; License: GPLv3
 
-(defvar python-extras-packages
+(setq python-extras-packages
   '(
     virtualenvwrapper
     anaconda-mode
-    )
-  "List of all packages to install and/or initialize. Built-in packages
-which require an initialization must be listed explicitly in the list.")
 
-(defvar python-extras-excluded-packages '()
-  "List of packages to exclude.")
+    (python :location built-in)
+    )
+  )
+
+(setq python-extras-excluded-packages '())
 
 (defun python-extras/init-virtualenvwrapper ()
   (use-package projectile
@@ -60,6 +60,17 @@ which require an initialization must be listed explicitly in the list.")
                                         default-venv-directories)))
                         (set (make-local-variable 'venv-location) current-venv)))))))))
 
-;; Often the body of an initialize function uses `use-package'
-;; For more info on `use-package', see readme:
-;; https://github.com/jwiegley/use-package
+(defun python-extras/post-init-python ()
+  (use-package python
+    :config
+    (progn
+      (defun python-extras/smart-delete ()
+        (interactive)
+        (let ((valid-pairs (sp--get-pair-list)))
+          (if (--any-p
+               (sp--looking-back (sp--strict-regexp-quote (cdr it)))
+               valid-pairs)
+              (sp-backward-delete-char)
+            (call-interactively 'python-indent-dedent-line-backspace))))
+
+      (bind-key "<backspace>" 'python-extras/smart-delete python-mode-map))))

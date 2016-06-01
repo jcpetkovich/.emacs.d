@@ -10,19 +10,18 @@
 ;;
 ;;; License: GPLv3
 
-(defvar multiple-cursors-packages
+(setq multiple-cursors-packages
   '(
     multiple-cursors
     expand-region
     )
-  "List of all packages to install and/or initialize. Built-in packages
-which require an initialization must be listed explicitly in the list.")
+  )
 
-(defvar multiple-cursors-excluded-packages
+(setq multiple-cursors-excluded-packages
   '(
     evil-escape
     )
-  "List of packages to exclude.")
+  )
 
 ;; For each package, define a function multiple-cursors/init-<package-multiple-cursors>
 (defun multiple-cursors/init-multiple-cursors ()

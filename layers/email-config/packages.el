@@ -10,16 +10,14 @@
 ;;
 ;;; License: GPLv3
 
-(defvar email-config-packages
+(setq email-config-packages
   '(
     ;; package names go here
     (mu4e :skip-install t)
     )
-  "List of all packages to install and/or initialize. Built-in packages
-which require an initialization must be listed explicitly in the list.")
+  )
 
-(defvar email-config-excluded-packages '()
-  "List of packages to exclude.")
+(setq email-config-excluded-packages '())
 
 (defun email-config/post-init-mu4e ()
   (setq gnutls-min-prime-bits 2048)

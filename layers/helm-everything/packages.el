@@ -10,7 +10,7 @@
 ;;
 ;;; License: GPLv3
 
-(defvar helm-everything-packages
+(setq helm-everything-packages
   '(
     ;; package helm-everythings go here
     helm
@@ -21,11 +21,9 @@
     wgrep-helm
     session
     )
-  "List of all packages to install and/or initialize. Built-in packages
-which require an initialization must be listed explicitly in the list.")
+  )
 
-(defvar helm-everything-excluded-packages '()
-  "List of packages to exclude.")
+(setq helm-everything-excluded-packages '())
 
 ;; For each package, define a function helm-everything/init-<package-helm-everything>
 

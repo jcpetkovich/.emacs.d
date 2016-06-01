@@ -10,17 +10,15 @@
 ;;
 ;;; License: GPLv3
 
-(defvar irc-config-packages
+(setq irc-config-packages
   '(
     rcirc
     rcirc-notify
     rcirc-color
     )
-  "List of all packages to install and/or initialize. Built-in packages
-which require an initialization must be listed explicitly in the list.")
+  )
 
-(defvar irc-config-excluded-packages '()
-  "List of packages to exclude.")
+(setq irc-config-excluded-packages '())
 
 (defun personal/slack-connect ()
   (interactive)

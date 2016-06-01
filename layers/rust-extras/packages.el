@@ -10,12 +10,32 @@
 ;;
 ;;; License: GPLv3
 
-(defvar rust-extras-packages
+(setq rust-extras-packages
   '(
-    ;; package rusts go here
+    (racer :skip-install t)
     )
-  "List of all packages to install and/or initialize. Built-in packages
-which require an initialization must be listed explicitly in the list.")
+  )
 
-(defvar rust-extras-excluded-packages '()
-  "List of packages to exclude.")
+(setq rust-extras-excluded-packages '())
+
+(when (configuration-layer/layer-usedp 'auto-completion)
+  (defun rust-extras/post-init-company ()
+    (spacemacs|enable-company rust-mode))
+
+  (defun rust-extras/post-init-racer ()
+    "Initialize racer if we're using company mode"
+    (let* ((rust-layer-path (concat dotspacemacs-directory "layers/rust-extras/"))
+           (racer-path      (concat rust-layer-path "extensions/racer/"))
+           (racer-elisp-dir (concat racer-path "editors/emacs/"))
+           (racer-cmd-path  (concat racer-path "target/release/racer")))
+      (if (file-exists-p racer-cmd-path)
+          (use-package racer
+            :defer t
+            :init
+            (progn
+              (when rust-extras/lang-src-path
+                (setq racer-rust-src-path (expand-file-name (concat rust-extras/lang-src-path "/src"))))
+              (setq racer-cmd racer-cmd-path)
+              (add-to-list 'load-path racer-elisp-dir)
+              (eval-after-load "rust-mode" '(require 'racer))))
+        (message "Warning: compile racer with cargo if you wish to use it with rust code.")))))

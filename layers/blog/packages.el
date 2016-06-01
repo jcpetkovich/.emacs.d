@@ -10,16 +10,14 @@
 ;;
 ;;; License: GPLv3
 
-(defvar blog-packages
+(setq blog-packages
   '(
     org-page
     simple-httpd
     )
-  "List of all packages to install and/or initialize. Built-in packages
-which require an initialization must be listed explicitly in the list.")
+  )
 
-(defvar blog-excluded-packages '()
-  "List of packages to exclude.")
+(setq blog-excluded-packages '())
 
 (defun blog/init-org-page ()
   "Initialize my package"

@@ -10,15 +10,13 @@
 ;;
 ;;; License: GPLv3
 
-(defvar journal-packages
+(setq journal-packages
   '(
     org
     )
-  "List of all packages to install and/or initialize. Built-in packages
-which require an initialization must be listed explicitly in the list.")
+  )
 
-(defvar journal-excluded-packages '()
-  "List of packages to exclude.")
+(setq journal-excluded-packages '())
 
 (defun journal/post-init-org ()
   (use-package org

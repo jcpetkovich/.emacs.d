@@ -10,21 +10,18 @@
 ;;
 ;;; License: GPLv3
 
-(defvar elisp-extras-packages
+(setq elisp-extras-packages
   '(
     paredit
     ipretty
     )
-  "List of all packages to install and/or initialize. Built-in packages
-which require an initialization must be listed explicitly in the list.")
+  )
+
+(setq elisp-extras-excluded-packages '())
 
 (defun elisp-extras/prefer-paredit ()
   (smartparens-mode -1)
   (enable-paredit-mode))
-
-(defvar elisp-extras-excluded-packages '()
-  "List of packages to exclude."
-  )
 
 (defun kill-region-or-paredit-backward-kill-word ()
   (interactive)

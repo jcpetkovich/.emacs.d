@@ -29,9 +29,7 @@
 
 ;;; Code:
 
-(defconst ein-extras-packages
-  '(ein
-    jedi))
+(setq ein-extras-packages '(ein jedi))
 
 (defun ein-extras/open-current ()
   (interactive)

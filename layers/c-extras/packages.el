@@ -10,19 +10,18 @@
 ;;
 ;;; License: GPLv3
 
-(defvar c-extras-packages
+(setq c-extras-packages
   '(
     company
     smart-tabs-mode
     clang-format
     google-c-style
     ycmd
+    (cc-mode :location built-in)
     )
-  "List of all packages to install and/or initialize. Built-in packages
-which require an initialization must be listed explicitly in the list.")
+  )
 
-(defvar c-extras-excluded-packages '()
-  "List of packages to exclude.")
+(setq c-extras-excluded-packages '())
 
 (defun c-extras/post-init-company ()
   (use-package company
@@ -66,3 +65,63 @@ which require an initialization must be listed explicitly in the list.")
     :defer t
     :init
     (c-add-style "Google" google-c-style)))
+
+(defun c-extras/post-init-cc-mode ()
+  (use-package cc-mode
+    :commands (c-mode c++-mode)
+    :config
+    (progn
+      (add-hook 'c-mode-hook (defun user-utils/turn-off-abbrev-mode ()
+                               (abbrev-mode -1)))
+
+      (defvar c-extras/linux-source-locations nil
+        "Path's to linux source used for pattern matching.")
+
+      ;; By default, follow bsd style
+      (setq-default c-default-style '((java-mode . "java")
+                                      (awk-mode . "awk")
+                                      (c++-mode . "google")
+                                      (other . "bsd"))
+
+                    c-extras/linux-source-locations '("~/labs/linux-trees"
+                                                      "/usr/src/linux"))
+
+      (defun c-extras/c-lineup-arglist-tabs-only (ignored)
+        "Line up argument lists by tabs, not spaces. This is mainly
+for the Linux Kernel style guidelines."
+        (let* ((anchor (c-langelem-pos c-syntactic-element))
+               (column (c-langelem-2nd-pos c-syntactic-element))
+               (offset (- (1+ column) anchor))
+               (steps (floor offset c-basic-offset)))
+          (* (max steps 1)
+             c-basic-offset))))
+
+    (add-hook 'c-mode-common-hook
+              (defun c-extras/linux-source-styling ()
+                ;; Add kernel style
+                (c-add-style
+                 "linux-tabs-only"
+                 '("linux" (c-offsets-alist
+                            (arglist-cont-nonempty
+                             c-lineup-gcc-asm-reg
+                             c-extras/c-lineup-arglist-tabs-only))))))
+
+    (add-hook 'c-mode-hook
+              (defun c-extras/setup-default-c-indentation ()
+                ;; tab width 8 in C please
+                (set (make-local-variable 'tab-width) 8)
+                (set (make-local-variable 'indent-tabs-mode) t)
+                (let ((filename (buffer-file-name)))
+
+                  ;; Enable kernel mode for the appropriate files
+                  (when (and filename
+                             (-any-p (lambda (path) (string-match (expand-file-name path) filename))
+                                     c-extras/linux-source-locations))
+                    (smart-tabs-mode -1)
+                    (c-set-style "linux-tabs-only")))))
+
+
+    (add-hook 'c++-mode-hook
+              (lambda ()
+                (set (make-local-variable 'tab-width) 2)
+                (set (make-local-variable 'indent-tabs-mode) nil)))))

@@ -37,6 +37,13 @@
         shrink-whitespace
         whitespace-cleanup-mode
         yasnippet
+
+        (simple :location built-in)
+        (recentf :location built-in)
+        (hippie-expand :location built-in)
+        (dired :location built-in)
+        (wdired :location built-in)
+        (doc-view :location built-in)
         )
       )
 
@@ -350,6 +357,9 @@ an item line."
       :defer t
       :config
       (progn
+
+        (evilified-state-evilify ess-help-mode ess-help-mode-map)
+
         (bind-key "M-;" 'comment-dwim-2 ess-mode-map)
 
         (bind-key "\t" nil ess-noweb-minor-mode-map)
@@ -576,5 +586,97 @@ an item line."
     :defer t
     :init
     (setq gnus-button-url 'browse-url-generic
-          browse-url-generic-program "qutebrowser"
+          browse-url-generic-program (getenv "BROWSER")
           browse-url-browser-function gnus-button-url)))
+
+(defun personal/init-simple ()
+  (use-package simple
+    :config (setq-default shell-file-name (executable-find "bash"))))
+
+(defun personal/post-init-recentf ()
+  (use-package recentf
+    :defer t
+    :config
+    (setq recentf-max-saved-items 1000
+          recentf-auto-cleanup 'mode)))
+
+(defun personal/init-hippie-expand ()
+  (use-package hippie-exp
+    :bind (("M-/" . hippie-expand)
+           ("M-?" . hippie-expand-lines))
+    :init
+    (progn
+      (defun hippie-expand-lines ()
+        (interactive)
+        (let ((hippie-expand-try-functions-list '(try-expand-list
+                                                  try-expand-list-all-buffers
+                                                  try-expand-line
+                                                  try-expand-line-all-buffers)))
+          (hippie-expand nil))))
+
+    :config
+    (progn
+      (setq-default hippie-expand-dabbrev-skip-space t)
+      (defadvice he-substitute-string (after completion/he-paredit-fix activate)
+        "remove extra paren when expanding line in paredit"
+        (if (and paredit-mode (equal (substring str -1) ")"))
+            (progn (backward-delete-char 1) (forward-char)))))))
+
+(defun personal/init-wdired ()
+  (use-package wdired
+    :defer t))
+
+(defun personal/init-dired ()
+  (use-package dired
+    :defer t
+    :config
+    (progn
+      (require 'wdired)
+      (setq-default dired-hide-details-hide-symlink-targets nil
+                    dired-guess-shell-alist-user '(("\\.pdf\\'" "zathura "))
+                    dired-dwim-target t)
+
+      (defun dired/use-dired-x ()
+        (load "dired-x"))
+
+      (add-hook 'dired-load-hook 'dired/use-dired-x)
+      (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode 1)))
+
+      (defun dired-back-to-start-of-files ()
+        (interactive)
+        (backward-char (- (current-column) 2)))
+
+      (defun dired-back-to-top ()
+        (interactive)
+        (beginning-of-buffer)
+        (dired-next-line 3))
+
+      (defun dired-jump-to-bottom ()
+        (interactive)
+        (end-of-buffer)
+        (dired-next-line -1))
+
+      (bind-keys :map dired-mode-map
+                 ("C-a" . dired-back-to-start-of-files)
+                 ("k" . dired-do-delete)
+                 ("C-x C-k" . dired-do-delete))
+
+      (bind-keys :map dired-mode-map
+                 ([remap beginning-of-buffer] . dired-back-to-top)
+                 ([remap smart-up] . dired-back-to-top)
+                 ([remap end-of-buffer] . dired-jump-to-bottom)
+                 ([remap smart-down] . dired-jump-to-bottom))
+
+      (bind-keys :map wdired-mode-map
+                 ("C-a" . dired-back-to-start-of-files)
+                 ([remap beginning-of-buffer] . dired-back-to-top)
+                 ([remap end-of-buffer] . dired-jump-to-bottom))
+
+      (evil-declare-key 'normal dired-mode-map
+        (kbd "n") 'evil-search-next))))
+
+(defun personal/post-init-doc-view ()
+  (use-package doc-view
+    :defer t
+    :config
+    (setq-default doc-view-continuous t)))

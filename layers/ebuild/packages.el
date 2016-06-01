@@ -10,17 +10,15 @@
 ;;
 ;;; License: GPLv3
 
-(defvar ebuild-packages
+(setq ebuild-packages
   '(
     ;; package ebuilds go here
     (conf-mode :location built-in)
     (sh-script :location built-in)
     )
-  "List of all packages to install and/or initialize. Built-in packages
-which require an initialization must be listed explicitly in the list.")
+  )
 
-(defvar ebuild-excluded-packages '()
-  "List of packages to exclude.")
+(setq ebuild-excluded-packages '())
 
 (defun ebuild/post-init-sh-script ()
   (use-package sh-script

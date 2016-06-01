@@ -10,15 +10,13 @@
 ;;
 ;;; License: GPLv3
 
-(defvar theme-packages
+(setq theme-packages
   '(
     moe-theme
     )
-  "List of all packages to install and/or initialize. Built-in packages
-which require an initialization must be listed explicitly in the list.")
+  )
 
-(defvar theme-excluded-packages '()
-  "List of packages to exclude.")
+(setq theme-excluded-packages '())
 
 ;; For each package, define a function theme/init-<package-theme>
 ;;
