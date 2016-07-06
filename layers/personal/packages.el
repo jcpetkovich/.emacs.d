@@ -460,12 +460,7 @@ an item line."
                  ("M-1" . nil)
                  ("M-2" . nil))
 
-      ;; (add-hook 'company-template-insert-hook 'personal/turn-off-smartparens)
-      ;; (add-hook 'company-completion-cancelled-hook 'personal/turn-on-smartparens)
-      ;; (add-hook 'company-completion-finished-hook 'personal/turn-on-smartparens)
-
-      (spacemacs|add-company-hook inferior-ess-mode)
-      (push '(company-R-args company-R-objects) company-backends-inferior-ess-mode))))
+      (spacemacs|add-company-hook inferior-ess-mode))))
 
 (defun personal/init-dired-rainbow ()
   (use-package dired-rainbow
