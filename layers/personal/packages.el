@@ -132,7 +132,7 @@
                ("C-M-i" . helm-select-action)))
 
   (evil-leader/set-key
-    "o"  'helm-C-x-b))
+    "o"  'helm-mini))
 
 (defun personal/keybinding-configs ()
 

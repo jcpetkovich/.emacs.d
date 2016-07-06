@@ -19,7 +19,6 @@
     helm-swoop
     helm-gtags
     wgrep-helm
-    session
     )
   )
 
@@ -72,7 +71,7 @@
            ([remap find-tag]          . helm-etags-select)
            ([remap ido-find-file]     . helm-find-files)
            ([remap ido-kill-buffer]   . kill-buffer)
-           ([remap ido-switch-buffer] . helm-C-x-b)
+           ([remap ido-switch-buffer] . helm-mini)
            ("M-x"                     . helm-M-x)
            ("M-y"                     . helm-show-kill-ring)
            ("C-x k"                   . kill-buffer)
@@ -91,7 +90,6 @@
       (require 'helm-grep)
       (require 'helm-files)
       (require 'helm-man)
-      (require 'session)
 
       (helm-mode 1)
       (helm-adaptive-mode 1)
@@ -133,10 +131,6 @@ With a prefix arg reinitialize the cache."
     :config
     (progn
       (setq-default helm-man-or-woman-function 'woman))))
-
-(defun helm-everything/init-session ()
-  (use-package session
-    :defer t))
 
 (defun helm-everything/post-init-helm-gtags ()
   (use-package helm-gtags
