@@ -57,6 +57,7 @@
         haskell-indentation-delete-backward-char
         helm-show-kill-ring
         indent-for-tab-command
+        ispell-word
         keyboard-escape-quit
         kill-region
         kill-sexp
