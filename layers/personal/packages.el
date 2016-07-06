@@ -375,9 +375,7 @@ an item line."
         (add-hook 'inferior-ess-mode-hook (defun personal/disable-comint-readonly ()
                                             (setq comint-prompt-read-only nil)))
         (add-hook 'inferior-ess-mode-hook (defun personal/force-smartparens ()
-                                            (autopair-mode 1)
-                                            (smartparens-strict-mode -1)
-                                            (smartparens-mode -1)))
+                                            (smartparens-mode 1)))
 
         (spacemacs/set-leader-keys-for-major-mode 'latex-mode
           "k" 'ess-swv-knit)
