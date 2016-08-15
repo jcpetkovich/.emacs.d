@@ -94,6 +94,7 @@
                                        html
                                        ipython-notebook
                                        javascript
+                                       typescript
                                        latex
                                        markdown
                                        octave
