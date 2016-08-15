@@ -68,7 +68,17 @@
                                  (org-bullets-mode 1))))))
 
 
-
+(defun journal/init-org-caldav ()
+  (use-package org-caldav
+    :commands (org-caldav-sync)
+    :defer t
+    :init
+    (progn
+      (setq org-caldav-url "https://ecresearch.uwaterloo.ca/owncloud/remote.php/caldav/calendars/j2petkov")
+      (setq org-caldav-calendar-id "personal")
+      (setq org-caldav-inbox "/home/jcp/journal/calendar.org")
+      (setq org-caldav-files '())
+      (setq org-icalendar-timezone "Canada/Eastern"))))
 
 ;; For each package, define a function journal/init-<package-journal>
 ;;
