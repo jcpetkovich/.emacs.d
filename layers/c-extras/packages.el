@@ -74,6 +74,10 @@
       (add-hook 'c-mode-hook (defun user-utils/turn-off-abbrev-mode ()
                                (abbrev-mode -1)))
 
+      (bind-keys :map c++-mode-map
+                 ("M-j" . personal/move-cursor-next-pane)
+                 ("M-k" . personal/move-cursor-previous-pane))
+
       (defvar c-extras/linux-source-locations nil
         "Path's to linux source used for pattern matching.")
 
