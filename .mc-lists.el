@@ -17,6 +17,7 @@
         c-electric-paren
         c-electric-semi&comma
         c-electric-slash
+        c-electric-star
         c-indent-line-or-region
         comint-bol
         comment-dwim-2
@@ -129,6 +130,7 @@
         ess-use-this-dir
         helm-M-x
         helm-projectile-find-file
+        helm-swoop--edit-complete
         multiple-cursors/expand-or-mark-next-symbol
         personal/move-cursor-previous-pane
         toggle-input-method
