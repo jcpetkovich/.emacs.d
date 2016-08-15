@@ -11,16 +11,18 @@
 ;;; License: GPLv3
 
 (setq journal-packages
-  '(
-    org
-    )
-  )
+      '(
+        (org :location built-in)
+        org-caldav
+        )
+      )
 
 (setq journal-excluded-packages '())
 
 (defun journal/post-init-org ()
   (use-package org
     :commands (org-mode)
+    :defer t
     :init
     (setq-default
      org-directory           "~/journal"
