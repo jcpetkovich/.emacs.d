@@ -45,31 +45,89 @@
       (setq-default mu4e-html2text-command "html2text -nobs -width 1000"
                     mu4e-view-show-images t
                     mu4e-confirm-quit nil
-                    mu4e-maildir "~/Maildir"
-                    smtpmail-queue-mail  nil  ;; start in non-queuing mode
-                    smtpmail-queue-dir   "~/Maildir/queue/cur"
-
-                    ;; Special folders
-                    mu4e-sent-folder   "/bak.sent"
-                    mu4e-drafts-folder "/bak.drafts"
-                    mu4e-trash-folder  "/bak.trash"
-
-                    ;; Mail address
-                    mu4e-user-mail-address-list
-                    '("jcpetkovich@gmail.com" "me@jcpetkovich.com" "j2petkov@uwaterloo.ca")
+                    mu4e-maildir "~/mail"
 
                     ;; Sync program
                     mu4e-get-mail-command "offlineimap"
 
-                    mu4e-reply-to-address "jcpetkovich@gmail.com"
-                    user-mail-address "jcpetkovich@gmail.com"
-                    user-full-name  "Jean-Christophe Petkovich"
+                    ;; Mail address
+                    mu4e-user-mail-address-list '("jcpetkovich@gmail.com"
+                                                  "me@jcpetkovich.com"
+                                                  "j2petkov@uwaterloo.ca"
+                                                  "jcpetkovich@acerta.ca")
 
-                    ;; include in message with C-c C-w
-                    mu4e-compose-signature
-                    "Jean-Christophe Petkovich"
-                    message-signature
-                    "Jean-Christophe Petkovich")
+                    ;; smtp configs
+                    smtpmail-queue-mail  nil  ;; start in non-queuing mode
+                    send-mail-function 'smtpmail-send-it
+                    message-send-mail-function 'smtpmail-send-it
+                    smtpmail-debug-info t
+                    smtpmail-starttls-credentials
+                    '(("smtp.gmail.com" 587 nil nil))
+                    smtpmail-auth-credentials
+                    (expand-file-name "~/.authinfo.gpg")
+                    smtpmail-default-smtp-server "smtp.gmail.com"
+                    smtpmail-smtp-server "smtp.gmail.com"
+                    smtpmail-smtp-service 587
+
+                    )
+
+      (setq mu4e-contexts
+            `( ,(make-mu4e-context
+                 :name "Personal"
+                 :enter-func (lambda () (mu4e-message "Switch to the Personal context"))
+                 ;; leave-func not defined
+                 :match-func (lambda (msg)
+                               (when msg
+                                 (or
+                                  (mu4e-message-contact-field-matches msg :to "j2petkov@uwaterloo.ca")
+                                  (mu4e-message-contact-field-matches msg :to "me@jcpetkovich.com")
+                                  (mu4e-message-contact-field-matches msg :to "jcpetkovich@gmail.com"))))
+                 :vars '(
+                         ;; smtp account configs
+                         ( smtpmail-queue-dir . "~/mail/personal/queue/cur/" )
+
+                         ;; Special folders
+                         ( mu4e-sent-folder . "/personal/bak.sent" )
+                         ( mu4e-drafts-folder . "/personal/bak.drafts" )
+                         ( mu4e-trash-folder . "/personal/bak.trash" )
+
+                         ( mu4e-reply-to-address . "jcpetkovich@gmail.com" )
+                         ( user-mail-address	     . "jcpetkovich@gmail.com"  )
+                         ( user-full-name	    . "Jean-Christophe Petkovich" )
+
+                         ;; include in message with C-c C-w
+                         ( mu4e-compose-signature . "Jean-Christophe Petkovich" )
+                         ( message-signature . "Jean-Christophe Petkovich" )
+
+                         ))
+               ,(make-mu4e-context
+                 :name "Work"
+                 :enter-func (lambda () (mu4e-message "Switch to the Work context"))
+                 ;; leave-fun not defined
+                 :match-func (lambda (msg)
+                               (when msg
+                                 (mu4e-message-contact-field-matches msg :to "jcpetkovich@acerta.ca")))
+                 :vars '(
+
+                         ;; smtp account configs
+                         ( smtpmail-queue-dir . "~/mail/work/queue/cur/" )
+
+                         ;; Special folders
+                         ( mu4e-sent-folder . "/work/[Gmail].Sent Mail" )
+                         ( mu4e-drafts-folder . "/work/[Gmail].Drafts" )
+                         ( mu4e-trash-folder . "/work/[Gmail].Trash" )
+
+                         ( mu4e-reply-to-address . "jcpetkovich@acerta.ca" )
+                         ( user-mail-address	     . "jcpetkovich@acerta.ca"  )
+                         ( user-full-name	    . "Jean-Christophe Petkovich" )
+
+                         ;; include in message with C-c C-w
+                         ( mu4e-compose-signature . "Jean-Christophe Petkovich" )
+                         ( message-signature . "Jean-Christophe Petkovich" )
+
+                         ))))
+
+
 
       (when (fboundp 'imagemagick-register-types)
         (imagemagick-register-types))
