@@ -50,6 +50,9 @@
 
 (setq personal-excluded-packages '())
 
+;; just set them
+(setq user-full-name "Jean-Christophe Petkovich")
+
 ;; use-package hooks
 (spacemacs|use-package-add-hook smartparens
   :post-config
