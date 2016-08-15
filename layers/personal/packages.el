@@ -37,6 +37,7 @@
         shrink-whitespace
         whitespace-cleanup-mode
         yasnippet
+        js2-mode
 
         (simple :location built-in)
         (recentf :location built-in)
@@ -157,7 +158,7 @@
   (personal/keybinding-configs))
 
 (defun personal/init-autopair ()
- (use-package autopair
+  (use-package autopair
     :defer t))
 
 (defun personal/post-init-auctex ()
@@ -357,6 +358,9 @@ an item line."
       :defer t
       :config
       (progn
+
+        ;; use oldstyle syntax table
+        ;; (setq inferior-ess-r-syntax-table (copy-syntax-table ess-r-syntax-table))
 
         (evilified-state-evilify ess-help-mode ess-help-mode-map)
 
@@ -590,8 +594,10 @@ an item line."
   (use-package recentf
     :defer t
     :config
-    (setq recentf-max-saved-items 1000
-          recentf-auto-cleanup 'mode)))
+    (progn
+      (setq recentf-max-saved-items 1000
+            recentf-auto-cleanup 'mode)
+      (recentf-load-list))))
 
 (defun personal/init-hippie-expand ()
   (use-package hippie-exp
@@ -673,3 +679,10 @@ an item line."
     :defer t
     :config
     (setq-default doc-view-continuous t)))
+
+(defun personal/post-init-js2-mode ()
+  (use-package js2-mode
+    :defer t
+    :bind (:map js2-mode-map
+                ("M-k" . personal/move-cursor-previous-pane)
+                ("M-j" . personal/move-cursor-next-pane))))
