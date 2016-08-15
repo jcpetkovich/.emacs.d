@@ -23,6 +23,7 @@
   "Initialize my package"
   (use-package org-page
     :commands (op/do-publication op/new-post)
+    :defer t
     :init
     (progn
       (defun blog/deploy ()
@@ -30,7 +31,7 @@
         (op/git-change-branch op/repository-directory op/repository-html-branch)
         (eshell-command (concat "rsync -avz --delete-after "
                                 op/repository-directory
-                                " root@ptk.io:/var/www/localhost/htdocs") nil))
+                                " root@ptk.io:/var/www/html") nil))
 
       (defvar blog/org-inline-css-hook-called nil)
 
@@ -50,7 +51,7 @@ background of code to whatever theme I'm using's background"
     :config
     (progn
       (setq op/repository-directory (expand-file-name "~/projects/blog/"))
-      (setq op/site-domain "http://ptk.io/")
+      (setq op/site-domain "https://ptk.io/")
       (setq op/personal-github-link "https://github.com/jcpetkovich")
       (setq op/site-main-title "JC's Blog")
       (setq op/site-sub-title "Musings on (mostly) emacs.")
@@ -86,7 +87,7 @@ background of code to whatever theme I'm using's background"
 
       (defadvice op/do-publication (before blog/ensure-lang-syntax-loaded activate)
         ;; Trigger load of language configurations
-        (load-ess-on-demand)
+        (load "ess-site.el")
         (require 'python)))
 
     (defun op/verify-git-repository (repo-dir)
