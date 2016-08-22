@@ -69,7 +69,12 @@
 
    frame-title-format
    (list
-    '(:eval (if buffer-file-name (buffer-file-name) (buffer-name))))))
+    '(:eval (cond (buffer-file-name
+                   (buffer-file-name))
+                  (dired-directory
+                   dired-directory)
+                  (t
+                   (buffer-name)))))))
 
 (defun personal/editing-configs ()
   (setq-default

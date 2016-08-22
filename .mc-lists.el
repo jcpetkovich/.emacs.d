@@ -35,6 +35,7 @@
         evil-backward-char
         evil-backward-word-begin
         evil-delete-backward-char-and-join
+        evil-delete-backward-word
         evil-emacs-state
         evil-escape-emacs-state
         evil-forward-char
