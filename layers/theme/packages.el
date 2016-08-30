@@ -13,6 +13,7 @@
 (setq theme-packages
   '(
     moe-theme
+    solarized-theme
     )
   )
 
@@ -23,6 +24,8 @@
 (defun theme/init-moe-theme ()
   (require 'moe-theme)
   )
+
+(defun theme/init-solarized-theme ())
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
