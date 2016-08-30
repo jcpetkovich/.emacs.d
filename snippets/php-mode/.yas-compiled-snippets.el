@@ -2,11 +2,11 @@
 ;;; Snippet definitions:
 ;;;
 (yas-define-snippets 'php-mode
-                     '(("req" "require_once(dirname(__FILE__) . \"/$1.php\");$0" "req" nil nil nil nil nil nil)
-                       ("f" "public function ${1:name}($2) {\n       $0\n}" "public function" nil nil nil nil nil nil)
-                       ("pri" "private function ${1:name}($2) {\n        $0\n}" "private-function" nil nil nil nil nil nil)
-                       ("funs" "public static function ${1:name}($2) {\n  $0\n}" "funs" nil nil nil nil nil nil)
-                       ("fun" "public function ${1:name}($2) {\n  $0\n}" "fun" nil nil nil nil nil nil)))
+                     '(("req" "require_once(dirname(__FILE__) . \"/$1.php\");$0" "req" nil nil nil "/home/jcp/.spacemacs.d/snippets/php-mode/req" nil nil)
+                       ("f" "public function ${1:name}($2) {\n       $0\n}" "public function" nil nil nil "/home/jcp/.spacemacs.d/snippets/php-mode/public-function" nil nil)
+                       ("pri" "private function ${1:name}($2) {\n        $0\n}" "private-function" nil nil nil "/home/jcp/.spacemacs.d/snippets/php-mode/private-function" nil nil)
+                       ("funs" "public static function ${1:name}($2) {\n  $0\n}" "funs" nil nil nil "/home/jcp/.spacemacs.d/snippets/php-mode/funs" nil nil)
+                       ("fun" "public function ${1:name}($2) {\n  $0\n}" "fun" nil nil nil "/home/jcp/.spacemacs.d/snippets/php-mode/fun" nil nil)))
 
 
-;;; Do not edit! File generated at Tue Sep  1 10:57:45 2015
+;;; Do not edit! File generated at Tue Aug 23 09:39:36 2016

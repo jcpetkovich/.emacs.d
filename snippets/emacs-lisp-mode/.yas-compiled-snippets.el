@@ -2,11 +2,11 @@
 ;;; Snippet definitions:
 ;;;
 (yas-define-snippets 'emacs-lisp-mode
-                     '(("req" "(require '$0)" "req" nil nil nil nil nil nil)
-                       ("pro" "(provide '`(buffer-file-name-body)`)$0" "provide" nil nil nil nil nil nil)
-                       ("head" ";; =============================================================\n;; $1\n;; =============================================================\n$0" "comment header" nil nil nil nil nil nil)
-                       ("ends" ";;; `(buffer-file-name-body)`.el ends here$0" "ends" nil nil nil nil nil nil)
-                       ("auto" ";;;###autoload" "autoload" nil nil nil nil nil nil)))
+                     '(("req" "(require '$0)" "req" nil nil nil "/home/jcp/.spacemacs.d/snippets/emacs-lisp-mode/req" nil nil)
+                       ("pro" "(provide '`(buffer-file-name-body)`)$0" "provide" nil nil nil "/home/jcp/.spacemacs.d/snippets/emacs-lisp-mode/provide.yasnippet" nil nil)
+                       ("head" ";; =============================================================\n;; $1\n;; =============================================================\n$0" "comment header" nil nil nil "/home/jcp/.spacemacs.d/snippets/emacs-lisp-mode/head.yasnippet" nil nil)
+                       ("ends" ";;; `(buffer-file-name-body)`.el ends here$0" "ends" nil nil nil "/home/jcp/.spacemacs.d/snippets/emacs-lisp-mode/ends" nil nil)
+                       ("auto" ";;;###autoload" "autoload" nil nil nil "/home/jcp/.spacemacs.d/snippets/emacs-lisp-mode/autoload" nil nil)))
 
 
-;;; Do not edit! File generated at Tue Sep  1 10:57:44 2015
+;;; Do not edit! File generated at Tue Aug 23 09:39:36 2016

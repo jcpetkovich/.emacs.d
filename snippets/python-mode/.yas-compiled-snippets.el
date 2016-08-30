@@ -28,29 +28,29 @@
 (yas-define-snippets 'python-mode
                      '(("tc" "class Test${1:Class}(${2:unittest.TestCase}):\n    $0\n" "test class" nil
                         ("definitions")
-                        nil nil nil nil)
+                        nil "/home/jcp/.spacemacs.d/snippets/python-mode/tc" nil nil)
                        ("t" "def test_${1:}(self$2):\n    $0\n" "test" nil
                         ("definitions")
-                        nil nil nil nil)
-                       ("prop" "def ${1:foo}():\n    doc = \"\"\"${2:Doc string}\"\"\"\n    def fget(self):\n        return self._$1\n\n    def fset(self, value):\n        self._$1 = value\n\n    def fdel(self):\n        del self._$1\n    return locals()\n$1 = property(**$1())\n\n$0\n" "prop" nil nil nil nil nil nil)
+                        nil "/home/jcp/.spacemacs.d/snippets/python-mode/t" nil nil)
+                       ("prop" "def ${1:foo}():\n    doc = \"\"\"${2:Doc string}\"\"\"\n    def fget(self):\n        return self._$1\n\n    def fset(self, value):\n        self._$1 = value\n\n    def fdel(self):\n        del self._$1\n    return locals()\n$1 = property(**$1())\n\n$0\n" "prop" nil nil nil "/home/jcp/.spacemacs.d/snippets/python-mode/prop" nil nil)
                        ("m" "def ${1:method}(self$2):\n    $0\n" "method" nil
                         ("definitions")
-                        nil nil nil nil)
+                        nil "/home/jcp/.spacemacs.d/snippets/python-mode/m" nil nil)
                        ("l" "for ${1:x} in ${2:l}:\n    $0\n" "forloop" nil
                         ("definitions")
-                        nil nil nil nil)
+                        nil "/home/jcp/.spacemacs.d/snippets/python-mode/l" nil nil)
                        ("i" "if ${1:condition}:\n    $0\n" "if" nil
                         ("definitions")
-                        nil nil nil nil)
+                        nil "/home/jcp/.spacemacs.d/snippets/python-mode/i" nil nil)
                        ("f" "def ${1:fun}(${2:args}):\n    $0\n" "function" nil
                         ("definitions")
-                        nil nil nil nil)
+                        nil "/home/jcp/.spacemacs.d/snippets/python-mode/f" nil nil)
                        ("e" "try:\n    $1\nexcept$2:\n    $0\n" "trycatch" nil
                         ("definitions")
-                        nil nil nil nil)
+                        nil "/home/jcp/.spacemacs.d/snippets/python-mode/e" nil nil)
                        ("c" "class ${1:Class}(${2:object}):\n    $0\n" "class" nil
                         ("definitions")
-                        nil nil nil nil)))
+                        nil "/home/jcp/.spacemacs.d/snippets/python-mode/c" nil nil)))
 
 
-;;; Do not edit! File generated at Tue Sep  1 10:57:45 2015
+;;; Do not edit! File generated at Tue Aug 23 09:39:36 2016
