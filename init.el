@@ -94,11 +94,11 @@
                                        html
                                        ipython-notebook
                                        javascript
-                                       typescript
                                        latex
                                        markdown
                                        octave
                                        org
+                                       pdf-tools
                                        prodigy
                                        python
                                        restclient
@@ -106,11 +106,12 @@
                                        rust
                                        scheme
                                        shell-scripts
+                                       spacemacs-helm
+                                       spacemacs-layers
                                        spell-checking
                                        sql
                                        syntax-checking
-                                       spacemacs-layers
-                                       spacemacs-helm
+                                       typescript
                                        version-control
                                        yaml
                                        ycmd
@@ -156,11 +157,11 @@
    dotspacemacs-check-for-update t
    dotspacemacs-editing-style 'vim
    dotspacemacs-verbose-loading nil
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner nil
    dotspacemacs-startup-lists '(recents projects)
    dotspacemacs-startup-recent-list-size 10
    dotspacemacs-scratch-mode 'text-mode
-   dotspacemacs-themes '(spacemacs-dark spacemacs-light moe-dark moe-light)
+   dotspacemacs-themes '(spacemacs-dark spacemacs-light solarized-dark solarized-light)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Sauce Code Powerline 6"
                                :weight normal

@@ -76,6 +76,7 @@
         org-end-of-line
         org-force-self-insert
         org-insert-heading
+        org-insert-heading-respect-content
         org-kill-line
         org-meta-return
         org-metaleft
