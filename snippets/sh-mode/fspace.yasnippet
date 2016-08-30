@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: fspace
+# key: fspace
+# --
+find . -type f -name "*.${1:extension}" | while IFS= read -r file; do
+    ${2:echo "file = $file"}
+done
+$0
