@@ -38,6 +38,8 @@
         whitespace-cleanup-mode
         yasnippet
         js2-mode
+        helm-pass
+        writeroom-mode
 
         (simple :location built-in)
         (recentf :location built-in)
@@ -694,3 +696,16 @@ an item line."
     :bind (:map js2-mode-map
                 ("M-k" . personal/move-cursor-previous-pane)
                 ("M-j" . personal/move-cursor-next-pane))))
+
+(defun personal/init-helm-pass ()
+  (use-package helm-pass
+    :defer t
+    :commands helm-pass
+    :init
+    (evil-leader/set-key "aw" 'helm-pass)))
+
+(defun personal/init-writeroom-mode ()
+  (use-package writeroom-mode
+    :defer t
+    :commands writeroom-mode
+    :init (evil-leader/set-key "wn" 'writeroom-mode)))
