@@ -50,7 +50,7 @@ background of code to whatever theme I'm using's background"
                       my-pre-bg my-pre-fg)))))))
     :config
     (progn
-      (setq op/repository-directory (expand-file-name "~/projects/blog/"))
+      (setq op/repository-directory (expand-file-name "~/prj/blog/"))
       (setq op/site-domain "https://ptk.io/")
       (setq op/personal-github-link "https://github.com/jcpetkovich")
       (setq op/site-main-title "JC's Blog")
