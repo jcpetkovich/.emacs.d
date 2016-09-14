@@ -157,7 +157,7 @@
    dotspacemacs-check-for-update t
    dotspacemacs-editing-style 'vim
    dotspacemacs-verbose-loading nil
-   dotspacemacs-startup-banner nil
+   dotspacemacs-startup-banner 'official
    dotspacemacs-startup-lists '(recents projects)
    dotspacemacs-startup-recent-list-size 10
    dotspacemacs-scratch-mode 'text-mode
