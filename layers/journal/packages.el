@@ -74,7 +74,7 @@
     :defer t
     :init
     (progn
-      (setq org-caldav-url "https://ecresearch.uwaterloo.ca/owncloud/remote.php/caldav/calendars/j2petkov")
+      (setq org-caldav-url "https://ptk.io/owncloud/remote.php/dav/calendars/jcp/")
       (setq org-caldav-calendar-id "personal")
       (setq org-caldav-inbox "/home/jcp/journal/calendar.org")
       (setq org-caldav-files '())
