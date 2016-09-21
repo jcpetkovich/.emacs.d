@@ -7,4 +7,4 @@
                        ("for" "for (${1:int i = 0}; ${2:i < NUM}; ${3:++i}) {\n$0\n}" "for" nil nil nil "/home/jcp/.spacemacs.d/snippets/c-mode/for.yasnippet" nil nil)))
 
 
-;;; Do not edit! File generated at Tue Aug 23 09:39:36 2016
+;;; Do not edit! File generated at Wed Sep 14 22:51:20 2016

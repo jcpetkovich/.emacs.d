@@ -7,4 +7,4 @@
                        ("lst" "\\begin\\{lstlisting\\}[label=${1:listing}, language=${2:C}]\n$0\n\\end\\{lstlisting\\}" "lstlisting" nil nil nil "/home/jcp/.spacemacs.d/snippets/latex-mode/listing.yasnippet" nil nil)))
 
 
-;;; Do not edit! File generated at Tue Aug 23 09:39:36 2016
+;;; Do not edit! File generated at Wed Sep 14 22:51:20 2016

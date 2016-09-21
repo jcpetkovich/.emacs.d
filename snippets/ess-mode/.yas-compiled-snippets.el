@@ -6,4 +6,4 @@
                        ("f" "function(${1:args}) {$0}" "function" nil nil nil "/home/jcp/.spacemacs.d/snippets/ess-mode/function.yasnippet" nil nil)))
 
 
-;;; Do not edit! File generated at Tue Aug 23 09:39:36 2016
+;;; Do not edit! File generated at Wed Sep 14 22:51:20 2016
