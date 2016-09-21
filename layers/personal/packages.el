@@ -40,7 +40,9 @@
         js2-mode
         helm-pass
         writeroom-mode
-
+        slack
+        (asana :location (recipe :fetcher github
+                                 :repo "jcpetkovich/emacs-asana"))
         (simple :location built-in)
         (recentf :location built-in)
         (hippie-expand :location built-in)
@@ -51,6 +53,7 @@
       )
 
 (setq personal-excluded-packages '())
+(defvar secrets-loaded nil)
 
 ;; just set them
 (setq user-full-name "Jean-Christophe Petkovich")
@@ -113,7 +116,9 @@
 (defun personal/spacemacs-configs ())
 
 (defun load-secrets ()
-  (load (concat dotspacemacs-directory "secrets.el.gpg")))
+  (when (not secrets-loaded)
+    (load (concat dotspacemacs-directory "secrets.el.gpg"))
+    (setq secrets-loaded t)))
 
 (defun personal/post-init-paradox ()
   (use-package paradox
@@ -708,4 +713,67 @@ an item line."
   (use-package writeroom-mode
     :defer t
     :commands writeroom-mode
-    :init (evil-leader/set-key "wn" 'writeroom-mode)))
+    :init
+    (progn
+      (defvar writeroom-mode nil)
+      (defun personal/distraction-free-enable ()
+        (interactive)
+        (git-gutter+-mode -1)
+        (writeroom-mode 1))
+
+      (defun personal/distraction-free-disable ()
+        (interactive)
+        (git-gutter+-mode 1)
+        (writeroom-mode -1))
+
+      (defun personal/distraction-free-toggle ()
+        (interactive)
+        (if writeroom-mode
+            (personal/distraction-free-disable)
+          (personal/distraction-free-enable)))
+
+      (evil-leader/set-key "wn" 'personal/distraction-free-toggle))))
+
+(defun personal/pre-init-asana ()
+  (load-secrets))
+
+(defun personal/init-asana ()
+  (use-package asana))
+
+(defun personal/post-init-slack ()
+  (use-package slack
+    :defer t
+    :config
+    (progn
+      (setq alert-default-style 'libnotify)
+
+      (setq slack-buffer-function #'switch-to-buffer)
+
+      (defun slack-file-upload-wrap ()
+        (interactive)
+        (let ((completing-read-function 'completing-read-default))
+          (slack-file-upload)))
+      (bind-keys ([remap slack-file-upload] . slack-file-upload-wrap))
+
+      (spacemacs/set-leader-keys-for-major-mode 'slack-mode
+        "f" 'slack-file-upload
+        "g" 'slack-group-select)
+
+      (slack-register-team
+       :name "embeddedsoftwaregroup"
+       :default t
+       :client-id esg-slackid
+       :client-secret esg-slackpass
+       :token esg-slacktoken
+       :subscribed-channels '(general slackbot sfischme gmtchamg
+                                      andersonoliveira jmorgan lukas
+                                      skauffma waleedqk))
+
+      (slack-register-team
+       :name "acertateam"
+       :default t
+       :client-id slackid
+       :client-secret slackpass
+       :token slacktoken
+       :subscribed-channels '(general bitbucket slackbot analytics praj himesh
+                                      paddy25 allen-huang gcutulenco)))))
