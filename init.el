@@ -85,12 +85,13 @@
                                        colors
                                        common-lisp
                                        cscope
-                                       dockerfile
+                                       docker
                                        elixir
                                        emacs-lisp
                                        fasd
                                        finance
                                        go
+                                       ranger
                                        slack
                                        gtags
                                        html

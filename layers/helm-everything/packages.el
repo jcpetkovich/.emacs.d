@@ -18,7 +18,6 @@
     helm-descbinds
     helm-swoop
     helm-gtags
-    wgrep-helm
     )
   )
 
