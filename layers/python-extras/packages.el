@@ -13,7 +13,6 @@
 (setq python-extras-packages
   '(
     virtualenvwrapper
-    anaconda-mode
 
     (python :location built-in)
     )
@@ -73,4 +72,5 @@
               (sp-backward-delete-char)
             (call-interactively 'python-indent-dedent-line-backspace))))
 
+      (setq flycheck-flake8rc "~/.config/flake8")
       (bind-key "<backspace>" 'python-extras/smart-delete python-mode-map))))
