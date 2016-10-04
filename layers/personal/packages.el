@@ -39,6 +39,8 @@
         helm-pass
         writeroom-mode
         slack
+        ranger
+
         (asana :location (recipe :fetcher github
                                  :repo "jcpetkovich/emacs-asana"))
         (simple :location built-in)
@@ -638,7 +640,7 @@ an item line."
   (use-package wdired
     :defer t))
 
-(defun personal/init-dired ()
+(defun personal/post-init-dired ()
   (use-package dired
     :defer t
     :config
@@ -670,6 +672,7 @@ an item line."
 
       (bind-keys :map dired-mode-map
                  ("C-a" . dired-back-to-start-of-files)
+                 ("C-p" . helm-projectile-find-file)
                  ("k" . dired-do-delete)
                  ("C-x C-k" . dired-do-delete))
 
@@ -775,3 +778,10 @@ an item line."
        :token slacktoken
        :subscribed-channels '(general bitbucket slackbot analytics praj himesh
                                       paddy25 allen-huang gcutulenco)))))
+
+(defun personal/post-init-ranger ()
+  (use-package ranger
+    :config
+    (bind-keys :map ranger-mode-map
+               ("C-p" . helm-projectile-find-file)
+               ("C-h" . help-command))))
