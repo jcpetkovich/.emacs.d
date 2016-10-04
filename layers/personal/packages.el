@@ -750,6 +750,9 @@ an item line."
 
       (setq slack-buffer-function #'switch-to-buffer)
 
+      (add-hook 'slack-mode-hook (defun personal/highlight-nick ()
+                                   (set (make-local-variable 'lui-highlight-keywords) '("jcpetkovich" "jcp"))))
+
       (defun slack-file-upload-wrap ()
         (interactive)
         (let ((completing-read-function 'completing-read-default))
