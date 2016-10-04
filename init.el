@@ -70,6 +70,7 @@
                                             ess-enable-smart-equals nil)
                                        (haskell :variables
                                                 haskell-enable-hindent-support t)
+                                       erc
                                        (rcirc :variables
                                               rcirc-enable-znc-support t)
                                        (shell :variables
@@ -90,6 +91,7 @@
                                        fasd
                                        finance
                                        go
+                                       slack
                                        gtags
                                        html
                                        ipython-notebook
