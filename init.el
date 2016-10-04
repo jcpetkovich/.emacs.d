@@ -109,8 +109,6 @@
                                        rust
                                        scheme
                                        shell-scripts
-                                       spacemacs-helm
-                                       spacemacs-layers
                                        spell-checking
                                        sql
                                        syntax-checking
