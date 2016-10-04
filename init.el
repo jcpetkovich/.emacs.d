@@ -162,12 +162,13 @@
    dotspacemacs-startup-lists '(recents projects)
    dotspacemacs-startup-recent-list-size 10
    dotspacemacs-scratch-mode 'text-mode
-   dotspacemacs-themes '(spacemacs-dark spacemacs-light solarized-dark solarized-light)
+   dotspacemacs-themes '(spacemacs-light spacemacs-dark solarized-light solarized-dark)
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Sauce Code Powerline 6"
-                               :weight normal
-                               :width normal
-                               :powerline-offset 2)
+   dotspacemacs-default-font '("PragmataPro 6"
+                               ;; :weight normal
+                               ;; :width normal
+                               ;; :powerline-offset 2
+                               )
    dotspacemacs-leader-key "SPC"
    dotspacemacs-emacs-leader-key "M-m"
    dotspacemacs-major-mode-leader-key ","
