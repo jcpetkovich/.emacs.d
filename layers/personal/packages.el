@@ -23,7 +23,6 @@
         emr
         ess
         evil
-        evil-leader
         go-mode
         helm
         helm-swoop
@@ -32,7 +31,6 @@
         multiple-cursors
         paradox
         paredit
-        paren-face
         prodigy
         shrink-whitespace
         whitespace-cleanup-mode
