@@ -672,7 +672,7 @@ an item line."
 
       (bind-keys :map dired-mode-map
                  ("C-a" . dired-back-to-start-of-files)
-                 ("C-p" . helm-projectile-find-file)
+                 ;; ([remap deer-from-dired] . helm-projectile-find-file)
                  ("k" . dired-do-delete)
                  ("C-x C-k" . dired-do-delete))
 
@@ -771,7 +771,7 @@ an item line."
        :token esg-slacktoken
        :subscribed-channels '(general slackbot sfischme gmtchamg
                                       andersonoliveira jmorgan lukas
-                                      skauffma waleedqk))
+                                      skauffma waleedqk r docker-compute-1 datamill-v2))
 
       (slack-register-team
        :name "acertateam"
@@ -780,11 +780,13 @@ an item line."
        :client-secret slackpass
        :token slacktoken
        :subscribed-channels '(general bitbucket slackbot analytics praj himesh
-                                      paddy25 allen-huang gcutulenco)))))
+                                      paddy25 allen-huang gcutulenco renesas-demo)))))
 
 (defun personal/post-init-ranger ()
   (use-package ranger
     :config
-    (bind-keys :map ranger-mode-map
-               ("C-p" . helm-projectile-find-file)
-               ("C-h" . help-command))))
+    (progn
+      (bind-keys :map ranger-mode-map
+                 ("C-p" . helm-projectile-find-file)
+                 ("C-h" . help-command))
+      (setq ranger-preview-file t))))
