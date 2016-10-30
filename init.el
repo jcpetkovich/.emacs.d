@@ -244,6 +244,9 @@ This function is called at the very end of Spacemacs initialization."
  '(custom-safe-themes
    (quote
     ("2f48d3e78a730496187bad754d1ba308f4124463cfd130ad315395c9de116e00" default)))
+ '(erc-modules
+   (quote
+    (completion log services image hl-nicks youtube services netsplit fill button match track readonly networks ring autojoin noncommands irccontrols move-to-prompt stamp menu list)))
  '(evil-want-C-i-jump nil)
  '(evil-want-Y-yank-to-eol t)
  '(fci-rule-color "#073642" t)
