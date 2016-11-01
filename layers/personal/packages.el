@@ -40,6 +40,7 @@
         writeroom-mode
         slack
         ranger
+        polymode
 
         (asana :location (recipe :fetcher github
                                  :repo "jcpetkovich/emacs-asana"))
@@ -790,3 +791,14 @@ an item line."
                  ("C-p" . helm-projectile-find-file)
                  ("C-h" . help-command))
       (setq ranger-preview-file t))))
+
+(defun personal/init-polymode ()
+  (use-package polymode
+    :init
+    (progn
+      (add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
+
+      ;; R modes
+      ;; (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
+      ;; (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
+      (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode)))))
