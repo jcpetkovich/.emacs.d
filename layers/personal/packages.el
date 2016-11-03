@@ -41,6 +41,7 @@
         slack
         ranger
         polymode
+        web-mode
 
         (asana :location (recipe :fetcher github
                                  :repo "jcpetkovich/emacs-asana"))
@@ -673,7 +674,7 @@ an item line."
 
       (bind-keys :map dired-mode-map
                  ("C-a" . dired-back-to-start-of-files)
-                 ;; ([remap deer-from-dired] . helm-projectile-find-file)
+                 ("C-p" . helm-projectile-find-file)
                  ("k" . dired-do-delete)
                  ("C-x C-k" . dired-do-delete))
 
@@ -785,6 +786,11 @@ an item line."
 
 (defun personal/post-init-ranger ()
   (use-package ranger
+    :init
+    (progn
+      ;; undo/redo doesn't make sense in dired/ranger anyways.
+      (ranger-override-dired-mode 1)
+      (setq ranger-key (kbd "C-r")))
     :config
     (progn
       (bind-keys :map ranger-mode-map
@@ -802,3 +808,10 @@ an item line."
       ;; (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
       ;; (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
       (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode)))))
+
+
+(defun personal/post-init-web-mode ()
+  (use-package web-mode
+    :init
+    (progn
+      (add-to-list 'auto-mode-alist '("\\.jinja\\'" . web-mode)))))
