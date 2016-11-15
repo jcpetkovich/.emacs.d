@@ -48,6 +48,8 @@
         evil-lisp-state-sp-forward-barf-sexp
         evil-lisp-state-sp-forward-sexp
         evil-lisp-state-sp-forward-slurp-sexp
+        evil-lisp-state-sp-unwrap-sexp
+        evil-lisp-state-undo-tree-undo
         evil-lisp-state-wrap
         evil-normal-state
         evil-substitute
