@@ -782,15 +782,46 @@ an item line."
        :client-secret slackpass
        :token slacktoken
        :subscribed-channels '(general bitbucket slackbot analytics praj himesh
-                                      paddy25 allen-huang gcutulenco renesas-demo)))))
+                                      paddy25 allen-huang gcutulenco renesas-demo beernpong)))))
 
 (defun personal/post-init-ranger ()
   (use-package ranger
     :init
     (progn
       ;; undo/redo doesn't make sense in dired/ranger anyways.
+      (setq ranger-override-dired t)
       (ranger-override-dired-mode 1)
-      (setq ranger-key (kbd "C-r")))
+      (setq ranger-key (kbd "C-r"))
+
+      ;; patch ranger-still-dired for unnamed windows as it is generally more confusing than not
+      (defun ranger-still-dired ()
+        "Enable or disable ranger based on current mode"
+        (ranger--message "ranger-still-dired : mode %s : window : %s"
+                         major-mode
+                         (selected-window))
+        ;; TODO Try to manage new windows / frames created without killing ranger
+        (let* ((ranger-window-props
+                (r--aget ranger-w-alist
+                         (selected-window)))
+               (prev-buffer (car ranger-window-props))
+               (minimal (r--fget ranger-minimal))
+               (ranger-buffer (cdr ranger-window-props))
+               (current (current-buffer))
+               (buffer-fn (buffer-file-name (current-buffer))))
+          (cond
+           ((and buffer-fn (not (eq  current ranger-buffer)))
+            (message "File opened, exiting ranger")
+            (ranger-disable)
+            (find-file buffer-fn)
+            (setq-local cursor-type t)
+            (setq header-line-format ranger-pre-header-format))
+           ((eq major-mode 'dired-mode)
+            (if minimal
+                (deer)
+              (ranger)))
+           (t
+            ;; nothing else to do
+            )))))
     :config
     (progn
       (bind-keys :map ranger-mode-map
