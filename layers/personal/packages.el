@@ -721,11 +721,13 @@ an item line."
       (defvar writeroom-mode nil)
       (defun personal/distraction-free-enable ()
         (interactive)
+        (zoom-in/out 8)
         (git-gutter+-mode -1)
         (writeroom-mode 1))
 
       (defun personal/distraction-free-disable ()
         (interactive)
+        (zoom-frm-unzoom)
         (git-gutter+-mode 1)
         (writeroom-mode -1))
 

@@ -28,7 +28,7 @@
                               (when (string-match "\\.ebuild$" (or (buffer-file-name) ""))
                                 (sh-set-shell "bash"))))))
 
-(defun ebuild/init-conf-mode ()
+(defun ebuild/post-init-conf-mode ()
   (use-package conf-mode
     :mode ("\\.\\(keywords\\|accept_keywords\\|use\\)$" . conf-mode)))
 
