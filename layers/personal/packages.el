@@ -42,6 +42,7 @@
         ranger
         polymode
         web-mode
+        zoom-frm
 
         (asana :location (recipe :fetcher github
                                  :repo "jcpetkovich/emacs-asana"))
@@ -721,7 +722,7 @@ an item line."
       (defvar writeroom-mode nil)
       (defun personal/distraction-free-enable ()
         (interactive)
-        (zoom-in/out 8)
+        (zoom-in/out 6)
         (git-gutter+-mode -1)
         (writeroom-mode 1))
 
@@ -738,6 +739,11 @@ an item line."
           (personal/distraction-free-enable)))
 
       (evil-leader/set-key "wn" 'personal/distraction-free-toggle))))
+
+;; autoload zoom-frm
+(defun personal/post-init-zoom-frm ()
+  (use-package zoom-frm
+    :commands (zoom-in/out)))
 
 (defun personal/pre-init-asana ()
   (load-secrets))
