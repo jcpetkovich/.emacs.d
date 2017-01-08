@@ -90,6 +90,7 @@
         org-yank
         orgtbl-hijacker-command-100
         orgtbl-hijacker-command-109
+        orgtbl-hijacker-command-3
         orgtbl-self-insert-command
         paredit-backslash
         paredit-backward
