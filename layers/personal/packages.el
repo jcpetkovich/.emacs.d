@@ -354,8 +354,6 @@ an item line."
   "Initialize dash config during bootstrap."
   (dash-enable-font-lock))
 
-(spacemacs|defvar-company-backends inferior-ess-mode)
-
 (defun personal/post-init-ess ()
   (add-hook 'Rnw-mode-hook 'spacemacs/load-yasnippet)
   (add-hook 'ess-mode-hook 'spacemacs/load-yasnippet)
@@ -387,6 +385,7 @@ an item line."
         (bind-key "\t" nil ess-noweb-minor-mode-map)
 
         (add-hook 'ess-mode-hook 'turn-on-smartparens-strict-mode)
+        (add-hook 'inferior-ess-mode-hook 'company-mode)
 
         (defun personal/disable-highlight-numbers ()
           (highlight-numbers-mode -1))
@@ -480,9 +479,7 @@ an item line."
                  ("C-w" . personal/kill-region-or-backward-word)
                  ("C-l" . company-show-location)
                  ("M-1" . nil)
-                 ("M-2" . nil))
-
-      (spacemacs|add-company-hook inferior-ess-mode))))
+                 ("M-2" . nil)))))
 
 (defun personal/init-dired-rainbow ()
   (use-package dired-rainbow
