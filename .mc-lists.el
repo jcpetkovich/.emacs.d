@@ -4,6 +4,7 @@
 (setq mc/cmds-to-run-for-all
       '(
         LaTeX-babel-insert-hyphen
+        LaTeX-insert-item
         LaTeX-insert-left-brace
         TeX-complete-symbol
         TeX-insert-backslash
