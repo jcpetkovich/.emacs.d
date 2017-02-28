@@ -11,16 +11,20 @@
 ;;; License: GPLv3
 
 (setq irc-config-packages
-	'(
-    znc
-		)
-	)
+      '(
+        znc
+        )
+      )
 
 (setq irc-config-excluded-packages '())
 
 (setq-default erc-server-list
               '(("chat.freenode.net"
-                 :port 6667
-                 :nick "Kruppe")))
+                 :port 6697
+                 :nick "Kruppe"
+                 :ssl t)))
 
 (setq erc-prompt-for-nickserv-password nil)
+
+(defun irc-config/init-znc ()
+  (use-package znc))
