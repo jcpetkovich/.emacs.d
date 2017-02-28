@@ -137,10 +137,6 @@
 
       (add-hook 'mu4e-compose-mode-hook 'email-config/use-flyspell)
 
-      (-each '(mu4e-view-mode mu4e-headers-mode)
-        (lambda (mode)
-          (add-to-list 'evil-motion-state-modes mode)))
-
       (--each '(motion normal insert visual operator)
         (evil-declare-key it mu4e-headers-mode-map
           (kbd "RET") 'mu4e-headers-view-message
