@@ -40,6 +40,7 @@
         evil-emacs-state
         evil-escape-emacs-state
         evil-forward-char
+        evil-goto-first-line
         evil-insert
         evil-insert-digraph
         evil-insert-state
@@ -53,6 +54,8 @@
         evil-lisp-state-undo-tree-undo
         evil-lisp-state-wrap
         evil-normal-state
+        evil-previous-line
+        evil-ret
         evil-substitute
         evil-visual-char
         fill-paragraph
@@ -64,6 +67,7 @@
         indent-for-tab-command
         ispell-word
         keyboard-escape-quit
+        keyboard-quit
         kill-region
         kill-sexp
         lisp-state-forward-symbol
@@ -135,10 +139,13 @@
         describe-key
         elisp-slime-nav-find-elisp-thing-at-point
         ess-use-this-dir
+        evil-replace
+        evil-scroll-down
         helm-M-x
         helm-projectile-find-file
         helm-swoop--edit-complete
         multiple-cursors/expand-or-mark-next-symbol
+        personal/move-cursor-next-pane
         personal/move-cursor-previous-pane
         toggle-input-method
         undefined
