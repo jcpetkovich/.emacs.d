@@ -153,6 +153,7 @@
  startup."
   ;; Get rid of these no matter what, and do it early
   (setq load-prefer-newer t)
+  ;; (setq exec-path-from-shell-check-startup-files nil)
 
   (setq-default
    dotspacemacs-elpa-https t
