@@ -165,7 +165,7 @@
    dotspacemacs-startup-lists '((recents . 5)
                                 (projects . 7))
    dotspacemacs-scratch-mode 'text-mode
-   dotspacemacs-themes '(spacemacs-light spacemacs-dark solarized-light solarized-dark)
+   dotspacemacs-themes '(spacemacs-light spacemacs-dark)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("PragmataPro 6"
                                ;; :weight normal
