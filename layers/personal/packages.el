@@ -375,8 +375,7 @@ an item line."
       :config
       (progn
 
-        ;; use oldstyle syntax table
-        ;; (setq inferior-ess-r-syntax-table (copy-syntax-table ess-r-syntax-table))
+        (setq ess-roxy-str "#'")
 
         (evilified-state-evilify ess-help-mode ess-help-mode-map)
 
