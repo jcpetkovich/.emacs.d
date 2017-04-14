@@ -44,8 +44,8 @@
         web-mode
         zoom-frm
 
-        (asana :location (recipe :fetcher github
-                                 :repo "jcpetkovich/emacs-asana"))
+        ;; (asana :location (recipe :fetcher github
+        ;;                          :repo "jcpetkovich/emacs-asana"))
         (simple :location built-in)
         (recentf :location built-in)
         (hippie-expand :location built-in)
@@ -742,11 +742,8 @@ an item line."
   (use-package zoom-frm
     :commands (zoom-in/out)))
 
-(defun personal/pre-init-asana ()
+(defun personal/pre-init-slack ()
   (load-secrets))
-
-(defun personal/init-asana ()
-  (use-package asana))
 
 (defun personal/post-init-slack ()
   (use-package slack
