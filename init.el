@@ -119,6 +119,7 @@
                                        )
    dotspacemacs-additional-packages '()
    dotspacemacs-excluded-packages '(
+                                    exec-path-from-shell
                                     evil-escape
                                     hl-todo
                                     )
