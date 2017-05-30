@@ -11,12 +11,12 @@
 ;;; License: GPLv3
 
 (setq python-extras-packages
-  '(
-    virtualenvwrapper
+      '(
+        virtualenvwrapper
 
-    (python :location built-in)
-    )
-  )
+        (python :location built-in)
+        )
+      )
 
 (setq python-extras-excluded-packages '())
 
@@ -63,6 +63,8 @@
   (use-package python
     :config
     (progn
+      (defadvice python-shell-send-region (after python-shell-send-region-toggle-mark activate)
+        (deactivate-mark))
       (defun python-extras/smart-delete ()
         (interactive)
         (let ((valid-pairs (sp--get-pair-list)))
