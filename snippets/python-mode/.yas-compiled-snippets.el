@@ -53,4 +53,4 @@
                         nil "/home/jcp/.spacemacs.d/snippets/python-mode/c" nil nil)))
 
 
-;;; Do not edit! File generated at Wed Sep 14 22:51:20 2016
+;;; Do not edit! File generated at Mon May  8 21:29:14 2017
