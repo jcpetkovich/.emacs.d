@@ -28,7 +28,6 @@
         helm-swoop
         magit
         markdown-mode
-        multiple-cursors
         paradox
         paredit
         prodigy
@@ -43,6 +42,8 @@
         polymode
         web-mode
         zoom-frm
+        evil-mc
+        evil-mc-extras
 
         ;; (asana :location (recipe :fetcher github
         ;;                          :repo "jcpetkovich/emacs-asana"))
@@ -257,19 +258,6 @@ an item line."
                 ("M-k" . personal/move-cursor-previous-pane)
                 ("M-j" . personal/move-cursor-next-pane))))
 
-(defun personal/post-init-multiple-cursors ()
-  (use-package multiple-cursors
-    :defer t
-    :init
-    (bind-keys
-     ("M-m" . multiple-cursors/expand-or-mark-next-symbol)
-     ("M-M" . multiple-cursors/expand-or-mark-next-word)
-     ("M-'" . mc/mark-all-dwim)
-     ("C-S-n" . mc/mmlte--down)
-     ("C-S-p" . mc/mmlte--up)
-     ("C-S-f" . mc/mmlte--right)
-     ("C-S-b" . mc/mmlte--left))))
-
 (defun personal/post-init-helm ()
   (use-package helm
     :defer t
@@ -353,6 +341,16 @@ an item line."
 (defun personal/post-init-dash ()
   "Initialize dash config during bootstrap."
   (dash-enable-font-lock))
+
+(defun personal/post-init-evil-mc ()
+  (use-package evil-mc
+    :init (global-evil-mc-mode 1)))
+
+(defun personal/init-evil-mc-extras ()
+  (use-package evil-mc-extras
+    :init (progn
+            (require 'evil-mc-extras)
+            (global-evil-mc-extras-mode 1))))
 
 (defun personal/post-init-ess ()
   (add-hook 'Rnw-mode-hook 'spacemacs/load-yasnippet)

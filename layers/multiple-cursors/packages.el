@@ -44,6 +44,20 @@
            ("M-y" . yank-pop))
       (multiple-cursors/enable-compat))))
 
+(defun multiple-cursors/post-init-multiple-cursors ()
+  (use-package multiple-cursors
+    :defer t
+    :init
+    (bind-keys
+     ("M-m" . multiple-cursors/expand-or-mark-next-symbol)
+     ("M-M" . multiple-cursors/expand-or-mark-next-word)
+     ("M-'" . mc/mark-all-dwim)
+     ("C-S-n" . mc/mmlte--down)
+     ("C-S-p" . mc/mmlte--up)
+     ("C-S-f" . mc/mmlte--right)
+     ("C-S-b" . mc/mmlte--left))))
+
+
 (defun multiple-cursors/post-init-expand-region ()
   (use-package expand-region
     :commands (er/mark-word er/mark-symbol)))
