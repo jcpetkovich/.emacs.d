@@ -344,7 +344,11 @@ an item line."
 
 (defun personal/post-init-evil-mc ()
   (use-package evil-mc
-    :init (global-evil-mc-mode 1)))
+    :init (global-evil-mc-mode 1)
+    :config (progn
+              (setq evil-mc-custom-known-commands
+                    '((shrink-whitespace . ((:default . evil-mc-execute-default-call)))
+                      (python-extras/smart-delete . ((:default . evil-mc-execute-default-call))))))))
 
 (defun personal/init-evil-mc-extras ()
   (use-package evil-mc-extras
