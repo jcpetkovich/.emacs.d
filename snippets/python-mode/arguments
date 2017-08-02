@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: arguments
+# key: arguments
+# --
+from optparse import OptionParser
+usage = "usage: %prog [options] $1"
+parser = OptionParser(description = "$2", usage = usage)
+parser.add_option("-o", "--outfile", dest = "outfile",
+                  help = "write output to FILE", metavar = "FILE")
+parser.add_option("-v", "--verbose", dest = "verbose",
+                  action = "store_true", default = False,
+                  help = "be verbose.")
+(options, args) = parser.parse_args()

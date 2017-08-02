@@ -48,9 +48,11 @@
                        ("e" "try:\n    $1\nexcept$2:\n    $0\n" "trycatch" nil
                         ("definitions")
                         nil "/home/jcp/.spacemacs.d/snippets/python-mode/e" nil nil)
+                       ("defdoc" "def ${1:name}($2):\n    \"\"\"\n    $3\n    ${2:$(let* ((indent\n            (concat \"\\n\" (make-string (current-column) 32)))\n           (args\n            (mapconcat\n             '(lambda (x)\n                (if (not (string= (nth 0 x) \"\"))\n                    (concat (nth 0 x) \" : (type)\" indent (make-string python-indent 32) \"description\")))\n             (mapcar\n              '(lambda (x)\n                 (mapcar\n                  '(lambda (x)\n                     (replace-regexp-in-string \"[[:blank:]]*$\" \"\"\n                      (replace-regexp-in-string \"^[[:blank:]]*\" \"\" x)))\n                  x))\n              (mapcar '(lambda (x) (split-string x \"=\"))\n                      (split-string yas-text \",\")))\n             indent)))\n      (if (string= args \"\")\n          (concat indent \"Returns\" indent \"-------\" indent \"(type)\" indent (make-string 3 34))\n        (mapconcat\n         'identity\n         (list \"Parameters\" \"----------\" args \"\" \"Returns\" \"-------\" \"(type)\" (make-string 3 34))\n         indent)))}\n    $0" "defdoc" nil nil nil "/home/jcp/.spacemacs.d/snippets/python-mode/defdoc" nil nil)
                        ("c" "class ${1:Class}(${2:object}):\n    $0\n" "class" nil
                         ("definitions")
-                        nil "/home/jcp/.spacemacs.d/snippets/python-mode/c" nil nil)))
+                        nil "/home/jcp/.spacemacs.d/snippets/python-mode/c" nil nil)
+                       ("arguments" "from optparse import OptionParser\nusage = \"usage: %prog [options] $1\"\nparser = OptionParser(description = \"$2\", usage = usage)\nparser.add_option(\"-o\", \"--outfile\", dest = \"outfile\",\n                  help = \"write output to FILE\", metavar = \"FILE\")\nparser.add_option(\"-v\", \"--verbose\", dest = \"verbose\",\n                  action = \"store_true\", default = False,\n                  help = \"be verbose.\")\n(options, args) = parser.parse_args()" "arguments" nil nil nil "/home/jcp/.spacemacs.d/snippets/python-mode/arguments" nil nil)))
 
 
-;;; Do not edit! File generated at Mon May  8 21:29:14 2017
+;;; Do not edit! File generated at Wed Jul 26 13:54:08 2017
