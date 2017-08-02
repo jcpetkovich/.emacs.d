@@ -20,6 +20,17 @@
 
 (setq python-extras-excluded-packages '())
 
+(defun python-extras/eval-line-and-step ()
+  (interactive)
+  (if (use-region-p)
+      (python-shell-send-region (region-beginning) (region-end))
+    (progn (save-excursion
+             (beginning-of-line)
+             (let ((start (point)))
+               (end-of-line)
+               (python-shell-send-region start (point))))
+           (next-line))))
+
 (defun python-extras/init-virtualenvwrapper ()
   (use-package projectile
     :defer t
@@ -63,6 +74,8 @@
   (use-package python
     :config
     (progn
+      (define-key python-mode-map [(control return)] 'python-extras/eval-line-and-step)
+
       (defadvice python-shell-send-region (after python-shell-send-region-toggle-mark activate)
         (deactivate-mark))
       (defun python-extras/smart-delete ()
