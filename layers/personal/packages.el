@@ -758,6 +758,9 @@ an item line."
       (add-hook 'slack-mode-hook (defun personal/highlight-nick ()
                                    (set (make-local-variable 'lui-highlight-keywords) '("jcpetkovich" "jcp"))))
 
+      (spacemacs/set-leader-keys
+        "aCu" 'slack-select-unread-rooms)
+
       (defun slack-file-upload-wrap ()
         (interactive)
         (let ((completing-read-function 'completing-read-default))
