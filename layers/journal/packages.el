@@ -24,36 +24,40 @@
     :commands (org-mode)
     :defer t
     :init
-    (setq-default
-     org-directory           "~/journal"
-     journal/entries        (concat org-directory "/entries")
-     org-agenda-files        (list org-directory)
-     org-archive-location    (concat org-directory "/archive.org::* Finished Tasks")
-     org-mobile-directory    (concat org-directory "/webdav")
+    (progn
+      (bind-keys :map org-mode-map
+                 ("<M-return>" . org-meta-return)
+                 ("M-RET" . org-meta-return))
+      (setq-default
+       org-directory           "~/journal"
+       journal/entries        (concat org-directory "/entries")
+       org-agenda-files        (list org-directory)
+       org-archive-location    (concat org-directory "/archive.org::* Finished Tasks")
+       org-mobile-directory    (concat org-directory "/webdav")
 
-     org-todo-keywords '((sequence "TODO(t)" "PROG(p)" "|" "MIGR(m)" "DONE(d)" "DEFERRED(f)"))
-     org-src-fontify-natively t
-     org-completion-use-ido t
-     org-default-notes-file (concat org-directory "/captured.org")
-     org-file-apps '((auto-mode . emacs)
-                     ("\\.mm\\'" . default)
-                     ("\\.x?html?\\'" . default)
-                     ("\\.pdf\\'" . "zathura %s"))
+       org-todo-keywords '((sequence "TODO(t)" "PROG(p)" "|" "MIGR(m)" "DONE(d)" "DEFERRED(f)"))
+       org-src-fontify-natively t
+       org-completion-use-ido t
+       org-default-notes-file (concat org-directory "/captured.org")
+       org-file-apps '((auto-mode . emacs)
+                       ("\\.mm\\'" . default)
+                       ("\\.x?html?\\'" . default)
+                       ("\\.pdf\\'" . "zathura %s"))
 
 
 
-     remember-annotation-functions '(org-remember-annotation)
-     remember-handler-functions '(org-remember-handler)
-     my-notes-file (concat org-directory "/commonplace.org")
+       remember-annotation-functions '(org-remember-annotation)
+       remember-handler-functions '(org-remember-handler)
+       my-notes-file (concat org-directory "/commonplace.org")
 
-     org-capture-templates
-     '(("g" "General Inbox" entry (file+headline my-notes-file "Inbox")
-        "* %?\n%u\n%a\n%i")
-       ("t" "Task" entry (function journal/find-and-hide-log)
-        "* TODO %?\n%u\n%a\n%i")
-       ("n" "Note" entry (function journal/find-and-hide-log)
-        "* %?\n%u\n%a\n%i"))
-     org-startup-indented t)
+       org-capture-templates
+       '(("g" "General Inbox" entry (file+headline my-notes-file "Inbox")
+          "* %?\n%u\n%a\n%i")
+         ("t" "Task" entry (function journal/find-and-hide-log)
+          "* TODO %?\n%u\n%a\n%i")
+         ("n" "Note" entry (function journal/find-and-hide-log)
+          "* %?\n%u\n%a\n%i"))
+       org-startup-indented t))
 
     :config
     (progn
