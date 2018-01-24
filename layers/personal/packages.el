@@ -20,8 +20,8 @@
         dash
         dired-rainbow
         emms
-        emr
         ess
+        emr
         evil
         go-mode
         helm
@@ -44,9 +44,8 @@
         zoom-frm
         evil-mc
         evil-mc-extras
+        ob-ipython
 
-        ;; (asana :location (recipe :fetcher github
-        ;;                          :repo "jcpetkovich/emacs-asana"))
         (simple :location built-in)
         (recentf :location built-in)
         (hippie-expand :location built-in)
@@ -348,7 +347,8 @@ an item line."
     :config (progn
               (setq evil-mc-custom-known-commands
                     '((shrink-whitespace . ((:default . evil-mc-execute-default-call)))
-                      (python-extras/smart-delete . ((:default . evil-mc-execute-default-call))))))))
+                      (python-extras/smart-delete . ((:default . evil-mc-execute-default-call)))
+                      (ess-smart-S-assign . ((:default . evil-mc-execute-default-call))))))))
 
 (defun personal/init-evil-mc-extras ()
   (use-package evil-mc-extras
@@ -418,7 +418,7 @@ an item line."
                                     (ess-fl-keyword:delimiters)
                                     (ess-fl-keyword:= . t)
                                     (ess-R-fl-keyword:F&T . t)
-                                    (ess-R-fl-keyword:%op% . t))
+                                    )
 
          inferior-R-font-lock-keywords '((ess-S-fl-keyword:prompt . t)
                                          (ess-R-fl-keyword:messages . t)
