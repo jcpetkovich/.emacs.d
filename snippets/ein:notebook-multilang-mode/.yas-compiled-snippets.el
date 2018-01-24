@@ -5,4 +5,4 @@
                      '(("retina" "%matplotlib inline\n%config InlineBackend.figure_format = 'retina'" "retina" nil nil nil "/home/jcp/.spacemacs.d/snippets/ein:notebook-multilang-mode/retina.yasnippet" nil nil)))
 
 
-;;; Do not edit! File generated at Wed Jul 26 13:54:08 2017
+;;; Do not edit! File generated at Wed Dec 13 16:35:19 2017

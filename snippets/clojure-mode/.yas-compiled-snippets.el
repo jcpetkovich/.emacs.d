@@ -7,4 +7,4 @@
                        ("ns" "(ns `(snippet--clojure-namespace-from-buffer-file-name)`)$0" "namespace" nil nil nil "/home/jcp/.spacemacs.d/snippets/clojure-mode/namespace" nil nil)))
 
 
-;;; Do not edit! File generated at Wed Jul 26 13:54:08 2017
+;;; Do not edit! File generated at Wed Dec 13 16:35:19 2017

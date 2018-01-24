@@ -9,4 +9,4 @@
                        ("fun" "public function ${1:name}($2) {\n  $0\n}" "fun" nil nil nil "/home/jcp/.spacemacs.d/snippets/php-mode/fun" nil nil)))
 
 
-;;; Do not edit! File generated at Wed Jul 26 13:54:08 2017
+;;; Do not edit! File generated at Wed Dec 13 16:35:20 2017

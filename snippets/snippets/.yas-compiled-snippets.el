@@ -114,4 +114,4 @@
                        ("ase" "assert_equal ${1:expected}, ${2:actual}$0" "assert_equal" nil nil nil "/home/jcp/.spacemacs.d/snippets/snippets/ruby-mode/assert_equal" nil nil)))
 
 
-;;; Do not edit! File generated at Wed Jul 26 13:54:08 2017
+;;; Do not edit! File generated at Wed Dec 13 16:35:20 2017
