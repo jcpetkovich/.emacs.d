@@ -513,9 +513,12 @@ an item line."
       (setq emms-player-list '(emms-player-mpd))
       (emms-devel)
       (defadvice emms-browser-mode (after use-emacs-mode-please activate)
-        (evil-emacs-state))
-      (--each '(emms-browser-mode emms-playlist-mode)
-        (add-to-list 'evil-emacs-state-modes it)))))
+        (evil-evilified-state))
+      (evilified-state-evilify-map emms-browser-mode-map
+        :mode emms-browser-mode)
+      (evilified-state-evilify-map emms-playlist-mode-map
+        :mode emms-playlist-mode)
+      )))
 
 (defun personal/init-emr ()
   (use-package emr
@@ -609,11 +612,25 @@ an item line."
 (defun personal/post-init-recentf ()
   (use-package recentf
     :defer t
-    :config
+    :init
     (progn
+      (defvar personal/recentf-lazy-loaded nil)
+
+      (defun personal/lazy-load-recentf ()
+        (unless personal/recentf-lazy-loaded
+          (recentf-mode 1)
+          (recentf-track-opened-file)
+          (recentf-load-list)
+          (setq personal/recentf-lazy-loaded t)))
+
+      (defadvice helm-projectile-find-file (before recentf/load-list-for-helm activate)
+        (personal/lazy-load-recentf))
+
+      (defadvice helm-mini (before recentf/load-list-for-helm activate)
+        (personal/lazy-load-recentf))
+
       (setq recentf-max-saved-items 1000
-            recentf-auto-cleanup 'mode)
-      (recentf-load-list))))
+            recentf-auto-cleanup 'mode))))
 
 (defun personal/init-hippie-expand ()
   (use-package hippie-exp
