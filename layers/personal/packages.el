@@ -869,3 +869,5 @@ an item line."
     :init
     (progn
       (add-to-list 'auto-mode-alist '("\\.jinja\\'" . web-mode)))))
+
+(defun personal/init-ob-ipython ())
