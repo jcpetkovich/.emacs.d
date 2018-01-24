@@ -48,7 +48,7 @@
                     mu4e-maildir "~/mail"
 
                     ;; Sync program
-                    mu4e-get-mail-command "offlineimap"
+                    mu4e-get-mail-command "offlineimap -u basic"
 
                     ;; Mail address
                     mu4e-user-mail-address-list '("jcpetkovich@gmail.com"
