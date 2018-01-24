@@ -25,6 +25,8 @@
                  :ssl t)))
 
 (setq erc-prompt-for-nickserv-password nil)
+(setq erc-fill-function 'erc-fill-static)
+(setq erc-fill-static-center 15)
 
 (defun irc-config/init-znc ()
   (use-package znc))

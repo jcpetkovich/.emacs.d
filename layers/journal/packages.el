@@ -25,9 +25,6 @@
     :defer t
     :init
     (progn
-      (bind-keys :map org-mode-map
-                 ("<M-return>" . org-meta-return)
-                 ("M-RET" . org-meta-return))
       (setq-default
        org-directory           "~/journal"
        journal/entries        (concat org-directory "/entries")
@@ -61,6 +58,9 @@
 
     :config
     (progn
+      (bind-keys :map org-mode-map
+                 ("<M-return>" . org-meta-return)
+                 ("M-RET" . org-meta-return))
       (evil-leader/set-key-for-mode 'org-mode
         "mM" 'journal/migrate)
       (add-hook 'remember-mode-hook 'org-remember-apply-template)
