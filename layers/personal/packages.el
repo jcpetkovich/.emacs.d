@@ -44,7 +44,6 @@
         zoom-frm
         evil-mc
         evil-mc-extras
-        ob-ipython
 
         (simple :location built-in)
         (recentf :location built-in)
@@ -869,5 +868,3 @@ an item line."
     :init
     (progn
       (add-to-list 'auto-mode-alist '("\\.jinja\\'" . web-mode)))))
-
-(defun personal/init-ob-ipython ())
