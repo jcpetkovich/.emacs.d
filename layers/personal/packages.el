@@ -118,6 +118,9 @@
 (defun personal/spacemacs-configs ())
 
 (defun load-secrets ()
+  (message "[Personal Layer] loading secrets")
+  (require 'epa-file)
+  (epa-file-enable)
   (when (not secrets-loaded)
     (load (concat dotspacemacs-directory "secrets.el.gpg"))
     (setq secrets-loaded t)))
