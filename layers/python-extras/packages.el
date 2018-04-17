@@ -45,6 +45,12 @@
         "mga" 'anaconda-mode-goto-assignments)
 
       (add-hook 'python-mode-hook
+                (defun personal/python-whitespace-config ()
+                  (set (make-local-variable 'whitespace-style)
+                       (remove-if (lambda (x) (member x '(indentation::tab empty)))
+                                  whitespace-style))))
+
+      (add-hook 'python-mode-hook
                 (defun python-extras/find-virtualenv ()
                   (when (not python-extras/enabled)
                     (setq python-extras/enabled t)
