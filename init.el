@@ -103,6 +103,9 @@
                                        octave
                                        org
                                        pdf-tools
+                                       (plantuml :variables
+                                                 plantuml-jar-path "/usr/share/plantuml/lib/plantuml.jar"
+                                                 org-plantuml-jar-path "/usr/share/plantuml/lib/plantuml.jar")
                                        prodigy
                                        python
                                        restclient
