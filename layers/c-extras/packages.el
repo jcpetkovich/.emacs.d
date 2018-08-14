@@ -60,7 +60,7 @@
         (when (eq major-mode 'c++-mode) (clang-format-buffer)))
       (add-hook 'before-save-hook 'clang-format-before-save))))
 
-(defun c-extras/init-google-c-style ()
+(defun c-extras/post-init-google-c-style ()
   (use-package google-c-style
     :defer t
     :init
