@@ -361,6 +361,9 @@ an item line."
 (defun personal/post-init-ess ()
   (add-hook 'Rnw-mode-hook 'spacemacs/load-yasnippet)
   (add-hook 'ess-mode-hook 'spacemacs/load-yasnippet)
+  (with-eval-after-load 'ess-r-mode
+    ;; pull in ess-site
+    (load "ess-site.el"))
   (with-eval-after-load 'ess-site
     (use-package ess-noweb
       :defer t
