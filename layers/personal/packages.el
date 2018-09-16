@@ -23,7 +23,6 @@
         ess
         emr
         evil
-        go-mode
         helm
         helm-swoop
         magit
@@ -598,13 +597,6 @@ an item line."
   (use-package shrink-whitespace
     :defer t
     :bind ("M-\\" . shrink-whitespace)))
-
-(defun personal/post-init-go-mode ()
-  (use-package go-mode
-    :defer t
-    :init
-    (add-hook 'go-mode-hook (defun personal/go-mode-tab-width ()
-                              (setq tab-width 8)))))
 
 (defun personal/init-browse-url ()
   (use-package browse-url
