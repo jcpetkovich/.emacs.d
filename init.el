@@ -114,6 +114,7 @@
                                                  org-plantuml-jar-path "/usr/share/plantuml/lib/plantuml.jar")
                                        prodigy
                                        python
+                                       react
                                        restclient
                                        restructuredtext
                                        ruby
