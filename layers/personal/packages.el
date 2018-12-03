@@ -19,6 +19,7 @@
         company-quickhelp
         dash
         dired-rainbow
+        direnv
         emms
         ess
         emr
@@ -30,6 +31,7 @@
         paradox
         paredit
         prodigy
+        poly-markdown
         shrink-whitespace
         whitespace-cleanup-mode
         yasnippet
@@ -853,8 +855,8 @@ an item line."
                  ("C-h" . help-command))
       (setq ranger-preview-file t))))
 
-(defun personal/init-polymode ()
-  (use-package polymode
+(defun personal/init-poly-markdown ()
+  (use-package poly-markdown
     :init
     (progn
       (add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
@@ -864,9 +866,14 @@ an item line."
       ;; (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
       (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode)))))
 
+(defun personal/init-polymode ()
+  (use-package polymode))
 
 (defun personal/post-init-web-mode ()
   (use-package web-mode
     :init
     (progn
       (add-to-list 'auto-mode-alist '("\\.jinja\\'" . web-mode)))))
+
+(defun personal/init-direnv ()
+  (use-package direnv))
