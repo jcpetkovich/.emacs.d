@@ -98,8 +98,13 @@
                                        html
                                        helm
                                        ipython-notebook
-                                       javascript
+                                       (javascript :variables
+                                                   js2-basic-offset 2
+                                                   js-indent-level 2
+                                                   node-add-modules-path t
+                                                   javascript-backend 'lsp)
                                        latex
+                                       lsp
                                        markdown
                                        octave
                                        org
