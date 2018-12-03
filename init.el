@@ -125,7 +125,9 @@
                                        sphinx
                                        sql
                                        syntax-checking
-                                       typescript
+                                       tern
+                                       (typescript :variables
+                                                   typescript-fmt-on-save t)
                                        version-control
                                        windows-scripts
                                        yaml
