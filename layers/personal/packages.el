@@ -46,6 +46,7 @@
         evil-mc
         evil-mc-extras
 
+        (ispell :location built-in)
         (simple :location built-in)
         (recentf :location built-in)
         (hippie-expand :location built-in)
@@ -338,7 +339,19 @@ an item line."
     :commands comment-dwim-2
     :init
     (progn
-      (bind-key "M-;" 'comment-dwim-2))))
+      (bind-key "M-;" 'comment-dwim-2))
+    :config
+    (progn
+      (defun cd2/comment-or-uncomment-lines ()
+        "Patched for Evil: Toggle commenting on all the lines that the region spans."
+        (if (eq (line-number-at-pos (point))
+                (line-number-at-pos (mark)))
+            (cd2/comment-or-uncomment-region)
+          (comment-or-uncomment-region
+           (save-excursion (goto-char (region-beginning)) (line-beginning-position))
+           (save-excursion (goto-char (if (evil-state-p 'visual)
+                                          (- (region-end) 1)
+                                        (region-end))) (line-end-position))))))))
 
 (defun personal/post-init-dash ()
   "Initialize dash config during bootstrap."
@@ -388,8 +401,9 @@ an item line."
         (evilified-state-evilify ess-help-mode ess-help-mode-map)
 
         (bind-key "M-;" 'comment-dwim-2 ess-mode-map)
+        (bind-key "_" 'ess-insert-assign)
 
-        (bind-key "\t" nil ess-noweb-minor-mode-map)
+        ;; (bind-key "\t" nil ess-noweb-minor-mode-map)
 
         (add-hook 'ess-mode-hook 'turn-on-smartparens-strict-mode)
         (add-hook 'inferior-ess-mode-hook 'company-mode)
@@ -413,6 +427,7 @@ an item line."
         (setq-default
          ess-offset-continued 0
          ess-pdf-viewer-pref "zathura"
+         ess-default-style 'DEFAULT
          ess-R-font-lock-keywords '((ess-R-fl-keyword:modifiers . t)
                                     (ess-R-fl-keyword:fun-defs . t)
                                     (ess-R-fl-keyword:keywords . t)
@@ -731,7 +746,7 @@ an item line."
     :init
     (evil-leader/set-key "aw" 'helm-pass)))
 
-(defun personal/init-writeroom-mode ()
+(defun personal/post-init-writeroom-mode ()
   (use-package writeroom-mode
     :defer t
     :commands writeroom-mode
@@ -877,3 +892,105 @@ an item line."
 
 (defun personal/init-direnv ()
   (use-package direnv))
+
+
+(defun personal/init-ispell ()
+  ;; patched version of ispell.
+  (use-package ispell
+    :config
+    (progn
+      (defun ispell-find-hunspell-dictionaries ()
+        "Look for installed Hunspell dictionaries.
+Will initialize `ispell-hunspell-dictionary-alist' according
+to dictionaries found, and will remove aliases from the list
+in `ispell-dicts-name2locale-equivs-alist' if an explicit
+dictionary from that list was found."
+        (let ((hunspell-found-dicts
+               (split-string
+                (with-temp-buffer
+                  (ispell-call-process ispell-program-name
+                                       null-device
+                                       t
+                                       nil
+                                       ;; Hunspell 1.7.0 (and later?) won't
+                                       ;; show LOADED DICTIONARY unless
+                                       ;; there's at least one file argument
+                                       ;; on the command line.  So we feed
+                                       ;; it with the null device.
+                                       "-D" null-device)
+                  (buffer-string))
+                "[\n\r]+"
+                t))
+              hunspell-default-dict
+              hunspell-default-dict-entry
+              hunspell-multi-dict)
+          (dolist (dict hunspell-found-dicts)
+            (let* ((full-name (file-name-nondirectory dict))
+                   (basename  (file-name-sans-extension full-name))
+                   (affix-file (concat dict ".aff")))
+              (if (string-match "\\.aff$" dict)
+                  ;; Found default dictionary
+                  (progn
+                    (if hunspell-default-dict
+                        (setq hunspell-multi-dict
+                              (concat (or hunspell-multi-dict
+                                          (car hunspell-default-dict))
+                                      "," basename))
+                      (setq affix-file dict)
+                      ;; FIXME: The cdr of the list we cons below is never
+                      ;; used.  Why do we need a list?
+                      (setq hunspell-default-dict (list basename affix-file)))
+                    (ispell-print-if-debug
+                     "++ ispell-fhd: default dict-entry:%s name:%s basename:%s\n"
+                     dict full-name basename))
+                (if (and (not (assoc basename ispell-hunspell-dict-paths-alist))
+                         (file-exists-p affix-file))
+                    ;; Entry has an associated .aff file and no previous value.
+                    (let ((affix-file (expand-file-name affix-file)))
+                      (ispell-print-if-debug
+                       "++ ispell-fhd: dict-entry:%s name:%s basename:%s affix-file:%s\n"
+                       dict full-name basename affix-file)
+                      (cl-pushnew (list basename affix-file)
+                                  ispell-hunspell-dict-paths-alist :test #'equal))
+                  (ispell-print-if-debug
+                   "-- ispell-fhd: Skipping entry: %s\n" dict)))))
+          ;; Remove entry from aliases alist if explicit dict was found.
+          (let (newlist)
+            (dolist (dict ispell-dicts-name2locale-equivs-alist)
+              (if (assoc (car dict) ispell-hunspell-dict-paths-alist)
+                  (ispell-print-if-debug
+                   "-- ispell-fhd: Excluding %s alias.  Standalone dict found.\n"
+                   (car dict))
+                (cl-pushnew dict newlist :test #'equal)))
+            (setq ispell-dicts-name2locale-equivs-alist newlist))
+          ;; Add known hunspell aliases
+          (dolist (dict-equiv ispell-dicts-name2locale-equivs-alist)
+            (let ((dict-equiv-key (car dict-equiv))
+                  (dict-equiv-value (cadr dict-equiv))
+                  (exclude-aliases (list   ;; Exclude TeX aliases
+                                    "esperanto-tex"
+                                    "francais7"
+                                    "francais-tex"
+                                    "norsk7-tex")))
+              (if (and (assoc dict-equiv-value ispell-hunspell-dict-paths-alist)
+                       (not (assoc dict-equiv-key ispell-hunspell-dict-paths-alist))
+                       (not (member dict-equiv-key exclude-aliases)))
+                  (let ((affix-file (cadr (assoc dict-equiv-value
+                                                 ispell-hunspell-dict-paths-alist))))
+                    (ispell-print-if-debug "++ ispell-fhd: Adding alias %s -> %s.\n"
+                                           dict-equiv-key affix-file)
+                    (cl-pushnew (list dict-equiv-key affix-file)
+                                ispell-hunspell-dict-paths-alist :test #'equal)))))
+          ;; Parse and set values for default dictionary.
+          (setq hunspell-default-dict (or hunspell-multi-dict
+                                          (car hunspell-default-dict)))
+          (setq hunspell-default-dict-entry
+                (ispell-parse-hunspell-affix-file hunspell-default-dict))
+          ;; Create an alist of found dicts with only names, except for default dict.
+          (setq ispell-hunspell-dictionary-alist
+                (list (cons nil (cdr hunspell-default-dict-entry))))
+          (dolist (dict (mapcar #'car ispell-hunspell-dict-paths-alist))
+            (cl-pushnew (if (string= dict hunspell-default-dict)
+                            hunspell-default-dict-entry
+                          (list dict))
+                        ispell-hunspell-dictionary-alist :test #'equal)))))))
