@@ -46,11 +46,19 @@
     (progn
       (add-hook 'ein:notebook-multilang-mode-hook
                 'smartparens-strict-mode)
-      (setq-default ein:worksheet-enable-undo 'yes))))
 
-(when (configuration-layer/layer-usedp 'auto-completion)
-  (defun ein-extras/init-jedi ()
-    (setq-default ein:use-auto-complete t)
-    (setq-default ein:complete-on-dot nil)))
+      (setq ein:use-auto-complete t)
+      (setq ein:complete-on-dot nil)
+      (setq ein:completion-backend 'ein:use-company-backend)
+      (setq ein:use-auto-complete-superpack nil)
+      (setq ein:use-smartrep nil)
+
+      ;; (setq-default ein:worksheet-enable-undo 'yes)
+      )))
+
+;; (when (configuration-layer/layer-usedp 'auto-completion)
+;;   (defun ein-extras/init-jedi ()
+;;     (setq-default ein:use-auto-complete t)
+;;     (setq-default ein:complete-on-dot nil)))
 
 ;;; packages.el ends here
