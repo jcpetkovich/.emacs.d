@@ -11,15 +11,15 @@
 ;;; License: GPLv3
 
 (setq c-extras-packages
-  '(
-    company
-    smart-tabs-mode
-    clang-format
-    google-c-style
-    ycmd
-    (cc-mode :location built-in)
-    )
-  )
+      '(
+        company
+        smart-tabs-mode
+        clang-format
+        google-c-style
+        ycmd
+        (cc-mode :location built-in)
+        )
+      )
 
 (setq c-extras-excluded-packages '())
 
@@ -66,6 +66,11 @@
     :init
     (c-add-style "Google" google-c-style)))
 
+(defun c-extras/personal-java-mode-setup ()
+  (defun personal-java-setup ()
+    (setq-local c-basic-offset 2))
+  (add-hook 'java-mode-hook 'personal-java-setup))
+
 (defun c-extras/post-init-cc-mode ()
   (use-package cc-mode
     :commands (c-mode c++-mode)
@@ -73,6 +78,9 @@
     (progn
       (add-hook 'c-mode-hook (defun user-utils/turn-off-abbrev-mode ()
                                (abbrev-mode -1)))
+
+      ;; call java setup
+      (c-extras/personal-java-mode-setup)
 
       (bind-keys :map c++-mode-map
                  ("M-j" . personal/move-cursor-next-pane)
