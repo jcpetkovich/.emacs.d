@@ -46,13 +46,13 @@
         evil-mc
         evil-mc-extras
 
-        (ispell :location built-in)
-        (simple :location built-in)
-        (recentf :location built-in)
-        (hippie-expand :location built-in)
         (dired :location built-in)
-        (wdired :location built-in)
         (doc-view :location built-in)
+        (hippie-expand :location built-in)
+        (ispell :location built-in)
+        (recentf :location built-in)
+        (simple :location built-in)
+        (wdired :location built-in)
         )
       )
 
