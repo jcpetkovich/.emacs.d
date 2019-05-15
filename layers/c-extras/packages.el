@@ -67,6 +67,10 @@
     (c-add-style "Google" google-c-style)))
 
 (defun c-extras/personal-java-mode-setup ()
+  (setenv "JAVA_HOME" "/usr/lib64/openjdk-11/")
+  (setq meghanada-java-path (format "%s/bin/java" (getenv "JAVA_HOME")))
+  (setq lsp-java-java-path (format "%s/bin/java" (getenv "JAVA_HOME")))
+  (setq lsp-java-theme nil)
   (defun personal-java-setup ()
     (setq-local c-basic-offset 2))
   (add-hook 'java-mode-hook 'personal-java-setup))
