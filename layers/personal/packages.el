@@ -274,7 +274,6 @@ an item line."
 
       (defvar all-helm-maps '(helm-map
                               helm-etags-map
-                              helm-moccur-map
                               helm-grep-map
                               helm-pdfgrep-map
                               helm-generic-files-map))
@@ -893,6 +892,8 @@ an item line."
 (defun personal/init-direnv ()
   (use-package direnv))
 
+(defun personal/post-init-kotlin-mode ()
+  (setq-default spacemacs-jump-handlers-kotlin-mode '(spacemacs/helm-gtags-maybe-dwim)))
 
 (defun personal/init-ispell ()
   ;; patched version of ispell.
